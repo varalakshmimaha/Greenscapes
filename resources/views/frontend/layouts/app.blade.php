@@ -655,7 +655,61 @@
             <ul class="nav-menu" id="navMenu">
                 @if(isset($navMenus) && $navMenus->count())
                     @foreach($navMenus as $menu)
-                        @if($menu->has_dropdown && $menu->children->count())
+                        @if(strtolower($menu->title) === 'about us')
+                            {{-- About Us with Team Categories flyout --}}
+                            <li>
+                                <a href="{{ $menu->url }}" class="{{ request()->is('about') ? 'active' : '' }}">{{ strtoupper($menu->title) }} <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                                <div class="dropdown-menu-custom">
+                                    <a href="/about">About SR Greenscapes</a>
+                                    @if(isset($navTeamCategories) && $navTeamCategories->count())
+                                        <div class="dropdown-submenu">
+                                            <div class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
+                                            <div class="dropdown-submenu-menu">
+                                                @foreach($navTeamCategories as $tc)
+                                                    <a href="/about#team">{{ $tc->name }}</a>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @else
+                                        <a href="/about#team">Our Team</a>
+                                    @endif
+                                    @if($menu->children->count())
+                                        @foreach($menu->children as $child)
+                                            <a href="{{ $child->url }}">{{ $child->title }}</a>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </li>
+                        @elseif(strtolower($menu->title) === 'services')
+                            {{-- Services with Category/SubCategory flyout --}}
+                            <li>
+                                <a href="{{ $menu->url }}" class="{{ request()->is('services*') ? 'active' : '' }}">{{ strtoupper($menu->title) }} <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                                <div class="dropdown-menu-custom">
+                                    <a href="/services">All Services</a>
+                                    @if(isset($navServiceCategories) && $navServiceCategories->count())
+                                        @foreach($navServiceCategories as $sc)
+                                            @if($sc->subCategories->count())
+                                                <div class="dropdown-submenu">
+                                                    <div class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
+                                                    <div class="dropdown-submenu-menu">
+                                                        @foreach($sc->subCategories as $sub)
+                                                            <a href="/services#{{ $sub->slug }}">{{ $sub->name }}</a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <a href="/services#{{ $sc->slug }}">{{ $sc->name }}</a>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    @if($menu->children->count())
+                                        @foreach($menu->children as $child)
+                                            <a href="{{ $child->url }}">{{ $child->title }}</a>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </li>
+                        @elseif($menu->has_dropdown && $menu->children->count())
                             <li>
                                 <a href="{{ $menu->url }}">{{ strtoupper($menu->title) }} <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
                                 <div class="dropdown-menu-custom">
