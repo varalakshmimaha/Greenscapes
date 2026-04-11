@@ -521,6 +521,26 @@
             }
             .nav-menu.show { display: flex; }
             .nav-menu > li > a { padding: 12px 20px; }
+            .nav-menu .dropdown-menu-custom {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                background: rgba(255,255,255,0.05);
+                display: none;
+            }
+            .nav-menu .dropdown-menu-custom a {
+                color: rgba(255,255,255,0.7);
+                padding: 8px 30px;
+                font-size: 13px;
+            }
+            .nav-menu .dropdown-menu-custom a:hover {
+                background: rgba(255,255,255,0.1);
+                color: var(--primary);
+                padding-left: 35px;
+            }
+            .nav-menu > li.dropdown-open > .dropdown-menu-custom {
+                display: block;
+            }
             .nav-right { display: none; }
         }
 
@@ -580,11 +600,33 @@
                         @endif
                     @endforeach
                 @else
-                    <li><a href="/" class="active">HOME</a></li>
-                    <li><a href="/about">ABOUT US</a></li>
-                    <li><a href="/services">SERVICES</a></li>
-                    <li><a href="/projects">PROJECTS</a></li>
-                    <li><a href="/contact">CONTACT US</a></li>
+                    <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a></li>
+                    <li>
+                        <a href="/about" class="{{ request()->is('about') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <div class="dropdown-menu-custom">
+                            <a href="/about">About SR Greenscapes</a>
+                            <a href="/about#team">Our Team</a>
+                            @if(isset($navTeamCategories) && $navTeamCategories->count())
+                                @foreach($navTeamCategories as $tc)
+                                    <a href="/about#team" style="padding-left:30px;font-size:13px;color:#666;">— {{ $tc->name }}</a>
+                                @endforeach
+                            @endif
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <div class="dropdown-menu-custom">
+                            <a href="/services">All Services</a>
+                            @if(isset($navServiceCategories) && $navServiceCategories->count())
+                                @foreach($navServiceCategories as $sc)
+                                    <a href="/services#{{ $sc->slug }}">{{ $sc->name }}</a>
+                                @endforeach
+                            @endif
+                        </div>
+                    </li>
+                    <li><a href="/projects" class="{{ request()->is('projects*') ? 'active' : '' }}">PROJECTS</a></li>
+                    <li><a href="/faqs" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQ'S</a></li>
+                    <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">CONTACTS</a></li>
                 @endif
             </ul>
 
@@ -994,6 +1036,24 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Mobile dropdown toggle for nav items with sub-menus
+    document.querySelectorAll('.nav-menu > li').forEach(function(li) {
+        var dropdown = li.querySelector('.dropdown-menu-custom');
+        if (dropdown) {
+            li.querySelector('a').addEventListener('click', function(e) {
+                if (window.innerWidth <= 991) {
+                    e.preventDefault();
+                    li.classList.toggle('dropdown-open');
+                    // Close other dropdowns
+                    document.querySelectorAll('.nav-menu > li').forEach(function(other) {
+                        if (other !== li) other.classList.remove('dropdown-open');
+                    });
+                }
+            });
+        }
+    });
+    </script>
     @yield('scripts')
 </body>
 </html>

@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Menu;
+use App\Models\ServiceCategory;
 use App\Models\Setting;
+use App\Models\TeamCategory;
 use App\Models\Video;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -41,6 +43,14 @@ class AppServiceProvider extends ServiceProvider
                 }
                 if (Schema::hasTable('videos')) {
                     $view->with('footerVideos', Video::where('is_active', true)->orderBy('order')->take(1)->get());
+                }
+
+                // Navbar dropdown data
+                if (Schema::hasTable('team_categories')) {
+                    $view->with('navTeamCategories', TeamCategory::where('is_active', true)->orderBy('order')->get());
+                }
+                if (Schema::hasTable('service_categories')) {
+                    $view->with('navServiceCategories', ServiceCategory::where('is_active', true)->orderBy('order')->get());
                 }
             });
         }
