@@ -106,7 +106,7 @@
         top: 15px;
         right: 15px;
         background: #fff;
-        color: var(--dark);
+        color: #000;
         padding: 5px 14px;
         border-radius: 50px;
         font-size: 0.7rem;
@@ -156,6 +156,27 @@
     }
     .proj-card:hover .view-btn {
         transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 991px) {
+        .proj-card { height: 300px; }
+        .proj-card .proj-overlay h5 { font-size: 0.95rem; }
+        .filter-btns { gap: 6px; margin-bottom: 25px; }
+        .filter-btns .filter-btn { padding: 6px 16px; font-size: 0.78rem; }
+    }
+    @media (max-width: 575px) {
+        .projects-hero { height: 180px; }
+        .projects-hero-content h1 { font-size: 1.8rem; }
+        .proj-card { height: 250px; border-radius: 12px; }
+        .proj-card .proj-badge { font-size: 0.6rem; padding: 4px 10px; top: 10px; right: 10px; }
+        .proj-card .proj-overlay { padding: 15px; }
+        .proj-card .proj-overlay h5 { font-size: 0.85rem; }
+        .proj-card .proj-overlay p { font-size: 0.72rem; }
+        .proj-card .view-btn { width: 40px; height: 40px; font-size: 14px; }
+        .stats-bar-section .rounded-4 { padding: 12px 8px !important; }
+        .stats-bar-section .text-white.fw-bold.lh-1 { font-size: 2rem !important; }
+        .stats-bar-section .text-uppercase { font-size: 0.7rem !important; }
     }
 </style>
 @endsection
@@ -271,53 +292,391 @@
     </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="py-5" style="background: #fff;">
-    <div class="container py-4">
-        <div class="text-center mb-5">
-            <p class="about-label d-flex justify-content-center">Testimonials</p>
-            <h2 class="section-title">What Our Clients Say</h2>
+<!-- Spacer between Counter and Testimonials -->
+<section style="background: #f9fbf9; padding: 60px 0;">
+    <div class="container text-center">
+        <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
+            <div style="width: 60px; height: 2px; background: var(--primary);"></div>
+            <i class="fas fa-leaf" style="color: var(--primary); font-size: 1.2rem;"></i>
+            <div style="width: 60px; height: 2px; background: var(--primary);"></div>
         </div>
+        <h2 class="fw-bold mb-3" style="color: #1a3a1a; font-size: 2rem;">What Our Clients Say</h2>
+        <p style="color: #777; max-width: 550px; margin: 0 auto;">Hear from the people who trust us with their green spaces</p>
+    </div>
+</section>
 
-        @php
-            $fallbackTestimonials = [
-                (object)['name' => 'Eleanor Pena', 'designation' => 'Founder', 'content' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done.', 'photo' => null, 'rating' => 5],
-                (object)['name' => 'Emily Carter', 'designation' => 'Senior Project Manager', 'content' => 'The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'photo' => null, 'rating' => 5],
-                (object)['name' => 'Bessie Cooper', 'designation' => 'Client', 'content' => 'Scientific approach and professional execution. Our corporate campus has never looked better.', 'photo' => null, 'rating' => 5],
-            ];
-            $activeTestimonials = (isset($testimonials) && $testimonials->count()) ? $testimonials : collect($fallbackTestimonials);
-        @endphp
+<!-- Testimonials Section -->
+@php
+    $fallbackTestimonials = [
+        (object)['name' => 'Eleanor Pena', 'designation' => 'Founder', 'content' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'photo' => 'Home/1.8 Science-Driven Approach.jpg', 'rating' => 5],
+        (object)['name' => 'Emily Carter', 'designation' => 'Senior Project Manager', 'content' => 'The team worked with care and kept us updated throughout the process. We\'re really happy with the final result. Their scientific approach sets them apart.', 'photo' => 'Home/1.9 Sustainability at the Core.jpg', 'rating' => 5],
+        (object)['name' => 'Bessie Cooper', 'designation' => 'Client', 'content' => 'Scientific approach and professional execution. Our corporate campus has never looked better. Highly recommend their services.', 'photo' => 'Home/1.10 Research-Integrated Planning.jpg', 'rating' => 5],
+        (object)['name' => 'John Smith', 'designation' => 'Property Owner', 'content' => 'From design to execution, SR Greenscapes delivered beyond expectations. The landscape transformed our entire property beautifully.', 'photo' => 'Home/1.11 Climate-Resilient Design.jpg', 'rating' => 5],
+    ];
+    $activeTestimonials = (isset($testimonials) && $testimonials->count()) ? $testimonials : collect($fallbackTestimonials);
 
-        <div class="row g-4">
-            @foreach($activeTestimonials->take(3) as $t)
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                <div class="p-4 h-100 rounded-4" style="background: #f9fbf9; border: 1px solid #eee;">
-                    <div class="mb-3" style="color: #f59e0b; font-size: 0.9rem;">
-                        @for($i = 0; $i < ($t->rating ?? 5); $i++)
-                            <i class="fas fa-star"></i>
-                        @endfor
+    $avatarImages = [
+        'Home/1.8 Science-Driven Approach.jpg',
+        'Home/1.9 Sustainability at the Core.jpg',
+        'Home/1.10 Research-Integrated Planning.jpg',
+        'Home/1.11 Climate-Resilient Design.jpg',
+        'Home/1.12 End-to-End Execution.jpg',
+    ];
+@endphp
+
+<section class="proj-testi-section position-relative" style="overflow: hidden;">
+    <div class="proj-testi-bg"></div>
+    <div class="proj-testi-overlay"></div>
+    <div class="container position-relative z-1 py-5">
+        <div class="row align-items-center g-4 py-4">
+
+            <!-- Left: Heading -->
+            <div class="col-lg-4" data-aos="fade-right">
+                <span class="proj-testi-badge"><i class="fas fa-star me-1"></i> Testimonial</span>
+                <h2 class="proj-testi-heading">The Best Customers Says About Our Action</h2>
+                <a href="/testimonials" class="proj-testi-btn">
+                    Read All Testimonials <span class="proj-testi-btn-icon"><i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+
+            <!-- Center: Rating Card -->
+            <div class="col-lg-3" data-aos="fade-up">
+                <div class="proj-testi-rating-card">
+                    <div class="proj-testi-rating-num">4.8</div>
+                    <div class="proj-testi-rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="mb-4" style="color: #555; font-style: italic; line-height: 1.7; font-size: 0.95rem;">"{{ $t->content ?? $t->message ?? '' }}"</p>
-                    <div class="d-flex align-items-center gap-3">
-                        @php $tPhoto = $t->photo ?? null; @endphp
-                        @if($tPhoto)
-                            <img src="{{ asset('storage/' . $tPhoto) }}" alt="{{ $t->name }}" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
-                        @else
-                            <div style="width: 50px; height: 50px; border-radius: 50%; background: rgba(139,195,74,0.15); border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem;">
-                                <i class="fas fa-user"></i>
-                            </div>
-                        @endif
-                        <div>
-                            <div style="font-weight: 700; color: #1a3a1a; font-size: 0.95rem;">{{ $t->name }}</div>
-                            <div style="color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px;">{{ $t->designation ?? $t->role ?? '' }}</div>
-                        </div>
+                    <p class="proj-testi-rating-from">From 3k Members,</p>
+                    <p class="proj-testi-rating-google">Reviewed by Google</p>
+                    <div class="proj-testi-avatars">
+                        @foreach($avatarImages as $idx => $avImg)
+                            <img src="{{ asset('storage/' . $avImg) }}" alt="Member {{ $idx + 1 }}">
+                        @endforeach
+                        <div class="proj-testi-avatar-more">+</div>
                     </div>
                 </div>
             </div>
-            @endforeach
+
+            <!-- Right: Testimonial Slider -->
+            <div class="col-lg-5" data-aos="fade-left">
+                <div id="projTestiSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                    <div class="carousel-inner">
+                        @foreach($activeTestimonials as $idx => $t)
+                        <div class="carousel-item {{ $idx === 0 ? 'active' : '' }}">
+                            <div class="proj-testi-quote-card">
+                                <div class="proj-testi-quote-icon">
+                                    <i class="fas fa-quote-right"></i><i class="fas fa-quote-right"></i>
+                                </div>
+                                <div class="proj-testi-quote-stars">
+                                    @for($i = 0; $i < ($t->rating ?? 5); $i++)
+                                        <i class="fas fa-star"></i>
+                                    @endfor
+                                </div>
+                                <p class="proj-testi-quote-text">"{{ $t->content ?? $t->message ?? '' }}"</p>
+                                <div class="proj-testi-quote-author">
+                                    @php
+                                        $tPhoto = $t->photo ?? null;
+                                        $imgSrc = $tPhoto ? (str_contains($tPhoto, 'storage') ? asset($tPhoto) : asset('storage/' . $tPhoto)) : null;
+                                    @endphp
+                                    @if($imgSrc)
+                                        <img src="{{ $imgSrc }}" alt="{{ $t->name }}">
+                                    @else
+                                        <div class="proj-testi-author-placeholder"><i class="fas fa-user"></i></div>
+                                    @endif
+                                    <div>
+                                        <div class="proj-testi-author-name">{{ $t->name }}</div>
+                                        <div class="proj-testi-author-role">{{ $t->designation ?? $t->role ?? '' }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <!-- Slider Dots -->
+                    <div class="proj-testi-dots">
+                        @foreach($activeTestimonials as $idx => $t)
+                            <button data-bs-target="#projTestiSlider" data-bs-slide-to="{{ $idx }}" class="{{ $idx === 0 ? 'active' : '' }}"></button>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
+
+<style>
+    /* ===== PROJECT TESTIMONIAL SECTION ===== */
+    .proj-testi-section {
+        position: relative;
+    }
+    .proj-testi-bg {
+        position: absolute;
+        inset: 0;
+        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        z-index: 0;
+    }
+    .proj-testi-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(15, 35, 15, 0.93) 0%, rgba(25, 50, 25, 0.90) 50%, rgba(20, 40, 20, 0.88) 100%);
+        z-index: 0;
+    }
+
+    /* Left */
+    .proj-testi-badge {
+        display: inline-block;
+        background: rgba(139,195,74,0.15);
+        color: var(--primary);
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(139,195,74,0.25);
+    }
+    .proj-testi-heading {
+        color: #fff;
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 30px;
+    }
+    .proj-testi-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.88rem;
+        text-decoration: none;
+        padding: 12px 28px;
+        border: 2px solid rgba(255,255,255,0.25);
+        border-radius: 50px;
+        transition: all 0.3s;
+    }
+    .proj-testi-btn:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+    }
+    .proj-testi-btn-icon {
+        width: 30px;
+        height: 30px;
+        background: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #fff;
+    }
+
+    /* Center: Leaf-Shaped Rating Card */
+    .proj-testi-rating-card {
+        background: linear-gradient(145deg, #d4eb8e 0%, #b8d95c 50%, #a8cc4a 100%);
+        border-radius: 8px 80px 80px 80px;
+        padding: 50px 35px 40px;
+        text-align: center;
+        color: #1a3a1a;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.4);
+        position: relative;
+        overflow: hidden;
+    }
+    .proj-testi-rating-card::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 100px;
+        height: 100px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 50%;
+    }
+    .proj-testi-rating-card::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: -20px;
+        width: 70px;
+        height: 70px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    .proj-testi-rating-num {
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 8px;
+        color: #1a3a1a;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+    .proj-testi-rating-stars {
+        color: #2d5a1e;
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+        letter-spacing: 4px;
+    }
+    .proj-testi-rating-from {
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 3px;
+        color: #1a3a1a;
+    }
+    .proj-testi-rating-google {
+        font-size: 0.85rem;
+        color: #2d5a27;
+        font-weight: 500;
+        margin-bottom: 24px;
+    }
+    .proj-testi-avatars {
+        display: flex;
+        justify-content: center;
+    }
+    .proj-testi-avatars img {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 3px solid #e8f5a0;
+        margin-left: -12px;
+        object-fit: cover;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 1;
+    }
+    .proj-testi-avatars img:first-child {
+        margin-left: 0;
+    }
+    .proj-testi-avatar-more {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 3px solid #e8f5a0;
+        margin-left: -12px;
+        background: #fff;
+        color: #1a3a1a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: 800;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Right: Quote Slider */
+    .proj-testi-quote-card {
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 24px;
+        padding: 35px 30px;
+        backdrop-filter: blur(12px);
+    }
+    .proj-testi-quote-icon {
+        color: var(--primary);
+        font-size: 1.6rem;
+        margin-bottom: 14px;
+        display: flex;
+        gap: 4px;
+    }
+    .proj-testi-quote-stars {
+        color: #f59e0b;
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+        letter-spacing: 3px;
+    }
+    .proj-testi-quote-text {
+        color: rgba(255,255,255,0.88);
+        font-size: 0.92rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        min-height: 80px;
+    }
+    .proj-testi-quote-author {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 20px;
+    }
+    .proj-testi-quote-author img {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--primary);
+    }
+    .proj-testi-author-placeholder {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: rgba(139,195,74,0.2);
+        border: 3px solid var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.3rem;
+        flex-shrink: 0;
+    }
+    .proj-testi-author-name {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 2px;
+    }
+    .proj-testi-author-role {
+        color: rgba(255,255,255,0.45);
+        font-size: 0.78rem;
+        letter-spacing: 0.5px;
+    }
+
+    /* Slider Dots */
+    .proj-testi-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+    }
+    .proj-testi-dots button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255,255,255,0.25);
+        padding: 0;
+        transition: all 0.3s;
+    }
+    .proj-testi-dots button.active {
+        background: var(--primary);
+        width: 28px;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 991px) {
+        .proj-testi-heading { font-size: 1.6rem; }
+        .proj-testi-rating-card { margin-bottom: 10px; max-width: 280px; margin-left: auto; margin-right: auto; }
+        .proj-testi-quote-text { min-height: auto; }
+        .proj-testi-badge { font-size: 0.72rem; padding: 6px 14px; }
+        .proj-testi-btn { font-size: 0.8rem; padding: 10px 20px; }
+    }
+    @media (max-width: 575px) {
+        .proj-testi-section .container { padding-top: 30px !important; padding-bottom: 30px !important; }
+        .proj-testi-heading { font-size: 1.3rem; }
+        .proj-testi-rating-card { padding: 30px 20px 25px; max-width: 220px; border-radius: 6px 50px 50px 50px; }
+        .proj-testi-rating-num { font-size: 3.5rem; }
+        .proj-testi-rating-stars { font-size: 0.85rem; }
+        .proj-testi-avatars img, .proj-testi-avatar-more { width: 34px; height: 34px; }
+        .proj-testi-quote-card { padding: 20px 18px; border-radius: 16px; }
+        .proj-testi-quote-text { font-size: 0.82rem; line-height: 1.6; }
+        .proj-testi-quote-author img { width: 40px; height: 40px; }
+        .proj-testi-author-name { font-size: 0.88rem; }
+        .proj-testi-dots button { width: 8px; height: 8px; }
+        .proj-testi-dots button.active { width: 22px; }
+    }
+</style>
 
 @section('cta')
 <!-- Projects Page CTA — Book Consultation -->
@@ -388,6 +747,20 @@
         .proj-cta-inner { flex-direction: column; }
         .proj-cta-card { width: 100%; }
         .proj-cta-company { font-size: 1.4rem; }
+    }
+    @media (max-width: 575px) {
+        .proj-cta-wrapper { padding: 25px 0 40px; }
+        .proj-cta-section { padding: 25px 16px; border-radius: 18px; }
+        .proj-cta-overlay { border-radius: 18px; }
+        .proj-cta-company { font-size: 1.1rem; }
+        .proj-cta-tagline { font-size: 0.85rem; }
+        .proj-cta-desc { font-size: 0.82rem; }
+        .proj-cta-card { padding: 20px 16px; }
+        .proj-cta-card-title { font-size: 1.1rem; margin-bottom: 14px; }
+        .proj-cta-row { flex-direction: column; gap: 8px; }
+        .proj-cta-input { padding: 10px 12px; font-size: 12px; }
+        .proj-cta-textarea { height: 65px; }
+        .proj-cta-submit { padding: 11px; font-size: 0.78rem; }
     }
 </style>
 @endsection

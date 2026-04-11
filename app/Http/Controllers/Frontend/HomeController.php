@@ -15,6 +15,8 @@ use App\Models\Setting;
 use App\Models\TeamMember;
 use App\Models\Counter;
 use App\Models\Testimonial;
+use App\Models\Blog;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -95,6 +97,25 @@ class HomeController extends Controller
     {
         $testimonials = \App\Models\Testimonial::where('is_active', true)->orderBy('order')->get();
         return view('frontend.testimonials', compact('testimonials'));
+    }
+
+    public function blogs()
+    {
+        $blogs = Blog::where('is_published', true)->orderBy('published_at', 'desc')->paginate(9);
+        return view('frontend.blogs', compact('blogs'));
+    }
+
+    public function blogDetail($slug)
+    {
+        $blog = Blog::where('slug', $slug)->where('is_published', true)->firstOrFail();
+        $relatedBlogs = Blog::where('is_published', true)->where('id', '!=', $blog->id)->latest('published_at')->take(3)->get();
+        return view('frontend.blog-detail', compact('blog', 'relatedBlogs'));
+    }
+
+    public function videos()
+    {
+        $videos = Video::where('is_active', true)->orderBy('order')->get();
+        return view('frontend.videos', compact('videos'));
     }
 
     public function contact()

@@ -106,6 +106,14 @@
     .gallery-item-wrap:hover .gallery-img {
         transform: scale(1.1);
     }
+
+    @media (max-width: 575px) {
+        .project-detail-hero { padding: 80px 0 50px !important; }
+        .project-detail-hero h1 { font-size: 1.6rem !important; }
+        .project-info-section { padding-top: 30px !important; padding-bottom: 30px !important; }
+        .project-specs { top: auto !important; position: relative !important; }
+        .gallery-img { height: 150px; }
+    }
 </style>
 
 @endsection

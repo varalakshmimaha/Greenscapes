@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Copyright Text</label>
-                <input type="text" name="footer_copyright" class="form-control" value="{{ $settings['footer_copyright'] ?? '' }}" placeholder="&copy; 2026 Ecoscapes. All rights reserved.">
+                <input type="text" name="footer_copyright" class="form-control" value="{{ $settings['footer_copyright'] ?? '' }}" placeholder="&copy; 2026 SR Greenscapes Pvt Ltd. All rights reserved.">
             </div>
             <hr>
             <h6 class="mb-3">Social Media Links</h6>

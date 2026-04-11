@@ -469,6 +469,14 @@
             .cta-img-panel { flex: 0 0 280px; }
             .cta-form-panel { padding: 32px 24px; }
             .cta-form-heading { font-size: 1.6rem; }
+            .footer-cta-wrap { padding: 50px 0; }
+        }
+        @media (max-width: 575px) {
+            .cta-split-card { border-radius: 18px; min-height: auto; }
+            .cta-img-panel { flex: 0 0 200px; }
+            .cta-form-panel { padding: 24px 18px; }
+            .cta-form-heading { font-size: 1.3rem; }
+            .footer-cta-wrap { padding: 30px 0; }
         }
 
         /* ===== TOP BAR ===== */
@@ -650,10 +658,11 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <!-- Company Info -->
-                <div class="col-lg-4 mb-4">
+
+                <!-- Column 1: Logo, About & Address -->
+                <div class="col-lg-3 col-md-6 mb-4">
                     <div class="d-flex align-items-center mb-3">
-                        <div style="width:40px;height:40px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:10px;">
+                        <div style="width:42px;height:42px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:10px;">
                             <i class="fas fa-leaf text-white"></i>
                         </div>
                         <div>
@@ -661,82 +670,314 @@
                             <small style="color:rgba(255,255,255,0.5);font-size:0.7rem;">PVT LTD</small>
                         </div>
                     </div>
-                    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.8;">Based in Bengaluru | Pan-India Project Execution</p>
-                    <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:2;">
-                        <i class="fas fa-phone-alt me-2" style="color:var(--accent);"></i>{{ $siteSettings['phone'] ?? '+91 9845728507' }}, +91 9113620609<br>
-                        <i class="fas fa-envelope me-2" style="color:var(--accent);"></i>{{ $siteSettings['email'] ?? 'srgreenscapes@gmail.com' }}<br>
-                        <i class="fas fa-envelope me-2" style="color:var(--accent);"></i>mdsrgreenscapes@gmail.com
+                    <p style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.8;margin-bottom:18px;">Creating High-Performance, Science-Driven Sustainable Landscapes. Based in Bengaluru with Pan-India Project Execution.</p>
+                    <p style="color:rgba(255,255,255,0.6);font-size:13px;line-height:1.9;margin-bottom:0;">
+                        <i class="fas fa-map-marker-alt me-2" style="color:var(--accent);font-size:12px;"></i>
+                        {{ $siteSettings['address'] ?? 'Sy No. 32/40, Ground Floor, Jinnagara, Gangalu Main Road, Hoskote Taluk, Bangalore - 562114' }}
                     </p>
                 </div>
-                <!-- About Us Links -->
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h5>About Us</h5>
-                    <ul class="list-unstyled footer-links">
-                        <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="/services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="/projects"><i class="fas fa-chevron-right"></i> Project Portfolio</a></li>
-                        <li><a href="/testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
-                        <li><a href="/#process"><i class="fas fa-chevron-right"></i> Process</a></li>
-                        <li><a href="/faqs"><i class="fas fa-chevron-right"></i> FAQ's</a></li>
-                        <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                        <li><a href="/gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
-                    </ul>
+
+                <!-- Column 2: Quick Links (two columns) + Gallery -->
+                <div class="col-lg-5 col-md-6 mb-4">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5>Quick Links</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                                <li><a href="/about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                                <li><a href="/services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                                <li><a href="/projects"><i class="fas fa-chevron-right"></i> Projects</a></li>
+                                <li><a href="/gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <h5>Explore</h5>
+                            <ul class="list-unstyled footer-links">
+                                <li><a href="/blogs"><i class="fas fa-chevron-right"></i> Blogs</a></li>
+                                <li><a href="/videos"><i class="fas fa-chevron-right"></i> Videos</a></li>
+                                <li><a href="/testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
+                                <li><a href="/faqs"><i class="fas fa-chevron-right"></i> FAQ's</a></li>
+                                <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {{-- Gallery Thumbnails --}}
+                    @if(isset($footerGallery) && $footerGallery->count())
+                    <div class="footer-gallery-label mt-3">
+                        <small style="color:var(--accent);font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;">
+                            <i class="fas fa-images me-1"></i> Gallery
+                        </small>
+                        <a href="/gallery" style="color:rgba(255,255,255,0.5);font-size:0.72rem;text-decoration:none;">View All <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
+                    </div>
+                    <div class="footer-gallery-grid">
+                        @foreach($footerGallery as $fg)
+                        <a href="/gallery" class="footer-gallery-thumb">
+                            <img src="{{ asset('storage/' . $fg->image) }}" alt="{{ $fg->title ?? 'Gallery' }}">
+                            <div class="footer-gallery-hover"><i class="fas fa-search-plus"></i></div>
+                        </a>
+                        @endforeach
+                    </div>
+                    @endif
                 </div>
-                <!-- Follow Us -->
-                <div class="col-lg-2 col-md-4 mb-4">
-                    <h5>Follow Us</h5>
+
+                <!-- Column 3: Contact Us & Social -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled footer-contact-list">
+                        <li>
+                            <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <span>{{ $siteSettings['phone'] ?? '+91 9845728507' }}</span><br>
+                                <span>+91 9113620609</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <span>{{ $siteSettings['email'] ?? 'srgreenscapes@gmail.com' }}</span><br>
+                                <span>mdsrgreenscapes@gmail.com</span>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h6 style="color:var(--accent);font-size:0.85rem;font-weight:600;margin-top:22px;margin-bottom:12px;">Follow Us</h6>
                     <div class="footer-social-icons">
                         <a href="https://www.facebook.com/profile.php?id=61579521119580" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/sr_greenscapes/?hl=en" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://x.com/GreenscapesSr" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://www.youtube.com/@srgreenscapes" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
+
+                    {{-- Recent Blogs --}}
+                    @if(isset($footerBlogs) && $footerBlogs->count())
+                    <h6 style="color:var(--accent);font-size:0.85rem;font-weight:600;margin-top:22px;margin-bottom:12px;">Recent Blogs</h6>
+                    <div class="footer-blog-list">
+                        @foreach($footerBlogs as $fb)
+                        <a href="{{ route('blog.detail', $fb->slug) }}" class="footer-blog-item">
+                            <div class="footer-blog-img">
+                                @if($fb->image)
+                                    <img src="{{ asset('storage/' . $fb->image) }}" alt="{{ $fb->title }}">
+                                @else
+                                    <div class="footer-blog-img-placeholder"><i class="fas fa-blog"></i></div>
+                                @endif
+                            </div>
+                            <div class="footer-blog-info">
+                                <h6>{{ Str::limit($fb->title, 40) }}</h6>
+                                <small><i class="fas fa-calendar-alt me-1"></i> {{ $fb->published_at ? $fb->published_at->format('M d, Y') : '' }}</small>
+                            </div>
+                        </a>
+                        @endforeach
+                    </div>
+                    @endif
                 </div>
 
-<style>
-    .footer-social-icons {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 15px;
-    }
-    .footer-social-icons a {
-        width: 38px;
-        height: 38px;
-        background: rgba(255,255,255,0.05);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        text-decoration: none;
-        transition: var(--transition);
-        font-size: 14px;
-        border: 1px solid rgba(255,255,255,0.1);
-    }
-    .footer-social-icons a:hover {
-        background: var(--primary);
-        color: #fff;
-        transform: translateY(-5px);
-        border-color: var(--primary);
-    }
-</style>
-                <!-- Address -->
-                <div class="col-lg-4 col-md-4 mb-4">
-                    <h5>Our Address</h5>
-                    <p style="color:rgba(255,255,255,0.6);font-size:14px;line-height:1.8;">
-                        <i class="fas fa-map-marker-alt me-2" style="color:var(--accent);"></i>
-                        {{ $siteSettings['address'] ?? 'Sy No. 32/40, Ground Floor, Jinnagara, Gangalu Main Road, Hoskote Taluk, Bangalore - 562114' }}
-                    </p>
-                    <a href="#" class="btn-appointment mt-3 d-inline-block"><i class="fas fa-download me-2"></i>Download Brochure</a>
-                </div>
             </div>
+
             <div class="footer-bottom">
                 <p class="mb-0">{{ $siteSettings['copyright_text'] ?? '© 2025 SR Greenscapes Pvt Ltd. All rights reserved.' }}</p>
             </div>
         </div>
     </footer>
+
+    <style>
+        /* Footer Contact List */
+        .footer-contact-list { padding: 0; }
+        .footer-contact-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: rgba(255,255,255,0.65);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .footer-contact-icon {
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            background: rgba(139,195,74,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        /* Footer Social */
+        .footer-social-icons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .footer-social-icons a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-social-icons a:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        /* Footer Blog List */
+        .footer-blog-list { display: flex; flex-direction: column; gap: 12px; }
+        .footer-blog-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+        .footer-blog-item:hover { background: rgba(255,255,255,0.05); }
+        .footer-blog-img {
+            width: 60px;
+            height: 52px;
+            min-width: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .footer-blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .footer-blog-img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: rgba(139,195,74,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 16px;
+        }
+        .footer-blog-info h6 {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        .footer-blog-item:hover .footer-blog-info h6 { color: var(--accent); }
+        .footer-blog-info small {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.7rem;
+        }
+        .footer-blog-info small i { color: var(--accent); }
+
+        /* Footer Gallery Grid */
+        .footer-gallery-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .footer-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .footer-gallery-thumb {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 65px;
+            display: block;
+        }
+        .footer-gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .footer-gallery-thumb:hover img { transform: scale(1.1); }
+        .footer-gallery-hover {
+            position: absolute;
+            inset: 0;
+            background: rgba(139,195,74,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .footer-gallery-thumb:hover .footer-gallery-hover { opacity: 1; }
+
+        /* ===== GLOBAL MOBILE RESPONSIVE ===== */
+        @media (max-width: 991px) {
+            .footer { padding: 40px 0 15px; }
+            .footer h5 { font-size: 1rem; margin-bottom: 15px; }
+            .footer-contact-list li { font-size: 12px; }
+            .footer-bottom { margin-top: 25px; padding-top: 15px; }
+        }
+        @media (max-width: 767px) {
+            .footer-gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-gallery-thumb { height: 55px; }
+            .footer-blog-img { width: 50px; height: 44px; min-width: 50px; }
+            .footer-blog-info h6 { font-size: 0.78rem; }
+            .footer-social-icons a { width: 32px; height: 32px; font-size: 12px; }
+            .whatsapp-float { width: 48px; height: 48px; font-size: 22px; bottom: 15px; right: 15px; }
+        }
+        @media (max-width: 575px) {
+            .footer { padding: 30px 0 10px; }
+            .footer h5 { font-size: 0.95rem; }
+            .footer-contact-icon { width: 30px; height: 30px; min-width: 30px; font-size: 11px; }
+            .footer-contact-list li { gap: 8px; margin-bottom: 12px; }
+        }
+
+        /* ===== HERO SECTIONS GLOBAL MOBILE ===== */
+        @media (max-width: 767px) {
+            .testi-hero, .projects-hero, .blogs-hero, .videos-hero, .gallery-hero,
+            .services-hero, .contact-hero, .faq-hero, .about-hero { height: 220px; }
+            .testi-hero-content h1, .projects-hero-content h1, .blogs-hero-content h1,
+            .videos-hero-content h1, .gallery-hero-content h1 { font-size: 2rem; }
+            .testi-hero-content p, .blogs-hero-content p, .videos-hero-content p,
+            .gallery-hero-content p { font-size: 0.9rem; }
+        }
+        @media (max-width: 575px) {
+            .testi-hero, .projects-hero, .blogs-hero, .videos-hero, .gallery-hero,
+            .services-hero, .contact-hero, .faq-hero, .about-hero { height: 180px; }
+            .testi-hero-content h1, .projects-hero-content h1, .blogs-hero-content h1,
+            .videos-hero-content h1, .gallery-hero-content h1 { font-size: 1.6rem; }
+        }
+
+        /* ===== NAVBAR MOBILE ===== */
+        @media (max-width: 575px) {
+            .top-bar { font-size: 0.75rem; padding: 6px 0; }
+            .navbar-custom { padding: 8px 0; }
+            .navbar-custom .brand-text strong { font-size: 0.95rem; }
+            .btn-appointment { padding: 6px 14px; font-size: 11px; }
+        }
+
+        /* ===== CTA SECTIONS MOBILE ===== */
+        @media (max-width: 575px) {
+            .proj-cta-wrapper, .svc-cta-wrapper, .faq-cta-wrapper, .contact-cta-wrapper { padding: 30px 0 40px; }
+            .proj-cta-section, .svc-cta-section, .faq-cta-section, .contact-cta-section { padding: 25px 16px; border-radius: 18px; }
+            .proj-cta-overlay, .svc-cta-overlay, .faq-cta-overlay, .contact-cta-overlay { border-radius: 18px; }
+            .proj-cta-company, .svc-cta-company, .faq-cta-company, .contact-cta-company { font-size: 1.1rem; }
+            .proj-cta-card, .svc-cta-card, .faq-cta-card, .contact-cta-card { padding: 20px 16px; }
+            .proj-cta-card-title, .svc-cta-card-title, .faq-cta-card-title, .contact-cta-card-title { font-size: 1.1rem; }
+            .proj-cta-row, .svc-cta-row, .faq-cta-row, .contact-cta-row { flex-direction: column; gap: 8px; }
+        }
+    </style>
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/919845728507" class="whatsapp-float" target="_blank">

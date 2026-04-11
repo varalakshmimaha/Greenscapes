@@ -206,12 +206,19 @@
         .faq-hero-content h1 { font-size: 2.5rem; }
     }
     @media (max-width: 575px) {
-        .faq-hero { height: 220px; }
-        .faq-hero-content h1 { font-size: 2rem; }
-        .faq-hero-content p { font-size: 1rem; }
-        .faq-cat-pills { justify-content: center; }
-        .faq-acc-header { padding: 16px 18px; }
-        .faq-acc-body { padding: 0 18px 18px; }
+        .faq-hero { height: 180px; }
+        .faq-hero-content h1 { font-size: 1.6rem; }
+        .faq-hero-content p { font-size: 0.88rem; }
+        .faq-heading h2 { font-size: 1.6rem; }
+        .faq-cat-pills { justify-content: center; flex-wrap: wrap; gap: 5px; }
+        .faq-cat-pill { padding: 6px 10px; font-size: 0.7rem; }
+        .faq-left-img { height: 250px; border-radius: 12px; }
+        .faq-acc-item { border-radius: 12px; margin-bottom: 10px; }
+        .faq-acc-header { padding: 14px 16px; }
+        .faq-acc-header .q-text { font-size: 0.85rem; }
+        .faq-acc-header .q-toggle { width: 28px; height: 28px; min-width: 28px; font-size: 15px; }
+        .faq-acc-body { padding: 0 16px 16px; font-size: 0.82rem; }
+        .faq-section { padding: 40px 0 50px; }
     }
 </style>
 @endsection

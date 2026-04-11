@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password - Ecoscapes Admin</title>
+    <title>Forgot Password - SR Greenscapes Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -25,7 +25,7 @@
 <body>
     <div class="login-card">
         <div class="brand">
-            <h3><i class="fas fa-leaf"></i> ECOSCAPES</h3>
+            <h3><i class="fas fa-leaf"></i> SR GREENSCAPES</h3>
             <p class="text-muted">Reset Your Password</p>
         </div>
 

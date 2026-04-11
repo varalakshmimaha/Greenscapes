@@ -34,6 +34,9 @@ Route::get('/projects/{slug}', [HomeController::class, 'projectDetail'])->name('
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/faqs', [HomeController::class, 'faqs'])->name('faqs');
 Route::get('/testimonials', [HomeController::class, 'testimonials'])->name('testimonials');
+Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
+Route::get('/blogs/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/videos', [HomeController::class, 'videos'])->name('videos');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact.submit');
 

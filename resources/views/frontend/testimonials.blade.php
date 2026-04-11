@@ -113,6 +113,16 @@
         font-size: 0.9rem;
         margin-bottom: 15px;
     }
+
+    @media (max-width: 575px) {
+        .testimonial-card { padding: 25px 18px; border-radius: 12px; }
+        .testi-quote { font-size: 1.8rem; margin-bottom: 12px; }
+        .testi-text-content { font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px; }
+        .testi-author-info img { width: 45px; height: 45px; }
+        .testi-avatar-placeholder { width: 45px; height: 45px; font-size: 1.1rem; }
+        .testi-name { font-size: 0.95rem; }
+        .testi-role { font-size: 0.75rem; }
+    }
 </style>
 @endsection
 
@@ -131,7 +141,7 @@
     <div class="container py-5">
         
         <div class="text-center mb-5 pb-3">
-            <h2 class="display-5 fw-bold" style="color: #1a3a1a;">Words from Our Clients</h2>
+            <h2 class="display-5 fw-bold" style="color: var(--primary);">Words from Our Clients</h2>
         </div>
 
         @php

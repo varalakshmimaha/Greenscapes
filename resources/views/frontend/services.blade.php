@@ -340,5 +340,21 @@
         .svc-cta-card { width: 100%; }
         .svc-cta-company { font-size: 1.4rem; }
     }
+    @media (max-width: 575px) {
+        .page-hero { padding: 60px 0; }
+        .page-hero h1 { font-size: 1.6rem; }
+        .services-grid { padding: 40px 0; }
+        .svc-card .svc-card-img { height: 160px; }
+        .svc-card .svc-card-body { padding: 18px 14px; }
+        .svc-card .svc-card-body h5 { font-size: 0.95rem; }
+        .svc-card .svc-card-body p { font-size: 0.8rem; }
+        .svc-cta-wrapper { padding: 25px 0 40px; }
+        .svc-cta-section { padding: 25px 16px; border-radius: 18px; }
+        .svc-cta-overlay { border-radius: 18px; }
+        .svc-cta-company { font-size: 1.1rem; }
+        .svc-cta-card { padding: 20px 16px; }
+        .svc-cta-card-title { font-size: 1.1rem; }
+        .svc-cta-row { flex-direction: column; gap: 8px; }
+    }
 </style>
 @endsection

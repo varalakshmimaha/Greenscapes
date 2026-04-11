@@ -924,6 +924,49 @@
         .hero-text { max-width: 100%; }
         .consultation-form { width: 100%; min-width: unset; }
         .stat-number { font-size: 2rem; }
+        .services-section { padding: 50px 0; }
+        .portfolio-section { padding: 50px 0; }
+    }
+    @media (max-width: 575px) {
+        .hero-banner { margin: 8px 10px 0; border-radius: 20px; min-height: 480px; }
+        .hero-banner .carousel-item { min-height: 480px; }
+        .hero-text h1 { font-size: 1.3rem; }
+        .hero-text .hero-sub { font-size: 0.78rem; }
+        .hero-text .hero-company { font-size: 0.68rem; letter-spacing: 1.5px; }
+        .hero-inner { padding: 20px 0; }
+        .hero-inner .container { gap: 18px; }
+        .consultation-form { padding: 20px 16px; }
+        .consultation-form h4 { font-size: 1.1rem; margin-bottom: 14px; }
+        .consultation-form .form-control { padding: 9px 12px; font-size: 12px; }
+        .btn-submit { padding: 11px; font-size: 12px; }
+        .hero-banner .carousel-control-prev,
+        .hero-banner .carousel-control-next { width: 35px; height: 35px; margin: 0 8px; }
+        .hero-banner .carousel-indicators button { width: 8px; height: 8px; }
+        .about-section { padding: 40px 0; }
+        .about-section h2 { font-size: 1.4rem !important; }
+        .diff-section { padding: 40px 0; }
+        .choose-img-circle { width: 220px; height: 220px; }
+        .choose-img-small { width: 80px; height: 80px; }
+        .services-section { padding: 40px 0; }
+        .stats-section { padding: 30px 0; }
+        .stat-number { font-size: 1.6rem !important; }
+        .portfolio-section { padding: 40px 0; }
+        .project-card img { height: 160px; }
+        .faq-landspire-section { padding: 50px 0; }
+        .faq-left-content .faq-title { font-size: 1.8rem; }
+        .faq-images-split { height: 180px; }
+        .img-shape-left { width: 100px; height: 180px; border-radius: 100px 0 0 100px; }
+        .img-shape-right { width: 100px; height: 150px; border-radius: 0 100px 100px 0; margin-top: 30px; }
+        .img-shape-left img { width: 205px; height: 180px; }
+        .img-shape-right img { width: 205px; height: 180px; top: -30px; left: -105px; }
+        .faq-btn { padding: 12px 14px; font-size: 0.85rem; }
+        .faq-icon { width: 30px; height: 30px; font-size: 0.75rem; }
+        .faq-body { padding: 0 14px 18px 14px; font-size: 0.85rem; }
+        .faq-accordion .faq-item { border-radius: 20px; margin-bottom: 12px; }
+        .faq-btn-touch { font-size: 0.8rem; padding: 8px 12px 8px 16px; }
+        .faq-btn-touch .arrow-icon { width: 24px; height: 24px; margin-left: 8px; }
+        .faq-cta-text { font-size: 0.88rem; }
+        .btn-theme { padding: 10px 20px; font-size: 12px; }
     }
 </style>
 @endsection
@@ -955,7 +998,7 @@
                 @endforeach
             @else
                 <div class="carousel-item h-100 active">
-                    <img src="{{ asset('storage/Home/1.1Cover photo 1.jpg') }}" alt="Landscape Design">
+                    <img src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Landscape Design">
                 </div>
                 <div class="carousel-item h-100">
                     <img src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden">
@@ -1114,7 +1157,7 @@
                 <div class="choose-img-wrap">
                     <div class="choose-dots"></div>
                     <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Landscaping Expert" class="choose-img-circle">
-                    <img src="{{ asset('storage/Home/1.9 Sustainability at the Core.jpg') }}" alt="Garden Work" class="choose-img-small">
+                    <img src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden Work" class="choose-img-small">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -1235,7 +1278,7 @@
 
         @php
             $fakeProjects = [
-                ['title' => 'Villa Garden Design', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.1Cover photo 1.jpg'],
+                ['title' => 'Villa Garden Design', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.2 Cover photo 2.jpg'],
                 ['title' => 'Corporate Campus Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'Home/1.2 Cover photo 2.jpg'],
                 ['title' => 'School & Institutional Garden', 'location' => 'Hoskote, Karnataka', 'type' => 'INSTITUTIONAL', 'img' => 'Home/1.3 Cover photo 3.jpg'],
                 ['title' => 'Terrace & Rooftop Garden', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.4 Cover photo  4.jpg'],
@@ -1299,8 +1342,8 @@
                         if($i == 4) $imgPath = "storage/Home/1.5 Cover photo 5.jpg";
                         if($i == 5) $imgPath = "storage/Home/1.6 Cover photo 6.jpg";
                         if($i == 6) $imgPath = "storage/Home/1.7 Cover photo 7.jpg";
-                        if($i == 7) $imgPath = "storage/Home/1.8 Science-Driven Approach.jpg";
-                        if($i == 8) $imgPath = "storage/Home/1.9 Sustainability at the Core.jpg";
+                        if($i == 7) $imgPath = "storage/Home/1.2 Cover photo 2.jpg";
+                        if($i == 8) $imgPath = "storage/Home/1.2 Cover photo 2.jpg";
                     @endphp
                     <div class="slide-item">
                         <img src="{{ asset($imgPath) }}" alt="Project {{$i}}">
@@ -1611,66 +1654,90 @@
         .home-cta-card { width: 100%; }
         .home-cta-heading { font-size: 1.8rem; }
     }
+    @media (max-width: 575px) {
+        .home-cta-wrapper { padding: 25px 0 40px; }
+        .home-cta-section { padding: 25px 16px; border-radius: 18px; }
+        .home-cta-overlay { border-radius: 18px; }
+        .home-cta-heading { font-size: 1.3rem; }
+        .home-cta-card { padding: 20px 16px; }
+        .home-cta-card-title { font-size: 1.1rem; }
+        .home-cta-row { flex-direction: column; gap: 8px; }
+        .home-cta-input { padding: 10px 12px; font-size: 12px; }
+        .home-cta-textarea { height: 65px; }
+        .home-cta-submit { padding: 11px; font-size: 0.78rem; }
+    }
 </style>
 
-<!-- FAQ — Premium Dark Split Layout -->
-<section class="faq-premium-section" id="faqs">
+﻿<!-- FAQ - Green Landspire Theme -->
+
+<!-- FAQ - EXACT LANDSPIRE MATCH -->
+<section class="faq-landspire-section" id="faqs">
     <div class="container">
-        <div class="row g-5 align-items-start">
+        <div class="row g-5 align-items-center">
 
             {{-- LEFT PANEL --}}
-            <div class="col-lg-5 faq-left-panel d-flex flex-column justify-content-between py-5">
-                <div>
-                    <span class="faq-pill-label">● FAQS</span>
-                    <h2 class="faq-heading mt-3">Frequently Asked<br>Questions</h2>
-
-                    {{-- Circular Overlapping Images --}}
-                    <div class="faq-images-wrap mt-4">
-                        <div class="faq-img-circle faq-img-back">
-                            <img src="{{ asset('storage/Home/1.9 Sustainability at the Core.jpg') }}" alt="Garden">
+            <div class="col-lg-5 ps-lg-4">
+                <div class="faq-left-content">
+                    <div class="faq-pill">
+                        <span class="faq-dot"></span> FAQS
+                    </div>
+                    <h2 class="faq-title mt-3">Frequently Asked<br>Questions</h2>
+                    
+                    <div class="faq-images-split mt-4 mb-4">
+                        <div class="img-shape-left">
+                            <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Expert">
                         </div>
-                        <div class="faq-img-circle faq-img-front">
-                            <img src="{{ asset('storage/Home/1.8 Science-Driven Approach.jpg') }}" alt="Expert">
+                        <div class="img-shape-right">
+                            <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Garden">
                         </div>
                     </div>
-                </div>
 
-                <div class="faq-cta-wrap mt-5">
-                    <p class="faq-cta-text">Have Any Question<br>on Your Minds?</p>
-                    <a href="/contact" class="faq-cta-btn">
-                        Get In Touch
-                        <span class="faq-cta-arrow"><i class="fas fa-arrow-right"></i></span>
-                    </a>
+                    <div class="faq-cta-box d-flex align-items-center justify-content-between mt-4">
+                        <p class="faq-cta-text mb-0">Have Any Question<br>on Your Minds?</p>
+                        <a href="/contact" class="faq-btn-touch">
+                            Get In Touch <span class="arrow-icon"><i class="fas fa-arrow-right"></i></span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
             {{-- RIGHT PANEL --}}
-            <div class="col-lg-7 faq-right-panel py-5">
-                <div class="faq-items-list" id="faqAccordion">
+            <div class="col-lg-7 py-5 pe-lg-5">
+                <div class="faq-accordion" id="greenFaqAccordion">
                     @php
-                        $fallbackFaqs = [
-                            ['id' => 'f1', 'q' => 'How much does landscaping cost?', 'a' => 'Costs vary based on project size, scope and materials. We provide free site assessments with transparent, detailed quotations before any work begins.'],
-                            ['id' => 'f2', 'q' => 'How long does a full landscape makeover take?', 'a' => 'Timelines depend on complexity. A residential garden typically takes 2–4 weeks; larger commercial projects may take 8–16 weeks with phased execution.'],
-                            ['id' => 'f3', 'q' => 'Do you provide maintenance after the installation?', 'a' => 'Yes. We offer Annual Maintenance Contracts (AMC) covering regular upkeep, pest control, irrigation management and plant health monitoring.'],
-                            ['id' => 'f4', 'q' => 'Can you design a landscape for small yards?', 'a' => 'Absolutely. We specialise in maximising every square foot — from compact urban terraces to balcony gardens and small residential plots.'],
-                            ['id' => 'f5', 'q' => 'Is your service suitable for both homes and businesses?', 'a' => 'Yes. We serve residential clients, corporate campuses, institutions, resorts, hospitals and public spaces across India.'],
+                        $faqItems = [
+                            [
+                                'id' => '1',
+                                'q' => 'What is SR Greenscapes Pvt Ltd?',
+                                'a' => 'SR Greenscapes Pvt Ltd is a sustainable landscaping company based in Bengaluru, providing research-integrated landscape, nursery, horticulture and ecological solutions across India.'
+                            ],
+                            [
+                                'id' => '2',
+                                'q' => 'What services do you offer?',
+                                'a' => 'Landscape design & execution, softscape & hardscape, specialized garden services, maintenance, event styling, horticulture consultancy, nursery supply, irrigation, water features, and lighting.'
+                            ],
+                            [
+                                'id' => '3',
+                                'q' => 'Do you provide garden installation outside Bengaluru or India?',
+                                'a' => 'Yes, for select locations across India.'
+                            ],
+                            [
+                                'id' => '4',
+                                'q' => 'Who is behind SR Greenscapes Pvt Ltd?',
+                                'a' => 'Our team includes PhD horticulture professionals, landscape designers, project managers, and skilled horticulture experts. MDs: Dr. Supriya Narayan & Mr. Srinidhi AT, supported by a strategic advisory panel.'
+                            ]
                         ];
-                        $faqItems = isset($faqs) && $faqs->count() ? $faqs : collect($fallbackFaqs)->map(fn($f) => (object)['id' => $f['id'], 'question' => $f['q'], 'answer' => $f['a']]);
                     @endphp
 
                     @foreach($faqItems as $i => $faq)
-                        <div class="faq-box-item mb-3">
-                            <button class="faq-box-btn {{ $i === 0 ? 'open' : '' }}"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#faqp{{ $faq->id }}"
-                                    aria-expanded="{{ $i === 0 ? 'true' : 'false' }}">
-                                <span>{{ $faq->question }}</span>
-                                <span class="faq-plus-icon"><i class="fas fa-plus"></i></span>
+                        <div class="faq-item">
+                            <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gfaq{{ $faq['id'] }}" aria-expanded="false">
+                                <span class="faq-q-text">{{ $faq['q'] }}</span>
+                                <span class="faq-icon"><i class="fas fa-plus"></i></span>
                             </button>
-                            <div id="faqp{{ $faq->id }}" class="collapse {{ $i === 0 ? 'show' : '' }}" data-bs-parent="#faqAccordion">
-                                <div class="faq-box-body">
-                                    {{ $faq->answer }}
+                            <div id="gfaq{{ $faq['id'] }}" class="collapse" data-bs-parent="#greenFaqAccordion">
+                                <div class="faq-body">
+                                    {{ $faq['a'] }}
                                 </div>
                             </div>
                         </div>
@@ -1683,148 +1750,195 @@
 </section>
 
 <style>
-    /* ===== FAQ PREMIUM SECTION ===== */
-    .faq-premium-section {
-        background: #1e3c1e;
-        padding: 70px 0;
+    /* ===== EXACT LANDSPIRE FAQ THEME ===== */
+    .faq-landspire-section {
+        background-color: #1e5a2e; /* Dark green matching the image */
+        padding: 90px 0;
         overflow: hidden;
+        font-family: inherit;
+        background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><g fill="rgba(255,255,255,0.02)"><path d="M0 0h20v20H0z"/></g></svg>'); /* Subtle texture placeholder */
     }
 
-    /* Left Panel */
-    .faq-left-panel { background: transparent; }
-
-    .faq-pill-label {
+    /* Left Side Elements */
+    .faq-pill {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        background: rgba(197,225,165,0.15);
-        color: #C5E1A5;
+        background-color: #fff;
+        color: #1a3a1a;
+        padding: 6px 16px;
         border-radius: 50px;
-        padding: 5px 14px;
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 700;
-        letter-spacing: 1.3px;
         text-transform: uppercase;
+        letter-spacing: 1px;
     }
-    .faq-heading {
+    .faq-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #C1EB4A; /* Lime green dot */
+        border-radius: 50%;
+        margin-right: 8px;
+    }
+    
+    .faq-left-content .faq-title {
         color: #fff;
-        font-size: 2.3rem;
-        font-weight: 800;
+        font-size: 3.2rem;
+        font-weight: 700;
         line-height: 1.2;
     }
 
-    /* Overlapping circular images */
-    .faq-images-wrap {
-        position: relative;
-        height: 175px;
-        width: 270px;
+    /* Images overlapping like leafs */
+    .faq-images-split {
+        display: flex;
+        gap: 5px;
+        height: 260px;
     }
-    .faq-img-circle {
-        position: absolute;
-        border-radius: 50%;
+    .img-shape-left {
+        width: 140px;
+        height: 260px;
         overflow: hidden;
-        border: 4px solid #1e3c1e;
+        position: relative;
+        border-radius: 140px 0 0 140px;
     }
-    .faq-img-circle img { width: 100%; height: 100%; object-fit: cover; }
-    .faq-img-back  { width: 155px; height: 155px; top: 10px; left: 0; }
-    .faq-img-front { width: 130px; height: 130px; top: 30px; left: 120px; }
+    .img-shape-right {
+        width: 140px;
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 0 140px 140px 0;
+        margin-top: 40px;
+    }
+    .img-shape-left img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 285px; /* 140px + 5px gap + 140px */
+        height: 260px;
+        object-fit: cover;
+        object-position: center;
+    }
+    .img-shape-right img {
+        position: absolute;
+        top: -40px; /* Counter margin-top */
+        left: -145px; /* Counter left container width + gap */
+        width: 285px;
+        height: 260px;
+        object-fit: cover;
+        object-position: center;
+    }
 
-    /* CTA */
+    /* Bottom Call to Action */
     .faq-cta-text {
-        color: rgba(255,255,255,0.75);
+        color: #fff;
         font-size: 1rem;
         font-weight: 500;
-        line-height: 1.5;
-        margin-bottom: 14px;
+        line-height: 1.4;
     }
-    .faq-cta-btn {
+    .faq-btn-touch {
+        background-color: #8BC34A;
+        color: #fff;
+        padding: 10px 14px 10px 22px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
         display: inline-flex;
         align-items: center;
-        gap: 12px;
-        background: #C5E1A5;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+    }
+    .faq-btn-touch:hover {
+        background-color: #689F38;
+        color: #fff;
+    }
+    .faq-btn-touch .arrow-icon {
+        background-color: #fff;
         color: #1a3a1a;
-        border-radius: 50px;
-        padding: 11px 16px 11px 22px;
-        font-weight: 800;
-        font-size: 0.92rem;
-        text-decoration: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 12px;
+        font-size: 0.7rem;
         transition: all 0.3s;
     }
-    .faq-cta-btn:hover { background: #fff; color: #1a3a1a; }
-    .faq-cta-arrow {
-        width: 34px; height: 34px;
-        border-radius: 50%;
-        background: #1a3a1a;
-        display: flex; align-items: center; justify-content: center;
-        color: #C5E1A5;
-        font-size: 0.8rem;
-        transition: background 0.3s;
+    .faq-btn-touch:hover .arrow-icon {
+        background-color: #1a3a1a;
+        color: #fff;
     }
-    .faq-cta-btn:hover .faq-cta-arrow { background: var(--primary); color: #fff; }
 
-    /* Right Panel */
-    .faq-right-panel { background: transparent; }
-    .faq-items-list { display: flex; flex-direction: column; gap: 12px; }
-
-    /* Each FAQ box — individual bordered card */
-    .faq-box-item {
+    /* Right Side Accordion */
+    .faq-accordion .faq-item {
         border: 1px solid rgba(255,255,255,0.2);
-        border-radius: 10px;
-        overflow: hidden;
-        transition: border-color 0.2s;
+        border-radius: 50px;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+        background-color: transparent;
     }
-    .faq-box-item:hover { border-color: rgba(255,255,255,0.35); }
-
-    .faq-box-btn {
+    .faq-accordion .faq-item:hover,
+    .faq-btn[aria-expanded="true"] {
+        border-color: rgba(255,255,255,0.4);
+    }
+    
+    .faq-btn {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
+        padding: 18px 24px;
         background: transparent;
         border: none;
-        color: rgba(255,255,255,0.88);
-        font-size: 0.97rem;
-        font-weight: 600;
+        color: #fff;
+        font-weight: 500;
+        font-size: 1.05rem;
         text-align: left;
-        cursor: pointer;
-        padding: 16px 20px;
-        gap: 14px;
-        transition: color 0.2s;
     }
-    .faq-box-btn:hover,
-    .faq-box-btn.open { color: #fff; }
-
-    .faq-plus-icon {
-        width: 32px; height: 32px;
+    
+    .faq-icon {
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255,255,255,0.1);
         border-radius: 50%;
-        border: 1.5px solid rgba(255,255,255,0.3);
-        display: flex; align-items: center; justify-content: center;
-        font-size: 0.8rem;
-        color: rgba(255,255,255,0.65);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #C1EB4A; /* Light green plus */
+        font-size: 0.9rem;
         flex-shrink: 0;
         transition: all 0.3s;
     }
-    .faq-box-btn.open .faq-plus-icon,
-    .faq-box-btn[aria-expanded="true"] .faq-plus-icon {
-        background: #C5E1A5;
-        border-color: #C5E1A5;
+    
+    .faq-btn[aria-expanded="true"] .faq-icon {
+        background-color: #C1EB4A;
         color: #1a3a1a;
         transform: rotate(45deg);
     }
-    .faq-box-body {
-        color: rgba(255,255,255,0.6);
-        font-size: 0.9rem;
-        line-height: 1.75;
-        padding: 0 20px 16px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        padding-top: 12px;
+
+    .faq-body {
+        padding: 0 40px 24px 24px;
+        color: rgba(255,255,255,0.8);
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
 
     @media (max-width: 991px) {
-        .faq-premium-section { padding: 50px 0; }
-        .faq-heading { font-size: 1.8rem; }
+        .faq-images-split {
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .faq-cta-box {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .faq-left-content .faq-title { font-size: 2.2rem; }
+        .faq-accordion .faq-item { border-radius: 30px; }
+        .faq-btn { padding: 14px 18px; font-size: 0.95rem; }
     }
 </style>
+
 
 @endsection
 

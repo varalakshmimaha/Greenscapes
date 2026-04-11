@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Admin Panel') - Ecoscapes Admin</title>
+    <title>@yield('title', 'Admin Panel') - SR Greenscapes Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.css" rel="stylesheet">
@@ -39,10 +39,10 @@
             background: rgba(255,255,255,0.1); color: #fff; border-left-color: #8bc34a;
         }
         .sidebar-nav a i { width: 20px; margin-right: 12px; text-align: center; font-size: 0.95rem; }
-        .sidebar-nav .nav-dropdown > .nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; padding: 10px 20px; color: rgba(255,255,255,0.75); text-decoration: none; transition: all 0.2s; font-size: 0.9rem; border-left: 3px solid transparent; }
-        .sidebar-nav .nav-dropdown > .nav-dropdown-toggle:hover, .sidebar-nav .nav-dropdown.open > .nav-dropdown-toggle { background: rgba(255,255,255,0.1); color: #fff; border-left-color: #8bc34a; }
-        .sidebar-nav .nav-dropdown > .nav-dropdown-toggle i.fa-chevron-down { width: auto; margin-left: auto; margin-right: 0; font-size: 0.7rem; transition: transform 0.2s; }
-        .sidebar-nav .nav-dropdown.open > .nav-dropdown-toggle i.fa-chevron-down { transform: rotate(180deg); }
+        .sidebar-nav .nav-dropdown > a.nav-dropdown-toggle { cursor: pointer; display: flex; align-items: center; padding: 10px 20px; color: rgba(255,255,255,0.75); text-decoration: none; transition: all 0.2s; font-size: 0.9rem; border-left: 3px solid transparent; }
+        .sidebar-nav .nav-dropdown > a.nav-dropdown-toggle:hover, .sidebar-nav .nav-dropdown.open > a.nav-dropdown-toggle { background: rgba(255,255,255,0.1); color: #fff; border-left-color: #8bc34a; }
+        .sidebar-nav .nav-dropdown.open > a.nav-dropdown-toggle i.fa-chevron-down { transform: rotate(180deg); }
+        .sidebar-nav .nav-dropdown > a.nav-dropdown-toggle i.fa-chevron-down { transition: transform 0.2s; }
         .sidebar-nav .nav-dropdown-menu { display: none; background: rgba(0,0,0,0.15); }
         .sidebar-nav .nav-dropdown.open .nav-dropdown-menu { display: block; }
         .sidebar-nav .nav-dropdown-menu a { padding: 8px 20px 8px 52px; font-size: 0.85rem; }
@@ -87,7 +87,7 @@
     {{-- Sidebar --}}
     <aside class="sidebar" id="sidebar">
         <div class="brand">
-            <h4><i class="fas fa-leaf"></i> ECOSCAPES</h4>
+            <h4><i class="fas fa-leaf"></i> SR GREENSCAPES</h4>
             <small>Admin Panel</small>
         </div>
         <nav class="sidebar-nav">
@@ -96,7 +96,7 @@
                 <i class="fas fa-tachometer-alt"></i> Dashboard
             </a>
 
-            <div class="nav-label">Content Management</div>
+            <div class="nav-label">Frontend Content</div>
             <a href="{{ route('admin.banners.index') }}" class="{{ request()->routeIs('admin.banners.*') ? 'active' : '' }}">
                 <i class="fas fa-image"></i> Banners
             </a>
@@ -106,10 +106,12 @@
             <a href="{{ route('admin.about.index') }}" class="{{ request()->routeIs('admin.about.*') ? 'active' : '' }}">
                 <i class="fas fa-info-circle"></i> About Us
             </a>
+
+            {{-- Teams Dropdown --}}
             <div class="nav-dropdown {{ request()->routeIs('admin.team.*') || request()->routeIs('admin.team-categories.*') ? 'open' : '' }}">
-                <div class="nav-dropdown-toggle">
-                    <i class="fas fa-users"></i> Teams <i class="fas fa-chevron-down"></i>
-                </div>
+                <a href="javascript:void(0)" class="nav-dropdown-toggle">
+                    <i class="fas fa-users" style="width:20px; margin-right:12px; text-align:center;"></i> Teams <i class="fas fa-chevron-down ms-auto" style="width:auto; margin-right:0; font-size:0.7rem;"></i>
+                </a>
                 <div class="nav-dropdown-menu">
                     <a href="{{ route('admin.team-categories.index') }}" class="{{ request()->routeIs('admin.team-categories.*') ? 'active' : '' }}">
                         <i class="fas fa-layer-group"></i> Categories
@@ -119,10 +121,12 @@
                     </a>
                 </div>
             </div>
-            <div class="nav-dropdown {{ request()->routeIs('admin.service-categories.*') || request()->routeIs('admin.service-subcategories.*') ? 'open' : '' }}">
-                <div class="nav-dropdown-toggle">
-                    <i class="fas fa-th-large"></i> Service Categories <i class="fas fa-chevron-down"></i>
-                </div>
+
+            {{-- Service Categories Dropdown --}}
+            <div class="nav-dropdown {{ request()->routeIs('admin.service-categories.*') || request()->routeIs('admin.service-subcategories.*') || request()->routeIs('admin.services.*') ? 'open' : '' }}">
+                <a href="javascript:void(0)" class="nav-dropdown-toggle">
+                    <i class="fas fa-concierge-bell" style="width:20px; margin-right:12px; text-align:center;"></i> Services <i class="fas fa-chevron-down ms-auto" style="width:auto; margin-right:0; font-size:0.7rem;"></i>
+                </a>
                 <div class="nav-dropdown-menu">
                     <a href="{{ route('admin.service-categories.index') }}" class="{{ request()->routeIs('admin.service-categories.*') ? 'active' : '' }}">
                         <i class="fas fa-folder"></i> Categories
@@ -130,11 +134,12 @@
                     <a href="{{ route('admin.service-subcategories.index') }}" class="{{ request()->routeIs('admin.service-subcategories.*') ? 'active' : '' }}">
                         <i class="fas fa-folder-open"></i> Sub Categories
                     </a>
+                    <a href="{{ route('admin.services.index') }}" class="{{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                        <i class="fas fa-list"></i> All Services
+                    </a>
                 </div>
             </div>
-            <a href="{{ route('admin.services.index') }}" class="{{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
-                <i class="fas fa-concierge-bell"></i> Services
-            </a>
+
             <a href="{{ route('admin.projects.index') }}" class="{{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
                 <i class="fas fa-project-diagram"></i> Projects
             </a>
@@ -169,6 +174,11 @@
             <div class="nav-label">Configuration</div>
             <a href="{{ route('admin.settings.general') }}" class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                 <i class="fas fa-cog"></i> Settings
+            </a>
+
+            <div class="nav-label">Frontend</div>
+            <a href="/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> View Website
             </a>
 
             <div class="nav-label mt-3"></div>
@@ -235,10 +245,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <script>
-        $.ajaxSetup && $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content } });
+        if (typeof $ !== 'undefined' && $.ajaxSetup) { $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content } }); }
+        // Sidebar dropdown toggle
         document.querySelectorAll('.nav-dropdown-toggle').forEach(function(toggle) {
-            toggle.addEventListener('click', function() {
-                this.parentElement.classList.toggle('open');
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var dropdown = this.closest('.nav-dropdown');
+                // Close other dropdowns
+                document.querySelectorAll('.nav-dropdown').forEach(function(d) {
+                    if (d !== dropdown) d.classList.remove('open');
+                });
+                dropdown.classList.toggle('open');
             });
         });
     </script>
