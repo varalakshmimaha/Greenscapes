@@ -7,6 +7,12 @@
     <title>{{ $siteSettings['meta_title'] ?? 'SR Greenscapes Pvt Ltd' }}</title>
     <meta name="description" content="{{ $siteSettings['meta_description'] ?? '' }}">
 
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -603,7 +609,7 @@
 
                     <!-- LEFT: Image + Testimonial -->
                     <div class="cta-img-panel">
-                        <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="SR Greenscapes Landscaping">
+                        <img loading="lazy" src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="SR Greenscapes Landscaping">
                         <div class="cta-quote-overlay">
                             <blockquote>"They made my space sparkle!<br>Highly professional and fast service"</blockquote>
                             <span class="cta-quote-author">SR Greenscapes Client</span>
@@ -713,7 +719,7 @@
                     <div class="footer-gallery-grid">
                         @foreach($footerGallery as $fg)
                         <a href="/gallery" class="footer-gallery-thumb">
-                            <img src="{{ asset('storage/' . $fg->image) }}" alt="{{ $fg->title ?? 'Gallery' }}">
+                            <img loading="lazy" src="{{ asset('storage/' . $fg->image) }}" alt="{{ $fg->title ?? 'Gallery' }}">
                             <div class="footer-gallery-hover"><i class="fas fa-search-plus"></i></div>
                         </a>
                         @endforeach
@@ -760,7 +766,7 @@
                         <a href="{{ route('blog.detail', $fb->slug) }}" class="footer-blog-item">
                             <div class="footer-blog-img">
                                 @if($fb->image)
-                                    <img src="{{ asset('storage/' . $fb->image) }}" alt="{{ $fb->title }}">
+                                    <img loading="lazy" src="{{ asset('storage/' . $fb->image) }}" alt="{{ $fb->title }}">
                                 @else
                                     <div class="footer-blog-img-placeholder"><i class="fas fa-blog"></i></div>
                                 @endif

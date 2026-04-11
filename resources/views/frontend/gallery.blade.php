@@ -177,7 +177,7 @@
             @forelse($gallery as $item)
                 <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item" data-category="{{ $item->category ?? '' }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 60 }}">
                     <div class="gallery-item" onclick="openLightbox('{{ asset('storage/' . $item->image) }}', '{{ $item->title ?? '' }}')">
-                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title ?? 'Gallery Image' }}">
+                        <img loading="lazy" src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title ?? 'Gallery Image' }}">
                         <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
                         <div class="gallery-overlay">
                             <div>

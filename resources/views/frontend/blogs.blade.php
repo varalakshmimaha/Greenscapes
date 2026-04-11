@@ -170,9 +170,9 @@
                     <div class="blog-card">
                         <div class="blog-card-img">
                             @if($blog->image)
-                                <img src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
+                                <img loading="lazy" src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
                             @else
-                                <img src="{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $blog->title }}">
+                                <img loading="lazy" src="{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $blog->title }}">
                             @endif
                         </div>
                         <div class="blog-card-body">

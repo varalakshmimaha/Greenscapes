@@ -314,7 +314,7 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="story-img-wrap">
-                    <img src="{{ asset('storage/' . ($overview->image ?? 'About Us/2.2 Sustainability at the Core.jpg')) }}" alt="Our Story" class="story-img">
+                    <img loading="lazy" src="{{ asset('storage/' . ($overview->image ?? 'About Us/2.2 Sustainability at the Core.jpg')) }}" alt="Our Story" class="story-img">
                 </div>
             </div>
         </div>
@@ -399,7 +399,7 @@
         @endphp
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                <img src="{{ asset('storage/' . ($expertise->image ?? 'About Us/2.3  Research-Integrated Planning.jpg')) }}" alt="Expertise" class="img-fluid rounded-4 shadow-lg">
+                <img loading="lazy" src="{{ asset('storage/' . ($expertise->image ?? 'About Us/2.3  Research-Integrated Planning.jpg')) }}" alt="Expertise" class="img-fluid rounded-4 shadow-lg">
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <span class="story-label">Why We Stand Out</span>
@@ -445,7 +445,7 @@
                     <div class="col-lg-3 col-md-6" data-aos="fade-up">
                         <div class="team-card">
                             <div class="team-img-wrap">
-                                <img src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}">
+                                <img loading="lazy" src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}">
                             </div>
                             <div class="team-info">
                                 <h5>{{ $member->name }}</h5>
@@ -498,7 +498,7 @@
 
             <!-- LEFT: Men Serving Image + Testimonial -->
             <div class="cta-img-panel">
-                <img src="{{ asset('storage/About Us/2.5  End-to-End Execution.jpg') }}" alt="SR Greenscapes Professional Service">
+                <img loading="lazy" src="{{ asset('storage/About Us/2.5  End-to-End Execution.jpg') }}" alt="SR Greenscapes Professional Service">
                 <div class="cta-quote-overlay">
                     <blockquote>"They made my home sparkle!<br>Highly professional and fast service"</blockquote>
                     <span class="cta-quote-author">Stiven Dowson</span>

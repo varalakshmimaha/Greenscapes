@@ -226,7 +226,7 @@
                 <div class="col-lg-4 col-md-6 project-item" data-type="{{ $project->status ?? 'RESIDENTIAL' }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <a href="{{ route('project.detail', $project->slug) }}" class="text-decoration-none">
                         <div class="proj-card">
-                            <img src="{{ asset('storage/' . ($project->image ?? $project->after_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $project->title }}">
+                            <img loading="lazy" src="{{ asset('storage/' . ($project->image ?? $project->after_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $project->title }}">
                             <div class="proj-badge">{{ $project->status ?? 'RESIDENTIAL' }}</div>
                             <div class="view-btn"><i class="fas fa-arrow-right"></i></div>
                             <div class="proj-overlay">
@@ -345,7 +345,7 @@
                     <p class="proj-testi-rating-google">Reviewed by Google</p>
                     <div class="proj-testi-avatars">
                         @foreach($avatarImages as $idx => $avImg)
-                            <img src="{{ asset('storage/' . $avImg) }}" alt="Member {{ $idx + 1 }}">
+                            <img loading="lazy" src="{{ asset('storage/' . $avImg) }}" alt="Member {{ $idx + 1 }}">
                         @endforeach
                         <div class="proj-testi-avatar-more">+</div>
                     </div>
@@ -374,7 +374,7 @@
                                         $imgSrc = $tPhoto ? (str_contains($tPhoto, 'storage') ? asset($tPhoto) : asset('storage/' . $tPhoto)) : null;
                                     @endphp
                                     @if($imgSrc)
-                                        <img src="{{ $imgSrc }}" alt="{{ $t->name }}">
+                                        <img loading="lazy" src="{{ $imgSrc }}" alt="{{ $t->name }}">
                                     @else
                                         <div class="proj-testi-author-placeholder"><i class="fas fa-user"></i></div>
                                     @endif

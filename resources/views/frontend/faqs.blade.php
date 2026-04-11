@@ -335,7 +335,7 @@
             <div class="faq-container">
                 <!-- LEFT SIDE IMAGE -->
                 <div class="faq-left-col">
-                    <img src="{{ $catImages[$activeCats[0]] ?? asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}" id="faqMainImg" class="faq-left-img" alt="FAQ Category Image">
+                    <img loading="lazy" src="{{ $catImages[$activeCats[0]] ?? asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}" id="faqMainImg" class="faq-left-img" alt="FAQ Category Image">
                 </div>
 
                 <!-- RIGHT SIDE QUESTION AND ANS -->

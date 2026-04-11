@@ -138,9 +138,9 @@
                                     ];
                                 @endphp
                                 @if($service->image)
-                                    <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
+                                    <img loading="lazy" src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
                                 @else
-                                    <img src="{{ asset('storage/' . $fallbackImages[$i % count($fallbackImages)]) }}" alt="{{ $service->name }}">
+                                    <img loading="lazy" src="{{ asset('storage/' . $fallbackImages[$i % count($fallbackImages)]) }}" alt="{{ $service->name }}">
                                 @endif
                             </div>
                             <div class="svc-card-body">

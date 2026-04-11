@@ -272,9 +272,9 @@
 
                 {{-- Service Image --}}
                 @if($service->image)
-                    <img src="{{ asset('storage/'.$service->image) }}" alt="{{ $service->name }}" class="svc-main-img">
+                    <img loading="lazy" src="{{ asset('storage/'.$service->image) }}" alt="{{ $service->name }}" class="svc-main-img">
                 @else
-                    <img src="{{ asset('storage/Home/1.1Cover photo 1.jpg') }}" alt="{{ $service->name }}" class="svc-main-img">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.1Cover photo 1.jpg') }}" alt="{{ $service->name }}" class="svc-main-img">
                 @endif
 
                 {{-- About Heading --}}
@@ -344,7 +344,7 @@
                             <a href="{{ route('service.detail', $related->slug) }}" class="related-item">
                                 <div class="related-thumb">
                                     @if($related->image)
-                                        <img src="{{ asset('storage/'.$related->image) }}" alt="{{ $related->name }}">
+                                        <img loading="lazy" src="{{ asset('storage/'.$related->image) }}" alt="{{ $related->name }}">
                                     @else
                                         <i class="fas fa-leaf"></i>
                                     @endif

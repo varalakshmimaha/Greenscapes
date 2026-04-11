@@ -154,7 +154,7 @@
                     <div class="video-card">
                         <div class="video-card-thumb" onclick="openVideo('{{ $video->video_url }}')">
                             @if($video->thumbnail)
-                                <img src="{{ asset('storage/' . $video->thumbnail) }}" alt="{{ $video->title }}">
+                                <img loading="lazy" src="{{ asset('storage/' . $video->thumbnail) }}" alt="{{ $video->title }}">
                             @else
                                 @php
                                     $ytId = '';
@@ -163,9 +163,9 @@
                                     }
                                 @endphp
                                 @if($ytId)
-                                    <img src="https://img.youtube.com/vi/{{ $ytId }}/maxresdefault.jpg" alt="{{ $video->title }}">
+                                    <img loading="lazy" src="https://img.youtube.com/vi/{{ $ytId }}/maxresdefault.jpg" alt="{{ $video->title }}">
                                 @else
-                                    <img src="{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}" alt="{{ $video->title }}">
+                                    <img loading="lazy" src="{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}" alt="{{ $video->title }}">
                                 @endif
                             @endif
                             <div class="play-icon"><i class="fas fa-play ms-1"></i></div>

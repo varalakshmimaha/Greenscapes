@@ -176,7 +176,7 @@
                             @php
                                 $imgSrc = !str_contains($tPhoto, 'storage') ? asset('storage/' . $tPhoto) : asset($tPhoto);
                             @endphp
-                            <img src="{{ $imgSrc }}" alt="{{ $t->name }}">
+                            <img loading="lazy" src="{{ $imgSrc }}" alt="{{ $t->name }}">
                         @else
                             <div class="testi-avatar-placeholder">
                                 <i class="fas fa-user"></i>

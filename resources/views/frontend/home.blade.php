@@ -993,27 +993,27 @@
             @if($banners->count())
                 @foreach($banners as $index => $banner)
                     <div class="carousel-item h-100 {{ $index === 0 ? 'active' : '' }}">
-                        <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}">
+                        <img loading="lazy" src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}">
                     </div>
                 @endforeach
             @else
                 <div class="carousel-item h-100 active">
-                    <img src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Landscape Design">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Landscape Design">
                 </div>
                 <div class="carousel-item h-100">
-                    <img src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden">
                 </div>
                 <div class="carousel-item h-100">
-                    <img src="{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}" alt="Plants">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}" alt="Plants">
                 </div>
                 <div class="carousel-item h-100">
-                    <img src="{{ asset('storage/Home/1.4 Cover photo  4.jpg') }}" alt="Outdoor Space">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.4 Cover photo  4.jpg') }}" alt="Outdoor Space">
                 </div>
                 <div class="carousel-item h-100">
-                    <img src="{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="Landscaping">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="Landscaping">
                 </div>
                 <div class="carousel-item h-100">
-                    <img src="{{ asset('storage/Home/1.6 Cover photo 6.jpg') }}" alt="Green Space">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.6 Cover photo 6.jpg') }}" alt="Green Space">
                 </div>
             @endif
         </div>
@@ -1142,7 +1142,7 @@
             <div class="col-lg-6 position-relative ps-lg-5">
                 <div class="position-absolute" style="top: -20px; bottom: 20px; left: 30px; right: 0; border-radius: 20px; z-index: 0; background: var(--light-green);"></div>
                 <div class="position-relative z-1 p-3">
-                    <img src="{{ asset('storage/Home/1.11 Climate-Resilient Design.jpg') }}" alt="SR Greenscapes Landscaping" class="img-fluid w-100" style="border-radius: 20px; object-fit: cover; max-height: 600px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.11 Climate-Resilient Design.jpg') }}" alt="SR Greenscapes Landscaping" class="img-fluid w-100" style="border-radius: 20px; object-fit: cover; max-height: 600px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
                 </div>
             </div>
         </div>
@@ -1156,8 +1156,8 @@
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <div class="choose-img-wrap">
                     <div class="choose-dots"></div>
-                    <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Landscaping Expert" class="choose-img-circle">
-                    <img src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden Work" class="choose-img-small">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Landscaping Expert" class="choose-img-circle">
+                    <img loading="lazy" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden Work" class="choose-img-small">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -1239,7 +1239,7 @@
                                     $svcImage = $svcFallbackImages[$loop->index % count($svcFallbackImages)];
                                 }
                             @endphp
-                            <img src="{{ asset('storage/' . $svcImage) }}" alt="{{ $service->name }}" class="w-100 h-100 object-fit-cover">
+                            <img loading="lazy" src="{{ asset('storage/' . $svcImage) }}" alt="{{ $service->name }}" class="w-100 h-100 object-fit-cover">
                         </div>
                         <div class="svc-body p-4">
                             <h5 class="fw-bold mb-3">{{ $service->name }}</h5>
@@ -1293,7 +1293,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ is_array($p) ? '/projects' : route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
-                            <img src="{{ is_array($p) ? asset('storage/' . $p['img']) : asset('storage/' . ($p->image ?? $p->after_image)) }}" alt="{{ is_array($p) ? $p['title'] : $p->title }}" class="w-100 h-100 object-fit-cover">
+                            <img loading="lazy" src="{{ is_array($p) ? asset('storage/' . $p['img']) : asset('storage/' . ($p->image ?? $p->after_image)) }}" alt="{{ is_array($p) ? $p['title'] : $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
                                 {{ is_array($p) ? $p['type'] : ($p->status ?? 'RESIDENTIAL') }}
                             </div>
@@ -1346,7 +1346,7 @@
                         if($i == 8) $imgPath = "storage/Home/1.2 Cover photo 2.jpg";
                     @endphp
                     <div class="slide-item">
-                        <img src="{{ asset($imgPath) }}" alt="Project {{$i}}">
+                        <img loading="lazy" src="{{ asset($imgPath) }}" alt="Project {{$i}}">
                     </div>
                 @endfor
             </div>
@@ -1685,10 +1685,10 @@
                     
                     <div class="faq-images-split mt-4 mb-4">
                         <div class="img-shape-left">
-                            <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Expert">
+                            <img loading="lazy" src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Expert">
                         </div>
                         <div class="img-shape-right">
-                            <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Garden">
+                            <img loading="lazy" src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Garden">
                         </div>
                     </div>
 

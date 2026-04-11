@@ -162,7 +162,7 @@
                 @foreach($relatedBlogs as $rb)
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <a href="{{ route('blog.detail', $rb->slug) }}" class="related-blog-card">
-                            <img src="{{ $rb->image ? asset('storage/' . $rb->image) : asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $rb->title }}">
+                            <img loading="lazy" src="{{ $rb->image ? asset('storage/' . $rb->image) : asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $rb->title }}">
                             <div class="rbc-body">
                                 <h6>{{ $rb->title }}</h6>
                                 <small><i class="fas fa-calendar-alt me-1" style="color:var(--primary);"></i> {{ $rb->published_at ? $rb->published_at->format('M d, Y') : '' }}</small>

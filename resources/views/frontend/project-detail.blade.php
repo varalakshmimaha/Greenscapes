@@ -50,7 +50,7 @@
                         @foreach($galleryPics as $pic)
                             <div class="col-md-4 col-sm-6">
                                 <a href="{{ asset('storage/'.$pic) }}" target="_blank" class="gallery-item-wrap">
-                                    <img src="{{ asset('storage/'.$pic) }}" alt="Gallery" class="img-fluid rounded-4 shadow-sm gallery-img">
+                                    <img loading="lazy" src="{{ asset('storage/'.$pic) }}" alt="Gallery" class="img-fluid rounded-4 shadow-sm gallery-img">
                                 </a>
                             </div>
                         @endforeach
