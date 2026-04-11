@@ -270,21 +270,29 @@
             @endphp
 
             @foreach($activeStats as $stat)
-            <div class="col-6 col-md-4 col-lg text-center" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                <div class="rounded-4 py-4 px-3"
+            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 180px; max-width: 250px;" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                <div class="stat-card text-center p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
                      style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); transition: transform 0.3s;"
                      onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div class="mb-4 d-flex align-items-center justify-content-center"
-                         style="width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; transform: rotate(45deg); margin: 0 auto;">
+
+                    <!-- Diamond Icon Container -->
+                    <div class="icon-diamond mb-4 position-relative d-flex align-items-center justify-content-center"
+                         style="width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; transform: rotate(45deg);">
                         <i class="{{ $stat->icon }} text-white fs-4" style="transform: rotate(-45deg);"></i>
                     </div>
-                    <div class="text-white fw-bold lh-1 mb-3" style="font-size: 2.8rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
+
+                    <!-- Number -->
+                    <div class="stat-num text-white fw-bold lh-1 mb-3" style="font-size: 2.8rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
+
+                    <!-- Line with Dot separator -->
                     <div class="d-flex align-items-center justify-content-center w-100 px-3 mb-3">
                         <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
                         <div style="width: 6px; height: 6px; border-radius: 50%; background: #fff; margin: 0 8px;"></div>
                         <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
                     </div>
-                    <div class="text-white fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $stat->label }}</div>
+
+                    <!-- Text Label -->
+                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $stat->label }}</div>
                 </div>
             </div>
             @endforeach
