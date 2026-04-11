@@ -123,14 +123,27 @@
             top: 100%;
             left: 0;
             background: #fff;
-            min-width: 220px;
+            min-width: 230px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             border-top: 3px solid var(--primary);
             z-index: 1060;
             white-space: normal;
+            padding: 6px 0;
+            border-radius: 0 0 8px 8px;
         }
-        .nav-menu > li:hover .dropdown-menu-custom {
+        .nav-menu > li:hover > .dropdown-menu-custom {
             display: block;
+        }
+        .nav-menu .dropdown-menu-custom .dropdown-item-custom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+            position: relative;
         }
         .nav-menu .dropdown-menu-custom a {
             display: block;
@@ -140,7 +153,40 @@
             font-size: 14px;
             transition: all 0.3s;
         }
-        .nav-menu .dropdown-menu-custom a:hover {
+        .nav-menu .dropdown-menu-custom a:hover,
+        .nav-menu .dropdown-menu-custom .dropdown-item-custom:hover {
+            background: var(--light-green);
+            color: var(--primary-dark);
+        }
+        /* Nested sub-dropdown (flyout) */
+        .nav-menu .dropdown-submenu {
+            position: relative;
+        }
+        .nav-menu .dropdown-submenu .dropdown-submenu-menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: #fff;
+            min-width: 220px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left: 3px solid var(--primary);
+            z-index: 1070;
+            padding: 6px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .nav-menu .dropdown-submenu:hover > .dropdown-submenu-menu {
+            display: block;
+        }
+        .nav-menu .dropdown-submenu-menu a {
+            display: block;
+            padding: 9px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        .nav-menu .dropdown-submenu-menu a:hover {
             background: var(--light-green);
             color: var(--primary-dark);
             padding-left: 25px;
@@ -541,6 +587,33 @@
             .nav-menu > li.dropdown-open > .dropdown-menu-custom {
                 display: block;
             }
+            .nav-menu .dropdown-menu-custom .dropdown-item-custom {
+                color: rgba(255,255,255,0.7);
+                padding: 8px 30px;
+                font-size: 13px;
+                cursor: pointer;
+            }
+            .nav-menu .dropdown-menu-custom .dropdown-item-custom:hover {
+                background: rgba(255,255,255,0.1);
+                color: var(--primary);
+            }
+            .nav-menu .dropdown-submenu .dropdown-submenu-menu {
+                position: static;
+                box-shadow: none;
+                border-left: none;
+                background: rgba(255,255,255,0.03);
+                display: none;
+                padding: 0;
+                border-radius: 0;
+            }
+            .nav-menu .dropdown-submenu .dropdown-submenu-menu a {
+                color: rgba(255,255,255,0.6);
+                padding: 7px 45px;
+                font-size: 12px;
+            }
+            .nav-menu .dropdown-submenu.submenu-open > .dropdown-submenu-menu {
+                display: block;
+            }
             .nav-right { display: none; }
         }
 
@@ -605,11 +678,17 @@
                         <a href="/about" class="{{ request()->is('about') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
                         <div class="dropdown-menu-custom">
                             <a href="/about">About SR Greenscapes</a>
-                            <a href="/about#team">Our Team</a>
                             @if(isset($navTeamCategories) && $navTeamCategories->count())
-                                @foreach($navTeamCategories as $tc)
-                                    <a href="/about#team" style="padding-left:30px;font-size:13px;color:#666;">— {{ $tc->name }}</a>
-                                @endforeach
+                                <div class="dropdown-submenu">
+                                    <div class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
+                                    <div class="dropdown-submenu-menu">
+                                        @foreach($navTeamCategories as $tc)
+                                            <a href="/about#team">{{ $tc->name }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <a href="/about#team">Our Team</a>
                             @endif
                         </div>
                     </li>
@@ -619,7 +698,14 @@
                             <a href="/services">All Services</a>
                             @if(isset($navServiceCategories) && $navServiceCategories->count())
                                 @foreach($navServiceCategories as $sc)
-                                    <a href="/services#{{ $sc->slug }}">{{ $sc->name }}</a>
+                                    <div class="dropdown-submenu">
+                                        <div class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
+                                        <div class="dropdown-submenu-menu">
+                                            @foreach($sc->subCategories as $sub)
+                                                <a href="/services#{{ $sub->slug }}">{{ $sub->name }}</a>
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 @endforeach
                             @endif
                         </div>
@@ -1041,17 +1127,30 @@
     document.querySelectorAll('.nav-menu > li').forEach(function(li) {
         var dropdown = li.querySelector('.dropdown-menu-custom');
         if (dropdown) {
-            li.querySelector('a').addEventListener('click', function(e) {
+            li.querySelector(':scope > a').addEventListener('click', function(e) {
                 if (window.innerWidth <= 991) {
                     e.preventDefault();
                     li.classList.toggle('dropdown-open');
-                    // Close other dropdowns
                     document.querySelectorAll('.nav-menu > li').forEach(function(other) {
                         if (other !== li) other.classList.remove('dropdown-open');
                     });
                 }
             });
         }
+    });
+    // Mobile sub-dropdown toggle (flyout items)
+    document.querySelectorAll('.dropdown-submenu .dropdown-item-custom').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            if (window.innerWidth <= 991) {
+                e.stopPropagation();
+                var submenu = item.closest('.dropdown-submenu');
+                submenu.classList.toggle('submenu-open');
+                // Close other sub-dropdowns
+                document.querySelectorAll('.dropdown-submenu').forEach(function(other) {
+                    if (other !== submenu) other.classList.remove('submenu-open');
+                });
+            }
+        });
     });
     </script>
     @yield('scripts')

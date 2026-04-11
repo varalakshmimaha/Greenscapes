@@ -50,7 +50,9 @@ class AppServiceProvider extends ServiceProvider
                     $view->with('navTeamCategories', TeamCategory::where('is_active', true)->orderBy('order')->get());
                 }
                 if (Schema::hasTable('service_categories')) {
-                    $view->with('navServiceCategories', ServiceCategory::where('is_active', true)->orderBy('order')->get());
+                    $view->with('navServiceCategories', ServiceCategory::where('is_active', true)->orderBy('order')->with(['subCategories' => function($q) {
+                        $q->where('is_active', true)->orderBy('order');
+                    }])->get());
                 }
             });
         }
