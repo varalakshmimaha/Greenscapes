@@ -74,9 +74,12 @@
         display: flex;
         flex-direction: column;
     }
+    a.text-decoration-none .svc-card {
+        color: inherit;
+    }
     .svc-card h5 {
         font-weight: 700;
-        color: var(--dark);
+        color: #1a3a1a;
         font-size: 1.05rem;
         margin-bottom: 10px;
     }
