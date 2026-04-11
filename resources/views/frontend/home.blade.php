@@ -1315,44 +1315,6 @@
     </div>
 </section>
 
-<!-- Other Projects Slider -->
-<section class="other-projects-section py-5 text-center" style="background: #fdfdfd; overflow: hidden;">
-    <div class="container">
-        <div class="mb-5">
-            <p class="about-label d-flex justify-content-center">Other Projects</p>
-            <h2 class="section-title">Delivering Excellence Across Diverse Landscapes</h2>
-            <p class="text-muted mx-auto" style="max-width: 800px;">
-                Our expertise spans a diverse range of landscape projects, each executed with precision, 
-                scientific insight and thoughtful design. Guided by a strong focus on sustainability and long-
-                term performance, every project reflects our commitment to transforming outdoor spaces into 
-                functional, resilient and enduring landscapes.
-            </p>
-        </div>
-        
-        <div class="projects-slider-wrap">
-            <div class="projects-slider-track">
-                @for($i = 1; $i <= 16; $i++)
-                    @php 
-                        $imgNum = ($i % 8) + 1; 
-                        $imgPath = "storage/Home/1." . ($imgNum + 1) . " Cover photo " . ($imgNum == 4 ? " 4" : ($imgNum == 7 ? " 7" : $imgNum)) . ".jpg";
-                        // Fallback for messy naming in storage
-                        if($i == 1) $imgPath = "storage/Home/1.2 Cover photo 2.jpg";
-                        if($i == 2) $imgPath = "storage/Home/1.3 Cover photo 3.jpg";
-                        if($i == 3) $imgPath = "storage/Home/1.4 Cover photo  4.jpg";
-                        if($i == 4) $imgPath = "storage/Home/1.5 Cover photo 5.jpg";
-                        if($i == 5) $imgPath = "storage/Home/1.6 Cover photo 6.jpg";
-                        if($i == 6) $imgPath = "storage/Home/1.7 Cover photo 7.jpg";
-                        if($i == 7) $imgPath = "storage/Home/1.2 Cover photo 2.jpg";
-                        if($i == 8) $imgPath = "storage/Home/1.2 Cover photo 2.jpg";
-                    @endphp
-                    <div class="slide-item">
-                        <img loading="lazy" src="{{ asset($imgPath) }}" alt="Project {{$i}}">
-                    </div>
-                @endfor
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Stats Section (New Pattern Design) -->
 <section class="stats-bar-section py-5 my-5 position-relative" style="background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat; overflow: hidden; border-radius: 0;">
@@ -1411,264 +1373,8 @@
     </div>
 </section>
 
-<style>
-    .projects-slider-wrap {
-        width: 100%;
-        overflow: hidden;
-        padding: 20px 0;
-    }
-    .projects-slider-track {
-        display: flex;
-        gap: 20px;
-        animation: scroll 40s linear infinite;
-    }
-    .projects-slider-track:hover {
-        animation-play-state: paused;
-    }
-    .slide-item {
-        width: 280px;
-        min-width: 280px;
-        height: 200px;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .slide-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-280px * 8 - 20px * 8)); }
-    }
-</style>
 
-<!-- ===== HOME CTA — Start A Conversation ===== -->
-<section class="home-cta-wrapper">
-    <div class="container">
-        <div class="home-cta-section">
-            <div class="home-cta-overlay"></div>
-            <div class="home-cta-inner">
-
-                <!-- Left: Heading Text -->
-                <div class="home-cta-left">
-                    <span class="home-cta-label">YOUR INQUIRY</span>
-                    <h2 class="home-cta-heading">Start A Conversation<br>With Us</h2>
-                    <p class="home-cta-desc">
-                        Reach out to discuss your ideas and outdoor needs.<br>
-                        We're here to help your garden thrive beautifully<br>
-                        with science-driven sustainable landscapes.
-                    </p>
-                </div>
-
-                <!-- Right: Floating Form Card -->
-                <div class="home-cta-card">
-                    <h4 class="home-cta-card-title">Book Consultation</h4>
-                    <p class="home-cta-card-sub">Share your details and we'll respond with the right garden solution for you.</p>
-                    <form action="{{ route('contact.submit') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="source" value="home-cta">
-                        <div class="home-cta-row">
-                            <input type="text"  name="name"  class="home-cta-input" placeholder="Your Name *" required>
-                            <input type="text"  name="phone" class="home-cta-input" placeholder="Phone Number *" required>
-                        </div>
-                        <div class="home-cta-row">
-                            <select name="message" class="home-cta-input">
-                                <option value="">Select Service *</option>
-                                <option>Residential Landscaping</option>
-                                <option>Commercial Landscaping</option>
-                                <option>Terrace / Rooftop Garden</option>
-                                <option>Miyawaki Forest</option>
-                                <option>Maintenance (AMC)</option>
-                                <option>Vertical Garden</option>
-                                <option>Water Bodies</option>
-                                <option>Nursery & Plant Supply</option>
-                                <option>Others</option>
-                            </select>
-                            <input type="text" name="city" class="home-cta-input" placeholder="City">
-                        </div>
-                        <textarea name="inquiry_message" class="home-cta-input home-cta-textarea" placeholder="Your message"></textarea>
-                        <button type="submit" class="home-cta-submit">SEND MESSAGE</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    /* ===== HOME CTA SECTION ===== */
-    .home-cta-wrapper {
-        padding: 60px 0 80px;
-        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat fixed;
-        position: relative;
-    }
-    .home-cta-wrapper::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(20, 45, 20, 0.55);
-    }
-    .home-cta-wrapper .container {
-        position: relative;
-        z-index: 1;
-    }
-    .home-cta-section {
-        position: relative;
-        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
-        padding: 70px 50px;
-        overflow: hidden;
-        border-radius: 30px;
-        box-shadow: 0 20px 60px rgba(26, 58, 26, 0.25);
-    }
-    .home-cta-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.6) 55%, rgba(15,30,15,0.25) 100%);
-        border-radius: 30px;
-    }
-    .home-cta-inner {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 40px;
-    }
-
-    /* Left */
-    .home-cta-left { flex: 1; max-width: 460px; }
-    .home-cta-label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: rgba(255,255,255,0.55);
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-    }
-    .home-cta-label::after {
-        content: '';
-        display: block;
-        height: 2px;
-        width: 40px;
-        background: var(--primary);
-    }
-    .home-cta-heading {
-        color: #fff;
-        font-size: 2.4rem;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 18px;
-    }
-    .home-cta-desc {
-        color: rgba(255,255,255,0.6);
-        font-size: 0.95rem;
-        line-height: 1.75;
-    }
-
-    /* Right Card */
-    .home-cta-card {
-        width: 420px;
-        flex-shrink: 0;
-        background: rgba(22, 42, 22, 0.92);
-        backdrop-filter: blur(12px);
-        border-radius: 16px;
-        padding: 30px 28px;
-        border: 1px solid rgba(255,255,255,0.08);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-    .home-cta-card-title {
-        color: #fff;
-        font-size: 1.25rem;
-        font-weight: 800;
-        margin-bottom: 6px;
-    }
-    .home-cta-card-sub {
-        color: rgba(255,255,255,0.5);
-        font-size: 0.8rem;
-        margin-bottom: 20px;
-        line-height: 1.5;
-    }
-    .home-cta-row {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-    .home-cta-input {
-        flex: 1;
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 8px;
-        padding: 11px 14px;
-        color: #fff;
-        font-size: 0.87rem;
-        width: 100%;
-        transition: border-color 0.2s;
-        margin-bottom: 0;
-    }
-    .home-cta-input::placeholder { color: rgba(255,255,255,0.35); }
-    .home-cta-input:focus {
-        outline: none;
-        border-color: var(--primary);
-        background: rgba(255,255,255,0.1);
-    }
-    .home-cta-input option { background: #1a2a1a; color: #fff; }
-    .home-cta-textarea {
-        display: block;
-        width: 100%;
-        height: 90px;
-        resize: vertical;
-        margin-bottom: 14px;
-        margin-top: 10px;
-    }
-    .home-cta-submit {
-        display: block;
-        width: 100%;
-        background: var(--primary);
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        padding: 13px;
-        font-weight: 800;
-        font-size: 0.85rem;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    .home-cta-submit:hover {
-        background: #3a6b1a;
-        transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(139,195,74,0.3);
-    }
-    @media (max-width: 991px) {
-        .home-cta-wrapper { padding: 40px 0 60px; }
-        .home-cta-section { padding: 40px 24px; border-radius: 24px; }
-        .home-cta-overlay { border-radius: 24px; }
-        .home-cta-inner { flex-direction: column; }
-        .home-cta-card { width: 100%; }
-        .home-cta-heading { font-size: 1.8rem; }
-    }
-    @media (max-width: 575px) {
-        .home-cta-wrapper { padding: 25px 0 40px; }
-        .home-cta-section { padding: 25px 16px; border-radius: 18px; }
-        .home-cta-overlay { border-radius: 18px; }
-        .home-cta-heading { font-size: 1.3rem; }
-        .home-cta-card { padding: 20px 16px; }
-        .home-cta-card-title { font-size: 1.1rem; }
-        .home-cta-row { flex-direction: column; gap: 8px; }
-        .home-cta-input { padding: 10px 12px; font-size: 12px; }
-        .home-cta-textarea { height: 65px; }
-        .home-cta-submit { padding: 11px; font-size: 0.78rem; }
-    }
-</style>
-
-﻿<!-- FAQ - Green Landspire Theme -->
+<!-- FAQ - Green Landspire Theme -->
 
 <!-- FAQ - EXACT LANDSPIRE MATCH -->
 <section class="faq-landspire-section" id="faqs">
@@ -1940,6 +1646,188 @@
 </style>
 
 
+@endsection
+
+@section('cta')
+<!-- ===== HOME CTA — Start A Conversation ===== -->
+<section class="home-cta-wrapper">
+    <div class="container">
+        <div class="home-cta-section">
+            <div class="home-cta-overlay"></div>
+            <div class="home-cta-inner">
+
+                <!-- Left: Heading Text -->
+                <div class="home-cta-left">
+                    <span class="home-cta-label">YOUR INQUIRY</span>
+                    <h2 class="home-cta-heading">Start A Conversation<br>With Us</h2>
+                    <p class="home-cta-desc">
+                        Reach out to discuss your ideas and outdoor needs.<br>
+                        We're here to help your garden thrive beautifully<br>
+                        with science-driven sustainable landscapes.
+                    </p>
+                </div>
+
+                <!-- Right: Floating Form Card -->
+                <div class="home-cta-card">
+                    <h4 class="home-cta-card-title">Book Consultation</h4>
+                    <p class="home-cta-card-sub">Share your details and we'll respond with the right garden solution for you.</p>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="source" value="home-cta">
+                        <div class="home-cta-row">
+                            <input type="text"  name="name"  class="home-cta-input" placeholder="Your Name *" required>
+                            <input type="text"  name="phone" class="home-cta-input" placeholder="Phone Number *" required>
+                        </div>
+                        <div class="home-cta-row">
+                            <select name="message" class="home-cta-input">
+                                <option value="">Select Service *</option>
+                                <option>Residential Landscaping</option>
+                                <option>Commercial Landscaping</option>
+                                <option>Terrace / Rooftop Garden</option>
+                                <option>Miyawaki Forest</option>
+                                <option>Maintenance (AMC)</option>
+                                <option>Vertical Garden</option>
+                                <option>Water Bodies</option>
+                                <option>Nursery & Plant Supply</option>
+                                <option>Others</option>
+                            </select>
+                            <input type="text" name="city" class="home-cta-input" placeholder="City">
+                        </div>
+                        <textarea name="inquiry_message" class="home-cta-input home-cta-textarea" placeholder="Your message"></textarea>
+                        <button type="submit" class="home-cta-submit">SEND MESSAGE</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .home-cta-wrapper {
+        padding: 60px 0 80px;
+        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat fixed;
+        position: relative;
+    }
+    .home-cta-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 45, 20, 0.55);
+    }
+    .home-cta-wrapper .container {
+        position: relative;
+        z-index: 1;
+    }
+    .home-cta-section {
+        position: relative;
+        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        padding: 70px 50px;
+        overflow: hidden;
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(26, 58, 26, 0.25);
+    }
+    .home-cta-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.6) 55%, rgba(15,30,15,0.25) 100%);
+        border-radius: 30px;
+    }
+    .home-cta-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+    .home-cta-left { flex: 1; max-width: 460px; }
+    .home-cta-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255,255,255,0.55);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+    .home-cta-label::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 40px;
+        background: var(--primary);
+    }
+    .home-cta-heading {
+        color: #fff;
+        font-size: 2.4rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 18px;
+    }
+    .home-cta-desc {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.95rem;
+        line-height: 1.75;
+    }
+    .home-cta-card {
+        width: 420px;
+        flex-shrink: 0;
+        background: rgba(22, 42, 22, 0.92);
+        backdrop-filter: blur(12px);
+        border-radius: 16px;
+        padding: 30px 28px;
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .home-cta-card-title { color: #fff; font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+    .home-cta-card-sub { color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-bottom: 20px; line-height: 1.5; }
+    .home-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    .home-cta-input {
+        flex: 1;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        padding: 11px 14px;
+        color: #fff;
+        font-size: 0.87rem;
+        width: 100%;
+        transition: border-color 0.2s;
+        margin-bottom: 0;
+    }
+    .home-cta-input::placeholder { color: rgba(255,255,255,0.35); }
+    .home-cta-input:focus { outline: none; border-color: var(--primary); background: rgba(255,255,255,0.1); }
+    .home-cta-input option { background: #1a2a1a; color: #fff; }
+    .home-cta-textarea { display: block; width: 100%; height: 90px; resize: vertical; margin-bottom: 14px; margin-top: 10px; }
+    .home-cta-submit {
+        display: block; width: 100%; background: var(--primary); color: #fff; border: none;
+        border-radius: 8px; padding: 13px; font-weight: 800; font-size: 0.85rem;
+        letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s;
+    }
+    .home-cta-submit:hover { background: #3a6b1a; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,195,74,0.3); }
+    @media (max-width: 991px) {
+        .home-cta-wrapper { padding: 40px 0 60px; }
+        .home-cta-section { padding: 40px 24px; border-radius: 24px; }
+        .home-cta-overlay { border-radius: 24px; }
+        .home-cta-inner { flex-direction: column; }
+        .home-cta-card { width: 100%; }
+        .home-cta-heading { font-size: 1.8rem; }
+    }
+    @media (max-width: 575px) {
+        .home-cta-wrapper { padding: 25px 0 40px; }
+        .home-cta-section { padding: 25px 16px; border-radius: 18px; }
+        .home-cta-overlay { border-radius: 18px; }
+        .home-cta-heading { font-size: 1.3rem; }
+        .home-cta-card { padding: 20px 16px; }
+        .home-cta-card-title { font-size: 1.1rem; }
+        .home-cta-row { flex-direction: column; gap: 8px; }
+        .home-cta-input { padding: 10px 12px; font-size: 12px; }
+        .home-cta-textarea { height: 65px; }
+        .home-cta-submit { padding: 11px; font-size: 0.78rem; }
+    }
+</style>
 @endsection
 
 @section('scripts')
