@@ -293,14 +293,9 @@
 </section>
 
 <!-- Spacer between Counter and Testimonials -->
-<section style="background: #f9fbf9; padding: 60px 0;">
+<section style="background: #f9fbf9; padding: 40px 0 20px;">
     <div class="container text-center">
-        <div class="d-flex align-items-center justify-content-center gap-3 mb-4">
-            <div style="width: 60px; height: 2px; background: var(--primary);"></div>
-            <i class="fas fa-leaf" style="color: var(--primary); font-size: 1.2rem;"></i>
-            <div style="width: 60px; height: 2px; background: var(--primary);"></div>
-        </div>
-        <h2 class="fw-bold mb-3" style="color: #1a3a1a; font-size: 2rem;">What Our Clients Say</h2>
+        <h2 class="fw-bold mb-3" style="color: var(--primary); font-size: 2rem;">What Our Clients Say</h2>
         <p style="color: #777; max-width: 550px; margin: 0 auto;">Hear from the people who trust us with their green spaces</p>
     </div>
 </section>
@@ -328,7 +323,7 @@
     <div class="proj-testi-bg"></div>
     <div class="proj-testi-overlay"></div>
     <div class="container position-relative z-1 py-5">
-        <div class="row align-items-center g-4 py-4">
+        <div class="row align-items-center justify-content-center g-4 py-4">
 
             <!-- Left: Heading -->
             <div class="col-lg-4" data-aos="fade-right">
