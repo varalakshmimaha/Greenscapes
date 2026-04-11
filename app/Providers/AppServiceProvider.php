@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        try {
         if (Schema::hasTable('settings') && Schema::hasTable('menus')) {
             View::composer('frontend.*', function ($view) {
                 $view->with('siteSettings', Setting::pluck('value', 'key'));
@@ -42,6 +43,9 @@ class AppServiceProvider extends ServiceProvider
                     $view->with('footerVideos', Video::where('is_active', true)->orderBy('order')->take(1)->get());
                 }
             });
+        }
+        } catch (\Exception $e) {
+            // Silently fail if DB is not available (e.g. during package:discover)
         }
     }
 }
