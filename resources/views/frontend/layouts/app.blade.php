@@ -527,13 +527,13 @@
     <div class="top-bar">
         <div class="container d-flex justify-content-between align-items-center top-bar-inner">
             <div class="top-bar-left">
-                <i class="fas fa-phone-alt"></i> +91 9845728507
+                <i class="fas fa-phone-alt"></i> +91 9845728507, +91 9113620609
             </div>
             <div class="top-bar-center" style="color: var(--primary); font-weight: 700;">
                 Welcome to SR Greenscapes Pvt Ltd
             </div>
             <div class="top-bar-right">
-                <i class="fas fa-envelope"></i> srgreenscapes@gmail.com
+                <i class="fas fa-envelope"></i> srgreenscapes@gmail.com, mdsrgreenscapes@gmail.com
             </div>
         </div>
     </div>
@@ -728,15 +728,17 @@
                         <li>
                             <div class="footer-contact-icon"><i class="fas fa-phone-alt"></i></div>
                             <div>
-                                <span>{{ $siteSettings['phone'] ?? '+91 9845728507' }}</span><br>
-                                <span>+91 9113620609</span>
+                                <span>Phone / WhatsApp:</span><br>
+                                <a href="tel:+919845728507" style="color:rgba(255,255,255,0.75);text-decoration:none;">+91 9845728507</a><br>
+                                <a href="tel:+919113620609" style="color:rgba(255,255,255,0.75);text-decoration:none;">+91 9113620609</a>
                             </div>
                         </li>
                         <li>
                             <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
                             <div>
-                                <span>{{ $siteSettings['email'] ?? 'srgreenscapes@gmail.com' }}</span><br>
-                                <span>mdsrgreenscapes@gmail.com</span>
+                                <span>Email:</span><br>
+                                <a href="mailto:srgreenscapes@gmail.com" style="color:rgba(255,255,255,0.75);text-decoration:none;">srgreenscapes@gmail.com</a><br>
+                                <a href="mailto:mdsrgreenscapes@gmail.com" style="color:rgba(255,255,255,0.75);text-decoration:none;">mdsrgreenscapes@gmail.com</a>
                             </div>
                         </li>
                     </ul>
