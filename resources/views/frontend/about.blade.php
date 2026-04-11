@@ -446,16 +446,6 @@
             </h2>
         </div>
 
-        {{-- Category Filter Buttons --}}
-        @if(isset($teamCategories) && $teamCategories->count())
-            <div class="text-center mb-4" data-aos="fade-up">
-                <a href="/about#team" class="btn btn-sm rounded-pill px-4 py-2 me-2 mb-2 {{ !isset($activeCategory) || !$activeCategory ? 'btn-success' : 'btn-outline-success' }}">All</a>
-                @foreach($teamCategories as $tc)
-                    <a href="{{ route('team.category', $tc->slug) }}" class="btn btn-sm rounded-pill px-4 py-2 me-2 mb-2 {{ isset($activeCategory) && $activeCategory && $activeCategory->id === $tc->id ? 'btn-success' : 'btn-outline-success' }}">{{ $tc->name }}</a>
-                @endforeach
-            </div>
-        @endif
-
         <div class="row g-4">
             @if(isset($teamMembers) && $teamMembers->count())
                 @foreach($teamMembers as $member)
