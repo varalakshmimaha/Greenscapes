@@ -1,0 +1,1846 @@
+@extends('frontend.layouts.app')
+
+@section('styles')
+<style>
+    /* ===== HERO BANNER ===== */
+    .hero-banner {
+        position: relative;
+        min-height: 620px;
+        overflow: hidden;
+        border-radius: 30px;
+        margin: 15px 20px 0;
+    }
+    .hero-banner .carousel-item {
+        min-height: 620px;
+    }
+    .hero-banner .carousel-item img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+    .hero-banner .overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.15) 100%);
+        z-index: 2;
+    }
+    .hero-inner {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+    }
+    .hero-inner .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+    .hero-text {
+        flex: 1;
+        max-width: 550px;
+    }
+    .hero-text .hero-company {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.8);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+    }
+    .hero-text h1 {
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: #fff;
+        line-height: 1.2;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .hero-text .hero-sub {
+        font-size: 1.05rem;
+        color: rgba(255,255,255,0.9);
+        margin-top: 15px;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+    }
+    .hero-banner .carousel-control-prev,
+    .hero-banner .carousel-control-next {
+        z-index: 10;
+        width: 45px;
+        height: 45px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        backdrop-filter: blur(5px);
+        opacity: 1;
+        margin: 0 15px;
+    }
+    .hero-banner .carousel-control-prev:hover,
+    .hero-banner .carousel-control-next:hover {
+        background: var(--primary);
+    }
+    .hero-banner .carousel-indicators {
+        z-index: 10;
+        margin-bottom: 20px;
+    }
+    .hero-banner .carousel-indicators button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        border: 2px solid rgba(255,255,255,0.8);
+        margin: 0 5px;
+    }
+    .hero-banner .carousel-indicators button.active {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+    /* ===== CONSULTATION FORM ===== */
+    .consultation-form {
+        background: rgba(255,255,255,0.97);
+        border-radius: 12px;
+        padding: 30px 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        width: 420px;
+        min-width: 420px;
+    }
+    .consultation-form h4 {
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+    }
+    .consultation-form .form-control {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 11px 14px;
+        font-size: 13px;
+        background: #fafafa;
+    }
+    .consultation-form .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(76,175,80,0.1);
+    }
+    .btn-submit {
+        background: var(--dark-bg);
+        color: #fff;
+        border: none;
+        padding: 13px 35px;
+        border-radius: 8px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        width: 100%;
+        transition: all 0.3s;
+    }
+    .btn-submit:hover {
+        background: var(--primary-dark);
+        color: #fff;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-section {
+        padding: 80px 0;
+        background: #fff;
+        overflow: hidden;
+    }
+    .about-label {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .about-label::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: var(--primary);
+        border-radius: 50%;
+    }
+    .about-heading-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .about-section h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        line-height: 1.3;
+        color: #1a1a1a;
+        margin-bottom: 0;
+        flex: 1;
+    }
+    .about-section h2 span {
+        color: #1a1a1a;
+    }
+    .about-exp-badge {
+        width: 110px;
+        height: 110px;
+        min-width: 110px;
+        background: var(--primary);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(139, 195, 74, 0.3);
+    }
+    .about-exp-badge .exp-num {
+        font-size: 2.2rem;
+        font-weight: 900;
+        line-height: 1;
+    }
+    .about-exp-badge .exp-txt {
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+        margin-top: 4px;
+    }
+    .about-content-row {
+        display: flex;
+        gap: 40px;
+        align-items: stretch;
+    }
+    .about-left {
+        flex: 1;
+    }
+    .about-text {
+        font-size: 0.92rem;
+        line-height: 1.85;
+        color: #666;
+        margin-bottom: 30px;
+    }
+    .about-text strong {
+        color: var(--dark);
+    }
+    .about-features-row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+    .about-feature-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 22px 18px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 1px dashed #d0d0d0;
+        flex: 1;
+        transition: all 0.3s;
+    }
+    .about-feature-card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .about-feature-card .feat-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        background: var(--light-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: var(--primary-dark);
+        margin-bottom: 12px;
+    }
+    .about-feature-card h6 {
+        font-weight: 700;
+        font-size: 0.88rem;
+        color: var(--dark);
+        margin-bottom: 0;
+    }
+    .about-feature-card p {
+        font-size: 0.78rem;
+        color: var(--gray);
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+    .btn-learn-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--primary);
+        color: #fff;
+        padding: 14px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .btn-learn-more:hover {
+        background: var(--primary-dark);
+        color: #fff;
+    }
+    .btn-learn-more .arrow-circle {
+        width: 32px;
+        height: 32px;
+        background: rgba(255,255,255,0.25);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+    .about-right {
+        flex: 1;
+        display: flex;
+        gap: 15px;
+        max-width: 500px;
+    }
+    .about-img-tall {
+        flex: 1;
+        border-radius: 120px 120px 120px 120px;
+        overflow: hidden;
+        height: 420px;
+    }
+    .about-img-tall img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .about-img-short {
+        flex: 1;
+        border-radius: 120px 120px 120px 120px;
+        overflow: hidden;
+        height: 420px;
+        margin-top: 40px;
+    }
+    .about-img-short img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @media (max-width: 991px) {
+        .about-content-row { flex-direction: column; gap: 30px; }
+        .about-right { max-width: 100%; }
+        .about-img-tall, .about-img-short { height: 280px; border-radius: 60px; }
+        .about-img-short { margin-top: 0; }
+        .about-section h2 { font-size: 1.8rem; }
+        .about-heading-row { flex-direction: column; }
+        .about-features-row { flex-direction: column; }
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .diff-section {
+        padding: 80px 0;
+        background: #f8faf8;
+        overflow: hidden;
+    }
+    .choose-img-wrap {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .choose-img-circle {
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 6px solid var(--primary);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+    .choose-img-small {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 140px;
+        height: 140px;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+    .choose-dots {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 80px;
+        height: 80px;
+        background-image: radial-gradient(var(--primary) 2px, transparent 2px);
+        background-size: 12px 12px;
+        opacity: 0.4;
+    }
+    .choose-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .choose-list li {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+        padding: 18px 0;
+        border-bottom: 1px solid #eee;
+    }
+    .choose-list li:last-child {
+        border-bottom: none;
+    }
+    .choose-list .choose-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        background: var(--light-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 18px;
+        margin-top: 2px;
+    }
+    .choose-list h6 {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--dark);
+        margin-bottom: 4px;
+    }
+    .choose-list p {
+        font-size: 0.85rem;
+        color: var(--gray);
+        margin-bottom: 0;
+        line-height: 1.6;
+    }
+    @media (max-width: 991px) {
+        .choose-img-circle { width: 280px; height: 280px; }
+        .choose-img-wrap { margin-bottom: 40px; }
+        .choose-img-small { width: 100px; height: 100px; }
+    }
+
+    /* ===== SERVICES ===== */
+    .services-section {
+        padding: 90px 0;
+        background: #f8faf8;
+        position: relative;
+        overflow: hidden;
+    }
+    .services-section::before {
+        content: '';
+        position: absolute;
+        top: -80px;
+        left: -80px;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        background: rgba(76,175,80,0.05);
+    }
+    .services-section::after {
+        content: '';
+        position: absolute;
+        bottom: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: rgba(139,195,74,0.05);
+    }
+    .services-section .section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--light-green);
+        color: var(--primary-dark);
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 15px;
+    }
+    .services-section .section-desc {
+        color: #777;
+        font-size: 0.95rem;
+        max-width: 550px;
+        margin: 0 auto 50px;
+    }
+    .service-card {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: all 0.3s;
+        height: 100%;
+        text-align: left;
+        border: 1px solid #f0f0f0;
+        cursor: pointer;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+    .service-card:hover {
+        box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        transform: translateY(-8px);
+        background: var(--primary);
+    }
+    .service-card:hover .svc-body h6,
+    .service-card:hover .svc-body p,
+    .service-card:hover .learn-more {
+        color: #fff !important;
+    }
+    .service-card .svc-img-wrap {
+        height: 160px;
+        background: #e6f0e6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .service-card .svc-img-wrap .svc-emoji {
+        font-size: 3.5rem;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    }
+    .service-card .svc-body {
+        padding: 25px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .service-card .svc-body h6 {
+        font-family: 'Georgia', serif;
+        font-weight: 600;
+        color: #1a2a1a;
+        font-size: 1.15rem;
+        margin: 0;
+        line-height: 1.4;
+    }
+    .service-card .svc-body p {
+        font-size: 0.85rem;
+        color: #666;
+        margin: 0;
+        line-height: 1.6;
+        flex: 1;
+    }
+    .service-card .svc-body .learn-more {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 10px;
+        transition: color 0.3s;
+    }
+    .service-card:hover .svc-body .learn-more {
+        color: var(--primary-dark);
+    }
+    /* Scroll animation */
+    .svc-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .svc-animate.animate-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ===== PROCESS SECTION ===== */
+    .process-section {
+        padding: 80px 0;
+        background: #f8faf8;
+        overflow: hidden;
+    }
+    .process-flow {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0;
+        margin-top: 40px;
+    }
+    .process-flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .process-card {
+        background: #fff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: all 0.3s;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        width: 220px;
+        border: 2px solid transparent;
+    }
+    .process-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+        border-color: var(--primary);
+        color: inherit;
+    }
+    .process-card .card-img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+    .process-card .card-body-custom {
+        padding: 15px;
+        text-align: center;
+    }
+    .process-card .step-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+    .process-card h6 {
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: var(--dark);
+        margin: 0;
+        line-height: 1.4;
+    }
+    .process-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        min-width: 50px;
+        color: var(--primary);
+        font-size: 1.5rem;
+    }
+    .process-arrow-down {
+        display: none;
+        justify-content: center;
+        width: 100%;
+        color: var(--primary);
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+    .process-arrow-turn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        min-width: 50px;
+        color: var(--primary);
+        font-size: 1.5rem;
+    }
+    @media (max-width: 991px) {
+        .process-flow-row {
+            flex-direction: column;
+            gap: 5px;
+        }
+        .process-arrow { display: none; }
+        .process-arrow-turn { display: none; }
+        .process-arrow-down { display: flex; }
+        .process-card { width: 260px; }
+    }
+
+    /* ===== STATS ===== */
+    .stats-section {
+        padding: 50px 0;
+        background: var(--dark-bg);
+        color: #fff;
+    }
+    .stat-item {
+        text-align: center;
+        padding: 15px;
+    }
+    .stat-number {
+        font-size: 2.8rem;
+        font-weight: 900;
+        color: var(--accent);
+        line-height: 1;
+    }
+    /* ===== NEW PORTFOLIO DESIGN ===== */
+    .portfolio-stats-bar {
+        background: var(--green-dark);
+        border-radius: 0;
+        display: flex;
+        padding: 40px 15px;
+        margin-bottom: 60px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+    .portfolio-stat-item {
+        flex: 1;
+        text-align: center;
+        border-right: 1px solid rgba(255,255,255,0.08);
+        padding: 10px;
+    }
+    .portfolio-stat-item:last-child { border-right: 0; }
+    .portfolio-stat-item .stat-num {
+        color: var(--primary);
+        font-size: 2.4rem;
+        font-weight: 800;
+        display: block;
+        margin-bottom: 5px;
+        line-height: 1;
+    }
+    .portfolio-stat-item .stat-txt {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 700;
+    }
+
+    .custom-project-card {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 380px;
+        margin-bottom: 30px;
+        cursor: pointer;
+        transition: transform 0.4s;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    /* Masonry heights */
+    .portfolio-grid .col-lg-4:nth-child(even) .custom-project-card {
+        height: 480px;
+    }
+    .portfolio-grid .col-lg-4:nth-child(3n) .custom-project-card {
+        height: 420px;
+    }
+    
+    .custom-project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .custom-project-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .custom-project-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
+        transition: background 0.3s;
+    }
+    .custom-project-card:hover .custom-project-overlay {
+        background: rgba(26,42,26,0.5); /* Greenish tint on hover */
+    }
+    .project-type-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #fff;
+        color: #1a2a1a;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .project-content-bottom h5 {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    .project-content-bottom p {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.8rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .view-project-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        opacity: 0;
+        transition: all 0.3s;
+        box-shadow: 0 6px 20px rgba(139,195,74,0.4);
+    }
+    .custom-project-card:hover .view-project-btn {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .btn-view-all {
+        background: var(--primary);
+        border: 2px solid var(--primary);
+        color: #fff;
+        padding: 12px 35px;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: inline-block;
+        margin-top: 20px;
+    }
+    .btn-view-all:hover {
+        background: var(--primary-dark);
+        border-color: var(--primary-dark);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(139,195,74,0.35);
+    }
+
+    @media (max-width: 991px) {
+        .portfolio-stats-bar { flex-wrap: wrap; }
+        .portfolio-stat-item { flex: 0 0 33.33%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .portfolio-stat-item:nth-child(3n) { border-right: 0; }
+    }
+    @media (max-width: 575px) {
+        .portfolio-stat-item { flex: 0 0 50%; }
+        .portfolio-stat-item:nth-child(even) { border-right: 0; }
+    }
+
+    /* ===== PORTFOLIO ===== */
+    .portfolio-section {
+        padding: 80px 0;
+        background: #fff;
+    }
+    .project-card {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        margin-bottom: 25px;
+        transition: all 0.3s;
+        position: relative;
+    }
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    }
+    .project-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .project-card .info {
+        padding: 15px;
+    }
+    .project-card .info h6 {
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+    .project-card .info small {
+        color: var(--gray);
+    }
+    .project-card .badge-type {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: var(--primary);
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-section {
+        padding: 80px 0;
+        background: #f8faf8;
+    }
+    .accordion-item {
+        border: 1px solid #e8e8e8;
+        border-radius: 8px !important;
+        margin-bottom: 12px;
+        overflow: hidden;
+    }
+    .accordion-button {
+        font-weight: 600;
+        color: var(--dark);
+        font-size: 15px;
+        padding: 16px 20px;
+        text-align: left;
+    }
+    .accordion-body {
+        text-align: left;
+    }
+    .accordion-button:not(.collapsed) {
+        background: var(--primary);
+        color: #fff;
+        box-shadow: none;
+    }
+    .accordion-button:focus {
+        box-shadow: none;
+    }
+    .accordion-button::after {
+        filter: none;
+    }
+    .accordion-button:not(.collapsed)::after {
+        filter: brightness(0) invert(1);
+    }
+
+    @media (max-width: 991px) {
+        .hero-banner, .hero-banner .carousel-item { height: auto; min-height: 100vh; }
+        .hero-inner { position: relative; padding: 30px 0; }
+        .hero-text h1 { font-size: 1.6rem; }
+        .hero-text .hero-sub { font-size: 0.85rem; }
+        .hero-text .hero-company { font-size: 0.75rem; }
+        .hero-inner .container { flex-direction: column; justify-content: center; text-align: center; gap: 25px; }
+        .hero-text { max-width: 100%; }
+        .consultation-form { width: 100%; min-width: unset; }
+        .stat-number { font-size: 2rem; }
+    }
+</style>
+@endsection
+
+@section('content')
+
+<!-- Hero Banner Slider -->
+<section class="hero-banner">
+    <div id="heroCarousel" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="4000">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            @if($banners->count())
+                @foreach($banners as $index => $banner)
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></button>
+                @endforeach
+            @else
+                @for($i = 0; $i < 6; $i++)
+                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $i }}" class="{{ $i === 0 ? 'active' : '' }}"></button>
+                @endfor
+            @endif
+        </div>
+
+        <div class="carousel-inner h-100">
+            @if($banners->count())
+                @foreach($banners as $index => $banner)
+                    <div class="carousel-item h-100 {{ $index === 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}">
+                    </div>
+                @endforeach
+            @else
+                <div class="carousel-item h-100 active">
+                    <img src="{{ asset('storage/Home/1.1Cover photo 1.jpg') }}" alt="Landscape Design">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}" alt="Plants">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="{{ asset('storage/Home/1.4 Cover photo  4.jpg') }}" alt="Outdoor Space">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="Landscaping">
+                </div>
+                <div class="carousel-item h-100">
+                    <img src="{{ asset('storage/Home/1.6 Cover photo 6.jpg') }}" alt="Green Space">
+                </div>
+            @endif
+        </div>
+        <div class="overlay"></div>
+
+        <!-- Slider Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Hero Content Overlay: Text Left + Form Right -->
+    <div class="hero-inner">
+        <div class="container">
+            <div class="hero-text">
+                <p class="hero-company">SR GREENSCAPES PVT LTD</p>
+                <h1>Designing Landscapes That Perform, Sustain, and Inspire</h1>
+                <p class="hero-sub mb-4">Science-Driven Sustainable Landscaping Across India</p>
+                <div class="d-flex gap-3 mt-4">
+                    <a href="/projects" class="btn-theme">
+                        Discover Projects
+                        <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+            <div class="consultation-form">
+                <h4>Book A Free Consultation</h4>
+                <form action="{{ route('contact.submit') }}" method="POST">
+                    @csrf
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <input type="text" name="name" class="form-control" placeholder="Name*" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" name="phone" class="form-control" placeholder="Phone*" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" name="subject" class="form-control" placeholder="City">
+                        </div>
+                        <div class="col-6">
+                            <select name="message" class="form-control" required>
+                                <option value="">Services*</option>
+                                <option>Residential</option>
+                                <option>Commercial</option>
+                                <option>Institutional</option>
+                                <option>Industrial</option>
+                                <option>Public Spaces</option>
+                                <option>Maintenance</option>
+                                <option>Vertical Gardening</option>
+                                <option>Horticulture Consultancy</option>
+                                <option>Nursery & Plant Supply</option>
+                                <option>Green Gifts</option>
+                                <option>Garden Supplies</option>
+                                <option>Event Styling</option>
+                                <option>Water Bodies</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="Address">
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control" rows="2" placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn-submit">SUBMIT REQUEST</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Preview Section -->
+<section class="about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <!-- Left Content -->
+            <div class="col-lg-6 mb-5 mb-lg-0 pe-lg-5">
+                <p class="about-label">About Our Company</p>
+                <h2>Creating High-Performance, <span>Science-Driven</span> Sustainable Landscapes.</h2>
+                <p style="color: #555; font-size: 0.95rem; line-height: 1.8; margin-bottom: 25px;">
+                    We combine plant science, climate-responsive design, and expert execution to deliver spaces that are beautiful and functional. From design to maintenance, we offer end-to-end green solutions for homes, commercial spaces, and institutions.
+                </p>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-sm-6 d-flex align-items-start gap-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 rounded-circle" style="width: 26px; height: 26px; font-size: 0.7rem; background: var(--primary); color: #fff;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.9rem; line-height: 1.6; color: #555;">Scientific solutions & expert execution for long-lasting functional green spaces.</p>
+                    </div>
+                    <div class="col-sm-6 d-flex align-items-start gap-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 rounded-circle" style="width: 26px; height: 26px; font-size: 0.7rem; background: var(--primary); color: #fff;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.9rem; line-height: 1.6; color: #555;">End-to-end robust green solutions from planning to regular maintenance.</p>
+                    </div>
+                    <div class="col-sm-6 d-flex align-items-start gap-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 rounded-circle" style="width: 26px; height: 26px; font-size: 0.7rem; background: var(--primary); color: #fff;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.9rem; line-height: 1.6; color: #555;">Climate-responsive designs tailored for homes, commercials, & institutions.</p>
+                    </div>
+                    <div class="col-sm-6 d-flex align-items-start gap-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 rounded-circle" style="width: 26px; height: 26px; font-size: 0.7rem; background: var(--primary); color: #fff;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <p class="mb-0" style="font-size: 0.9rem; line-height: 1.6; color: #555;">Dedicated team committed to creating aesthetics and sustainability.</p>
+                    </div>
+                </div>
+
+                <a href="/about" class="btn-theme mt-3">
+                    Know More <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+
+            <!-- Right Content: Image -->
+            <div class="col-lg-6 position-relative ps-lg-5">
+                <div class="position-absolute" style="top: -20px; bottom: 20px; left: 30px; right: 0; border-radius: 20px; z-index: 0; background: var(--light-green);"></div>
+                <div class="position-relative z-1 p-3">
+                    <img src="{{ asset('storage/Home/1.11 Climate-Resilient Design.jpg') }}" alt="SR Greenscapes Landscaping" class="img-fluid w-100" style="border-radius: 20px; object-fit: cover; max-height: 600px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="diff-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="choose-img-wrap">
+                    <div class="choose-dots"></div>
+                    <img src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Landscaping Expert" class="choose-img-circle">
+                    <img src="{{ asset('storage/Home/1.9 Sustainability at the Core.jpg') }}" alt="Garden Work" class="choose-img-small">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <p class="about-label">Why Choose Us</p>
+                <h2 class="section-title">Why Homeowners Trust Our Landscaping Expertise</h2>
+                <p class="about-text mb-3">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
+                <ul class="choose-list">
+                    <li>
+                        <div class="choose-icon"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h6>Experienced & Skilled Team</h6>
+                            <p>Led by horticulture professionals with a scientific advisory network for institutional credibility.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="choose-icon"><i class="fas fa-pencil-ruler"></i></div>
+                        <div>
+                            <h6>Custom Outdoor Solutions</h6>
+                            <p>Climate-responsive designs that withstand heat stress, irregular rainfall and urban environmental pressures.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="choose-icon"><i class="fas fa-gem"></i></div>
+                        <div>
+                            <h6>High-Quality Materials</h6>
+                            <p>Research-integrated planning with evidence-based plant selection and premium landscaping materials.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="choose-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h6>Reliable & On-Time Service</h6>
+                            <p>End-to-end execution from concept design and nursery production to irrigation systems and maintenance.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Overview -->
+<section class="services-section py-5" id="services">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <p class="about-label">What We Offer</p>
+            <h2 class="section-title">Our Professional Services</h2>
+            <p class="text-muted mx-auto" style="max-width: 650px;">Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
+        </div>
+
+        @php
+            $defaultServices = [
+                ['img' => 'Home/1.16 Landscape Design  Execution.png', 'name' => 'Landscape Design & Execution', 'slug' => 'landscape-design-execution', 'desc' => 'Transform your space with thoughtfully designed, living landscapes combining creative vision with scientific planning.'],
+                ['img' => 'Home/1.17 Specialized Garden Services.jpg', 'name' => 'Specialized Garden Services', 'slug' => 'specialized-garden-services', 'desc' => 'Vertical gardens, therapeutic gardens, Miyawaki forests, biophilic design and much more.'],
+                ['img' => 'Home/1.18 Hardscape  Softscape Development.jpg', 'name' => 'Hardscape & Softscape Development', 'slug' => 'softscape-hardscape-development', 'desc' => 'Fountains, ponds, pathways, pergolas, lawn turfing, tree planting and ornamental planting.'],
+                ['img' => 'Home/1.19 Landscape Maintenance.png', 'name' => 'Landscape Maintenance', 'slug' => 'landscape-maintenance', 'desc' => 'AMC plans, lawn care, pruning, pest control and plant health monitoring and improvement.'],
+                ['img' => 'Home/1.20 Nursery  Plant Supply.jpg', 'name' => 'Nursery & Plant Supply', 'slug' => 'nursery-plant-supply', 'desc' => 'Ornamental, flowering, indoor/outdoor, fruit trees, forestry — with bulk supply options.'],
+                ['img' => 'Home/1.21 Horticulture Consultancy.png', 'name' => 'Horticulture Consultancy', 'slug' => 'horticulture-consultancy', 'desc' => 'Farm planning, urban gardening, terrace farming, soil & plant nutrition advisory.'],
+            ];
+            $activeServices = (isset($services) && $services->count()) ? $services->take(6) : collect($defaultServices)->map(fn($s) => (object)$s);
+        @endphp
+
+        <div class="row g-4">
+            @foreach($activeServices as $service)
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="service-card h-100 border rounded-4 overflow-hidden shadow-sm bg-white" onclick="window.location.href='{{ isset($service->slug) ? route('service.detail', $service->slug) : '#' }}'">
+                        <div class="svc-img-wrap" style="height: 200px; overflow: hidden;">
+                            @php
+                                $svcFallbackImages = [
+                                    'Home/1.16 Landscape Design  Execution.png',
+                                    'Home/1.17 Specialized Garden Services.jpg',
+                                    'Home/1.18 Hardscape  Softscape Development.jpg',
+                                    'Home/1.19 Landscape Maintenance.png',
+                                    'Home/1.20 Nursery  Plant Supply.jpg',
+                                    'Home/1.21 Horticulture Consultancy.png',
+                                ];
+                                $svcImage = $service->image ?? $service->img ?? null;
+                                if (!$svcImage) {
+                                    $svcImage = $svcFallbackImages[$loop->index % count($svcFallbackImages)];
+                                }
+                            @endphp
+                            <img src="{{ asset('storage/' . $svcImage) }}" alt="{{ $service->name }}" class="w-100 h-100 object-fit-cover">
+                        </div>
+                        <div class="svc-body p-4">
+                            <h5 class="fw-bold mb-3">{{ $service->name }}</h5>
+                            <p class="text-muted small mb-3">{{ Str::limit($service->description ?? $service->desc, 100) }}</p>
+                            <a href="#" class="btn-theme py-2 px-3" style="font-size: 0.8rem;">
+                                Read More
+                                <span class="btn-icon" style="width: 25px; height: 25px;"><i class="fas fa-arrow-right" style="font-size: 10px;"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div class="text-center mt-5">
+            <a href="/services" class="btn-theme">
+                View All Services
+                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Featured Portfolio -->
+<section class="portfolio-section text-center py-5" id="portfolio">
+    <div class="container">
+        <div class="mb-5" data-aos="fade-up">
+            <p class="about-label d-flex justify-content-center">Featured Portfolio</p>
+            <h2 class="section-title">Crafting Landscapes That Perform, Evolve and Inspire</h2>
+            <p class="text-muted mx-auto" style="max-width: 800px;">
+                Every project is a reflection of our commitment to scientific planning, thoughtful design and 
+                sustainable execution. Our portfolio showcases a diverse range of landscapes- each uniquely 
+                designed to respond to its environment, purpose and client vision.
+            </p>
+        </div>
+
+        @php
+            $fakeProjects = [
+                ['title' => 'Villa Garden Design', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.1Cover photo 1.jpg'],
+                ['title' => 'Corporate Campus Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'Home/1.2 Cover photo 2.jpg'],
+                ['title' => 'School & Institutional Garden', 'location' => 'Hoskote, Karnataka', 'type' => 'INSTITUTIONAL', 'img' => 'Home/1.3 Cover photo 3.jpg'],
+                ['title' => 'Terrace & Rooftop Garden', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.4 Cover photo  4.jpg'],
+                ['title' => 'Resort & Hotel Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'Home/1.5 Cover photo 5.jpg'],
+                ['title' => 'Miyawaki Forest Project', 'location' => 'Pan-India', 'type' => 'SPECIALIZED', 'img' => 'Home/1.6 Cover photo 6.jpg'],
+            ];
+            $activeProjects = (isset($projects) && $projects->count()) ? $projects : collect($fakeProjects);
+        @endphp
+
+        <div class="row portfolio-grid g-4">
+            @foreach($activeProjects->take(6) as $p)
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ is_array($p) ? '/projects' : route('project.detail', $p->slug) }}'">
+                        <div class="project-img-container h-100 position-relative">
+                            <img src="{{ is_array($p) ? asset('storage/' . $p['img']) : asset('storage/' . ($p->image ?? $p->after_image)) }}" alt="{{ is_array($p) ? $p['title'] : $p->title }}" class="w-100 h-100 object-fit-cover">
+                            <div class="project-type-badge position-absolute top-0 end-0 m-3">
+                                {{ is_array($p) ? $p['type'] : ($p->status ?? 'RESIDENTIAL') }}
+                            </div>
+                            <div class="custom-project-overlay position-absolute bottom-0 start-0 w-100 p-4" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                                <div class="project-content-bottom text-white">
+                                    <h5 class="mb-1 fw-bold">{{ is_array($p) ? $p['title'] : $p->title }}</h5>
+                                    <p class="mb-0 small opacity-75"><i class="fas fa-map-marker-alt me-2"></i> {{ is_array($p) ? $p['location'] : ($p->client_name ?? 'Location') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/projects" class="btn-view-all">View All Projects <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Other Projects Slider -->
+<section class="other-projects-section py-5 text-center" style="background: #fdfdfd; overflow: hidden;">
+    <div class="container">
+        <div class="mb-5">
+            <p class="about-label d-flex justify-content-center">Other Projects</p>
+            <h2 class="section-title">Delivering Excellence Across Diverse Landscapes</h2>
+            <p class="text-muted mx-auto" style="max-width: 800px;">
+                Our expertise spans a diverse range of landscape projects, each executed with precision, 
+                scientific insight and thoughtful design. Guided by a strong focus on sustainability and long-
+                term performance, every project reflects our commitment to transforming outdoor spaces into 
+                functional, resilient and enduring landscapes.
+            </p>
+        </div>
+        
+        <div class="projects-slider-wrap">
+            <div class="projects-slider-track">
+                @for($i = 1; $i <= 16; $i++)
+                    @php 
+                        $imgNum = ($i % 8) + 1; 
+                        $imgPath = "storage/Home/1." . ($imgNum + 1) . " Cover photo " . ($imgNum == 4 ? " 4" : ($imgNum == 7 ? " 7" : $imgNum)) . ".jpg";
+                        // Fallback for messy naming in storage
+                        if($i == 1) $imgPath = "storage/Home/1.2 Cover photo 2.jpg";
+                        if($i == 2) $imgPath = "storage/Home/1.3 Cover photo 3.jpg";
+                        if($i == 3) $imgPath = "storage/Home/1.4 Cover photo  4.jpg";
+                        if($i == 4) $imgPath = "storage/Home/1.5 Cover photo 5.jpg";
+                        if($i == 5) $imgPath = "storage/Home/1.6 Cover photo 6.jpg";
+                        if($i == 6) $imgPath = "storage/Home/1.7 Cover photo 7.jpg";
+                        if($i == 7) $imgPath = "storage/Home/1.8 Science-Driven Approach.jpg";
+                        if($i == 8) $imgPath = "storage/Home/1.9 Sustainability at the Core.jpg";
+                    @endphp
+                    <div class="slide-item">
+                        <img src="{{ asset($imgPath) }}" alt="Project {{$i}}">
+                    </div>
+                @endfor
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section (New Pattern Design) -->
+<section class="stats-bar-section py-5 my-5 position-relative" style="background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat; overflow: hidden; border-radius: 0;">
+    <!-- Dark/Green Overlay for Readability -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(17, 45, 20, 0.85); z-index: 0;"></div>
+    
+    <!-- Modern Abstract Shapes (Opacities reduced lightly for background image integration) -->
+    <div class="position-absolute rounded-circle blur-bg" style="width: 300px; height: 300px; background: rgba(189, 228, 57, 0.1); top: -100px; left: -100px; filter: blur(80px); z-index: 0;"></div>
+    <div class="position-absolute rounded-circle blur-bg" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
+    
+    <div class="container position-relative z-1 py-4">
+        <div class="row justify-content-center g-4">
+            
+            @php
+                $fallbackStats = [
+                    (object)['icon' => 'fas fa-calendar-check', 'number' => '5', 'suffix' => '+', 'label' => 'Successful Years'],
+                    (object)['icon' => 'fas fa-seedling', 'number' => '4', 'suffix' => '+', 'label' => 'Projects Completed'],
+                    (object)['icon' => 'fas fa-user-tie', 'number' => '10', 'suffix' => '+', 'label' => 'Professionals'],
+                    (object)['icon' => 'fas fa-leaf', 'number' => '30', 'suffix' => '+', 'label' => 'Gardeners'],
+                    (object)['icon' => 'fas fa-map-marker-alt', 'number' => '5', 'suffix' => '+', 'label' => 'Locations Executed'],
+                    (object)['icon' => 'fas fa-trophy', 'number' => '2', 'suffix' => '+', 'label' => 'Awards Won'],
+                    (object)['icon' => 'fab fa-google', 'number' => '3.3', 'suffix' => '+', 'label' => 'Google Rating'],
+                ];
+                $activeCounters = (isset($counters) && $counters->count()) ? $counters : collect($fallbackStats);
+            @endphp
+
+            @foreach($activeCounters as $stat)
+            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 180px; max-width: 250px;">
+                <div class="stat-card text-center p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
+                     style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); transition: transform 0.3s;"
+                     onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+
+                    <!-- Diamond Icon Container -->
+                    <div class="icon-diamond mb-4 position-relative d-flex align-items-center justify-content-center"
+                         style="width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; transform: rotate(45deg);">
+                        <i class="{{ $stat->icon }} text-white fs-4" style="transform: rotate(-45deg);"></i>
+                    </div>
+
+                    <!-- Number -->
+                    <div class="stat-num text-white fw-bold lh-1 mb-3" style="font-size: 2.8rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
+
+                    <!-- Line with Dot separator -->
+                    <div class="d-flex align-items-center justify-content-center w-100 px-3 mb-3">
+                        <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
+                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #fff; margin: 0 8px;"></div>
+                        <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
+                    </div>
+
+                    <!-- Text Label -->
+                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $stat->label }}</div>
+                </div>
+            </div>
+            @endforeach
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .projects-slider-wrap {
+        width: 100%;
+        overflow: hidden;
+        padding: 20px 0;
+    }
+    .projects-slider-track {
+        display: flex;
+        gap: 20px;
+        animation: scroll 40s linear infinite;
+    }
+    .projects-slider-track:hover {
+        animation-play-state: paused;
+    }
+    .slide-item {
+        width: 280px;
+        min-width: 280px;
+        height: 200px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .slide-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-280px * 8 - 20px * 8)); }
+    }
+</style>
+
+<!-- ===== HOME CTA — Start A Conversation ===== -->
+<section class="home-cta-wrapper">
+    <div class="container">
+        <div class="home-cta-section">
+            <div class="home-cta-overlay"></div>
+            <div class="home-cta-inner">
+
+                <!-- Left: Heading Text -->
+                <div class="home-cta-left">
+                    <span class="home-cta-label">YOUR INQUIRY</span>
+                    <h2 class="home-cta-heading">Start A Conversation<br>With Us</h2>
+                    <p class="home-cta-desc">
+                        Reach out to discuss your ideas and outdoor needs.<br>
+                        We're here to help your garden thrive beautifully<br>
+                        with science-driven sustainable landscapes.
+                    </p>
+                </div>
+
+                <!-- Right: Floating Form Card -->
+                <div class="home-cta-card">
+                    <h4 class="home-cta-card-title">Book Consultation</h4>
+                    <p class="home-cta-card-sub">Share your details and we'll respond with the right garden solution for you.</p>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="source" value="home-cta">
+                        <div class="home-cta-row">
+                            <input type="text"  name="name"  class="home-cta-input" placeholder="Your Name *" required>
+                            <input type="text"  name="phone" class="home-cta-input" placeholder="Phone Number *" required>
+                        </div>
+                        <div class="home-cta-row">
+                            <select name="message" class="home-cta-input">
+                                <option value="">Select Service *</option>
+                                <option>Residential Landscaping</option>
+                                <option>Commercial Landscaping</option>
+                                <option>Terrace / Rooftop Garden</option>
+                                <option>Miyawaki Forest</option>
+                                <option>Maintenance (AMC)</option>
+                                <option>Vertical Garden</option>
+                                <option>Water Bodies</option>
+                                <option>Nursery & Plant Supply</option>
+                                <option>Others</option>
+                            </select>
+                            <input type="text" name="city" class="home-cta-input" placeholder="City">
+                        </div>
+                        <textarea name="inquiry_message" class="home-cta-input home-cta-textarea" placeholder="Your message"></textarea>
+                        <button type="submit" class="home-cta-submit">SEND MESSAGE</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ===== HOME CTA SECTION ===== */
+    .home-cta-wrapper {
+        padding: 60px 0 80px;
+        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat fixed;
+        position: relative;
+    }
+    .home-cta-wrapper::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 45, 20, 0.55);
+    }
+    .home-cta-wrapper .container {
+        position: relative;
+        z-index: 1;
+    }
+    .home-cta-section {
+        position: relative;
+        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        padding: 70px 50px;
+        overflow: hidden;
+        border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(26, 58, 26, 0.25);
+    }
+    .home-cta-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.6) 55%, rgba(15,30,15,0.25) 100%);
+        border-radius: 30px;
+    }
+    .home-cta-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+    }
+
+    /* Left */
+    .home-cta-left { flex: 1; max-width: 460px; }
+    .home-cta-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: rgba(255,255,255,0.55);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+    }
+    .home-cta-label::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 40px;
+        background: var(--primary);
+    }
+    .home-cta-heading {
+        color: #fff;
+        font-size: 2.4rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 18px;
+    }
+    .home-cta-desc {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.95rem;
+        line-height: 1.75;
+    }
+
+    /* Right Card */
+    .home-cta-card {
+        width: 420px;
+        flex-shrink: 0;
+        background: rgba(22, 42, 22, 0.92);
+        backdrop-filter: blur(12px);
+        border-radius: 16px;
+        padding: 30px 28px;
+        border: 1px solid rgba(255,255,255,0.08);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .home-cta-card-title {
+        color: #fff;
+        font-size: 1.25rem;
+        font-weight: 800;
+        margin-bottom: 6px;
+    }
+    .home-cta-card-sub {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+        line-height: 1.5;
+    }
+    .home-cta-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    .home-cta-input {
+        flex: 1;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        padding: 11px 14px;
+        color: #fff;
+        font-size: 0.87rem;
+        width: 100%;
+        transition: border-color 0.2s;
+        margin-bottom: 0;
+    }
+    .home-cta-input::placeholder { color: rgba(255,255,255,0.35); }
+    .home-cta-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: rgba(255,255,255,0.1);
+    }
+    .home-cta-input option { background: #1a2a1a; color: #fff; }
+    .home-cta-textarea {
+        display: block;
+        width: 100%;
+        height: 90px;
+        resize: vertical;
+        margin-bottom: 14px;
+        margin-top: 10px;
+    }
+    .home-cta-submit {
+        display: block;
+        width: 100%;
+        background: var(--primary);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 13px;
+        font-weight: 800;
+        font-size: 0.85rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    .home-cta-submit:hover {
+        background: #3a6b1a;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(139,195,74,0.3);
+    }
+    @media (max-width: 991px) {
+        .home-cta-wrapper { padding: 40px 0 60px; }
+        .home-cta-section { padding: 40px 24px; border-radius: 24px; }
+        .home-cta-overlay { border-radius: 24px; }
+        .home-cta-inner { flex-direction: column; }
+        .home-cta-card { width: 100%; }
+        .home-cta-heading { font-size: 1.8rem; }
+    }
+</style>
+
+<!-- FAQ — Premium Dark Split Layout -->
+<section class="faq-premium-section" id="faqs">
+    <div class="container">
+        <div class="row g-5 align-items-start">
+
+            {{-- LEFT PANEL --}}
+            <div class="col-lg-5 faq-left-panel d-flex flex-column justify-content-between py-5">
+                <div>
+                    <span class="faq-pill-label">● FAQS</span>
+                    <h2 class="faq-heading mt-3">Frequently Asked<br>Questions</h2>
+
+                    {{-- Circular Overlapping Images --}}
+                    <div class="faq-images-wrap mt-4">
+                        <div class="faq-img-circle faq-img-back">
+                            <img src="{{ asset('storage/Home/1.9 Sustainability at the Core.jpg') }}" alt="Garden">
+                        </div>
+                        <div class="faq-img-circle faq-img-front">
+                            <img src="{{ asset('storage/Home/1.8 Science-Driven Approach.jpg') }}" alt="Expert">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-cta-wrap mt-5">
+                    <p class="faq-cta-text">Have Any Question<br>on Your Minds?</p>
+                    <a href="/contact" class="faq-cta-btn">
+                        Get In Touch
+                        <span class="faq-cta-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+
+            {{-- RIGHT PANEL --}}
+            <div class="col-lg-7 faq-right-panel py-5">
+                <div class="faq-items-list" id="faqAccordion">
+                    @php
+                        $fallbackFaqs = [
+                            ['id' => 'f1', 'q' => 'How much does landscaping cost?', 'a' => 'Costs vary based on project size, scope and materials. We provide free site assessments with transparent, detailed quotations before any work begins.'],
+                            ['id' => 'f2', 'q' => 'How long does a full landscape makeover take?', 'a' => 'Timelines depend on complexity. A residential garden typically takes 2–4 weeks; larger commercial projects may take 8–16 weeks with phased execution.'],
+                            ['id' => 'f3', 'q' => 'Do you provide maintenance after the installation?', 'a' => 'Yes. We offer Annual Maintenance Contracts (AMC) covering regular upkeep, pest control, irrigation management and plant health monitoring.'],
+                            ['id' => 'f4', 'q' => 'Can you design a landscape for small yards?', 'a' => 'Absolutely. We specialise in maximising every square foot — from compact urban terraces to balcony gardens and small residential plots.'],
+                            ['id' => 'f5', 'q' => 'Is your service suitable for both homes and businesses?', 'a' => 'Yes. We serve residential clients, corporate campuses, institutions, resorts, hospitals and public spaces across India.'],
+                        ];
+                        $faqItems = isset($faqs) && $faqs->count() ? $faqs : collect($fallbackFaqs)->map(fn($f) => (object)['id' => $f['id'], 'question' => $f['q'], 'answer' => $f['a']]);
+                    @endphp
+
+                    @foreach($faqItems as $i => $faq)
+                        <div class="faq-box-item mb-3">
+                            <button class="faq-box-btn {{ $i === 0 ? 'open' : '' }}"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faqp{{ $faq->id }}"
+                                    aria-expanded="{{ $i === 0 ? 'true' : 'false' }}">
+                                <span>{{ $faq->question }}</span>
+                                <span class="faq-plus-icon"><i class="fas fa-plus"></i></span>
+                            </button>
+                            <div id="faqp{{ $faq->id }}" class="collapse {{ $i === 0 ? 'show' : '' }}" data-bs-parent="#faqAccordion">
+                                <div class="faq-box-body">
+                                    {{ $faq->answer }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ===== FAQ PREMIUM SECTION ===== */
+    .faq-premium-section {
+        background: #1e3c1e;
+        padding: 70px 0;
+        overflow: hidden;
+    }
+
+    /* Left Panel */
+    .faq-left-panel { background: transparent; }
+
+    .faq-pill-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(197,225,165,0.15);
+        color: #C5E1A5;
+        border-radius: 50px;
+        padding: 5px 14px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 1.3px;
+        text-transform: uppercase;
+    }
+    .faq-heading {
+        color: #fff;
+        font-size: 2.3rem;
+        font-weight: 800;
+        line-height: 1.2;
+    }
+
+    /* Overlapping circular images */
+    .faq-images-wrap {
+        position: relative;
+        height: 175px;
+        width: 270px;
+    }
+    .faq-img-circle {
+        position: absolute;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 4px solid #1e3c1e;
+    }
+    .faq-img-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .faq-img-back  { width: 155px; height: 155px; top: 10px; left: 0; }
+    .faq-img-front { width: 130px; height: 130px; top: 30px; left: 120px; }
+
+    /* CTA */
+    .faq-cta-text {
+        color: rgba(255,255,255,0.75);
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: 14px;
+    }
+    .faq-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: #C5E1A5;
+        color: #1a3a1a;
+        border-radius: 50px;
+        padding: 11px 16px 11px 22px;
+        font-weight: 800;
+        font-size: 0.92rem;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .faq-cta-btn:hover { background: #fff; color: #1a3a1a; }
+    .faq-cta-arrow {
+        width: 34px; height: 34px;
+        border-radius: 50%;
+        background: #1a3a1a;
+        display: flex; align-items: center; justify-content: center;
+        color: #C5E1A5;
+        font-size: 0.8rem;
+        transition: background 0.3s;
+    }
+    .faq-cta-btn:hover .faq-cta-arrow { background: var(--primary); color: #fff; }
+
+    /* Right Panel */
+    .faq-right-panel { background: transparent; }
+    .faq-items-list { display: flex; flex-direction: column; gap: 12px; }
+
+    /* Each FAQ box — individual bordered card */
+    .faq-box-item {
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: border-color 0.2s;
+    }
+    .faq-box-item:hover { border-color: rgba(255,255,255,0.35); }
+
+    .faq-box-btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background: transparent;
+        border: none;
+        color: rgba(255,255,255,0.88);
+        font-size: 0.97rem;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        padding: 16px 20px;
+        gap: 14px;
+        transition: color 0.2s;
+    }
+    .faq-box-btn:hover,
+    .faq-box-btn.open { color: #fff; }
+
+    .faq-plus-icon {
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(255,255,255,0.3);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 0.8rem;
+        color: rgba(255,255,255,0.65);
+        flex-shrink: 0;
+        transition: all 0.3s;
+    }
+    .faq-box-btn.open .faq-plus-icon,
+    .faq-box-btn[aria-expanded="true"] .faq-plus-icon {
+        background: #C5E1A5;
+        border-color: #C5E1A5;
+        color: #1a3a1a;
+        transform: rotate(45deg);
+    }
+    .faq-box-body {
+        color: rgba(255,255,255,0.6);
+        font-size: 0.9rem;
+        line-height: 1.75;
+        padding: 0 20px 16px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 12px;
+    }
+
+    @media (max-width: 991px) {
+        .faq-premium-section { padding: 50px 0; }
+        .faq-heading { font-size: 1.8rem; }
+    }
+</style>
+
+@endsection
+
+@section('scripts')
+<script>
+    // Scroll-triggered animations for service cards
+    const svcObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                svcObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.svc-animate').forEach(el => svcObserver.observe(el));
+</script>
+@endsection
+

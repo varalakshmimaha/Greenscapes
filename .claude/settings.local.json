@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php artisan tinker '--execute=:*)",
+      "Read(//c/Users/varalakshmi/Desktop/Nursary/resources/views/frontend/**)"
+    ]
+  }
+}

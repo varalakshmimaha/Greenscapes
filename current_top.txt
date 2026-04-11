@@ -1,0 +1,180 @@
+@extends('frontend.layouts.app')
+
+@section('title', 'Project Portfolio - SR Greenscapes')
+
+@section('content')
+<!-- Hero Section -->
+<section class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat; padding: 120px 0 80px;">
+    <div class="container text-center">
+        <h1 class="text-white fw-bold display-4 mb-3" data-aos="fade-up">Project Portfolio</h1>
+        <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="100">
+            <ol class="breadcrumb justify-content-center">
+                <li class="breadcrumb-item"><a href="/" class="text-white text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item active text-white-50" aria-current="page">Projects</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="portfolio-grid-section py-5">
+    <div class="container">
+        <div class="mb-5 text-center" data-aos="fade-up">
+            <p class="about-label">Our Work</p>
+            <h2 class="section-title">Crafting Landscapes That Perform, Evolve and Inspire</h2>
+            <p class="text-muted mx-auto" style="max-width: 800px;">
+                Every project is a reflection of our commitment to scientific planning, thoughtful design and 
+                sustainable execution. Our portfolio showcases a diverse range of landscapes- each uniquely 
+                designed to respond to its environment, purpose and client vision.
+            </p>
+        </div>
+
+
+
+        <!-- Filter Tabs -->
+        <div class="portfolio-filters mb-5 text-center" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="residential">Residential</button>
+            <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <button class="filter-btn" data-filter="public">Public Spaces</button>
+            <button class="filter-btn" data-filter="maintenance">Maintenance</button>
+        </div>
+
+        <div class="row g-4" id="portfolio-container">
+            @php
+                $fakeProjects = [
+                    ['title' => 'Villa Garden Design', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.1Cover photo 1.jpg'],
+                    ['title' => 'Corporate Campus Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'Home/1.2 Cover photo 2.jpg'],
+                    ['title' => 'School & Institutional Garden', 'location' => 'Hoskote, Karnataka', 'type' => 'INSTITUTIONAL', 'img' => 'Home/1.3 Cover photo 3.jpg'],
+                    ['title' => 'Terrace & Rooftop Garden', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.4 Cover photo  4.jpg'],
+                    ['title' => 'Resort & Hotel Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'Home/1.5 Cover photo 5.jpg'],
+                    ['title' => 'Miyawaki Forest Project', 'location' => 'Pan-India', 'type' => 'SPECIALIZED', 'img' => 'Home/1.6 Cover photo 6.jpg'],
+                    ['title' => 'Parks & Public Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'PUBLIC', 'img' => 'Home/1.7 Cover photo 7.jpg'],
+                    ['title' => 'Apartment Complex Garden', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.8 Science-Driven Approach.jpg'],
+                    ['title' => 'Urban Terrace Garden', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'About Us/2.1  Science-Driven Approach.jpg'],
+                    ['title' => 'Industrial Green Belt', 'location' => 'Hoskote, Karnataka', 'type' => 'INDUSTRIAL', 'img' => 'About Us/2.2 Sustainability at the Core.jpg'],
+                    ['title' => 'Boutique Hotel Garden', 'location' => 'Mysuru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'About Us/2.3  Research-Integrated Planning.jpg'],
+                    ['title' => 'Private Estate Landscape', 'location' => 'Coorg, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.9 Sustainability at the Core.jpg'],
+                ];
+                $activeProjects = $projects->count() ? $projects : collect($fakeProjects);
+            @endphp
+
+            @foreach($activeProjects as $p)
+                @php
+                    $isFake = is_array($p);
+                    $title = $isFake ? $p['title'] : $p->title;
+                    $location = $isFake ? $p['location'] : ($p->client_name ?? 'Location');
+                    $type = $isFake ? $p['type'] : ($p->status ?? 'RESIDENTIAL');
+                    $img = $isFake ? asset('storage/' . $p['img']) : asset('storage/' . ($p->image ?? $p->after_image));
+                    $slug = $isFake ? 'sample-project' : $p->slug;
+                    $link = route('project.detail', $slug);
+                    $filterClass = strtolower($type);
+                @endphp
+                <div class="col-lg-4 col-md-6 portfolio-item {{ $filterClass }}" data-aos="fade-up">
+                    <div class="custom-project-card" onclick="window.location.href='{{ $link }}'">
+                        <img src="{{ $img }}" alt="{{ $title }}" class="custom-project-img">
+                        <div class="project-type-badge">{{ $type }}</div>
+                        <div class="custom-project-overlay">
+                            <div class="project-content-bottom">
+                                <h5>{{ $title }}</h5>
+                                <p><i class="fas fa-map-marker-alt"></i> {{ $location }}</p>
+                            </div>
+                        </div>
+                        <div class="view-project-btn">View Project</div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+@section('cta')
+<!-- Projects Page Custom CTA (Form Layout version for alternating CTA design) -->
+<section class="projects-cta position-relative my-5 mx-0 mx-lg-5" style="border-radius: 20px; overflow: hidden; background-color: #f8f9fa;">
+    <div class="row g-0">
+        <!-- Image Side -->
+        <div class="col-lg-5 d-none d-lg-block position-relative" style="min-height: 480px;">
+            <div class="position-absolute w-100 h-100 top-0 start-0" style="background: url('{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}') center/cover no-repeat;"></div>
+            <div class="position-absolute w-100 h-100 top-0 start-0" style="background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.4));"></div>
+        </div>
+        
+        <!-- Form Side -->
+        <div class="col-lg-7 d-flex align-items-center bg-white">
+            <div class="p-5 w-100">
+                <span class="badge bg-success mb-3 px-3 py-2 text-uppercase" style="letter-spacing: 1px; font-size: 0.8rem;">Let's Talk</span>
+                <h2 class="display-6 fw-bold mb-2">Have a similar project in mind?</h2>
+                <p class="text-muted mb-4 fs-5">Fill out the form below and we will get back to you with a free initial estimate.</p>
+                
+                <form action="/contact/submit" method="POST">
+                    @csrf
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control form-control-lg bg-light border-0" placeholder="Email Address" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="Project Type (e.g. Residential, Commercial)" required>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill fw-bold" style="padding: 15px;">Send Request <i class="fas fa-paper-plane ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section('cta')
+<!-- Projects Page Custom CTA (Form Layout version for alternating CTA design) -->
+<section class="projects-cta position-relative my-5 mx-0 mx-lg-5" style="border-radius: 20px; overflow: hidden; background-color: #f8f9fa;">
+    <div class="row g-0">
+        <!-- Image Side -->
+        <div class="col-lg-5 d-none d-lg-block position-relative" style="min-height: 480px;">
+            <div class="position-absolute w-100 h-100 top-0 start-0" style="background: url('{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}') center/cover no-repeat;"></div>
+            <div class="position-absolute w-100 h-100 top-0 start-0" style="background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.4));"></div>
+        </div>
+        
+        <!-- Form Side -->
+        <div class="col-lg-7 d-flex align-items-center bg-white">
+            <div class="p-5 w-100">
+                <span class="badge bg-success mb-3 px-3 py-2 text-uppercase" style="letter-spacing: 1px; font-size: 0.8rem;">Let's Talk</span>
+                <h2 class="display-6 fw-bold mb-2">Have a similar project in mind?</h2>
+                <p class="text-muted mb-4 fs-5">Fill out the form below and we will get back to you with a free initial estimate.</p>
+                
+                <form action="/contact/submit" method="POST">
+                    @csrf
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control form-control-lg bg-light border-0" placeholder="Email Address" required>
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="Project Type (e.g. Residential, Commercial)" required>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill fw-bold" style="padding: 15px;">Send Request <i class="fas fa-paper-plane ms-2"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection
+@endsection
+<section class="stats-bar-section py-5 my-5 position-relative" style="background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover fixed no-repeat; overflow: hidden; border-radius: 0;">
+    <!-- Dark/Green Overlay for Readability -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(17, 45, 20, 0.85); z-index: 0;"></div>
+    
+    <!-- Modern Abstract Shapes (Opacities reduced lightly for background image integration) -->
+    <div class="position-absolute rounded-circle blur-bg" style="width: 300px; height: 300px; background: rgba(189, 228, 57, 0.1); top: -100px; left: -100px; filter: blur(80px); z-index: 0;"></div>
+    <div class="position-absolute rounded-circle blur-bg" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
+    
+    <div class="container position-relative z-1 py-4">
+        <div class="row justify-content-center g-4">
+            
