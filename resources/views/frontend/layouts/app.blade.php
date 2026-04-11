@@ -666,7 +666,7 @@
                                             <div class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
                                             <div class="dropdown-submenu-menu">
                                                 @foreach($navTeamCategories as $tc)
-                                                    <a href="/about#team">{{ $tc->name }}</a>
+                                                    <a href="{{ route('team.category', $tc->slug) }}">{{ $tc->name }}</a>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -690,15 +690,15 @@
                                         @foreach($navServiceCategories as $sc)
                                             @if($sc->subCategories->count())
                                                 <div class="dropdown-submenu">
-                                                    <div class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
+                                                    <a href="{{ route('services.category', $sc->slug) }}" class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
                                                     <div class="dropdown-submenu-menu">
                                                         @foreach($sc->subCategories as $sub)
-                                                            <a href="/services#{{ $sub->slug }}">{{ $sub->name }}</a>
+                                                            <a href="{{ route('services.subcategory', [$sc->slug, $sub->slug]) }}">{{ $sub->name }}</a>
                                                         @endforeach
                                                     </div>
                                                 </div>
                                             @else
-                                                <a href="/services#{{ $sc->slug }}">{{ $sc->name }}</a>
+                                                <a href="{{ route('services.category', $sc->slug) }}">{{ $sc->name }}</a>
                                             @endif
                                         @endforeach
                                     @endif
@@ -729,7 +729,7 @@
                 @else
                     <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a></li>
                     <li>
-                        <a href="/about" class="{{ request()->is('about') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
                         <div class="dropdown-menu-custom">
                             <a href="/about">About SR Greenscapes</a>
                             @if(isset($navTeamCategories) && $navTeamCategories->count())
@@ -737,7 +737,7 @@
                                     <div class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
                                     <div class="dropdown-submenu-menu">
                                         @foreach($navTeamCategories as $tc)
-                                            <a href="/about#team">{{ $tc->name }}</a>
+                                            <a href="{{ route('team.category', $tc->slug) }}">{{ $tc->name }}</a>
                                         @endforeach
                                     </div>
                                 </div>
@@ -752,14 +752,18 @@
                             <a href="/services">All Services</a>
                             @if(isset($navServiceCategories) && $navServiceCategories->count())
                                 @foreach($navServiceCategories as $sc)
-                                    <div class="dropdown-submenu">
-                                        <div class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
-                                        <div class="dropdown-submenu-menu">
-                                            @foreach($sc->subCategories as $sub)
-                                                <a href="/services#{{ $sub->slug }}">{{ $sub->name }}</a>
-                                            @endforeach
+                                    @if($sc->subCategories->count())
+                                        <div class="dropdown-submenu">
+                                            <a href="{{ route('services.category', $sc->slug) }}" class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
+                                            <div class="dropdown-submenu-menu">
+                                                @foreach($sc->subCategories as $sub)
+                                                    <a href="{{ route('services.subcategory', [$sc->slug, $sub->slug]) }}">{{ $sub->name }}</a>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                    </div>
+                                    @else
+                                        <a href="{{ route('services.category', $sc->slug) }}">{{ $sc->name }}</a>
+                                    @endif
                                 @endforeach
                             @endif
                         </div>

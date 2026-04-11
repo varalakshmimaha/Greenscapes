@@ -121,6 +121,16 @@
 
 <section class="services-grid">
     <div class="container">
+        {{-- Category Filter Buttons --}}
+        @if(isset($serviceCategories) && $serviceCategories->count())
+            <div class="text-center mb-5" data-aos="fade-up">
+                <a href="/services" class="btn btn-sm rounded-pill px-4 py-2 me-2 mb-2 {{ !isset($activeServiceCategory) || !$activeServiceCategory ? 'btn-success' : 'btn-outline-success' }}">All Services</a>
+                @foreach($serviceCategories as $sc)
+                    <a href="{{ route('services.category', $sc->slug) }}" class="btn btn-sm rounded-pill px-4 py-2 me-2 mb-2 {{ isset($activeServiceCategory) && $activeServiceCategory && $activeServiceCategory->id === $sc->id ? 'btn-success' : 'btn-outline-success' }}">{{ $sc->name }}</a>
+                @endforeach
+            </div>
+        @endif
+
         <div class="row g-4">
             @foreach($services as $i => $service)
                 <div class="col-lg-4 col-md-6">

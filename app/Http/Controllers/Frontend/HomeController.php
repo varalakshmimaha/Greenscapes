@@ -11,7 +11,9 @@ use App\Models\Gallery;
 use App\Models\Menu;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\ServiceCategory;
 use App\Models\Setting;
+use App\Models\TeamCategory;
 use App\Models\TeamMember;
 use App\Models\Counter;
 use App\Models\Testimonial;
@@ -40,13 +42,46 @@ class HomeController extends Controller
     {
         $about = About::where('is_active', true)->orderBy('order')->get();
         $teamMembers = TeamMember::where('is_active', true)->orderBy('order')->get();
-        return view('frontend.about', compact('about', 'teamMembers'));
+        $teamCategories = TeamCategory::where('is_active', true)->orderBy('order')->get();
+        $activeCategory = null;
+        return view('frontend.about', compact('about', 'teamMembers', 'teamCategories', 'activeCategory'));
+    }
+
+    public function teamByCategory($slug)
+    {
+        $category = TeamCategory::where('slug', $slug)->where('is_active', true)->firstOrFail();
+        $about = About::where('is_active', true)->orderBy('order')->get();
+        $teamMembers = TeamMember::where('is_active', true)->where('team_category_id', $category->id)->orderBy('order')->get();
+        $teamCategories = TeamCategory::where('is_active', true)->orderBy('order')->get();
+        $activeCategory = $category;
+        return view('frontend.about', compact('about', 'teamMembers', 'teamCategories', 'activeCategory'));
     }
 
     public function services()
     {
         $services = Service::where('is_active', true)->orderBy('order')->get();
-        return view('frontend.services', compact('services'));
+        $serviceCategories = ServiceCategory::where('is_active', true)->orderBy('order')->get();
+        $activeServiceCategory = null;
+        return view('frontend.services', compact('services', 'serviceCategories', 'activeServiceCategory'));
+    }
+
+    public function servicesByCategory($slug)
+    {
+        $category = ServiceCategory::where('slug', $slug)->where('is_active', true)->firstOrFail();
+        $services = Service::where('is_active', true)->where('service_category_id', $category->id)->orderBy('order')->get();
+        $serviceCategories = ServiceCategory::where('is_active', true)->orderBy('order')->get();
+        $activeServiceCategory = $category;
+        return view('frontend.services', compact('services', 'serviceCategories', 'activeServiceCategory'));
+    }
+
+    public function servicesBySubCategory($categorySlug, $subSlug)
+    {
+        $category = ServiceCategory::where('slug', $categorySlug)->where('is_active', true)->firstOrFail();
+        $subCategory = $category->subCategories()->where('slug', $subSlug)->where('is_active', true)->firstOrFail();
+        $services = Service::where('is_active', true)->where('service_sub_category_id', $subCategory->id)->orderBy('order')->get();
+        $serviceCategories = ServiceCategory::where('is_active', true)->orderBy('order')->get();
+        $activeServiceCategory = $category;
+        return view('frontend.services', compact('services', 'serviceCategories', 'activeServiceCategory'));
     }
 
     public function serviceDetail($slug)
