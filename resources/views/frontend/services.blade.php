@@ -155,6 +155,157 @@
         </div>
     </div>
 </section>
+
+<!-- Why Choose SR Greenscapes -->
+<section class="why-choose-section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="why-choose-label">WHY US</span>
+            <h2 class="why-choose-heading">Why Choose <span>SR Greenscapes</span> Pvt Ltd</h2>
+            <p class="why-choose-sub">Science-driven landscaping with sustainable, long-lasting results</p>
+        </div>
+
+        <div class="row g-4">
+            @php
+                $whyItems = [
+                    ['icon' => 'fas fa-flask', 'title' => 'Science-Driven Approach', 'desc' => 'Every project is guided by scientific assessment, including soil analysis, plant selection, and climate-responsive planning to ensure long-term performance.'],
+                    ['icon' => 'fas fa-seedling', 'title' => 'Sustainability at the Core', 'desc' => 'We design eco-friendly landscapes that conserve water, enhance soil health, support biodiversity, and reduce maintenance needs.'],
+                    ['icon' => 'fas fa-chart-bar', 'title' => 'Research-Integrated Planning', 'desc' => 'Our work is backed by academic expertise, field trials, and data-driven insights for reliable and high-performing green solutions.'],
+                    ['icon' => 'fas fa-globe-americas', 'title' => 'Climate-Resilient Design', 'desc' => 'We create adaptive landscapes that withstand heat, irregular rainfall, and urban environmental stress.'],
+                    ['icon' => 'fas fa-hard-hat', 'title' => 'End-to-End Execution', 'desc' => 'From design and plant supply to installation and maintenance, we provide complete landscaping solutions under one roof.'],
+                    ['icon' => 'fas fa-users', 'title' => 'Expert Leadership & Advisory', 'desc' => 'Led by horticulture professionals and supported by a strong scientific network, ensuring technical excellence in every project.'],
+                    ['icon' => 'fas fa-hand-holding-usd', 'title' => 'Long-Term Value & Cost-Effective Solutions', 'desc' => 'We focus on delivering high-quality landscapes that balance design, performance, and budget — ensuring maximum value with optimized resources and lasting results.'],
+                ];
+            @endphp
+
+            @foreach($whyItems as $idx => $item)
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $idx * 80 }}">
+                    <div class="why-card">
+                        <div class="why-card-icon">
+                            <i class="{{ $item['icon'] }}"></i>
+                        </div>
+                        <h5 class="why-card-title">{{ $item['title'] }}</h5>
+                        <p class="why-card-desc">{{ $item['desc'] }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ===== WHY CHOOSE SECTION ===== */
+    .why-choose-section {
+        padding: 80px 0;
+        background: linear-gradient(180deg, #f9fbf9 0%, #eef5e8 100%);
+    }
+    .why-choose-label {
+        display: inline-block;
+        background: rgba(139,195,74,0.12);
+        color: var(--primary);
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+    }
+    .why-choose-heading {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1a3a1a;
+        margin-bottom: 12px;
+    }
+    .why-choose-heading span {
+        color: var(--primary);
+    }
+    .why-choose-sub {
+        color: #777;
+        font-size: 1rem;
+        max-width: 550px;
+        margin: 0 auto;
+    }
+
+    .why-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 35px 28px;
+        height: 100%;
+        border: 1px solid #eee;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+    }
+    .why-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background: var(--primary);
+        border-radius: 0 0 4px 4px;
+        transition: height 0.4s;
+    }
+    .why-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        border-color: rgba(139,195,74,0.3);
+    }
+    .why-card:hover::before {
+        height: 100%;
+    }
+    .why-card-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(139,195,74,0.1);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+    }
+    .why-card-icon i {
+        font-size: 1.4rem;
+        color: var(--primary);
+        transition: all 0.3s;
+    }
+    .why-card:hover .why-card-icon {
+        background: var(--primary);
+    }
+    .why-card:hover .why-card-icon i {
+        color: #fff;
+    }
+    .why-card-title {
+        font-weight: 700;
+        color: #1a3a1a;
+        font-size: 1.05rem;
+        margin-bottom: 12px;
+    }
+    .why-card-desc {
+        color: #666;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    @media (max-width: 991px) {
+        .why-choose-section { padding: 60px 0; }
+        .why-choose-heading { font-size: 1.8rem; }
+    }
+    @media (max-width: 575px) {
+        .why-choose-section { padding: 40px 0; }
+        .why-choose-heading { font-size: 1.4rem; }
+        .why-choose-sub { font-size: 0.88rem; }
+        .why-card { padding: 25px 20px; border-radius: 16px; }
+        .why-card-icon { width: 50px; height: 50px; border-radius: 12px; }
+        .why-card-icon i { font-size: 1.2rem; }
+        .why-card-title { font-size: 0.95rem; }
+        .why-card-desc { font-size: 0.82rem; }
+    }
+</style>
 @endsection
 
 @section('cta')
