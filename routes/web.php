@@ -27,6 +27,7 @@ use App\Http\Controllers\Frontend\HomeController;
 // ========================
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/our-team', [HomeController::class, 'ourTeam'])->name('our-team');
 Route::get('/about/team/{slug}', [HomeController::class, 'teamByCategory'])->name('team.category');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/services/category/{slug}', [HomeController::class, 'servicesByCategory'])->name('services.category');

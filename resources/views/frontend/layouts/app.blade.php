@@ -663,15 +663,15 @@
                                     <a href="/about">About SR Greenscapes</a>
                                     @if(isset($navTeamCategories) && $navTeamCategories->count())
                                         <div class="dropdown-submenu">
-                                            <div class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
+                                            <a href="/our-team" class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
                                             <div class="dropdown-submenu-menu">
                                                 @foreach($navTeamCategories as $tc)
-                                                    <a href="{{ route('team.category', $tc->slug) }}">{{ $tc->name }}</a>
+                                                    <a href="/our-team?category={{ $tc->slug }}">{{ $tc->name }}</a>
                                                 @endforeach
                                             </div>
                                         </div>
                                     @else
-                                        <a href="/about#team">Our Team</a>
+                                        <a href="/our-team">Our Team</a>
                                     @endif
                                     @if($menu->children->count())
                                         @foreach($menu->children as $child)
@@ -734,15 +734,15 @@
                             <a href="/about">About SR Greenscapes</a>
                             @if(isset($navTeamCategories) && $navTeamCategories->count())
                                 <div class="dropdown-submenu">
-                                    <div class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></div>
+                                    <a href="/our-team" class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
                                     <div class="dropdown-submenu-menu">
                                         @foreach($navTeamCategories as $tc)
-                                            <a href="{{ route('team.category', $tc->slug) }}">{{ $tc->name }}</a>
+                                            <a href="/our-team?category={{ $tc->slug }}">{{ $tc->name }}</a>
                                         @endforeach
                                     </div>
                                 </div>
                             @else
-                                <a href="/about#team">Our Team</a>
+                                <a href="/our-team">Our Team</a>
                             @endif
                         </div>
                     </li>

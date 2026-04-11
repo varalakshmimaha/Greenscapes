@@ -47,6 +47,27 @@ class HomeController extends Controller
         return view('frontend.about', compact('about', 'teamMembers', 'teamCategories', 'activeCategory'));
     }
 
+    public function ourTeam(Request $request)
+    {
+        $teamCategories = TeamCategory::where('is_active', true)->orderBy('order')->get();
+        $activeCategory = null;
+
+        if ($request->has('category')) {
+            $activeCategory = TeamCategory::where('slug', $request->category)->where('is_active', true)->first();
+            $teamMembers = $activeCategory
+                ? TeamMember::where('is_active', true)->where('team_category_id', $activeCategory->id)->orderBy('order')->get()
+                : collect([]);
+        } else {
+            // Default: show first category
+            $activeCategory = $teamCategories->first();
+            $teamMembers = $activeCategory
+                ? TeamMember::where('is_active', true)->where('team_category_id', $activeCategory->id)->orderBy('order')->get()
+                : TeamMember::where('is_active', true)->orderBy('order')->get();
+        }
+
+        return view('frontend.our-team', compact('teamMembers', 'teamCategories', 'activeCategory'));
+    }
+
     public function teamByCategory($slug)
     {
         $category = TeamCategory::where('slug', $slug)->where('is_active', true)->firstOrFail();
