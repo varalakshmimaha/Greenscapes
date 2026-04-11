@@ -17,14 +17,14 @@
     .gallery-hero::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
+        inset: 0;
         background: url('{{ asset('storage/Home/1.6 Cover photo 6.jpg') }}') center/cover no-repeat;
     }
     .gallery-hero::after {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(20, 45, 25, 0.70);
+        inset: 0;
+        background: rgba(20, 45, 25, 0.75);
     }
     .gallery-hero-content {
         position: relative;
@@ -33,119 +33,235 @@
     }
     .gallery-hero-content h1 {
         color: #fff;
-        font-size: 3.2rem;
-        font-weight: 700;
-        margin-bottom: 15px;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 12px;
         text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     .gallery-hero-content p {
-        color: rgba(255, 255, 255, 0.95);
-        font-size: 1.15rem;
-        max-width: 650px;
+        color: rgba(255,255,255,0.9);
+        font-size: 1.1rem;
+        max-width: 600px;
         margin: 0 auto;
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
 
-    /* ===== FILTER ===== */
-    .gallery-filter-btns {
+    /* ===== FILTER TABS ===== */
+    .gallery-filters {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
-        margin-bottom: 40px;
+        padding: 40px 0 10px;
     }
-    .gallery-filter-btns .gbtn {
-        padding: 8px 22px;
+    .gallery-filters .gbtn {
+        padding: 10px 28px;
         border-radius: 50px;
-        border: 2px solid #ddd;
-        background: #fff;
-        color: #555;
+        border: 2px solid var(--primary);
+        background: transparent;
+        color: var(--primary);
         font-weight: 600;
-        font-size: 0.85rem;
+        font-size: 0.88rem;
         cursor: pointer;
         transition: all 0.3s;
     }
-    .gallery-filter-btns .gbtn:hover,
-    .gallery-filter-btns .gbtn.active {
+    .gallery-filters .gbtn:hover,
+    .gallery-filters .gbtn.active {
         background: var(--primary);
-        border-color: var(--primary);
         color: #fff;
+        box-shadow: 0 4px 15px rgba(139,195,74,0.3);
     }
 
-    /* ===== GALLERY ITEM ===== */
+    /* ===== EQUAL GRID ===== */
+    .gallery-grid {
+        padding: 40px 0 80px;
+    }
     .gallery-item {
+        position: relative;
         border-radius: 16px;
         overflow: hidden;
-        position: relative;
-        height: 280px;
         cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        transition: all 0.3s;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: all 0.4s;
+        height: 320px;
     }
     .gallery-item:hover {
-        box-shadow: 0 12px 40px rgba(0,0,0,0.14);
-        transform: translateY(-5px);
+        box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+        transform: translateY(-6px);
     }
     .gallery-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.4s;
+        display: block;
+        transition: transform 0.5s;
     }
     .gallery-item:hover img {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
-    .gallery-item .gallery-overlay {
+    .gallery-item .g-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(transparent 50%, rgba(0,0,0,0.7));
+        background: linear-gradient(transparent 40%, rgba(0,0,0,0.75));
         opacity: 0;
         transition: opacity 0.3s;
         display: flex;
-        align-items: flex-end;
-        padding: 20px;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 25px;
     }
-    .gallery-item:hover .gallery-overlay {
+    .gallery-item:hover .g-overlay {
         opacity: 1;
     }
-    .gallery-overlay h6 {
+    .g-overlay h5 {
         color: #fff;
         font-weight: 700;
-        font-size: 0.95rem;
+        font-size: 1.1rem;
         margin-bottom: 4px;
     }
-    .gallery-overlay small {
-        color: rgba(255,255,255,0.6);
-        font-size: 0.75rem;
+    .g-overlay span {
+        color: var(--primary);
+        font-size: 0.78rem;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-    .gallery-item .zoom-icon {
+    .gallery-item .g-zoom {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0);
-        width: 50px;
-        height: 50px;
+        width: 56px;
+        height: 56px;
         background: var(--primary);
         color: #fff;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 18px;
+        font-size: 1.2rem;
         z-index: 3;
         transition: transform 0.3s;
+        box-shadow: 0 4px 15px rgba(139,195,74,0.4);
     }
-    .gallery-item:hover .zoom-icon {
+    .gallery-item:hover .g-zoom {
         transform: translate(-50%, -50%) scale(1);
     }
 
+    /* ===== LIGHTBOX SLIDER ===== */
+    .lightbox-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.95);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+    }
+    .lightbox-backdrop.active {
+        display: flex;
+    }
+    .lightbox-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2.5rem;
+        cursor: pointer;
+        z-index: 10001;
+        transition: color 0.3s;
+        line-height: 1;
+    }
+    .lightbox-close:hover { color: var(--primary); }
+
+    .lightbox-container {
+        position: relative;
+        width: 90vw;
+        height: 85vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .lightbox-container img {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 10px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        object-fit: contain;
+        background: transparent;
+        padding: 0;
+        min-width: 60vw;
+        min-height: 60vh;
+    }
+    .lightbox-caption {
+        color: #fff;
+        margin-top: 14px;
+        font-size: 1.15rem;
+        font-weight: 600;
+    }
+    .lightbox-caption .lb-cat {
+        display: block;
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 4px;
+    }
+    .lightbox-counter {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.85rem;
+        margin-top: 6px;
+    }
+
+    .lightbox-nav {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.1);
+        border: 2px solid rgba(255,255,255,0.25);
+        color: #fff;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 10001;
+    }
+    .lightbox-nav:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+    .lightbox-prev { left: 25px; }
+    .lightbox-next { right: 25px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 991px) {
+        .gallery-hero { height: 260px; }
+        .gallery-hero-content h1 { font-size: 2.2rem; }
+        .gallery-item { height: 280px; }
+        .lightbox-prev { left: 10px; }
+        .lightbox-next { right: 10px; }
+        .lightbox-nav { width: 45px; height: 45px; font-size: 1.1rem; }
+    }
     @media (max-width: 575px) {
-        .gallery-item { height: 200px; border-radius: 12px; }
-        .gallery-filter-btns .gbtn { padding: 6px 14px; font-size: 0.75rem; }
-        .gallery-filter-btns { gap: 6px; margin-bottom: 25px; }
-        .gallery-item .zoom-icon { width: 38px; height: 38px; font-size: 14px; }
+        .gallery-hero { height: 220px; }
+        .gallery-hero-content h1 { font-size: 1.6rem; }
+        .gallery-hero-content p { font-size: 0.9rem; }
+        .gallery-filters { gap: 8px; padding: 25px 0 5px; }
+        .gallery-filters .gbtn { padding: 8px 18px; font-size: 0.78rem; }
+        .gallery-item { height: 220px; }
+        .gallery-grid { padding: 25px 0 50px; }
+        .lightbox-prev { left: 8px; }
+        .lightbox-next { right: 8px; }
+        .lightbox-nav { width: 38px; height: 38px; font-size: 0.9rem; }
     }
 </style>
 @endsection
@@ -156,41 +272,43 @@
 <div class="gallery-hero">
     <div class="gallery-hero-content" data-aos="fade-up">
         <h1>Our Gallery</h1>
-        <p>A visual showcase of our landscape transformations and green space creations across India.</p>
+        <p>A visual showcase of our landscape transformations and green space creations</p>
     </div>
 </div>
 
-<!-- Gallery Grid -->
-<section class="py-5" style="background: #f9fbf9;">
-    <div class="container py-4">
-
+<!-- Filter Tabs -->
+<section style="background: #f9fbf9;">
+    <div class="container">
         @if(isset($categories) && $categories->count())
-        <div class="gallery-filter-btns" data-aos="fade-up">
+        <div class="gallery-filters" data-aos="fade-up">
             <button class="gbtn active" onclick="filterGallery('all', this)">All</button>
             @foreach($categories as $cat)
                 <button class="gbtn" onclick="filterGallery('{{ $cat }}', this)">{{ $cat }}</button>
             @endforeach
         </div>
         @endif
+    </div>
+</section>
 
+<!-- Gallery Grid -->
+<section class="gallery-grid" style="background: #f9fbf9;">
+    <div class="container">
         <div class="row g-4" id="galleryGrid">
-            @forelse($gallery as $item)
-                <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item" data-category="{{ $item->category ?? '' }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 60 }}">
-                    <div class="gallery-item" onclick="openLightbox('{{ asset('storage/' . $item->image) }}', '{{ $item->title ?? '' }}')">
-                        <img loading="lazy" src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title ?? 'Gallery Image' }}">
-                        <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
-                        <div class="gallery-overlay">
-                            <div>
-                                @if($item->title)<h6>{{ $item->title }}</h6>@endif
-                                @if($item->category)<small>{{ $item->category }}</small>@endif
-                            </div>
+            @forelse($gallery as $idx => $item)
+                <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item" data-category="{{ $item->category ?? '' }}" data-aos="fade-up" data-aos-delay="{{ ($idx % 4) * 80 }}">
+                    <div class="gallery-item" onclick="openLightbox({{ $idx }})">
+                        <img loading="lazy" src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title ?? 'Gallery' }}">
+                        <div class="g-zoom"><i class="fas fa-expand"></i></div>
+                        <div class="g-overlay">
+                            @if($item->title)<h5>{{ $item->title }}</h5>@endif
+                            @if($item->category)<span>{{ $item->category }}</span>@endif
                         </div>
                     </div>
                 </div>
             @empty
                 <div class="col-12 text-center py-5">
-                    <i class="fas fa-images fa-3x text-muted mb-3"></i>
-                    <p class="text-muted">No gallery images available yet.</p>
+                    <i class="fas fa-images" style="font-size:3rem;color:#ccc;margin-bottom:16px;"></i>
+                    <p style="color:#999;">No gallery images available yet.</p>
                 </div>
             @endforelse
         </div>
@@ -200,27 +318,102 @@
                 {{ $gallery->links() }}
             </div>
         @endif
-
     </div>
 </section>
 
-<!-- Lightbox Modal -->
-<div class="modal fade" id="galleryLightbox" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-transparent border-0">
-            <div class="modal-body p-0 text-center">
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal"></button>
-                <img id="lightboxImg" src="" alt="" style="max-width:100%; max-height:85vh; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.5);">
-                <p id="lightboxCaption" class="text-white mt-3 fw-bold"></p>
-            </div>
+<!-- Lightbox Slider -->
+<div class="lightbox-backdrop" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+    <div class="lightbox-container">
+        <img id="lightboxImg" src="" alt="">
+        <div class="lightbox-caption">
+            <span id="lightboxTitle"></span>
+            <span class="lb-cat" id="lightboxCategory"></span>
         </div>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
     </div>
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)"><i class="fas fa-chevron-right"></i></button>
 </div>
 
 @endsection
 
 @section('scripts')
 <script>
+const galleryItems = [
+    @foreach($gallery as $item)
+    {
+        src: '{{ asset("storage/" . $item->image) }}',
+        title: '{{ addslashes($item->title ?? "") }}',
+        category: '{{ addslashes($item->category ?? "") }}'
+    },
+    @endforeach
+];
+
+let currentIndex = 0;
+let visibleItems = [];
+
+function getVisibleItems() {
+    const items = document.querySelectorAll('.gallery-grid-item');
+    visibleItems = [];
+    items.forEach((item, idx) => {
+        if (item.style.display !== 'none') {
+            visibleItems.push(idx);
+        }
+    });
+}
+
+function openLightbox(idx) {
+    getVisibleItems();
+    currentIndex = visibleItems.indexOf(idx);
+    if (currentIndex === -1) currentIndex = 0;
+    showSlide();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function navigateLightbox(dir) {
+    currentIndex += dir;
+    if (currentIndex < 0) currentIndex = visibleItems.length - 1;
+    if (currentIndex >= visibleItems.length) currentIndex = 0;
+    showSlide();
+}
+
+function showSlide() {
+    const realIdx = visibleItems[currentIndex];
+    const item = galleryItems[realIdx];
+    const img = document.getElementById('lightboxImg');
+    img.style.opacity = '0';
+    setTimeout(() => {
+        img.src = item.src;
+        document.getElementById('lightboxTitle').textContent = item.title;
+        document.getElementById('lightboxCategory').textContent = item.category;
+        document.getElementById('lightboxCounter').textContent = (currentIndex + 1) + ' / ' + visibleItems.length;
+        img.style.opacity = '1';
+    }, 150);
+    img.style.transition = 'opacity 0.3s';
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+    if (e.key === 'Escape') closeLightbox();
+});
+
+// Click backdrop to close
+document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+});
+
+// Filter
 function filterGallery(cat, btn) {
     document.querySelectorAll('.gbtn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -231,12 +424,6 @@ function filterGallery(cat, btn) {
             item.style.display = 'none';
         }
     });
-}
-
-function openLightbox(src, caption) {
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightboxCaption').textContent = caption;
-    new bootstrap.Modal(document.getElementById('galleryLightbox')).show();
 }
 </script>
 @endsection

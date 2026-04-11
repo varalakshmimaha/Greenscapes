@@ -493,9 +493,12 @@
         transform: translateY(-8px);
         background: var(--primary);
     }
+    .service-card:hover .svc-body h5,
     .service-card:hover .svc-body h6,
     .service-card:hover .svc-body p,
-    .service-card:hover .learn-more {
+    .service-card:hover .svc-body .text-muted,
+    .service-card:hover .learn-more,
+    .service-card:hover .btn-theme {
         color: #fff !important;
     }
     .service-card .svc-img-wrap {
@@ -544,7 +547,17 @@
         transition: color 0.3s;
     }
     .service-card:hover .svc-body .learn-more {
-        color: var(--primary-dark);
+        color: #fff;
+    }
+    .service-card:hover .btn-theme {
+        background: #fff !important;
+        color: var(--primary) !important;
+    }
+    .service-card:hover .btn-theme .btn-icon {
+        background: var(--primary) !important;
+    }
+    .service-card:hover .btn-theme .btn-icon i {
+        color: #fff !important;
     }
     /* Scroll animation */
     .svc-animate {
@@ -1057,26 +1070,21 @@
                             <input type="email" name="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="col-6">
-                            <input type="text" name="subject" class="form-control" placeholder="City">
-                        </div>
-                        <div class="col-6">
-                            <select name="message" class="form-control" required>
-                                <option value="">Services*</option>
-                                <option>Residential</option>
-                                <option>Commercial</option>
-                                <option>Institutional</option>
-                                <option>Industrial</option>
-                                <option>Public Spaces</option>
-                                <option>Maintenance</option>
-                                <option>Vertical Gardening</option>
-                                <option>Horticulture Consultancy</option>
+                            <select name="subject" class="form-control" required>
+                                <option value="">Select Service *</option>
+                                <option>Landscape Design & Execution</option>
+                                <option>Hardscape & Softscape Development</option>
+                                <option>Commercial Campus Landscaping</option>
+                                <option>Specialized Garden Services</option>
                                 <option>Nursery & Plant Supply</option>
-                                <option>Green Gifts</option>
-                                <option>Garden Supplies</option>
-                                <option>Event Styling</option>
-                                <option>Water Bodies</option>
+                                <option>Horticulture Consultancy</option>
+                                <option>Landscape Maintenance (AMC)</option>
+                                <option>Event Styling & Green Decor</option>
                                 <option>Others</option>
                             </select>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" name="message" class="form-control" placeholder="City">
                         </div>
                         <div class="col-6">
                             <input type="text" class="form-control" placeholder="Address">
@@ -1679,16 +1687,16 @@
                             <input type="text"  name="phone" class="home-cta-input" placeholder="Phone Number *" required>
                         </div>
                         <div class="home-cta-row">
-                            <select name="message" class="home-cta-input">
+                            <select name="subject" class="home-cta-input">
                                 <option value="">Select Service *</option>
-                                <option>Residential Landscaping</option>
-                                <option>Commercial Landscaping</option>
-                                <option>Terrace / Rooftop Garden</option>
-                                <option>Miyawaki Forest</option>
-                                <option>Maintenance (AMC)</option>
-                                <option>Vertical Garden</option>
-                                <option>Water Bodies</option>
+                                <option>Landscape Design & Execution</option>
+                                <option>Hardscape & Softscape Development</option>
+                                <option>Commercial Campus Landscaping</option>
+                                <option>Specialized Garden Services</option>
                                 <option>Nursery & Plant Supply</option>
+                                <option>Horticulture Consultancy</option>
+                                <option>Landscape Maintenance (AMC)</option>
+                                <option>Event Styling & Green Decor</option>
                                 <option>Others</option>
                             </select>
                             <input type="text" name="city" class="home-cta-input" placeholder="City">

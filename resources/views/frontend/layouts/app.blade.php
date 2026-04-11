@@ -824,7 +824,18 @@
                                     <input type="text" name="phone" class="form-control" placeholder="Phone" required>
                                 </div>
                                 <div class="col-6">
-                                    <input type="text" name="company" class="form-control" placeholder="Company">
+                                    <select name="subject" class="form-control">
+                                        <option value="">Select Service</option>
+                                        <option>Landscape Design & Execution</option>
+                                        <option>Hardscape & Softscape Development</option>
+                                        <option>Commercial Campus Landscaping</option>
+                                        <option>Specialized Garden Services</option>
+                                        <option>Nursery & Plant Supply</option>
+                                        <option>Horticulture Consultancy</option>
+                                        <option>Landscape Maintenance (AMC)</option>
+                                        <option>Event Styling & Green Decor</option>
+                                        <option>Others</option>
+                                    </select>
                                 </div>
                                 <div class="col-6">
                                     <input type="text" name="address" class="form-control" placeholder="Address">
@@ -894,23 +905,6 @@
                         </div>
                     </div>
 
-                    {{-- Gallery Thumbnails --}}
-                    @if(isset($footerGallery) && $footerGallery->count())
-                    <div class="footer-gallery-label mt-3">
-                        <small style="color:var(--accent);font-weight:600;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;">
-                            <i class="fas fa-images me-1"></i> Gallery
-                        </small>
-                        <a href="/gallery" style="color:rgba(255,255,255,0.5);font-size:0.72rem;text-decoration:none;">View All <i class="fas fa-arrow-right" style="font-size:0.6rem;"></i></a>
-                    </div>
-                    <div class="footer-gallery-grid">
-                        @foreach($footerGallery as $fg)
-                        <a href="/gallery" class="footer-gallery-thumb">
-                            <img loading="lazy" src="{{ asset('storage/' . $fg->image) }}" alt="{{ $fg->title ?? 'Gallery' }}">
-                            <div class="footer-gallery-hover"><i class="fas fa-search-plus"></i></div>
-                        </a>
-                        @endforeach
-                    </div>
-                    @endif
                 </div>
 
                 <!-- Column 3: Contact Us & Social -->
@@ -944,27 +938,6 @@
                         <a href="https://www.youtube.com/@srgreenscapes" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
 
-                    {{-- Recent Blogs --}}
-                    @if(isset($footerBlogs) && $footerBlogs->count())
-                    <h6 style="color:var(--accent);font-size:0.85rem;font-weight:600;margin-top:22px;margin-bottom:12px;">Recent Blogs</h6>
-                    <div class="footer-blog-list">
-                        @foreach($footerBlogs as $fb)
-                        <a href="{{ route('blog.detail', $fb->slug) }}" class="footer-blog-item">
-                            <div class="footer-blog-img">
-                                @if($fb->image)
-                                    <img loading="lazy" src="{{ asset('storage/' . $fb->image) }}" alt="{{ $fb->title }}">
-                                @else
-                                    <div class="footer-blog-img-placeholder"><i class="fas fa-blog"></i></div>
-                                @endif
-                            </div>
-                            <div class="footer-blog-info">
-                                <h6>{{ Str::limit($fb->title, 40) }}</h6>
-                                <small><i class="fas fa-calendar-alt me-1"></i> {{ $fb->published_at ? $fb->published_at->format('M d, Y') : '' }}</small>
-                            </div>
-                        </a>
-                        @endforeach
-                    </div>
-                    @endif
                 </div>
 
             </div>

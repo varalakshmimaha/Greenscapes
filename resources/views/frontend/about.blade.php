@@ -534,7 +534,18 @@
                             <input type="text" name="phone" class="form-control" placeholder="Phone" required>
                         </div>
                         <div class="col-6">
-                            <input type="text" name="company" class="form-control" placeholder="Company">
+                            <select name="subject" class="form-control">
+                                <option value="">Select Service</option>
+                                <option>Landscape Design & Execution</option>
+                                <option>Hardscape & Softscape Development</option>
+                                <option>Commercial Campus Landscaping</option>
+                                <option>Specialized Garden Services</option>
+                                <option>Nursery & Plant Supply</option>
+                                <option>Horticulture Consultancy</option>
+                                <option>Landscape Maintenance (AMC)</option>
+                                <option>Event Styling & Green Decor</option>
+                                <option>Others</option>
+                            </select>
                         </div>
                         <div class="col-6">
                             <input type="text" name="address" class="form-control" placeholder="Address">

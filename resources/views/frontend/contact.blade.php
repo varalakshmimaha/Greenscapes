@@ -624,17 +624,16 @@
                             <div class="col-12">
                                 <div class="form-floating-custom">
                                     <label>Service Required <span class="required">*</span></label>
-                                    <select name="message" class="form-select" required>
+                                    <select name="subject" class="form-select" required>
                                         <option value="">— Select a Service —</option>
                                         <option>Landscape Design & Execution</option>
+                                        <option>Hardscape & Softscape Development</option>
+                                        <option>Commercial Campus Landscaping</option>
                                         <option>Specialized Garden Services</option>
-                                        <option>Softscape & Hardscape Development</option>
                                         <option>Nursery & Plant Supply</option>
-                                        <option>Landscape Maintenance</option>
                                         <option>Horticulture Consultancy</option>
-                                        <option>Green Gifts</option>
-                                        <option>Garden Supplies</option>
-                                        <option>Event Styling</option>
+                                        <option>Landscape Maintenance (AMC)</option>
+                                        <option>Event Styling & Green Decor</option>
                                         <option>Others</option>
                                     </select>
                                 </div>
@@ -776,16 +775,16 @@
                             <input type="email" name="email" class="contact-cta-input" placeholder="Email Address *">
                         </div>
                         <div class="contact-cta-row">
-                            <select name="message" class="contact-cta-input" required>
-                                <option value="">Select Service</option>
+                            <select name="subject" class="contact-cta-input" required>
+                                <option value="">Select Service *</option>
                                 <option>Landscape Design & Execution</option>
+                                <option>Hardscape & Softscape Development</option>
+                                <option>Commercial Campus Landscaping</option>
                                 <option>Specialized Garden Services</option>
-                                <option>Softscape & Hardscape Development</option>
                                 <option>Nursery & Plant Supply</option>
-                                <option>Landscape Maintenance</option>
                                 <option>Horticulture Consultancy</option>
-                                <option>Green Gifts</option>
-                                <option>Event Styling</option>
+                                <option>Landscape Maintenance (AMC)</option>
+                                <option>Event Styling & Green Decor</option>
                                 <option>Others</option>
                             </select>
                             <input type="text" name="phone" class="contact-cta-input" placeholder="Phone Number *" required>

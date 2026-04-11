@@ -44,6 +44,9 @@
         max-width: 600px;
         margin: 0 auto;
     }
+    .team-hero .breadcrumb-item + .breadcrumb-item::before {
+        color: rgba(255,255,255,0.5);
+    }
 
     /* ===== CATEGORY TABS ===== */
     .team-tabs {
@@ -206,24 +209,17 @@
 <!-- Hero Banner -->
 <div class="team-hero">
     <div class="team-hero-content" data-aos="fade-up">
-        <h1>Our Team</h1>
+        <h1>{{ $activeCategory ? $activeCategory->name : 'Our Team' }}</h1>
         <p>Meet the passionate experts driving innovation in sustainable landscaping</p>
+        <nav aria-label="breadcrumb" style="margin-top:15px;">
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="/" style="color:var(--primary);text-decoration:none;">Home</a></li>
+                <li class="breadcrumb-item"><a href="/about" style="color:var(--primary);text-decoration:none;">About Us</a></li>
+                <li class="breadcrumb-item active" style="color:rgba(255,255,255,0.6);">{{ $activeCategory ? $activeCategory->name : 'Our Team' }}</li>
+            </ol>
+        </nav>
     </div>
 </div>
-
-<!-- Category Tabs -->
-<section style="background: #f9fbf9;">
-    <div class="container">
-        <div class="team-tabs">
-            @foreach($teamCategories as $tc)
-                <a href="{{ url('/our-team?category=' . $tc->slug) }}"
-                   class="team-tab {{ isset($activeCategory) && $activeCategory && $activeCategory->id === $tc->id ? 'active' : '' }}">
-                    {{ $tc->name }}
-                </a>
-            @endforeach
-        </div>
-    </div>
-</section>
 
 <!-- Team Members Grid -->
 <section class="team-grid" style="background: #f9fbf9;">
