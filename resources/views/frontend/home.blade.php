@@ -496,7 +496,7 @@
     .service-card:hover .svc-body h5,
     .service-card:hover .svc-body h6,
     .service-card:hover .svc-body p,
-    .service-card:hover .svc-body .text-muted,
+    .service-card:hover .svc-body .svc-desc,
     .service-card:hover .learn-more,
     .service-card:hover .btn-theme {
         color: #fff !important;
@@ -529,7 +529,8 @@
         margin: 0;
         line-height: 1.4;
     }
-    .service-card .svc-body p {
+    .service-card .svc-body p,
+    .service-card .svc-body .svc-desc {
         font-size: 0.85rem;
         color: #666;
         margin: 0;
@@ -1251,7 +1252,7 @@
                         </div>
                         <div class="svc-body p-4">
                             <h5 class="fw-bold mb-3">{{ $service->name }}</h5>
-                            <p class="text-muted small mb-3">{{ Str::limit($service->description ?? $service->desc, 100) }}</p>
+                            <p class="svc-desc small mb-3">{{ Str::limit($service->description ?? $service->desc, 100) }}</p>
                             <a href="#" class="btn-theme py-2 px-3" style="font-size: 0.8rem;">
                                 Read More
                                 <span class="btn-icon" style="width: 25px; height: 25px;"><i class="fas fa-arrow-right" style="font-size: 10px;"></i></span>
