@@ -26,7 +26,7 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'excerpt' => 'nullable|string|max:500',
             'content' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'category' => 'nullable|string|max:255',
             'author' => 'nullable|string|max:255',
         ]);
@@ -56,7 +56,7 @@ class BlogController extends Controller
             'title' => 'required|string|max:255',
             'excerpt' => 'nullable|string|max:500',
             'content' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'category' => 'nullable|string|max:255',
             'author' => 'nullable|string|max:255',
         ]);

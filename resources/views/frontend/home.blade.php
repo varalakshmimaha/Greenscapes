@@ -1232,11 +1232,11 @@
     background-color: #ffffff;
     padding: 100px 0;
 }
-.process-header .section-title {
+.process-section .section-title {
     font-size: 2.8rem;
     font-weight: 800;
     color: #1a1a1a;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }
 .process-step-container {
     position: relative;
@@ -1341,8 +1341,10 @@
 <!-- Our Process (Circular Inspired Design) -->
 <section class="process-section">
     <div class="container">
-        <div class="process-header text-center mb-5 pb-3" data-aos="fade-up">
-            <h2 class="section-title">Structured, Measurable, Repeatable</h2>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <p class="about-label d-flex justify-content-center">Structured, Measurable, Repeatable</p>
+            <h2 class="section-title">Our Process</h2>
+            <p class="text-muted mx-auto" style="max-width: 650px;">A systematic approach rooted in science and precision, ensuring every project is delivered with consistency, quality, and lasting impact.</p>
         </div>
 
         @php
@@ -1459,7 +1461,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ is_array($p) ? '/projects' : route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
-                            <img loading="lazy" src="{{ is_array($p) ? asset('storage/' . $p['img']) : asset('storage/' . ($p->image ?? $p->after_image)) }}" alt="{{ is_array($p) ? $p['title'] : $p->title }}" class="w-100 h-100 object-fit-cover">
+                            <img loading="lazy" src="{{ is_array($p) ? asset('storage/' . $p['img']) : asset('storage/' . ($p->featured_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ is_array($p) ? $p['title'] : $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
                                 {{ is_array($p) ? $p['type'] : ($p->status ?? 'RESIDENTIAL') }}
                             </div>
@@ -1518,40 +1520,15 @@
             {{-- RIGHT PANEL --}}
             <div class="col-lg-7 py-5 pe-lg-5">
                 <div class="faq-accordion" id="greenFaqAccordion">
-                    @php
-                        $faqItems = [
-                            [
-                                'id' => '1',
-                                'q' => 'What is SR Greenscapes Pvt Ltd?',
-                                'a' => 'SR Greenscapes Pvt Ltd is a sustainable landscaping company based in Bengaluru, providing research-integrated landscape, nursery, horticulture and ecological solutions across India.'
-                            ],
-                            [
-                                'id' => '2',
-                                'q' => 'What services do you offer?',
-                                'a' => 'Landscape design & execution, softscape & hardscape, specialized garden services, maintenance, event styling, horticulture consultancy, nursery supply, irrigation, water features, and lighting.'
-                            ],
-                            [
-                                'id' => '3',
-                                'q' => 'Do you provide garden installation outside Bengaluru or India?',
-                                'a' => 'Yes, for select locations across India.'
-                            ],
-                            [
-                                'id' => '4',
-                                'q' => 'Who is behind SR Greenscapes Pvt Ltd?',
-                                'a' => 'Our team includes PhD horticulture professionals, landscape designers, project managers, and skilled horticulture experts. MDs: Dr. Supriya Narayan & Mr. Srinidhi AT, supported by a strategic advisory panel.'
-                            ]
-                        ];
-                    @endphp
-
-                    @foreach($faqItems as $i => $faq)
+                    @foreach($faqs as $faq)
                         <div class="faq-item">
-                            <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gfaq{{ $faq['id'] }}" aria-expanded="false">
-                                <span class="faq-q-text">{{ $faq['q'] }}</span>
+                            <button class="faq-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gfaq{{ $faq->id }}" aria-expanded="false">
+                                <span class="faq-q-text">{{ $faq->question }}</span>
                                 <span class="faq-icon"><i class="fas fa-plus"></i></span>
                             </button>
-                            <div id="gfaq{{ $faq['id'] }}" class="collapse" data-bs-parent="#greenFaqAccordion">
+                            <div id="gfaq{{ $faq->id }}" class="collapse" data-bs-parent="#greenFaqAccordion">
                                 <div class="faq-body">
-                                    {{ $faq['a'] }}
+                                    {{ $faq->answer }}
                                 </div>
                             </div>
                         </div>

@@ -12,6 +12,7 @@ use App\Models\Menu;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\ServiceSubCategory;
 use App\Models\Setting;
 use App\Models\TeamCategory;
 use App\Models\TeamMember;
@@ -32,7 +33,7 @@ class HomeController extends Controller
             ->get();
         $projects = Project::where('is_active', true)->orderBy('order')->take(16)->get();
         $teamMembers = TeamMember::where('is_active', true)->orderBy('order')->take(4)->get();
-        $faqs = Faq::where('is_active', true)->orderBy('order')->take(5)->get();
+        $faqs = Faq::where('is_active', true)->where('category', 'Home Page')->orderBy('order')->get();
         $gallery = Gallery::where('is_active', true)->orderBy('order')->take(8)->get();
         $about = About::where('is_active', true)->where('section', 'overview')->first();
         $counters = Counter::where('is_active', true)->orderBy('order')->get();
@@ -90,9 +91,10 @@ class HomeController extends Controller
     {
         $service = Service::where('slug', $slug)->firstOrFail();
 
-        // Get categories belonging to this service
+        // Get categories with subcategories belonging to this service
         $serviceCategories = ServiceCategory::where('service_id', $service->id)
             ->where('is_active', true)
+            ->with(['subCategories' => fn($q) => $q->where('is_active', true)->orderBy('order')])
             ->orderBy('order')
             ->get();
 
@@ -107,6 +109,52 @@ class HomeController extends Controller
     }
 
 
+    public function serviceCategoryDetail($serviceSlug, $categorySlug)
+    {
+        $service = Service::where('slug', $serviceSlug)->firstOrFail();
+        $category = ServiceCategory::where('slug', $categorySlug)
+            ->where('service_id', $service->id)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        $subCategories = ServiceSubCategory::where('service_category_id', $category->id)
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
+        $siblingCategories = ServiceCategory::where('service_id', $service->id)
+            ->where('is_active', true)
+            ->where('id', '!=', $category->id)
+            ->orderBy('order')
+            ->take(3)
+            ->get();
+
+        return view('frontend.service-category-detail', compact('service', 'category', 'subCategories', 'siblingCategories'));
+    }
+
+    public function serviceSubCategoryDetail($serviceSlug, $categorySlug, $subCategorySlug)
+    {
+        $service = Service::where('slug', $serviceSlug)->firstOrFail();
+        $category = ServiceCategory::where('slug', $categorySlug)
+            ->where('service_id', $service->id)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        $subCategory = ServiceSubCategory::where('slug', $subCategorySlug)
+            ->where('service_category_id', $category->id)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        $siblingSubCategories = ServiceSubCategory::where('service_category_id', $category->id)
+            ->where('is_active', true)
+            ->where('id', '!=', $subCategory->id)
+            ->orderBy('order')
+            ->take(3)
+            ->get();
+
+        return view('frontend.service-subcategory-detail', compact('service', 'category', 'subCategory', 'siblingSubCategories'));
+    }
+
     public function projects()
     {
         $projects = Project::where('is_active', true)->orderBy('order')->paginate(12);
@@ -117,14 +165,6 @@ class HomeController extends Controller
 
     public function projectDetail($slug)
     {
-        if ($slug === 'sample-project') {
-            return view('frontend.project-detail', ['project' => (object)[
-                'title' => 'Villa Garden Design',
-                'status' => 'RESIDENTIAL',
-                'client_name' => 'Bengaluru, Karnataka',
-                'description' => null
-            ]]);
-        }
         $project = Project::where('slug', $slug)->firstOrFail();
         return view('frontend.project-detail', compact('project'));
     }

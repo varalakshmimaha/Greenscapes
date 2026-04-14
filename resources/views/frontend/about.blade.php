@@ -877,7 +877,7 @@
                             <input type="text" name="last_name" class="form-control" placeholder="Last Name">
                         </div>
                         <div class="col-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email (Optional)">
                         </div>
                         <div class="col-6">
                             <input type="text" name="phone" class="form-control" placeholder="Phone" required>

@@ -25,7 +25,7 @@ class FaqController extends Controller
             'category' => 'required|string|max:255',
             'question' => 'required|string|max:255',
             'answer' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
         ]);
 
         $data = $request->only('category', 'question', 'answer', 'order');
@@ -51,7 +51,7 @@ class FaqController extends Controller
             'category' => 'required|string|max:255',
             'question' => 'required|string|max:255',
             'answer' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
         ]);
 
         $data = $request->only('category', 'question', 'answer', 'order');

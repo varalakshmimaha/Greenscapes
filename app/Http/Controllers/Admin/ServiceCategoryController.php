@@ -28,16 +28,22 @@ class ServiceCategoryController extends Controller
             'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'pdf' => 'nullable|mimes:pdf|max:10240',
         ]);
 
         $data = $request->only('service_id', 'name', 'description');
-        $data['slug'] = Str::slug($request->name);
+        $slug = Str::slug($request->name);
+        $count = ServiceCategory::where('slug', $slug)->count();
+        $data['slug'] = $count ? $slug . '-' . ($count + 1) : $slug;
         $data['is_active'] = $request->has('is_active');
         $data['order'] = ServiceCategory::max('order') + 1;
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('service-categories', 'public');
+        }
+        if ($request->hasFile('pdf')) {
+            $data['pdf'] = $request->file('pdf')->store('service-categories/pdfs', 'public');
         }
 
         ServiceCategory::create($data);
@@ -47,6 +53,7 @@ class ServiceCategoryController extends Controller
     public function edit(ServiceCategory $serviceCategory)
     {
         $services = Service::where('is_active', true)->orderBy('order')->get();
+        $serviceCategory->load('subCategories');
         return view('admin.service-categories.edit', compact('serviceCategory', 'services'));
     }
 
@@ -56,15 +63,21 @@ class ServiceCategoryController extends Controller
             'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'pdf' => 'nullable|mimes:pdf|max:10240',
         ]);
 
         $data = $request->only('service_id', 'name', 'description');
-        $data['slug'] = Str::slug($request->name);
+        $slug = Str::slug($request->name);
+        $count = ServiceCategory::where('slug', $slug)->where('id', '!=', $serviceCategory->id)->count();
+        $data['slug'] = $count ? $slug . '-' . ($count + 1) : $slug;
         $data['is_active'] = $request->has('is_active');
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('service-categories', 'public');
+        }
+        if ($request->hasFile('pdf')) {
+            $data['pdf'] = $request->file('pdf')->store('service-categories/pdfs', 'public');
         }
 
         $serviceCategory->update($data);

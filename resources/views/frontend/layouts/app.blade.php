@@ -47,7 +47,7 @@
         /* ===== NAVBAR ===== */
         .main-navbar {
             background: var(--dark-bg);
-            padding: 0;
+            padding: 8px 0;
             z-index: 1050;
         }
         .main-navbar .container {
@@ -62,10 +62,13 @@
             padding: 12px 0;
         }
         .navbar-brand-custom .brand-logo {
-            height: 45px;
+            height: 60px;
             width: auto;
             margin-right: 10px;
             object-fit: contain;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode: bicubic;
         }
         .navbar-brand-custom .brand-text {
             color: #fff;
@@ -615,7 +618,7 @@
             .top-bar-left, .top-bar-right { font-size: 0.72rem; }
             .top-bar-center { font-size: 0.75rem; }
             .navbar-brand-custom .brand-text { font-size: 1rem; }
-            .navbar-brand-custom .brand-logo { height: 38px; }
+            .navbar-brand-custom .brand-logo { height: 48px; }
             .footer { padding: 40px 0 15px; }
             .footer .row > div { margin-bottom: 25px; }
             .footer h5 { font-size: 1rem; margin-bottom: 14px; }
@@ -751,7 +754,7 @@
                                     <input type="text" name="last_name" class="form-control" placeholder="Last Name">
                                 </div>
                                 <div class="col-6">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                                    <input type="email" name="email" class="form-control" placeholder="Email (Optional)">
                                 </div>
                                 <div class="col-6">
                                     <input type="text" name="phone" class="form-control" placeholder="Phone" required>
@@ -797,9 +800,9 @@
 
                 <!-- Column 1: Logo, About & Address -->
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="d-flex align-items-center mb-3">
+                    <div class="d-flex align-items-center mb-3 footer-logo-wrap">
                         @if(!empty($siteSettings['site_logo']))
-                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" style="height:45px;width:auto;object-fit:contain;">
+                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" style="height:60px;width:auto;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;">
                         @else
                             <strong class="text-white" style="font-size:1.1rem;">{{ $siteSettings['site_name'] ?? 'SR Greenscapes' }}</strong>
                         @endif
@@ -1033,6 +1036,7 @@
             .footer-blog-info h6 { font-size: 0.78rem; }
             .footer-social-icons a { width: 32px; height: 32px; font-size: 12px; }
             .whatsapp-float { width: 48px; height: 48px; font-size: 22px; bottom: 15px; right: 15px; }
+            .footer-logo-wrap { justify-content: center; width: 100%; }
         }
         @media (max-width: 575px) {
             .footer { padding: 30px 0 10px; }

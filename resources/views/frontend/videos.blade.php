@@ -171,9 +171,6 @@
                             <div class="play-icon"><i class="fas fa-play ms-1"></i></div>
                         </div>
                         <div class="video-card-body">
-                            @if($video->category)
-                                <span class="video-card-category">{{ $video->category }}</span>
-                            @endif
                             <h5>{{ $video->title }}</h5>
                             @if($video->description)
                                 <p>{{ Str::limit($video->description, 100) }}</p>

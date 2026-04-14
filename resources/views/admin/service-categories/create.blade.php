@@ -29,9 +29,15 @@
                 <label class="form-label">Description</label>
                 <textarea name="description" class="form-control" rows="4">{{ old('description') }}</textarea>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Image</label>
-                <input type="file" name="image" class="form-control" accept="image/*">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Image</label>
+                    <input type="file" name="image" class="form-control" accept="image/*">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">PDF</label>
+                    <input type="file" name="pdf" class="form-control" accept=".pdf">
+                </div>
             </div>
             <div class="mb-3">
                 <div class="form-check">

@@ -12,6 +12,7 @@ class Faq extends Model
     protected $fillable = ['category', 'question', 'answer', 'image', 'is_active', 'order'];
 
     const CATEGORIES = [
+        'Home Page',
         'About Us',
         'Services & Projects',
         'Consultation & Project Process',

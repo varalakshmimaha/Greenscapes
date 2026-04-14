@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceSubCategory extends Model
 {
-    protected $fillable = ['service_category_id', 'name', 'slug', 'is_active', 'order'];
+    protected $fillable = ['service_category_id', 'name', 'slug', 'description', 'image', 'pdf', 'is_active', 'order'];
 
     protected $casts = ['is_active' => 'boolean'];
 

@@ -25,7 +25,7 @@ class VideoController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'video_url' => 'required|url|max:500',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'category' => 'nullable|string|max:255',
         ]);
 
@@ -51,7 +51,7 @@ class VideoController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'video_url' => 'required|url|max:500',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'category' => 'nullable|string|max:255',
         ]);
 

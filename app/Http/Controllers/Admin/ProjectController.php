@@ -25,20 +25,32 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'before_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'after_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'gallery_images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'status' => 'required|in:completed,ongoing',
             'client_name' => 'nullable|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'area' => 'nullable|string|max:255',
+            'completion_date' => 'nullable|string|max:255',
+            'project_manager' => 'nullable|string|max:255',
         ]);
 
-        $data = $request->except(['image', 'before_image', 'after_image']);
+        $data = $request->except(['featured_image', 'gallery_images']);
         $data['slug'] = Str::slug($request->title);
-        foreach (['image', 'before_image', 'after_image'] as $field) {
-            if ($request->hasFile($field)) {
-                $data[$field] = $request->file($field)->store('projects', 'public');
-            }
+
+        if ($request->hasFile('featured_image')) {
+            $data['featured_image'] = $request->file('featured_image')->store('projects', 'public');
         }
+
+        if ($request->hasFile('gallery_images')) {
+            $galleryPaths = [];
+            foreach ($request->file('gallery_images') as $file) {
+                $galleryPaths[] = $file->store('projects/gallery', 'public');
+            }
+            $data['gallery_images'] = $galleryPaths;
+        }
+
         $data['is_active'] = $request->has('is_active');
         $data['order'] = Project::max('order') + 1;
 
@@ -56,20 +68,40 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'before_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
-            'after_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
+            'gallery_images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'status' => 'required|in:completed,ongoing',
             'client_name' => 'nullable|string|max:255',
+            'category' => 'nullable|string|max:255',
+            'location' => 'nullable|string|max:255',
+            'area' => 'nullable|string|max:255',
+            'completion_date' => 'nullable|string|max:255',
+            'project_manager' => 'nullable|string|max:255',
         ]);
 
-        $data = $request->except(['image', 'before_image', 'after_image']);
+        $data = $request->except(['featured_image', 'gallery_images', 'remove_gallery']);
         $data['slug'] = Str::slug($request->title);
-        foreach (['image', 'before_image', 'after_image'] as $field) {
-            if ($request->hasFile($field)) {
-                $data[$field] = $request->file($field)->store('projects', 'public');
+
+        if ($request->hasFile('featured_image')) {
+            $data['featured_image'] = $request->file('featured_image')->store('projects', 'public');
+        }
+
+        // Handle gallery images
+        $existingGallery = $project->gallery_images ?? [];
+
+        // Remove selected images
+        if ($request->has('remove_gallery')) {
+            $existingGallery = array_values(array_diff($existingGallery, $request->remove_gallery));
+        }
+
+        // Add new gallery images
+        if ($request->hasFile('gallery_images')) {
+            foreach ($request->file('gallery_images') as $file) {
+                $existingGallery[] = $file->store('projects/gallery', 'public');
             }
         }
+
+        $data['gallery_images'] = $existingGallery;
         $data['is_active'] = $request->has('is_active');
 
         $project->update($data);

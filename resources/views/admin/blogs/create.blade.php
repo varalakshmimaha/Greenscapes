@@ -37,11 +37,7 @@
                         <label class="form-label">Featured Image</label>
                         <input type="file" name="image" class="form-control" accept="image/*">
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Category</label>
-                        <input type="text" name="category" class="form-control" value="{{ old('category') }}" placeholder="e.g. Tips, News">
-                    </div>
-                    <div class="mb-3">
+<div class="mb-3">
                         <label class="form-label">Author</label>
                         <input type="text" name="author" class="form-control" value="{{ old('author') }}">
                     </div>

@@ -787,7 +787,7 @@
                         <input type="hidden" name="source" value="contact-cta">
                         <div class="contact-cta-row">
                             <input type="text" name="name" class="contact-cta-input" placeholder="Your Name *" required>
-                            <input type="email" name="email" class="contact-cta-input" placeholder="Email Address *">
+                            <input type="email" name="email" class="contact-cta-input" placeholder="Email Address (Optional)">
                         </div>
                         <div class="contact-cta-row">
                             <select name="subject" class="contact-cta-input" required>

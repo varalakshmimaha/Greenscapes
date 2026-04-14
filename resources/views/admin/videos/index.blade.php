@@ -12,7 +12,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover mb-0">
-                <thead><tr><th>#</th><th>Thumbnail</th><th>Title</th><th>Category</th><th>Video URL</th><th>Order</th><th>Status</th><th>Actions</th></tr></thead>
+                <thead><tr><th>#</th><th>Thumbnail</th><th>Title</th><th>Video URL</th><th>Order</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>
                     @forelse($videos as $video)
                     <tr>
@@ -27,7 +27,6 @@
                             @endif
                         </td>
                         <td><strong>{{ $video->title }}</strong></td>
-                        <td>{{ $video->category ?? '-' }}</td>
                         <td><a href="{{ $video->video_url }}" target="_blank" class="text-decoration-none">{{ Str::limit($video->video_url, 30) }} <i class="fas fa-external-link-alt fa-xs"></i></a></td>
                         <td><span class="badge bg-secondary">{{ $video->order ?? 0 }}</span></td>
                         <td>
@@ -46,7 +45,7 @@
                         </td>
                     </tr>
                     @empty
-                    <tr><td colspan="8" class="text-center text-muted py-4">No videos found.</td></tr>
+                    <tr><td colspan="7" class="text-center text-muted py-4">No videos found.</td></tr>
                     @endforelse
                 </tbody>
             </table>

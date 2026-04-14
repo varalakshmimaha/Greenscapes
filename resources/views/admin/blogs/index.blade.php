@@ -12,7 +12,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover mb-0">
-                <thead><tr><th>#</th><th>Image</th><th>Title</th><th>Category</th><th>Author</th><th>Order</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+                <thead><tr><th>#</th><th>Image</th><th>Title</th><th>Author</th><th>Order</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
                 <tbody>
                     @forelse($blogs as $blog)
                     <tr>
@@ -27,7 +27,6 @@
                             @endif
                         </td>
                         <td><strong>{{ Str::limit($blog->title, 40) }}</strong></td>
-                        <td>{{ $blog->category ?? '-' }}</td>
                         <td>{{ $blog->author ?? '-' }}</td>
                         <td><span class="badge bg-secondary">{{ $blog->order ?? 0 }}</span></td>
                         <td>
@@ -47,7 +46,7 @@
                         </td>
                     </tr>
                     @empty
-                    <tr><td colspan="9" class="text-center text-muted py-4">No blog posts found.</td></tr>
+                    <tr><td colspan="8" class="text-center text-muted py-4">No blog posts found.</td></tr>
                     @endforelse
                 </tbody>
             </table>

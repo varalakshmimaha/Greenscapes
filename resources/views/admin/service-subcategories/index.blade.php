@@ -12,14 +12,20 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover mb-0">
-                <thead><tr><th>#</th><th>Name</th><th>Parent Category</th><th>Services</th><th>Order</th><th>Status</th><th>Actions</th></tr></thead>
+                <thead><tr><th>#</th><th>Name</th><th>Service</th><th>Category</th><th>Order</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>
                     @forelse($subCategories as $sub)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td><strong>{{ $sub->name }}</strong></td>
+                        <td>
+                            @if($sub->category && $sub->category->service)
+                                <span class="badge bg-primary">{{ $sub->category->service->name }}</span>
+                            @else
+                                <span class="text-muted">-</span>
+                            @endif
+                        </td>
                         <td><span class="badge bg-success">{{ $sub->category->name ?? '-' }}</span></td>
-                        <td><span class="badge bg-secondary">{{ $sub->services_count }}</span></td>
                         <td><span class="badge bg-secondary">{{ $sub->order }}</span></td>
                         <td>
                             @if($sub->is_active)

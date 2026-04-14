@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
+use App\Http\Controllers\Admin\ServiceSubCategoryController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\FaqController;
@@ -30,6 +31,8 @@ Route::get('/our-team', [HomeController::class, 'ourTeam'])->name('our-team');
 Route::get('/about/team/{slug}', [HomeController::class, 'teamByCategory'])->name('team.category');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/services/{slug}', [HomeController::class, 'serviceDetail'])->name('service.detail');
+Route::get('/services/{serviceSlug}/{categorySlug}', [HomeController::class, 'serviceCategoryDetail'])->name('service.category.detail');
+Route::get('/services/{serviceSlug}/{categorySlug}/{subCategorySlug}', [HomeController::class, 'serviceSubCategoryDetail'])->name('service.subcategory.detail');
 Route::get('/projects', [HomeController::class, 'projects'])->name('projects');
 Route::get('/projects/{slug}', [HomeController::class, 'projectDetail'])->name('project.detail');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
@@ -75,8 +78,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', \App\Http\Middleware
     Route::resource('team-categories', TeamCategoryController::class);
     Route::resource('team', TeamController::class);
 
-    // Service Categories
+    // Service Categories & Sub Categories
     Route::resource('service-categories', ServiceCategoryController::class);
+    Route::resource('service-subcategories', ServiceSubCategoryController::class);
 
     // Services (9 main services managed via seeder, not admin CRUD)
     Route::resource('services', ServiceController::class);

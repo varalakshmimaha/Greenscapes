@@ -449,7 +449,7 @@
         <div class="row g-4 justify-content-center">
             @foreach($serviceCategories as $cat)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                    <div class="sd-category-card">
+                    <a href="{{ route('service.category.detail', [$service->slug, $cat->slug]) }}" class="sd-category-card sd-category-card-link">
                         <div class="sd-category-img">
                             @if($cat->image)
                                 <img loading="lazy" src="{{ asset('storage/' . $cat->image) }}" alt="{{ $cat->name }}">
@@ -464,8 +464,16 @@
                         @else
                             <p class="sd-category-desc">Focused solutions offered under {{ $service->name }}.</p>
                         @endif
-                        <a href="/contact" class="sd-category-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+
+                        @if($cat->subCategories->count())
+                            <ul class="sd-category-list">
+                                @foreach($cat->subCategories as $sub)
+                                    <li>{{ $sub->name }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                        <span class="sd-category-link">Learn More <i class="fas fa-arrow-right"></i></span>
+                    </a>
                 </div>
             @endforeach
         </div>

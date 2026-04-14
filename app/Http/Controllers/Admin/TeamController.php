@@ -26,7 +26,7 @@ class TeamController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'role' => 'required|string|max:255',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'bio' => 'nullable|string',
             'facebook' => 'nullable|url|max:255',
             'linkedin' => 'nullable|url|max:255',
@@ -55,7 +55,7 @@ class TeamController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'role' => 'required|string|max:255',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp',
             'bio' => 'nullable|string',
             'facebook' => 'nullable|url|max:255',
             'linkedin' => 'nullable|url|max:255',

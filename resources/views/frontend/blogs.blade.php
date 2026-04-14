@@ -177,9 +177,6 @@
                         </div>
                         <div class="blog-card-body">
                             <div class="blog-card-meta">
-                                @if($blog->category)
-                                    <span class="blog-card-category">{{ $blog->category }}</span>
-                                @endif
                                 <span><i class="fas fa-calendar-alt"></i> {{ $blog->published_at ? $blog->published_at->format('M d, Y') : '' }}</span>
                                 @if($blog->author)
                                     <span><i class="fas fa-user"></i> {{ $blog->author }}</span>

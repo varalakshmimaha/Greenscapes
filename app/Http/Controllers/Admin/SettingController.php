@@ -32,7 +32,7 @@ class SettingController extends Controller
     public function updateLogo(Request $request)
     {
         $request->validate([
-            'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'site_logo' => 'nullable|image|mimes:jpeg,png,jpg,webp,svg',
             'site_favicon' => 'nullable|image|mimes:ico,png,jpg|max:1024',
         ]);
 

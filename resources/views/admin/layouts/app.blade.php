@@ -123,16 +123,19 @@
             </div>
 
             {{-- Service Categories Dropdown --}}
-            <div class="nav-dropdown {{ request()->routeIs('admin.service-categories.*') || request()->routeIs('admin.services.*') ? 'open' : '' }}">
+            <div class="nav-dropdown {{ request()->routeIs('admin.service-categories.*') || request()->routeIs('admin.service-subcategories.*') || request()->routeIs('admin.services.*') ? 'open' : '' }}">
                 <a href="javascript:void(0)" class="nav-dropdown-toggle">
                     <i class="fas fa-concierge-bell" style="width:20px; margin-right:12px; text-align:center;"></i> Services <i class="fas fa-chevron-down ms-auto" style="width:auto; margin-right:0; font-size:0.7rem;"></i>
                 </a>
                 <div class="nav-dropdown-menu">
+                    <a href="{{ route('admin.services.index') }}" class="{{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                        <i class="fas fa-list"></i> All Services
+                    </a>
                     <a href="{{ route('admin.service-categories.index') }}" class="{{ request()->routeIs('admin.service-categories.*') ? 'active' : '' }}">
                         <i class="fas fa-folder"></i> Categories
                     </a>
-                    <a href="{{ route('admin.services.index') }}" class="{{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
-                        <i class="fas fa-list"></i> All Services
+                    <a href="{{ route('admin.service-subcategories.index') }}" class="{{ request()->routeIs('admin.service-subcategories.*') ? 'active' : '' }}">
+                        <i class="fas fa-folder-open"></i> Sub Categories
                     </a>
                 </div>
             </div>
