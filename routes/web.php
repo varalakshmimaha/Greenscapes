@@ -6,7 +6,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
-use App\Http\Controllers\Admin\ServiceSubCategoryController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\FaqController;
@@ -30,8 +29,6 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/our-team', [HomeController::class, 'ourTeam'])->name('our-team');
 Route::get('/about/team/{slug}', [HomeController::class, 'teamByCategory'])->name('team.category');
 Route::get('/services', [HomeController::class, 'services'])->name('services');
-Route::get('/services/category/{slug}', [HomeController::class, 'servicesByCategory'])->name('services.category');
-Route::get('/services/category/{categorySlug}/{subSlug}', [HomeController::class, 'servicesBySubCategory'])->name('services.subcategory');
 Route::get('/services/{slug}', [HomeController::class, 'serviceDetail'])->name('service.detail');
 Route::get('/projects', [HomeController::class, 'projects'])->name('projects');
 Route::get('/projects/{slug}', [HomeController::class, 'projectDetail'])->name('project.detail');
@@ -41,6 +38,7 @@ Route::get('/testimonials', [HomeController::class, 'testimonials'])->name('test
 Route::get('/blogs', [HomeController::class, 'blogs'])->name('blogs');
 Route::get('/blogs/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
 Route::get('/videos', [HomeController::class, 'videos'])->name('videos');
+Route::get('/process', [HomeController::class, 'process'])->name('process');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact.submit');
 
@@ -77,12 +75,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', \App\Http\Middleware
     Route::resource('team-categories', TeamCategoryController::class);
     Route::resource('team', TeamController::class);
 
-    // Service Categories & Sub Categories
+    // Service Categories
     Route::resource('service-categories', ServiceCategoryController::class);
-    Route::resource('service-subcategories', ServiceSubCategoryController::class);
 
-    // Services
-    Route::get('services/sub-categories/{categoryId}', [ServiceController::class, 'getSubCategories'])->name('services.subCategories');
+    // Services (9 main services managed via seeder, not admin CRUD)
     Route::resource('services', ServiceController::class);
 
     // Projects

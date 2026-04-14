@@ -6,17 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ServiceCategory extends Model
 {
-    protected $fillable = ['name', 'slug', 'image', 'is_active', 'order'];
+    protected $fillable = ['service_id', 'name', 'slug', 'image', 'description', 'is_active', 'order'];
 
     protected $casts = ['is_active' => 'boolean'];
 
-    public function subCategories()
+    public function service()
     {
-        return $this->hasMany(ServiceSubCategory::class)->orderBy('order');
-    }
-
-    public function services()
-    {
-        return $this->hasMany(Service::class);
+        return $this->belongsTo(Service::class);
     }
 }

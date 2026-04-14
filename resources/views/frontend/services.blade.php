@@ -45,124 +45,228 @@
         margin: 0 auto;
     }
 
-    /* ===== CATEGORY CARDS ===== */
-    .svc-categories {
-        padding: 70px 0 90px;
-        background: #f9fbf9;
+    /* ===== CATEGORY SECTION ===== */
+    .cat-section {
+        padding: 70px 0 30px;
+        background: #f8faf8;
     }
-    .svc-categories .section-label {
-        display: inline-block;
+    .cat-section:nth-child(even) {
+        background: #fff;
+    }
+
+    /* Category Header */
+    .cat-header {
+        margin-bottom: 40px;
+    }
+    .cat-header-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
         background: rgba(139,195,74,0.12);
-        color: var(--primary);
+        color: var(--primary-dark);
         padding: 6px 20px;
         border-radius: 50px;
         font-size: 0.75rem;
         font-weight: 700;
-        letter-spacing: 2px;
         text-transform: uppercase;
-        margin-bottom: 16px;
+        letter-spacing: 1.5px;
+        margin-bottom: 14px;
     }
-    .svc-categories .section-heading {
+    .cat-header h2 {
         font-size: 2.2rem;
         font-weight: 800;
         color: #1a3a1a;
-        margin-bottom: 12px;
-    }
-    .svc-categories .section-heading span {
-        color: var(--primary);
-    }
-    .svc-categories .section-sub {
-        color: #777;
-        font-size: 1rem;
-        max-width: 550px;
-        margin: 0 auto 50px;
-    }
-
-    .svc-cat-card {
-        position: relative;
-        border-radius: 24px;
-        overflow: hidden;
-        height: 420px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        text-decoration: none;
-        transition: all 0.4s;
-        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    }
-    .svc-cat-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-    }
-    .svc-cat-card .cat-bg {
-        position: absolute;
-        inset: 0;
-        background-size: cover;
-        background-position: center;
-        transition: transform 0.5s;
-    }
-    .svc-cat-card:hover .cat-bg {
-        transform: scale(1.08);
-    }
-    .svc-cat-card .cat-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(10,25,10,0.92) 0%, rgba(10,25,10,0.4) 50%, rgba(10,25,10,0.15) 100%);
-        transition: background 0.4s;
-    }
-    .svc-cat-card:hover .cat-overlay {
-        background: linear-gradient(to top, rgba(10,25,10,0.95) 0%, rgba(10,25,10,0.5) 50%, rgba(10,25,10,0.2) 100%);
-    }
-    .svc-cat-card .cat-content {
-        position: relative;
-        z-index: 2;
-        padding: 35px 30px;
-    }
-    .svc-cat-card .cat-icon {
-        width: 60px;
-        height: 60px;
-        background: rgba(139,195,74,0.2);
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 20px;
-        transition: all 0.3s;
-    }
-    .svc-cat-card:hover .cat-icon {
-        background: var(--primary);
-    }
-    .svc-cat-card .cat-icon i {
-        font-size: 1.5rem;
-        color: var(--primary);
-        transition: color 0.3s;
-    }
-    .svc-cat-card:hover .cat-icon i {
-        color: #fff;
-    }
-    .svc-cat-card h3 {
-        color: #fff;
-        font-size: 1.5rem;
-        font-weight: 800;
         margin-bottom: 10px;
     }
-    .svc-cat-card .cat-desc {
-        color: rgba(255,255,255,0.7);
-        font-size: 0.9rem;
-        line-height: 1.7;
-        margin-bottom: 18px;
+    .cat-header h2 span { color: var(--primary); }
+    .cat-header p {
+        color: #777;
+        font-size: 0.95rem;
+        max-width: 600px;
+        margin: 0 auto;
     }
-    .svc-cat-card .cat-arrow {
+    .cat-view-all {
         display: inline-flex;
         align-items: center;
         gap: 8px;
         color: var(--primary);
         font-weight: 600;
         font-size: 0.9rem;
+        text-decoration: none;
+        margin-top: 8px;
         transition: gap 0.3s;
     }
-    .svc-cat-card:hover .cat-arrow {
-        gap: 14px;
+    .cat-view-all:hover { gap: 12px; color: var(--primary-dark); }
+    .cat-view-all i { font-size: 0.75rem; }
+
+    /* ===== SUB-CATEGORY PILLS ===== */
+    .subcat-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+    .subcat-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #fff;
+        border: 1px solid #e0edd8;
+        color: #1a3a1a;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .subcat-pill:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(139,195,74,0.3);
+    }
+    .subcat-pill .pill-count {
+        background: rgba(139,195,74,0.15);
+        color: var(--primary-dark);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 50px;
+        transition: all 0.3s;
+    }
+    .subcat-pill:hover .pill-count {
+        background: rgba(255,255,255,0.25);
+        color: #fff;
+    }
+
+    /* ===== SERVICE CARDS (dark card with circular image) ===== */
+    .service-card {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.4s;
+        height: 100%;
+        text-align: center;
+        cursor: default;
+        background: #eaf5ea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding: 35px 25px 30px;
+        border: none;
+    }
+    .service-card:hover {
+        box-shadow: none;
+        transform: translateY(-8px);
+    }
+    .service-card .svc-img-wrap {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: #e6f0e6;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 22px;
+        flex-shrink: 0;
+        border: 4px solid rgba(139,195,74,0.25);
+        transition: border-color 0.3s;
+    }
+    .service-card:hover .svc-img-wrap {
+        border-color: var(--primary);
+    }
+    .service-card .svc-img-wrap img {
+        transition: transform 0.4s;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .service-card:hover .svc-img-wrap img {
+        transform: scale(1.08);
+    }
+    .service-card .svc-img-wrap .svc-icon-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    }
+    .service-card .svc-img-wrap .svc-icon-placeholder i {
+        font-size: 2.5rem;
+        color: var(--primary);
+    }
+    .service-card .svc-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .service-card .svc-body h5 {
+        font-weight: 700;
+        color: #2d3a2d;
+        font-size: 1.1rem;
+        margin: 0;
+        line-height: 1.4;
+    }
+    .service-card .svc-body .svc-desc {
+        font-size: 0.84rem;
+        color: #555;
+        margin: 0;
+        line-height: 1.7;
+        flex: 1;
+    }
+    .service-card .svc-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.88rem;
+        text-decoration: none;
+        margin-top: 12px;
+        transition: all 0.3s;
+    }
+    .service-card .svc-link:hover {
+        color: #a4d65e;
+        gap: 12px;
+    }
+    .service-card .svc-link i {
+        font-size: 0.75rem;
+        transition: transform 0.3s;
+    }
+    .service-card .svc-link:hover i {
+        transform: translateX(3px);
+    }
+
+    /* ===== CATEGORY DIVIDER ===== */
+    .cat-divider {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 0 0 10px;
+    }
+    .cat-divider::before,
+    .cat-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #c6dfc2, transparent);
+    }
+    .cat-divider-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(139,195,74,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1rem;
     }
 
     /* ===== WHY CHOOSE ===== */
@@ -196,56 +300,74 @@
         margin: 0 auto;
     }
     .why-card {
-        background: #fff;
-        border-radius: 20px;
-        padding: 35px 28px;
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 45px 30px;
         height: 100%;
-        border: 1px solid #eee;
-        transition: all 0.3s;
+        border: 1px solid rgba(139, 195, 74, 0.1);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        z-index: 1;
     }
     .why-card::before {
         content: '';
         position: absolute;
-        top: 0; left: 0;
-        width: 4px; height: 0;
-        background: var(--primary);
-        border-radius: 0 0 4px 4px;
-        transition: height 0.4s;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), #8BC34A);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.4s ease;
+        z-index: 2;
     }
     .why-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        border-color: rgba(139,195,74,0.3);
+        transform: translateY(-8px);
+        box-shadow: 0 25px 45px rgba(139, 195, 74, 0.12);
+        border-color: rgba(139, 195, 74, 0.25);
     }
-    .why-card:hover::before { height: 100%; }
+    .why-card:hover::before { transform: scaleX(1); }
     .why-card-icon {
-        width: 60px; height: 60px;
-        background: rgba(139,195,74,0.1);
-        border-radius: 14px;
+        width: 80px; height: 80px;
+        background: #f4fbf4;
+        border-radius: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
-        transition: all 0.3s;
+        margin-bottom: 25px;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid rgba(139, 195, 74, 0.15);
     }
     .why-card-icon i {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
         color: var(--primary);
         transition: all 0.3s;
     }
-    .why-card:hover .why-card-icon { background: var(--primary); }
+    .why-card:hover .why-card-icon { 
+        background: var(--primary); 
+        transform: translateY(-5px) scale(1.05);
+        border-color: var(--primary);
+        box-shadow: 0 12px 20px rgba(139, 195, 74, 0.3);
+    }
     .why-card:hover .why-card-icon i { color: #fff; }
     .why-card-title {
-        font-weight: 700;
+        font-weight: 800;
         color: #1a3a1a;
-        font-size: 1.05rem;
-        margin-bottom: 12px;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        transition: color 0.3s;
+    }
+    .why-card:hover .why-card-title {
+        color: var(--primary);
     }
     .why-card-desc {
         color: #666;
-        font-size: 0.88rem;
+        font-size: 0.95rem;
         line-height: 1.7;
         margin: 0;
     }
@@ -254,9 +376,9 @@
     @media (max-width: 991px) {
         .svc-hero { height: 260px; }
         .svc-hero-content h1 { font-size: 2.2rem; }
-        .svc-cat-card { height: 360px; }
-        .svc-categories { padding: 50px 0 60px; }
-        .svc-categories .section-heading { font-size: 1.8rem; }
+        .cat-header h2 { font-size: 1.8rem; }
+        .service-card { padding: 30px 20px 25px; }
+        .service-card .svc-img-wrap { width: 110px; height: 110px; }
         .why-choose-section { padding: 60px 0; }
         .why-choose-heading { font-size: 1.8rem; }
     }
@@ -264,13 +386,15 @@
         .svc-hero { height: 220px; }
         .svc-hero-content h1 { font-size: 1.6rem; }
         .svc-hero-content p { font-size: 0.9rem; }
-        .svc-categories { padding: 35px 0 45px; }
-        .svc-categories .section-heading { font-size: 1.4rem; }
-        .svc-categories .section-sub { font-size: 0.88rem; margin-bottom: 30px; }
-        .svc-cat-card { height: 320px; }
-        .svc-cat-card .cat-content { padding: 25px 22px; }
-        .svc-cat-card h3 { font-size: 1.25rem; }
-        .svc-cat-card .cat-desc { font-size: 0.82rem; }
+        .cat-section { padding: 45px 0 20px; }
+        .cat-header h2 { font-size: 1.4rem; }
+        .cat-header p { font-size: 0.88rem; }
+        .subcat-pill { padding: 6px 14px; font-size: 0.78rem; }
+        .service-card { padding: 25px 18px 22px; border-radius: 16px; }
+        .service-card .svc-img-wrap { width: 100px; height: 100px; margin-bottom: 16px; border-width: 3px; }
+        .service-card .svc-body h5 { font-size: 0.95rem; }
+        .service-card .svc-body .svc-desc { font-size: 0.8rem; }
+        .service-card .svc-link { font-size: 0.82rem; }
         .why-choose-section { padding: 40px 0; }
         .why-choose-heading { font-size: 1.4rem; }
         .why-choose-sub { font-size: 0.88rem; }
@@ -279,6 +403,16 @@
         .why-card-icon i { font-size: 1.2rem; }
         .why-card-title { font-size: 0.95rem; }
         .why-card-desc { font-size: 0.82rem; }
+    }
+    @media (max-width: 480px) {
+        .svc-hero { height: 200px; }
+        .svc-hero-content h1 { font-size: 1.4rem; }
+        .svc-hero-content p { font-size: 0.8rem; }
+        .service-card { flex-direction: column; text-align: center; }
+        .service-card .svc-img-wrap { width: 100px; height: 100px; margin: 0 auto; }
+        .svc-cat-header h2 { font-size: 1.3rem; }
+        .why-card { padding: 25px 18px; }
+        .why-card h4 { font-size: 1rem; }
     }
 </style>
 @endsection
@@ -293,53 +427,36 @@
     </div>
 </div>
 
-<!-- Service Categories -->
-<section class="svc-categories">
+<!-- ===== ALL 9 SERVICES GRID ===== -->
+<section class="cat-section">
     <div class="container">
-        <div class="text-center" data-aos="fade-up">
-            <span class="section-label">WHAT WE DO</span>
-            <h2 class="section-heading">Explore Our <span>Service Areas</span></h2>
-            <p class="section-sub">Choose a category to discover the specialized services we offer</p>
+        <div class="cat-header text-center" data-aos="fade-up">
+            <span class="cat-header-label"><i class="fas fa-leaf"></i> WHAT WE OFFER</span>
+            <h2>Our Professional <span>Services</span></h2>
+            <p>Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
         </div>
 
-        @php
-            $catIcons = [
-                'fas fa-drafting-compass',
-                'fas fa-seedling',
-                'fas fa-tools',
-            ];
-            $catDescriptions = [
-                'Professional landscape design, hardscape & softscape development for residential and commercial spaces.',
-                'Premium nursery plants, specialized gardens, and expert horticulture consultancy services.',
-                'Comprehensive annual maintenance contracts and event styling to keep your spaces thriving.',
-            ];
-            $catImages = [
-                'Home/1.16 Landscape Design  Execution.png',
-                'Home/1.20 Nursery  Plant Supply.jpg',
-                'Home/1.19 Landscape Maintenance.png',
-            ];
-        @endphp
-
-        <div class="row g-4">
-            @foreach($serviceCategories as $idx => $cat)
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $idx * 100 }}">
-                    <a href="{{ route('services.category', $cat->slug) }}" class="svc-cat-card">
-                        <div class="cat-bg" style="background-image: url('{{ $cat->image ? asset('storage/' . $cat->image) : asset('storage/' . ($catImages[$idx] ?? $catImages[0])) }}')"></div>
-                        <div class="cat-overlay"></div>
-                        <div class="cat-content">
-                            <div class="cat-icon">
-                                <i class="{{ $catIcons[$idx] ?? 'fas fa-leaf' }}"></i>
-                            </div>
-                            <h3>{{ $cat->name }}</h3>
-                            <p class="cat-desc">{{ $catDescriptions[$idx] ?? 'Explore our range of professional services in this category.' }}</p>
-                            <span class="cat-arrow">Explore Services <i class="fas fa-arrow-right"></i></span>
+        <div class="row g-4 justify-content-center">
+            @foreach($services as $service)
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 60 }}">
+                    <div class="service-card">
+                        @if($service->image)
+                        <div class="svc-img-wrap">
+                            <img loading="lazy" src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
                         </div>
-                    </a>
+                        @endif
+                        <div class="svc-body">
+                            <h5>{{ $service->name }}</h5>
+                            <p class="svc-desc">{{ Str::limit(strip_tags($service->description), 120) }}</p>
+                            <a href="{{ route('service.detail', $service->slug) }}" class="svc-link">Explore Services <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>
     </div>
 </section>
+
 
 <!-- Why Choose SR Greenscapes -->
 <section class="why-choose-section">
@@ -409,10 +526,11 @@
                                 <option value="">Select Service *</option>
                                 <option>Landscape Design & Execution</option>
                                 <option>Specialized Garden Services</option>
-                                <option>Softscape & Hardscape Development</option>
+                                <option>Hardscape & Softscape Development</option>
                                 <option>Nursery & Plant Supply</option>
                                 <option>Landscape Maintenance</option>
                                 <option>Horticulture Consultancy</option>
+                                <option>Garden Supplies</option>
                                 <option>Green Gifts</option>
                                 <option>Event Styling</option>
                                 <option>Others</option>
@@ -473,6 +591,12 @@
         .svc-cta-card { padding: 20px 16px; }
         .svc-cta-card-title { font-size: 1.1rem; }
         .svc-cta-row { flex-direction: column; gap: 8px; }
+    }
+    @media (max-width: 480px) {
+        .svc-cta-left { max-width: 100%; }
+        .svc-cta-card { width: 100%; min-width: unset; }
+        .svc-cta-section { padding: 30px 15px; }
+        .svc-cta-wrapper { flex-direction: column; }
     }
 </style>
 @endsection

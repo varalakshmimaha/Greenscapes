@@ -205,6 +205,12 @@
         .faq-hero { height: 260px; }
         .faq-hero-content h1 { font-size: 2.5rem; }
     }
+    @media (max-width: 768px) {
+        .faq-container { flex-direction: column; gap: 25px; }
+        .faq-left-col { flex: none; width: 100%; }
+        .faq-right { flex: none; width: 100%; }
+        .faq-cat-pills { flex-wrap: wrap; }
+    }
     @media (max-width: 575px) {
         .faq-hero { height: 180px; }
         .faq-hero-content h1 { font-size: 1.6rem; }
@@ -219,6 +225,16 @@
         .faq-acc-header .q-toggle { width: 28px; height: 28px; min-width: 28px; font-size: 15px; }
         .faq-acc-body { padding: 0 16px 16px; font-size: 0.82rem; }
         .faq-section { padding: 40px 0 50px; }
+    }
+    @media (max-width: 480px) {
+        .faq-hero { height: 200px; }
+        .faq-hero-content h1 { font-size: 1.4rem; }
+        .faq-hero-content p { font-size: 0.82rem; }
+        .faq-cat-pill { font-size: 11px; padding: 6px 12px; }
+        .faq-acc-item { padding: 14px; }
+        .faq-acc-header .q-text { font-size: 0.9rem; }
+        .faq-acc-body { font-size: 0.82rem; }
+        .faq-left-img { height: 200px; }
     }
 </style>
 @endsection

@@ -5,18 +5,20 @@
     /* ===== HERO BANNER ===== */
     .hero-banner {
         position: relative;
-        min-height: 620px;
+        min-height: auto;
+        max-height: 600px;
         overflow: hidden;
         border-radius: 30px;
         margin: 15px 20px 0;
     }
     .hero-banner .carousel-item {
-        min-height: 620px;
+        min-height: auto;
+        max-height: 600px;
     }
     .hero-banner .carousel-item img {
         object-fit: cover;
         width: 100%;
-        height: 100%;
+        height: 600px;
     }
     .hero-banner .overlay {
         position: absolute;
@@ -40,6 +42,10 @@
     .hero-text {
         flex: 1;
         max-width: 550px;
+    }
+    .hero-slide-text {
+        transition: opacity 0.4s ease;
+        opacity: 1;
     }
     .hero-text .hero-company {
         font-size: 0.85rem;
@@ -340,91 +346,58 @@
         .about-features-row { flex-direction: column; }
     }
 
-    /* ===== WHY CHOOSE US ===== */
+    /* ===== WHAT MAKES US DIFFERENT ===== */
     .diff-section {
         padding: 80px 0;
         background: #f8faf8;
         overflow: hidden;
     }
-    .choose-img-wrap {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .diff-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: all 0.3s;
+        height: 100%;
+        border: 1px solid #eee;
     }
-    .choose-img-circle {
-        width: 380px;
-        height: 380px;
-        border-radius: 50%;
+    .diff-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+        border-color: rgba(139,195,74,0.3);
+    }
+    .diff-card .diff-img {
+        height: 180px;
+        overflow: hidden;
+    }
+    .diff-card .diff-img img {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        border: 6px solid var(--primary);
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        transition: transform 0.4s;
     }
-    .choose-img-small {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        width: 140px;
-        height: 140px;
-        border-radius: 12px;
-        object-fit: cover;
-        border: 4px solid #fff;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    .diff-card:hover .diff-img img {
+        transform: scale(1.05);
     }
-    .choose-dots {
-        position: absolute;
-        top: -15px;
-        left: -15px;
-        width: 80px;
-        height: 80px;
-        background-image: radial-gradient(var(--primary) 2px, transparent 2px);
-        background-size: 12px 12px;
-        opacity: 0.4;
+    .diff-card .diff-body {
+        padding: 20px;
     }
-    .choose-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .choose-list li {
-        display: flex;
-        gap: 15px;
-        align-items: flex-start;
-        padding: 18px 0;
-        border-bottom: 1px solid #eee;
-    }
-    .choose-list li:last-child {
-        border-bottom: none;
-    }
-    .choose-list .choose-icon {
-        width: 45px;
-        height: 45px;
-        min-width: 45px;
-        background: var(--light-green);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary);
-        font-size: 18px;
-        margin-top: 2px;
-    }
-    .choose-list h6 {
+    .diff-card .diff-body h6 {
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 0.95rem;
         color: var(--dark);
-        margin-bottom: 4px;
+        margin-bottom: 8px;
     }
-    .choose-list p {
-        font-size: 0.85rem;
-        color: var(--gray);
+    .diff-card .diff-body p {
+        font-size: 0.82rem;
+        color: #777;
         margin-bottom: 0;
         line-height: 1.6;
     }
-    @media (max-width: 991px) {
-        .choose-img-circle { width: 280px; height: 280px; }
-        .choose-img-wrap { margin-bottom: 40px; }
-        .choose-img-small { width: 100px; height: 100px; }
+    @media (max-width: 575px) {
+        .diff-card .diff-img { height: 150px; }
+        .diff-card .diff-body { padding: 16px; }
+        .diff-card .diff-body h6 { font-size: 0.88rem; }
     }
 
     /* ===== SERVICES ===== */
@@ -475,106 +448,97 @@
         margin: 0 auto 50px;
     }
     .service-card {
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.4s;
         height: 100%;
-        text-align: left;
-        border: 1px solid #f0f0f0;
-        cursor: pointer;
-        background: #fff;
+        text-align: center;
+        cursor: default;
+        background: #eaf5ea;
         display: flex;
         flex-direction: column;
+        align-items: center;
         position: relative;
+        padding: 35px 25px 30px;
+        border: none;
     }
     .service-card:hover {
-        box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        box-shadow: none;
         transform: translateY(-8px);
-        background: var(--primary);
-    }
-    .service-card:hover .svc-body h5,
-    .service-card:hover .svc-body h6,
-    .service-card:hover .svc-body p,
-    .service-card:hover .svc-body .svc-desc,
-    .service-card:hover .learn-more,
-    .service-card:hover .btn-theme {
-        color: #fff !important;
     }
     .service-card .svc-img-wrap {
-        height: 160px;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
         background: #e6f0e6;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         position: relative;
+        overflow: hidden;
+        margin-bottom: 22px;
+        flex-shrink: 0;
+        border: 4px solid rgba(139,195,74,0.25);
+        transition: border-color 0.3s;
     }
-    .service-card .svc-img-wrap .svc-emoji {
-        font-size: 3.5rem;
-        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    .service-card:hover .svc-img-wrap {
+        border-color: var(--primary);
+    }
+    .service-card .svc-img-wrap img {
+        transition: transform 0.4s;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .service-card:hover .svc-img-wrap img {
+        transform: scale(1.08);
     }
     .service-card .svc-body {
-        padding: 25px;
         flex: 1;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        align-items: center;
+        gap: 10px;
     }
-    .service-card .svc-body h6 {
-        font-family: 'Georgia', serif;
-        font-weight: 600;
-        color: #1a2a1a;
-        font-size: 1.15rem;
+    .service-card .svc-body h5 {
+        font-weight: 700;
+        color: #2d3a2d;
+        font-size: 1.1rem;
         margin: 0;
         line-height: 1.4;
     }
-    .service-card .svc-body p,
     .service-card .svc-body .svc-desc {
-        font-size: 0.85rem;
-        color: #666;
+        font-size: 0.84rem;
+        color: #555;
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.7;
         flex: 1;
     }
-    .service-card .svc-body .learn-more {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--primary);
+    .service-card .svc-link {
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        margin-top: 10px;
-        transition: color 0.3s;
+        gap: 8px;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.88rem;
+        text-decoration: none;
+        margin-top: 12px;
+        transition: all 0.3s;
     }
-    .service-card:hover .svc-body .learn-more {
-        color: #fff;
+    .service-card .svc-link:hover {
+        color: #a4d65e;
+        gap: 12px;
     }
-    .service-card:hover .btn-theme {
-        background: #fff !important;
-        color: var(--primary) !important;
+    .service-card .svc-link i {
+        font-size: 0.75rem;
+        transition: transform 0.3s;
     }
-    .service-card:hover .btn-theme .btn-icon {
-        background: var(--primary) !important;
-    }
-    .service-card:hover .btn-theme .btn-icon i {
-        color: #fff !important;
-    }
-    /* Scroll animation */
-    .svc-animate {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .svc-animate.animate-in {
-        opacity: 1;
-        transform: translateY(0);
+    .service-card .svc-link:hover i {
+        transform: translateX(3px);
     }
 
     /* ===== PROCESS SECTION ===== */
     .process-section {
         padding: 80px 0;
-        background: #f8faf8;
+        background: transparent;
         overflow: hidden;
     }
     .process-flow {
@@ -648,13 +612,8 @@
         color: var(--primary);
         font-size: 1.5rem;
     }
-    .process-arrow-down {
+    .process-flow .process-arrow-down {
         display: none;
-        justify-content: center;
-        width: 100%;
-        color: var(--primary);
-        font-size: 1.5rem;
-        padding: 10px 0;
     }
     .process-arrow-turn {
         display: flex;
@@ -666,14 +625,13 @@
         font-size: 1.5rem;
     }
     @media (max-width: 991px) {
-        .process-flow-row {
-            flex-direction: column;
-            gap: 5px;
-        }
-        .process-arrow { display: none; }
-        .process-arrow-turn { display: none; }
-        .process-arrow-down { display: flex; }
-        .process-card { width: 260px; }
+        .process-flow { display: none; }
+        .process-mobile { display: flex !important; flex-direction: column; align-items: center; gap: 5px; }
+        .process-mobile .process-card { width: 260px; }
+        .process-mobile .process-arrow-down { display: flex; justify-content: center; width: 100%; color: var(--primary); font-size: 1.5rem; padding: 10px 0; }
+    }
+    @media (min-width: 992px) {
+        .process-mobile { display: none !important; }
     }
 
     /* ===== STATS ===== */
@@ -929,7 +887,7 @@
     }
 
     @media (max-width: 991px) {
-        .hero-banner, .hero-banner .carousel-item { height: auto; min-height: 100vh; }
+        .hero-banner, .hero-banner .carousel-item { height: auto; min-height: auto; max-height: 450px; }
         .hero-inner { position: relative; padding: 30px 0; }
         .hero-text h1 { font-size: 1.6rem; }
         .hero-text .hero-sub { font-size: 0.85rem; }
@@ -942,8 +900,8 @@
         .portfolio-section { padding: 50px 0; }
     }
     @media (max-width: 575px) {
-        .hero-banner { margin: 8px 10px 0; border-radius: 20px; min-height: 480px; }
-        .hero-banner .carousel-item { min-height: 480px; }
+        .hero-banner { margin: 8px 10px 0; border-radius: 20px; min-height: 60vh; }
+        .hero-banner .carousel-item { min-height: 60vh; }
         .hero-text h1 { font-size: 1.3rem; }
         .hero-text .hero-sub { font-size: 0.78rem; }
         .hero-text .hero-company { font-size: 0.68rem; letter-spacing: 1.5px; }
@@ -982,6 +940,21 @@
         .faq-cta-text { font-size: 0.88rem; }
         .btn-theme { padding: 10px 20px; font-size: 12px; }
     }
+    @media (max-width: 768px) {
+        .hero-banner { margin: 10px 10px 0; border-radius: 16px; }
+        .hero-inner .container { flex-direction: column; gap: 20px; padding: 20px 15px; }
+        .hero-text { text-align: center; }
+        .hero-text h1 { font-size: 1.8rem; }
+        .hero-text p { font-size: 0.9rem; }
+        .consultation-form { width: 100% !important; min-width: unset !important; max-width: 100%; }
+        .about-heading-row { flex-direction: column; gap: 15px; }
+        .about-features-row { flex-direction: column; gap: 15px; }
+        .about-feature-card { min-width: unset; }
+    }
+    @media (max-width: 400px) {
+        .hero-text h1 { font-size: 1.3rem; }
+        .hero-banner { margin: 3px 3px 0; }
+    }
 </style>
 @endsection
 
@@ -1007,12 +980,12 @@
             @if($banners->count())
                 @foreach($banners as $index => $banner)
                     <div class="carousel-item h-100 {{ $index === 0 ? 'active' : '' }}">
-                        <img loading="lazy" src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}">
+                        <img {{ $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' }} src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}">
                     </div>
                 @endforeach
             @else
                 <div class="carousel-item h-100 active">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Landscape Design">
+                    <img loading="eager" fetchpriority="high" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Landscape Design">
                 </div>
                 <div class="carousel-item h-100">
                     <img loading="lazy" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden">
@@ -1046,15 +1019,33 @@
     <div class="hero-inner">
         <div class="container">
             <div class="hero-text">
-                <p class="hero-company">SR GREENSCAPES PVT LTD</p>
-                <h1>Designing Landscapes That Perform, Sustain, and Inspire</h1>
-                <p class="hero-sub mb-4">Science-Driven Sustainable Landscaping Across India</p>
-                <div class="d-flex gap-3 mt-4">
-                    <a href="/projects" class="btn-theme">
-                        Discover Projects
-                        <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
-                    </a>
-                </div>
+                @if($banners->count())
+                    @foreach($banners as $index => $banner)
+                        <div class="hero-slide-text" data-slide="{{ $index }}" style="{{ $index !== 0 ? 'display:none;' : '' }}">
+                            <p class="hero-company">{{ $banner->subtitle ?? 'SR GREENSCAPES PVT LTD' }}</p>
+                            <h1>{{ $banner->title ?? 'Designing Landscapes That Perform, Sustain, and Inspire' }}</h1>
+                            <p class="hero-sub mb-4">{{ $banner->description ?? 'Science-Driven Sustainable Landscaping Across India' }}</p>
+                            <div class="d-flex gap-3 mt-4">
+                                <a href="{{ $banner->button_link ?? '/projects' }}" class="btn-theme">
+                                    {{ $banner->button_text ?? 'Discover Projects' }}
+                                    <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="hero-slide-text" data-slide="0">
+                        <p class="hero-company">SR GREENSCAPES PVT LTD</p>
+                        <h1>Designing Landscapes That Perform, Sustain, and Inspire</h1>
+                        <p class="hero-sub mb-4">Science-Driven Sustainable Landscaping Across India</p>
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="/projects" class="btn-theme">
+                                Discover Projects
+                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="consultation-form">
                 <h4>Book A Free Consultation</h4>
@@ -1158,52 +1149,42 @@
     </div>
 </section>
 
-<!-- Why Choose Us -->
+<!-- What Makes Us Different -->
 <section class="diff-section">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 mb-4 mb-lg-0">
-                <div class="choose-img-wrap">
-                    <div class="choose-dots"></div>
-                    <img loading="lazy" src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Landscaping Expert" class="choose-img-circle">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden Work" class="choose-img-small">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <p class="about-label d-flex justify-content-center">What Makes Us Different</p>
+            <h2 class="section-title">Why Homeowners Trust Our Landscaping Expertise</h2>
+            <p class="text-muted mx-auto" style="max-width: 650px;">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
+        </div>
+
+        <div class="row g-4">
+            @php
+                $diffItems = [
+                    ['img' => 'Home/1.8 Science-Driven Approach.jpg', 'title' => 'Science-Driven Approach', 'desc' => 'Our projects are grounded in scientific research, soil analysis, and evidence-based plant selection for sustainable results.'],
+                    ['img' => 'Home/1.9 Sustainability at the Core.jpg', 'title' => 'Sustainability at the Core', 'desc' => 'Every decision we make prioritizes environmental responsibility — from water-efficient irrigation to native plant species.'],
+                    ['img' => 'Home/1.10 Research-Integrated Planning.jpg', 'title' => 'Research-Integrated Planning', 'desc' => 'We incorporate the latest horticultural research into every design, ensuring long-term viability and ecological balance.'],
+                    ['img' => 'Home/1.11 Climate-Resilient Design.jpg', 'title' => 'Climate-Resilient Design', 'desc' => 'Our landscapes are engineered to withstand heat stress, irregular rainfall, and changing urban environmental conditions.'],
+                    ['img' => 'Home/1.12 End-to-End Execution.jpg', 'title' => 'End-to-End Execution', 'desc' => 'From concept design and nursery production to irrigation, hardscape installation, and ongoing maintenance support.'],
+                    ['img' => 'Home/1.13 Experienced Leadership  Advisory Strength.jpg', 'title' => 'Experienced Leadership & Advisory Strength', 'desc' => 'Led by PhD horticulture professionals with a scientific advisory network providing institutional credibility.'],
+                    ['img' => 'Home/1.14 Long-Term Value Creation.jpg', 'title' => 'Long-Term Value Creation', 'desc' => 'Our landscapes are built to mature beautifully, increasing property value and reducing maintenance costs over time.'],
+                    ['img' => 'Home/1.15 Cost-Effective  Affordable.jpg', 'title' => 'Cost-Effective & Affordable', 'desc' => 'Premium quality landscapes delivered at competitive pricing through our own nursery and efficient project management.'],
+                ];
+            @endphp
+
+            @foreach($diffItems as $item)
+                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
+                    <div class="diff-card">
+                        <div class="diff-img">
+                            <img loading="lazy" src="{{ asset('storage/' . $item['img']) }}" alt="{{ $item['title'] }}">
+                        </div>
+                        <div class="diff-body">
+                            <h6>{{ $item['title'] }}</h6>
+                            <p>{{ $item['desc'] }}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-7">
-                <p class="about-label">Why Choose Us</p>
-                <h2 class="section-title">Why Homeowners Trust Our Landscaping Expertise</h2>
-                <p class="about-text mb-3">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
-                <ul class="choose-list">
-                    <li>
-                        <div class="choose-icon"><i class="fas fa-users"></i></div>
-                        <div>
-                            <h6>Experienced & Skilled Team</h6>
-                            <p>Led by horticulture professionals with a scientific advisory network for institutional credibility.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="choose-icon"><i class="fas fa-pencil-ruler"></i></div>
-                        <div>
-                            <h6>Custom Outdoor Solutions</h6>
-                            <p>Climate-responsive designs that withstand heat stress, irregular rainfall and urban environmental pressures.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="choose-icon"><i class="fas fa-gem"></i></div>
-                        <div>
-                            <h6>High-Quality Materials</h6>
-                            <p>Research-integrated planning with evidence-based plant selection and premium landscaping materials.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="choose-icon"><i class="fas fa-clock"></i></div>
-                        <div>
-                            <h6>Reliable & On-Time Service</h6>
-                            <p>End-to-end execution from concept design and nursery production to irrigation systems and maintenance.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -1217,46 +1198,19 @@
             <p class="text-muted mx-auto" style="max-width: 650px;">Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
         </div>
 
-        @php
-            $defaultServices = [
-                ['img' => 'Home/1.16 Landscape Design  Execution.png', 'name' => 'Landscape Design & Execution', 'slug' => 'landscape-design-execution', 'desc' => 'Transform your space with thoughtfully designed, living landscapes combining creative vision with scientific planning.'],
-                ['img' => 'Home/1.17 Specialized Garden Services.jpg', 'name' => 'Specialized Garden Services', 'slug' => 'specialized-garden-services', 'desc' => 'Vertical gardens, therapeutic gardens, Miyawaki forests, biophilic design and much more.'],
-                ['img' => 'Home/1.18 Hardscape  Softscape Development.jpg', 'name' => 'Hardscape & Softscape Development', 'slug' => 'softscape-hardscape-development', 'desc' => 'Fountains, ponds, pathways, pergolas, lawn turfing, tree planting and ornamental planting.'],
-                ['img' => 'Home/1.19 Landscape Maintenance.png', 'name' => 'Landscape Maintenance', 'slug' => 'landscape-maintenance', 'desc' => 'AMC plans, lawn care, pruning, pest control and plant health monitoring and improvement.'],
-                ['img' => 'Home/1.20 Nursery  Plant Supply.jpg', 'name' => 'Nursery & Plant Supply', 'slug' => 'nursery-plant-supply', 'desc' => 'Ornamental, flowering, indoor/outdoor, fruit trees, forestry — with bulk supply options.'],
-                ['img' => 'Home/1.21 Horticulture Consultancy.png', 'name' => 'Horticulture Consultancy', 'slug' => 'horticulture-consultancy', 'desc' => 'Farm planning, urban gardening, terrace farming, soil & plant nutrition advisory.'],
-            ];
-            $activeServices = (isset($services) && $services->count()) ? $services->take(6) : collect($defaultServices)->map(fn($s) => (object)$s);
-        @endphp
-
         <div class="row g-4">
-            @foreach($activeServices as $service)
+            @foreach($services as $service)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="service-card h-100 border rounded-4 overflow-hidden shadow-sm bg-white" onclick="window.location.href='{{ isset($service->slug) ? route('service.detail', $service->slug) : '#' }}'">
-                        <div class="svc-img-wrap" style="height: 200px; overflow: hidden;">
-                            @php
-                                $svcFallbackImages = [
-                                    'Home/1.16 Landscape Design  Execution.png',
-                                    'Home/1.17 Specialized Garden Services.jpg',
-                                    'Home/1.18 Hardscape  Softscape Development.jpg',
-                                    'Home/1.19 Landscape Maintenance.png',
-                                    'Home/1.20 Nursery  Plant Supply.jpg',
-                                    'Home/1.21 Horticulture Consultancy.png',
-                                ];
-                                $svcImage = $service->image ?? $service->img ?? null;
-                                if (!$svcImage) {
-                                    $svcImage = $svcFallbackImages[$loop->index % count($svcFallbackImages)];
-                                }
-                            @endphp
-                            <img loading="lazy" src="{{ asset('storage/' . $svcImage) }}" alt="{{ $service->name }}" class="w-100 h-100 object-fit-cover">
+                    <div class="service-card">
+                        @if($service->image)
+                        <div class="svc-img-wrap">
+                            <img loading="lazy" src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
                         </div>
-                        <div class="svc-body p-4">
-                            <h5 class="fw-bold mb-3">{{ $service->name }}</h5>
-                            <p class="svc-desc small mb-3">{{ Str::limit($service->description ?? $service->desc, 100) }}</p>
-                            <a href="#" class="btn-theme py-2 px-3" style="font-size: 0.8rem;">
-                                Read More
-                                <span class="btn-icon" style="width: 25px; height: 25px;"><i class="fas fa-arrow-right" style="font-size: 10px;"></i></span>
-                            </a>
+                        @endif
+                        <div class="svc-body">
+                            <h5>{{ $service->name }}</h5>
+                            <p class="svc-desc">{{ Str::limit(strip_tags($service->description), 100) }}</p>
+                            <a href="{{ route('service.detail', $service->slug) }}" class="svc-link">Explore Services <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -1271,6 +1225,209 @@
     </div>
 </section>
 
+
+<style>
+/* Circular Step Layout (Traveltag Inspired) */
+.process-section {
+    background-color: #ffffff;
+    padding: 100px 0;
+}
+.process-header .section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+}
+.process-step-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.process-circle-outer {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 30px auto;
+    border: 1px dashed #8bc34a;
+    border-radius: 50%;
+    position: relative;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.process-circle-outer:hover {
+    transform: translateY(-5px);
+    border-color: #5b96bf;
+}
+.process-circle-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.process-circle-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+.process-circle-outer:hover .process-circle-inner img {
+    transform: scale(1.08);
+}
+.step-badge-circle {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary, #8BC34A); /* Theme button color / light green */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    box-shadow: 0 4px 10px rgba(139, 195, 74, 0.4);
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+.process-circle-outer:hover .step-badge-circle {
+    transform: scale(1.1);
+}
+.process-step-info h4 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+.process-step-info p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0 15px;
+}
+
+/* Connecting Arrow */
+.curved-arrow {
+    position: absolute;
+    top: 100px;
+    right: -60px;
+    width: 120px;
+    height: 40px;
+    z-index: 0;
+    pointer-events: none;
+}
+@media (max-width: 1199px) {
+    .curved-arrow {
+        right: -40px;
+        width: 80px;
+    }
+}
+@media (max-width: 991px) {
+    .curved-arrow {
+        display: none !important;
+    }
+    .process-circle-outer {
+        width: 220px;
+        height: 220px;
+    }
+}
+</style>
+
+<!-- Our Process (Circular Inspired Design) -->
+<section class="process-section">
+    <div class="container">
+        <div class="process-header text-center mb-5 pb-3" data-aos="fade-up">
+            <h2 class="section-title">Structured, Measurable, Repeatable</h2>
+        </div>
+
+        @php
+            $processSteps = [
+                ['num' => '01', 'title' => 'Consultation & Assessment', 'desc' => 'Initial understanding of project needs and comprehensive on-site evaluation.', 'img' => 'Home/1.8 Science-Driven Approach.jpg'],
+                ['num' => '02', 'title' => 'Research-Based Design', 'desc' => 'Creating layouts focusing on biodiversity, climate, and site characteristics.', 'img' => 'Home/1.10 Research-Integrated Planning.jpg'],
+                ['num' => '03', 'title' => 'Technical Planning', 'desc' => 'Detailed technical structuring, responsible material choices, and timelines.', 'img' => 'Home/1.9 Sustainability at the Core.jpg'],
+                ['num' => '04', 'title' => 'Professional Execution', 'desc' => 'Expert on-ground implementation with strict quality and safety controls.', 'img' => 'Home/1.12 End-to-End Execution.jpg'],
+                ['num' => '05', 'title' => 'Structured Handover', 'desc' => 'Final thorough reviews and detailed documentation provided upon project handover.', 'img' => 'Home/1.14 Long-Term Value Creation.jpg'],
+                ['num' => '06', 'title' => 'Lifecycle Support', 'desc' => 'Continuous maintenance and care tailored for long-term health and growth.', 'img' => 'Home/1.11 Climate-Resilient Design.jpg'],
+            ];
+        @endphp
+
+        <div class="row g-4">
+            @foreach($processSteps as $i => $step)
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ 100 + ($i * 100) }}">
+                    <div class="process-step-container">
+                        <div class="process-circle-outer">
+                            <div class="process-circle-inner">
+                                <img loading="lazy" src="{{ asset('storage/' . $step['img']) }}" alt="{{ $step['title'] }}">
+                            </div>
+                            <div class="step-badge-circle">{{ $step['num'] }}</div>
+                        </div>
+                        <div class="process-step-info">
+                            <h4>{{ $step['title'] }}</h4>
+                            <p>{{ $step['desc'] }}</p>
+                        </div>
+                        
+                        {{-- Add arrow between items in a row, except the last one in a 3-column grid --}}
+                        @if($i % 3 != 2 && $i != count($processSteps) - 1)
+                            <svg class="curved-arrow d-none d-lg-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30">
+                                <path d="M0,25 Q50,0 95,20" fill="none" stroke="#8BC34A" stroke-width="1.5" style="stroke: var(--primary, #8BC34A);" />
+                                <path d="M90,13 L97,21 L85,22" fill="none" stroke="#8BC34A" stroke-width="1.5" style="stroke: var(--primary, #8BC34A);" />
+                            </svg>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section (New Pattern Design) -->
+<section class="stats-bar-section py-5 my-5 position-relative" style="background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat; overflow: hidden; border-radius: 0;">
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(17, 45, 20, 0.85); z-index: 0;"></div>
+    <div class="position-absolute rounded-circle blur-bg" style="width: 300px; height: 300px; background: rgba(189, 228, 57, 0.1); top: -100px; left: -100px; filter: blur(80px); z-index: 0;"></div>
+    <div class="position-absolute rounded-circle blur-bg" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
+
+    <div class="container position-relative z-1 py-4">
+        <div class="row justify-content-center g-4">
+            @php
+                $fallbackStats = [
+                    (object)['icon' => 'fas fa-calendar-check', 'number' => '5', 'suffix' => '+', 'label' => 'Successful Years'],
+                    (object)['icon' => 'fas fa-seedling', 'number' => '4', 'suffix' => '+', 'label' => 'Projects Completed'],
+                    (object)['icon' => 'fas fa-user-tie', 'number' => '10', 'suffix' => '+', 'label' => 'Professionals'],
+                    (object)['icon' => 'fas fa-leaf', 'number' => '30', 'suffix' => '+', 'label' => 'Gardeners'],
+                    (object)['icon' => 'fas fa-map-marker-alt', 'number' => '5', 'suffix' => '+', 'label' => 'Locations Executed'],
+                    (object)['icon' => 'fas fa-trophy', 'number' => '2', 'suffix' => '+', 'label' => 'Awards Won'],
+                    (object)['icon' => 'fab fa-google', 'number' => '3.3', 'suffix' => '+', 'label' => 'Google Rating'],
+                ];
+                $activeCounters = (isset($counters) && $counters->count()) ? $counters : collect($fallbackStats);
+            @endphp
+
+            @foreach($activeCounters as $stat)
+            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 180px; max-width: 250px;">
+                <div class="stat-card text-center p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
+                     style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); transition: transform 0.3s;"
+                     onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <div class="icon-diamond mb-4 position-relative d-flex align-items-center justify-content-center"
+                         style="width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; transform: rotate(45deg);">
+                        <i class="{{ $stat->icon }} text-white fs-4" style="transform: rotate(-45deg);"></i>
+                    </div>
+                    <div class="stat-num text-white fw-bold lh-1 mb-3" style="font-size: 2.8rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
+                    <div class="d-flex align-items-center justify-content-center w-100 px-3 mb-3">
+                        <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
+                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #fff; margin: 0 8px;"></div>
+                        <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
+                    </div>
+                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $stat->label }}</div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
 <!-- Featured Portfolio -->
 <section class="portfolio-section text-center py-5" id="portfolio">
@@ -1320,64 +1477,6 @@
 
         <div class="text-center mt-4">
             <a href="/projects" class="btn-view-all">View All Projects <i class="fas fa-arrow-right ms-2"></i></a>
-        </div>
-    </div>
-</section>
-
-
-<!-- Stats Section (New Pattern Design) -->
-<section class="stats-bar-section py-5 my-5 position-relative" style="background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat; overflow: hidden; border-radius: 0;">
-    <!-- Dark/Green Overlay for Readability -->
-    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(17, 45, 20, 0.85); z-index: 0;"></div>
-    
-    <!-- Modern Abstract Shapes (Opacities reduced lightly for background image integration) -->
-    <div class="position-absolute rounded-circle blur-bg" style="width: 300px; height: 300px; background: rgba(189, 228, 57, 0.1); top: -100px; left: -100px; filter: blur(80px); z-index: 0;"></div>
-    <div class="position-absolute rounded-circle blur-bg" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
-    
-    <div class="container position-relative z-1 py-4">
-        <div class="row justify-content-center g-4">
-            
-            @php
-                $fallbackStats = [
-                    (object)['icon' => 'fas fa-calendar-check', 'number' => '5', 'suffix' => '+', 'label' => 'Successful Years'],
-                    (object)['icon' => 'fas fa-seedling', 'number' => '4', 'suffix' => '+', 'label' => 'Projects Completed'],
-                    (object)['icon' => 'fas fa-user-tie', 'number' => '10', 'suffix' => '+', 'label' => 'Professionals'],
-                    (object)['icon' => 'fas fa-leaf', 'number' => '30', 'suffix' => '+', 'label' => 'Gardeners'],
-                    (object)['icon' => 'fas fa-map-marker-alt', 'number' => '5', 'suffix' => '+', 'label' => 'Locations Executed'],
-                    (object)['icon' => 'fas fa-trophy', 'number' => '2', 'suffix' => '+', 'label' => 'Awards Won'],
-                    (object)['icon' => 'fab fa-google', 'number' => '3.3', 'suffix' => '+', 'label' => 'Google Rating'],
-                ];
-                $activeCounters = (isset($counters) && $counters->count()) ? $counters : collect($fallbackStats);
-            @endphp
-
-            @foreach($activeCounters as $stat)
-            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 180px; max-width: 250px;">
-                <div class="stat-card text-center p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
-                     style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); transition: transform 0.3s;"
-                     onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-
-                    <!-- Diamond Icon Container -->
-                    <div class="icon-diamond mb-4 position-relative d-flex align-items-center justify-content-center"
-                         style="width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; transform: rotate(45deg);">
-                        <i class="{{ $stat->icon }} text-white fs-4" style="transform: rotate(-45deg);"></i>
-                    </div>
-
-                    <!-- Number -->
-                    <div class="stat-num text-white fw-bold lh-1 mb-3" style="font-size: 2.8rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
-
-                    <!-- Line with Dot separator -->
-                    <div class="d-flex align-items-center justify-content-center w-100 px-3 mb-3">
-                        <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
-                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #fff; margin: 0 8px;"></div>
-                        <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
-                    </div>
-
-                    <!-- Text Label -->
-                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $stat->label }}</div>
-                </div>
-            </div>
-            @endforeach
-
         </div>
     </div>
 </section>
@@ -1852,6 +1951,23 @@
     }, { threshold: 0.15 });
 
     document.querySelectorAll('.svc-animate').forEach(el => svcObserver.observe(el));
+
+    // Sync hero text with carousel slide
+    const heroCarousel = document.getElementById('heroCarousel');
+    if (heroCarousel) {
+        heroCarousel.addEventListener('slide.bs.carousel', function(e) {
+            const allTexts = document.querySelectorAll('.hero-slide-text');
+            allTexts.forEach(el => {
+                el.style.display = 'none';
+                el.style.opacity = '0';
+            });
+            const activeText = document.querySelector('.hero-slide-text[data-slide="' + e.to + '"]');
+            if (activeText) {
+                activeText.style.display = 'block';
+                setTimeout(() => { activeText.style.opacity = '1'; }, 50);
+            }
+        });
+    }
 </script>
 @endsection
 

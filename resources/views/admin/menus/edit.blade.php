@@ -39,6 +39,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
+                    <label class="form-label">Display Order</label>
+                    <input type="number" name="order" class="form-control" value="{{ old('order', $menu->order) }}" min="0">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
                     <div class="form-check">
                         <input type="checkbox" name="has_dropdown" class="form-check-input" id="has_dropdown" {{ $menu->has_dropdown ? 'checked' : '' }}>
                         <label class="form-check-label" for="has_dropdown">Has Dropdown</label>

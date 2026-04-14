@@ -27,12 +27,13 @@ class MenuController extends Controller
             'url' => 'nullable|string|max:255',
             'route' => 'nullable|string|max:255',
             'parent_id' => 'nullable|exists:menus,id',
+            'order' => 'nullable|integer|min:0',
         ]);
 
         $data = $request->all();
         $data['is_active'] = $request->has('is_active');
         $data['has_dropdown'] = $request->has('has_dropdown');
-        $data['order'] = Menu::max('order') + 1;
+        $data['order'] = $request->filled('order') ? $request->order : Menu::max('order') + 1;
 
         Menu::create($data);
         return redirect()->route('admin.menus.index')->with('success', 'Menu item created successfully.');
@@ -51,6 +52,7 @@ class MenuController extends Controller
             'url' => 'nullable|string|max:255',
             'route' => 'nullable|string|max:255',
             'parent_id' => 'nullable|exists:menus,id',
+            'order' => 'nullable|integer|min:0',
         ]);
 
         $data = $request->all();

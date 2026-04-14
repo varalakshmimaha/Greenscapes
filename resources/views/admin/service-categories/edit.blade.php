@@ -13,8 +13,21 @@
         <form action="{{ route('admin.service-categories.update', $serviceCategory) }}" method="POST" enctype="multipart/form-data">
             @csrf @method('PUT')
             <div class="mb-3">
+                <label class="form-label">Select Service <span class="text-danger">*</span></label>
+                <select name="service_id" class="form-select" required>
+                    <option value="">-- Select Service --</option>
+                    @foreach($services as $service)
+                        <option value="{{ $service->id }}" {{ old('service_id', $serviceCategory->service_id) == $service->id ? 'selected' : '' }}>{{ $service->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label class="form-label">Category Name <span class="text-danger">*</span></label>
                 <input type="text" name="name" class="form-control" value="{{ old('name', $serviceCategory->name) }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea name="description" class="form-control" rows="4">{{ old('description', $serviceCategory->description) }}</textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">Image</label>

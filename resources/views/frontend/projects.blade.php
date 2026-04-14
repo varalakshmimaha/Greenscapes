@@ -158,12 +158,82 @@
         transform: translate(-50%, -50%) scale(1);
     }
 
+    /* ===== OTHER PROJECTS SLIDER ===== */
+    .other-proj-section {
+        padding: 70px 0 60px;
+        background: #fff;
+        overflow: hidden;
+    }
+    .other-proj-label {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+        display: inline-block;
+    }
+    .other-proj-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #1a2a1a;
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    .other-proj-title span { color: inherit; }
+    .other-proj-desc {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        max-width: 750px;
+        margin: 0 auto;
+    }
+    .other-proj-slider-wrap {
+        width: 100%;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+    .other-proj-slider {
+        display: flex;
+        gap: 20px;
+        animation: otherProjScroll 40s linear infinite;
+        width: max-content;
+    }
+    .other-proj-slider:hover {
+        animation-play-state: paused;
+    }
+    .other-proj-slide {
+        flex: 0 0 320px;
+        height: 220px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        border: 1px solid #eee;
+        position: relative;
+    }
+    .other-proj-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+    }
+    .other-proj-slide:hover img {
+        transform: scale(1.08);
+    }
+
+    @keyframes otherProjScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
     /* ===== MOBILE RESPONSIVE ===== */
     @media (max-width: 991px) {
         .proj-card { height: 300px; }
         .proj-card .proj-overlay h5 { font-size: 0.95rem; }
         .filter-btns { gap: 6px; margin-bottom: 25px; }
         .filter-btns .filter-btn { padding: 6px 16px; font-size: 0.78rem; }
+        .other-proj-slide { flex: 0 0 260px; height: 180px; }
+        .other-proj-title { font-size: 1.5rem; }
     }
     @media (max-width: 575px) {
         .projects-hero { height: 180px; }
@@ -177,6 +247,20 @@
         .stats-bar-section .rounded-4 { padding: 12px 8px !important; }
         .stats-bar-section .text-white.fw-bold.lh-1 { font-size: 2rem !important; }
         .stats-bar-section .text-uppercase { font-size: 0.7rem !important; }
+        .other-proj-section { padding: 50px 0 40px; }
+        .other-proj-slide { flex: 0 0 220px; height: 150px; border-radius: 12px; }
+        .other-proj-slider { gap: 14px; }
+        .other-proj-title { font-size: 1.3rem; }
+        .other-proj-desc { font-size: 0.88rem; }
+    }
+    @media (max-width: 480px) {
+        .projects-hero { height: 200px; }
+        .projects-hero-content h1 { font-size: 1.4rem; }
+        .filter-btns .filter-btn { font-size: 11px; padding: 6px 12px; }
+        .proj-card { height: 300px; }
+        .proj-card .proj-overlay h5 { font-size: 1rem; }
+        .other-proj-slide { flex: 0 0 260px; }
+        .other-proj-slide .proj-overlay h5 { font-size: 0.9rem; }
     }
 </style>
 @endsection
@@ -245,6 +329,46 @@
             </div>
         @endif
 
+    </div>
+</section>
+
+<!-- Other Projects - Sliding Carousel -->
+<section class="other-proj-section">
+    <div class="container">
+        <div class="text-center mb-4" data-aos="fade-up">
+            <span class="other-proj-label">Our Portfolio</span>
+            <h2 class="other-proj-title">Delivering Excellence Across <span>Diverse Landscapes</span></h2>
+            <p class="other-proj-desc">Our expertise spans a diverse range of landscape projects, each executed with precision, scientific insight and thoughtful design. Guided by a strong focus on sustainability and long-term performance, every project reflects our commitment to transforming outdoor spaces into functional, resilient and enduring landscapes.</p>
+        </div>
+    </div>
+
+    <div class="other-proj-slider-wrap" data-aos="fade-up">
+        <div class="other-proj-slider" id="otherProjSlider">
+            @php
+                $sliderImages = [
+                    'Home/1.1Cover photo 1.jpg',
+                    'Home/1.2 Cover photo 2.jpg',
+                    'Home/1.3 Cover photo 3.jpg',
+                    'Home/1.4 Cover photo  4.jpg',
+                    'Home/1.5 Cover photo 5.jpg',
+                    'Home/1.6 Cover photo 6.jpg',
+                    'Home/1.7 Cover photo 7.jpg',
+                    'About Us/2.1  Science-Driven Approach.jpg',
+                    'About Us/2.5  End-to-End Execution.jpg',
+                ];
+            @endphp
+            @foreach($sliderImages as $img)
+                <div class="other-proj-slide">
+                    <img loading="lazy" src="{{ asset('storage/' . $img) }}" alt="Project">
+                </div>
+            @endforeach
+            {{-- Duplicate for seamless loop --}}
+            @foreach($sliderImages as $img)
+                <div class="other-proj-slide">
+                    <img loading="lazy" src="{{ asset('storage/' . $img) }}" alt="Project">
+                </div>
+            @endforeach
+        </div>
     </div>
 </section>
 

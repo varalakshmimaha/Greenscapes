@@ -84,7 +84,7 @@
                         </li>
                     </ul>
                     <hr>
-                    <a href="/contact" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Enquire About This Service</a>
+                    <a href="/contact" class="btn w-100 py-3 rounded-pill fw-bold" style="background: var(--primary); color: #fff; border: none;">Enquire About This Service</a>
                 </div>
             </div>
         </div>
@@ -107,12 +107,28 @@
         transform: scale(1.1);
     }
 
+    @media (max-width: 768px) {
+        .project-detail-hero { padding: 100px 0 60px !important; }
+        .project-detail-hero h1 { font-size: 1.8rem !important; }
+        .project-specs { position: relative !important; top: auto !important; }
+    }
+
     @media (max-width: 575px) {
         .project-detail-hero { padding: 80px 0 50px !important; }
         .project-detail-hero h1 { font-size: 1.6rem !important; }
         .project-info-section { padding-top: 30px !important; padding-bottom: 30px !important; }
         .project-specs { top: auto !important; position: relative !important; }
         .gallery-img { height: 150px; }
+    }
+
+    @media (max-width: 480px) {
+        .project-detail-hero { padding: 80px 0 40px !important; }
+        .project-detail-hero h1 { font-size: 1.4rem !important; }
+        .gallery-img { height: 150px; }
+        .project-specs { padding: 15px; }
+        .project-specs h5 { font-size: 1rem; }
+        .project-description h2 { font-size: 1.2rem; }
+        .project-description p { font-size: 0.85rem; }
     }
 </style>
 

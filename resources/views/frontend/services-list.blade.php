@@ -167,6 +167,14 @@
         .svc-card-body h5 { font-size: 0.95rem; }
         .svc-card-body p { font-size: 0.8rem; }
     }
+    @media (max-width: 480px) {
+        .svc-hero { height: 180px; }
+        .svc-hero-content h1 { font-size: 1.3rem; }
+        .svc-hero-content .breadcrumb { font-size: 0.8rem; }
+        .svc-card-img { height: 180px; }
+        .svc-card-body h5 { font-size: 1rem; }
+        .svc-card-body p { font-size: 0.82rem; }
+    }
 </style>
 @endsection
 

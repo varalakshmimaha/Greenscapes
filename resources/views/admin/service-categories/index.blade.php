@@ -12,7 +12,7 @@
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table table-hover mb-0">
-                <thead><tr><th>#</th><th>Image</th><th>Name</th><th>Sub Categories</th><th>Services</th><th>Order</th><th>Status</th><th>Actions</th></tr></thead>
+                <thead><tr><th>#</th><th>Image</th><th>Name</th><th>Service</th><th>Order</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>
                     @forelse($categories as $cat)
                     <tr>
@@ -25,8 +25,13 @@
                             @endif
                         </td>
                         <td><strong>{{ $cat->name }}</strong></td>
-                        <td><span class="badge bg-info">{{ $cat->sub_categories_count }}</span></td>
-                        <td><span class="badge bg-secondary">{{ $cat->services_count }}</span></td>
+                        <td>
+                            @if($cat->service)
+                                <span class="badge bg-success">{{ $cat->service->name }}</span>
+                            @else
+                                <span class="text-muted">-</span>
+                            @endif
+                        </td>
                         <td><span class="badge bg-secondary">{{ $cat->order }}</span></td>
                         <td>
                             @if($cat->is_active)
@@ -37,14 +42,14 @@
                         </td>
                         <td>
                             <a href="{{ route('admin.service-categories.edit', $cat) }}" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i></a>
-                            <form action="{{ route('admin.service-categories.destroy', $cat) }}" method="POST" class="d-inline" onsubmit="return confirm('This will also delete related sub categories. Continue?')">
+                            <form action="{{ route('admin.service-categories.destroy', $cat) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this category?')">
                                 @csrf @method('DELETE')
                                 <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
                     @empty
-                    <tr><td colspan="8" class="text-center text-muted py-4">No categories found. Add your first category!</td></tr>
+                    <tr><td colspan="7" class="text-center text-muted py-4">No categories found. Add your first category!</td></tr>
                     @endforelse
                 </tbody>
             </table>

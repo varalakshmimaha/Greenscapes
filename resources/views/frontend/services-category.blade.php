@@ -255,6 +255,10 @@
                     'Home/1.20 Nursery  Plant Supply.jpg',
                     'Home/1.17 Specialized Garden Services.jpg',
                     'Home/1.19 Landscape Maintenance.png',
+                    'Home/1.21 Horticulture Consultancy.png',
+                    'Home/1.16 Landscape Design  Execution.png',
+                    'Home/1.18 Hardscape  Softscape Development.jpg',
+                    'Home/1.20 Nursery  Plant Supply.jpg',
                 ];
             @endphp
             <div class="row g-4 justify-content-center">
@@ -265,11 +269,7 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $idx * 100 }}">
                         <a href="{{ route('services.subcategory', [$category->slug, $sub->slug]) }}" class="subcat-card">
                             <div class="subcat-card-img">
-                                @if($sub->image ?? false)
-                                    <img loading="lazy" src="{{ asset('storage/' . $sub->image) }}" alt="{{ $sub->name }}">
-                                @else
-                                    <img loading="lazy" src="{{ asset('storage/' . ($subCatImages[$idx] ?? $subCatImages[0])) }}" alt="{{ $sub->name }}">
-                                @endif
+                                <img loading="lazy" src="{{ asset('storage/' . ($subCatImages[$idx % count($subCatImages)] ?? $subCatImages[0])) }}" alt="{{ $sub->name }}">
                                 <span class="service-count">{{ $serviceCount }} {{ Str::plural('Service', $serviceCount) }}</span>
                             </div>
                             <div class="subcat-card-body">

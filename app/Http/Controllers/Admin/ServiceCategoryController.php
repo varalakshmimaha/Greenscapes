@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -11,23 +12,26 @@ class ServiceCategoryController extends Controller
 {
     public function index()
     {
-        $categories = ServiceCategory::withCount(['services', 'subCategories'])->orderBy('order')->get();
+        $categories = ServiceCategory::with('service')->orderBy('order')->get();
         return view('admin.service-categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.service-categories.create');
+        $services = Service::where('is_active', true)->orderBy('order')->get();
+        return view('admin.service-categories.create', compact('services'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
-        $data = $request->only('name');
+        $data = $request->only('service_id', 'name', 'description');
         $data['slug'] = Str::slug($request->name);
         $data['is_active'] = $request->has('is_active');
         $data['order'] = ServiceCategory::max('order') + 1;
@@ -42,17 +46,20 @@ class ServiceCategoryController extends Controller
 
     public function edit(ServiceCategory $serviceCategory)
     {
-        return view('admin.service-categories.edit', compact('serviceCategory'));
+        $services = Service::where('is_active', true)->orderBy('order')->get();
+        return view('admin.service-categories.edit', compact('serviceCategory', 'services'));
     }
 
     public function update(Request $request, ServiceCategory $serviceCategory)
     {
         $request->validate([
+            'service_id' => 'required|exists:services,id',
             'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
 
-        $data = $request->only('name');
+        $data = $request->only('service_id', 'name', 'description');
         $data['slug'] = Str::slug($request->name);
         $data['is_active'] = $request->has('is_active');
 

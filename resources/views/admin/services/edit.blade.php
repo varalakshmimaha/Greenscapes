@@ -21,30 +21,6 @@
                     <label class="form-label">Icon Class</label>
                     <input type="text" name="icon" class="form-control" value="{{ old('icon', $service->icon) }}" placeholder="fas fa-leaf">
                 </div>
-                <div class="col-md-3 mb-3">
-                    <label class="form-label">Order</label>
-                    <input type="number" name="order" class="form-control" value="{{ old('order', $service->order) }}">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Category <span class="text-muted">(Optional)</span></label>
-                    <select name="service_category_id" id="categorySelect" class="form-select" onchange="loadSubCategories(this.value)">
-                        <option value="">-- No Category --</option>
-                        @foreach($categories as $cat)
-                            <option value="{{ $cat->id }}" {{ old('service_category_id', $service->service_category_id) == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label class="form-label">Sub Category <span class="text-muted">(Optional)</span></label>
-                    <select name="service_sub_category_id" id="subCategorySelect" class="form-select">
-                        <option value="">-- No Sub Category --</option>
-                        @foreach($subCategories as $sub)
-                            <option value="{{ $sub->id }}" data-cat="{{ $sub->service_category_id }}" {{ old('service_sub_category_id', $service->service_sub_category_id) == $sub->id ? 'selected' : '' }}>{{ $sub->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Description <span class="text-danger">*</span></label>
@@ -101,16 +77,5 @@
             { name: 'tools', items: ['Maximize', 'Source'] }
         ]
     });
-
-    function loadSubCategories(catId) {
-        const subSelect = document.getElementById('subCategorySelect');
-        const options = subSelect.querySelectorAll('option[data-cat]');
-        options.forEach(opt => {
-            opt.style.display = (!catId || opt.dataset.cat == catId) ? '' : 'none';
-            if (opt.dataset.cat != catId) opt.selected = false;
-        });
-        if (!catId) subSelect.value = '';
-    }
-    loadSubCategories(document.getElementById('categorySelect').value);
 </script>
 @endsection

@@ -535,11 +535,26 @@
         .cta-left { margin-bottom: 40px; }
         .brochure-download { margin-top: 20px; }
     }
+    @media (max-width: 768px) {
+        .quick-info-inner { grid-template-columns: 1fr !important; gap: 15px; }
+        .qi-item { padding: 20px 18px; }
+    }
     @media (max-width: 575px) {
         .contact-hero h1 { font-size: 1.8rem; }
         .contact-section-header h2 { font-size: 1.8rem; }
         .office-card, .contact-form-card { padding: 25px 20px; }
         .cta-left h3 { font-size: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+        .contact-hero { height: 250px !important; }
+        .contact-hero h1 { font-size: 1.4rem; }
+        .contact-hero p { font-size: 0.82rem; }
+        .qi-item { padding: 15px 14px; }
+        .qi-item h6 { font-size: 1rem; }
+        .qi-item p { font-size: 0.82rem; }
+        .contact-form-card { padding: 25px 18px !important; }
+        .contact-form-card h4 { font-size: 1.2rem; }
+        .map-section iframe { height: 280px; }
     }
 </style>
 @endsection

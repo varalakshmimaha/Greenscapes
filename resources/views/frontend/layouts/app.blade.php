@@ -61,19 +61,11 @@
             text-decoration: none;
             padding: 12px 0;
         }
-        .navbar-brand-custom .brand-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .navbar-brand-custom .brand-logo {
+            height: 45px;
+            width: auto;
             margin-right: 10px;
-        }
-        .navbar-brand-custom .brand-icon i {
-            color: #fff;
-            font-size: 18px;
+            object-fit: contain;
         }
         .navbar-brand-custom .brand-text {
             color: #fff;
@@ -617,6 +609,28 @@
             .nav-right { display: none; }
         }
 
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 575px) {
+            .top-bar .top-bar-inner { flex-direction: column; gap: 4px; text-align: center; font-size: 0.75rem; }
+            .top-bar-left, .top-bar-right { font-size: 0.72rem; }
+            .top-bar-center { font-size: 0.75rem; }
+            .navbar-brand-custom .brand-text { font-size: 1rem; }
+            .navbar-brand-custom .brand-logo { height: 38px; }
+            .footer { padding: 40px 0 15px; }
+            .footer .row > div { margin-bottom: 25px; }
+            .footer h5 { font-size: 1rem; margin-bottom: 14px; }
+            .whatsapp-float { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 24px; }
+            .btn-theme { padding: 12px 22px; font-size: 12px; }
+            .section-title { font-size: 1.4rem; }
+            .section-subtitle { font-size: 0.85rem; margin-bottom: 25px; }
+        }
+        @media (max-width: 400px) {
+            .top-bar { padding: 6px 0; }
+            .top-bar-left, .top-bar-right { font-size: 0.68rem; word-break: break-all; }
+            .navbar-brand-custom .brand-text { font-size: 0.9rem; }
+            .footer-bottom { font-size: 12px; }
+        }
+
     </style>
     @yield('styles')
 </head>
@@ -641,11 +655,13 @@
     <nav class="main-navbar sticky-top">
         <div class="container">
             <a href="{{ url('/') }}" class="navbar-brand-custom">
-                <div class="brand-icon"><i class="fas fa-leaf"></i></div>
-                <div class="brand-text">
-                    SR Greenscapes
-                    <small>PVT LTD</small>
-                </div>
+                @if(!empty($siteSettings['site_logo']))
+                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="brand-logo">
+                @else
+                    <div class="brand-text">
+                        {{ $siteSettings['site_name'] ?? 'SR Greenscapes' }}
+                    </div>
+                @endif
             </a>
 
             <button class="nav-toggle" onclick="document.getElementById('navMenu').classList.toggle('show')">
@@ -656,58 +672,12 @@
                 @if(isset($navMenus) && $navMenus->count())
                     @foreach($navMenus as $menu)
                         @if(strtolower($menu->title) === 'about us')
-                            {{-- About Us with Team Categories flyout --}}
                             <li>
-                                <a href="{{ $menu->url }}" class="{{ request()->is('about') ? 'active' : '' }}">{{ strtoupper($menu->title) }} <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                                <div class="dropdown-menu-custom">
-                                    <a href="/about">About SR Greenscapes</a>
-                                    @if(isset($navTeamCategories) && $navTeamCategories->count())
-                                        <div class="dropdown-submenu">
-                                            <a href="/our-team" class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
-                                            <div class="dropdown-submenu-menu">
-                                                @foreach($navTeamCategories as $tc)
-                                                    <a href="/our-team?category={{ $tc->slug }}">{{ $tc->name }}</a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @else
-                                        <a href="/our-team">Our Team</a>
-                                    @endif
-                                    @if($menu->children->count())
-                                        @foreach($menu->children as $child)
-                                            <a href="{{ $child->url }}">{{ $child->title }}</a>
-                                        @endforeach
-                                    @endif
-                                </div>
+                                <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">{{ strtoupper($menu->title) }}</a>
                             </li>
                         @elseif(strtolower($menu->title) === 'services')
-                            {{-- Services with Category/SubCategory flyout --}}
                             <li>
-                                <a href="{{ $menu->url }}" class="{{ request()->is('services*') ? 'active' : '' }}">{{ strtoupper($menu->title) }} <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                                <div class="dropdown-menu-custom">
-                                    <a href="/services">All Services</a>
-                                    @if(isset($navServiceCategories) && $navServiceCategories->count())
-                                        @foreach($navServiceCategories as $sc)
-                                            @if($sc->subCategories->count())
-                                                <div class="dropdown-submenu">
-                                                    <a href="{{ route('services.category', $sc->slug) }}" class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
-                                                    <div class="dropdown-submenu-menu">
-                                                        @foreach($sc->subCategories as $sub)
-                                                            <a href="{{ route('services.subcategory', [$sc->slug, $sub->slug]) }}">{{ $sub->name }}</a>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            @else
-                                                <a href="{{ route('services.category', $sc->slug) }}">{{ $sc->name }}</a>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                    @if($menu->children->count())
-                                        @foreach($menu->children as $child)
-                                            <a href="{{ $child->url }}">{{ $child->title }}</a>
-                                        @endforeach
-                                    @endif
-                                </div>
+                                <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">{{ strtoupper($menu->title) }}</a>
                             </li>
                         @elseif($menu->has_dropdown && $menu->children->count())
                             <li>
@@ -728,46 +698,8 @@
                     @endforeach
                 @else
                     <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a></li>
-                    <li>
-                        <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                        <div class="dropdown-menu-custom">
-                            <a href="/about">About SR Greenscapes</a>
-                            @if(isset($navTeamCategories) && $navTeamCategories->count())
-                                <div class="dropdown-submenu">
-                                    <a href="/our-team" class="dropdown-item-custom">Our Team <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
-                                    <div class="dropdown-submenu-menu">
-                                        @foreach($navTeamCategories as $tc)
-                                            <a href="/our-team?category={{ $tc->slug }}">{{ $tc->name }}</a>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @else
-                                <a href="/our-team">Our Team</a>
-                            @endif
-                        </div>
-                    </li>
-                    <li>
-                        <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                        <div class="dropdown-menu-custom">
-                            <a href="/services">All Services</a>
-                            @if(isset($navServiceCategories) && $navServiceCategories->count())
-                                @foreach($navServiceCategories as $sc)
-                                    @if($sc->subCategories->count())
-                                        <div class="dropdown-submenu">
-                                            <a href="{{ route('services.category', $sc->slug) }}" class="dropdown-item-custom">{{ $sc->name }} <i class="fas fa-chevron-right" style="font-size:10px;color:#999;"></i></a>
-                                            <div class="dropdown-submenu-menu">
-                                                @foreach($sc->subCategories as $sub)
-                                                    <a href="{{ route('services.subcategory', [$sc->slug, $sub->slug]) }}">{{ $sub->name }}</a>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @else
-                                        <a href="{{ route('services.category', $sc->slug) }}">{{ $sc->name }}</a>
-                                    @endif
-                                @endforeach
-                            @endif
-                        </div>
-                    </li>
+                    <li><a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US</a></li>
+                    <li><a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES</a></li>
                     <li><a href="/projects" class="{{ request()->is('projects*') ? 'active' : '' }}">PROJECTS</a></li>
                     <li><a href="/faqs" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQ'S</a></li>
                     <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">CONTACTS</a></li>
@@ -775,7 +707,7 @@
             </ul>
 
             <div class="nav-right">
-                <a href="/contact" class="btn-appointment">GET APPOINTMENT</a>
+                <a href="/contact" class="btn-appointment">Download Brochure</a>
             </div>
         </div>
     </nav>
@@ -805,7 +737,8 @@
                     <!-- RIGHT: Form -->
                     <div class="cta-form-panel">
                         <span class="cta-contact-label">● Contact Us</span>
-                        <h2 class="cta-form-heading">We're Here to Help!</h2>
+                        <h2 class="cta-form-heading">Ready to Get Started?</h2>
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:20px;line-height:1.7;">Share your requirements and our team will get back to you within 24 hours with a tailored solution for your landscape needs.</p>
 
                         <form action="{{ route('contact.submit') }}" method="POST">
                             @csrf
@@ -865,13 +798,11 @@
                 <!-- Column 1: Logo, About & Address -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="d-flex align-items-center mb-3">
-                        <div style="width:42px;height:42px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:10px;">
-                            <i class="fas fa-leaf text-white"></i>
-                        </div>
-                        <div>
-                            <strong class="text-white" style="font-size:1.1rem;">SR Greenscapes</strong><br>
-                            <small style="color:rgba(255,255,255,0.5);font-size:0.7rem;">PVT LTD</small>
-                        </div>
+                        @if(!empty($siteSettings['site_logo']))
+                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" style="height:45px;width:auto;object-fit:contain;">
+                        @else
+                            <strong class="text-white" style="font-size:1.1rem;">{{ $siteSettings['site_name'] ?? 'SR Greenscapes' }}</strong>
+                        @endif
                     </div>
                     <p style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.8;margin-bottom:18px;">Creating High-Performance, Science-Driven Sustainable Landscapes. Based in Bengaluru with Pan-India Project Execution.</p>
                     <p style="color:rgba(255,255,255,0.6);font-size:13px;line-height:1.9;margin-bottom:0;">

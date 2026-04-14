@@ -26,7 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $banners = Banner::where('is_active', true)->orderBy('order')->get();
-        $services = Service::where('is_active', true)->orderBy('order')->take(9)->get();
+        // Get the 9 main services for home page
+        $services = Service::where('is_active', true)
+            ->orderBy('order')
+            ->get();
         $projects = Project::where('is_active', true)->orderBy('order')->take(16)->get();
         $teamMembers = TeamMember::where('is_active', true)->orderBy('order')->take(4)->get();
         $faqs = Faq::where('is_active', true)->orderBy('order')->take(5)->get();
@@ -42,24 +45,22 @@ class HomeController extends Controller
     {
         $about = About::where('is_active', true)->orderBy('order')->get();
         $teamMembers = TeamMember::where('is_active', true)->orderBy('order')->get();
-        $teamCategories = TeamCategory::where('is_active', true)->orderBy('order')->get();
+        $teamCategories = TeamCategory::where('is_active', true)->orderBy('order')->with(['members' => function($q) {
+            $q->where('is_active', true)->orderBy('order');
+        }])->get();
         $activeCategory = null;
-        return view('frontend.about', compact('about', 'teamMembers', 'teamCategories', 'activeCategory'));
+        $testimonials = Testimonial::where('is_active', true)->orderBy('order')->get();
+        return view('frontend.about', compact('about', 'teamMembers', 'teamCategories', 'activeCategory', 'testimonials'));
     }
 
     public function ourTeam(Request $request)
     {
-        $teamCategories = TeamCategory::where('is_active', true)->orderBy('order')->get();
-        $activeCategory = null;
+        $teamCategories = TeamCategory::where('is_active', true)->orderBy('order')->with(['members' => function($q) {
+            $q->where('is_active', true)->orderBy('order');
+        }])->get();
 
-        if ($request->has('category')) {
-            $activeCategory = TeamCategory::where('slug', $request->category)->where('is_active', true)->first();
-            $teamMembers = $activeCategory
-                ? TeamMember::where('is_active', true)->where('team_category_id', $activeCategory->id)->orderBy('order')->get()
-                : collect([]);
-        } else {
-            $teamMembers = TeamMember::where('is_active', true)->orderBy('order')->get();
-        }
+        $activeCategory = null;
+        $teamMembers = TeamMember::where('is_active', true)->orderBy('order')->get();
 
         return view('frontend.our-team', compact('teamMembers', 'teamCategories', 'activeCategory'));
     }
@@ -76,31 +77,35 @@ class HomeController extends Controller
 
     public function services()
     {
-        $serviceCategories = ServiceCategory::where('is_active', true)->orderBy('order')->get();
-        return view('frontend.services', compact('serviceCategories'));
+        $services = Service::where('is_active', true)
+            ->withCount('categories')
+            ->orderBy('order')
+            ->get();
+
+        return view('frontend.services', compact('services'));
     }
 
-    public function servicesByCategory($slug)
-    {
-        $category = ServiceCategory::where('slug', $slug)->where('is_active', true)->firstOrFail();
-        $subCategories = $category->subCategories()->where('is_active', true)->orderBy('order')->get();
-        return view('frontend.services-category', compact('category', 'subCategories'));
-    }
-
-    public function servicesBySubCategory($categorySlug, $subSlug)
-    {
-        $category = ServiceCategory::where('slug', $categorySlug)->where('is_active', true)->firstOrFail();
-        $subCategory = $category->subCategories()->where('slug', $subSlug)->where('is_active', true)->firstOrFail();
-        $services = Service::where('is_active', true)->where('service_sub_category_id', $subCategory->id)->orderBy('order')->get();
-        return view('frontend.services-list', compact('category', 'subCategory', 'services'));
-    }
 
     public function serviceDetail($slug)
     {
         $service = Service::where('slug', $slug)->firstOrFail();
-        $relatedServices = Service::where('is_active', true)->where('id', '!=', $service->id)->take(3)->get();
-        return view('frontend.service-detail', compact('service', 'relatedServices'));
+
+        // Get categories belonging to this service
+        $serviceCategories = ServiceCategory::where('service_id', $service->id)
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
+        // Get related services (other main services)
+        $relatedServices = Service::where('is_active', true)
+            ->where('id', '!=', $service->id)
+            ->orderBy('order')
+            ->take(3)
+            ->get();
+
+        return view('frontend.service-detail', compact('service', 'relatedServices', 'serviceCategories'));
     }
+
 
     public function projects()
     {
@@ -162,6 +167,11 @@ class HomeController extends Controller
     {
         $videos = Video::where('is_active', true)->orderBy('order')->get();
         return view('frontend.videos', compact('videos'));
+    }
+
+    public function process()
+    {
+        return view('frontend.process');
     }
 
     public function contact()
