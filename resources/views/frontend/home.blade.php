@@ -1444,31 +1444,19 @@
             </p>
         </div>
 
-        @php
-            $fakeProjects = [
-                ['title' => 'Villa Garden Design', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.2 Cover photo 2.jpg'],
-                ['title' => 'Corporate Campus Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'Home/1.2 Cover photo 2.jpg'],
-                ['title' => 'School & Institutional Garden', 'location' => 'Hoskote, Karnataka', 'type' => 'INSTITUTIONAL', 'img' => 'Home/1.3 Cover photo 3.jpg'],
-                ['title' => 'Terrace & Rooftop Garden', 'location' => 'Bengaluru, Karnataka', 'type' => 'RESIDENTIAL', 'img' => 'Home/1.4 Cover photo  4.jpg'],
-                ['title' => 'Resort & Hotel Landscape', 'location' => 'Bengaluru, Karnataka', 'type' => 'COMMERCIAL', 'img' => 'Home/1.5 Cover photo 5.jpg'],
-                ['title' => 'Miyawaki Forest Project', 'location' => 'Pan-India', 'type' => 'SPECIALIZED', 'img' => 'Home/1.6 Cover photo 6.jpg'],
-            ];
-            $activeProjects = (isset($projects) && $projects->count()) ? $projects : collect($fakeProjects);
-        @endphp
-
         <div class="row portfolio-grid g-4">
-            @foreach($activeProjects->take(6) as $p)
+            @foreach($projects->take(6) as $p)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ is_array($p) ? '/projects' : route('project.detail', $p->slug) }}'">
+                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
-                            <img loading="lazy" src="{{ is_array($p) ? asset('storage/' . $p['img']) : asset('storage/' . ($p->featured_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ is_array($p) ? $p['title'] : $p->title }}" class="w-100 h-100 object-fit-cover">
+                            <img loading="lazy" src="{{ asset('storage/' . ($p->featured_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
-                                {{ is_array($p) ? $p['type'] : ($p->status ?? 'RESIDENTIAL') }}
+                                {{ $p->category ?? ucfirst($p->status) }}
                             </div>
                             <div class="custom-project-overlay position-absolute bottom-0 start-0 w-100 p-4" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
                                 <div class="project-content-bottom text-white">
-                                    <h5 class="mb-1 fw-bold">{{ is_array($p) ? $p['title'] : $p->title }}</h5>
-                                    <p class="mb-0 small opacity-75"><i class="fas fa-map-marker-alt me-2"></i> {{ is_array($p) ? $p['location'] : ($p->client_name ?? 'Location') }}</p>
+                                    <h5 class="mb-1 fw-bold">{{ $p->title }}</h5>
+                                    <p class="mb-0 small opacity-75"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
                                 </div>
                             </div>
                         </div>

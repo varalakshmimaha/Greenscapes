@@ -293,34 +293,26 @@
             <button class="filter-btn" onclick="filterProjects('SPECIALIZED', this)">Specialized</button>
         </div>
 
-        @php
-            $fallbackProjects = [
-                (object)['title' => 'Villa Garden Design', 'slug' => 'sample-project', 'client_name' => 'Bengaluru, Karnataka', 'status' => 'RESIDENTIAL', 'image' => 'Home/1.1Cover photo 1.jpg'],
-                (object)['title' => 'Corporate Campus Landscape', 'slug' => 'sample-project', 'client_name' => 'Bengaluru, Karnataka', 'status' => 'COMMERCIAL', 'image' => 'Home/1.2 Cover photo 2.jpg'],
-                (object)['title' => 'School & Institutional Garden', 'slug' => 'sample-project', 'client_name' => 'Hoskote, Karnataka', 'status' => 'INSTITUTIONAL', 'image' => 'Home/1.3 Cover photo 3.jpg'],
-                (object)['title' => 'Terrace & Rooftop Garden', 'slug' => 'sample-project', 'client_name' => 'Bengaluru, Karnataka', 'status' => 'RESIDENTIAL', 'image' => 'Home/1.4 Cover photo  4.jpg'],
-                (object)['title' => 'Resort & Hotel Landscape', 'slug' => 'sample-project', 'client_name' => 'Bengaluru, Karnataka', 'status' => 'COMMERCIAL', 'image' => 'Home/1.5 Cover photo 5.jpg'],
-                (object)['title' => 'Miyawaki Forest Project', 'slug' => 'sample-project', 'client_name' => 'Pan-India', 'status' => 'SPECIALIZED', 'image' => 'Home/1.6 Cover photo 6.jpg'],
-            ];
-            $activeProjects = (isset($projects) && $projects->count()) ? $projects : collect($fallbackProjects);
-        @endphp
-
         <div class="row g-4" id="projectsGrid">
-            @foreach($activeProjects as $project)
+            @forelse($projects as $project)
                 <div class="col-lg-4 col-md-6 project-item" data-type="{{ $project->status ?? 'RESIDENTIAL' }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <a href="{{ route('project.detail', $project->slug) }}" class="text-decoration-none">
                         <div class="proj-card">
                             <img loading="lazy" src="{{ asset('storage/' . ($project->featured_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $project->title }}">
-                            <div class="proj-badge">{{ $project->status ?? 'RESIDENTIAL' }}</div>
+                            <div class="proj-badge">{{ $project->category ?? ucfirst($project->status) }}</div>
                             <div class="view-btn"><i class="fas fa-arrow-right"></i></div>
                             <div class="proj-overlay">
                                 <h5>{{ $project->title }}</h5>
-                                <p><i class="fas fa-map-marker-alt me-1"></i> {{ $project->client_name ?? 'Location' }}</p>
+                                <p><i class="fas fa-map-marker-alt me-1"></i> {{ $project->location ?? $project->client_name ?? 'Location' }}</p>
                             </div>
                         </div>
                     </a>
                 </div>
-            @endforeach
+            @empty
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">No projects available yet. Check back soon!</p>
+                </div>
+            @endforelse
         </div>
 
         @if(isset($projects) && $projects instanceof \Illuminate\Pagination\LengthAwarePaginator && $projects->hasPages())
