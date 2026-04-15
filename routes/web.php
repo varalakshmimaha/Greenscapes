@@ -119,4 +119,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', \App\Http\Middleware
     Route::post('settings/logo', [SettingController::class, 'updateLogo'])->name('settings.updateLogo');
     Route::get('settings/footer', [SettingController::class, 'footer'])->name('settings.footer');
     Route::post('settings/footer', [SettingController::class, 'updateFooter'])->name('settings.updateFooter');
+    Route::get('settings/brochure', [SettingController::class, 'brochure'])->name('settings.brochure');
+    Route::post('settings/brochure', [SettingController::class, 'updateBrochure'])->name('settings.updateBrochure');
 });

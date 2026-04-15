@@ -13,6 +13,9 @@
     <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('admin.settings.footer') ? 'active' : '' }}" href="{{ route('admin.settings.footer') }}" style="{{ request()->routeIs('admin.settings.footer') ? 'background:var(--primary-green);' : '' }}">Footer & Social</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('admin.settings.brochure') ? 'active' : '' }}" href="{{ route('admin.settings.brochure') }}" style="{{ request()->routeIs('admin.settings.brochure') ? 'background:var(--primary-green);' : '' }}">Brochure</a>
+    </li>
 </ul>
 
 <div class="card">

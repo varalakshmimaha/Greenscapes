@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-3">
                 <label class="form-label text-muted small">Email</label>
-                <p>{{ $contact->email ? '<a href="mailto:'.$contact->email.'">'.$contact->email.'</a>' : '-' }}</p>
+                <p>{{ $contact->email ?? '-' }}</p>
             </div>
             <div class="col-md-3">
                 <label class="form-label text-muted small">City</label>

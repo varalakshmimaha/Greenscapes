@@ -144,48 +144,35 @@
 
     /* ===== SERVICE CARDS (dark card with circular image) ===== */
     .service-card {
-        border-radius: 20px;
+        background: #fff;
+        border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        transition: all 0.4s;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: all 0.3s;
         height: 100%;
-        text-align: center;
-        cursor: default;
-        background: #eaf5ea;
+        border: 1px solid #eee;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        position: relative;
-        padding: 35px 25px 30px;
-        border: none;
     }
     .service-card:hover {
-        box-shadow: none;
-        transform: translateY(-8px);
+        transform: translateY(-6px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+        border-color: rgba(139,195,74,0.3);
     }
     .service-card .svc-img-wrap {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        background: #e6f0e6;
-        position: relative;
+        aspect-ratio: 4/3;
         overflow: hidden;
-        margin-bottom: 22px;
-        flex-shrink: 0;
-        border: 4px solid rgba(139,195,74,0.25);
-        transition: border-color 0.3s;
-    }
-    .service-card:hover .svc-img-wrap {
-        border-color: var(--primary);
+        background: #fff;
     }
     .service-card .svc-img-wrap img {
-        transition: transform 0.4s;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        display: block;
+        transition: transform 0.4s;
     }
     .service-card:hover .svc-img-wrap img {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
     .service-card .svc-img-wrap .svc-icon-placeholder {
         width: 100%;
@@ -200,6 +187,8 @@
         color: var(--primary);
     }
     .service-card .svc-body {
+        padding: 20px;
+        text-align: center;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -208,14 +197,14 @@
     }
     .service-card .svc-body h5 {
         font-weight: 700;
-        color: #2d3a2d;
+        color: var(--dark);
         font-size: 1.1rem;
         margin: 0;
         line-height: 1.4;
     }
     .service-card .svc-body .svc-desc {
         font-size: 0.84rem;
-        color: #555;
+        color: #777;
         margin: 0;
         line-height: 1.7;
         flex: 1;
@@ -228,7 +217,6 @@
         font-weight: 600;
         font-size: 0.88rem;
         text-decoration: none;
-        margin-top: 12px;
         transition: all 0.3s;
     }
     .service-card .svc-link:hover {
@@ -390,8 +378,7 @@
         .cat-header h2 { font-size: 1.4rem; }
         .cat-header p { font-size: 0.88rem; }
         .subcat-pill { padding: 6px 14px; font-size: 0.78rem; }
-        .service-card { padding: 25px 18px 22px; border-radius: 16px; }
-        .service-card .svc-img-wrap { width: 100px; height: 100px; margin-bottom: 16px; border-width: 3px; }
+        .service-card .svc-body { padding: 16px; }
         .service-card .svc-body h5 { font-size: 0.95rem; }
         .service-card .svc-body .svc-desc { font-size: 0.8rem; }
         .service-card .svc-link { font-size: 0.82rem; }
@@ -408,8 +395,7 @@
         .svc-hero { height: 200px; }
         .svc-hero-content h1 { font-size: 1.4rem; }
         .svc-hero-content p { font-size: 0.8rem; }
-        .service-card { flex-direction: column; text-align: center; }
-        .service-card .svc-img-wrap { width: 100px; height: 100px; margin: 0 auto; }
+        .service-card .svc-body { padding: 14px; }
         .svc-cat-header h2 { font-size: 1.3rem; }
         .why-card { padding: 25px 18px; }
         .why-card h4 { font-size: 1rem; }

@@ -62,7 +62,7 @@
             padding: 12px 0;
         }
         .navbar-brand-custom .brand-logo {
-            height: 60px;
+            height: 80px;
             width: auto;
             margin-right: 10px;
             object-fit: contain;
@@ -618,7 +618,7 @@
             .top-bar-left, .top-bar-right { font-size: 0.72rem; }
             .top-bar-center { font-size: 0.75rem; }
             .navbar-brand-custom .brand-text { font-size: 1rem; }
-            .navbar-brand-custom .brand-logo { height: 48px; }
+            .navbar-brand-custom .brand-logo { height: 60px; }
             .footer { padding: 40px 0 15px; }
             .footer .row > div { margin-bottom: 25px; }
             .footer h5 { font-size: 1rem; margin-bottom: 14px; }
@@ -710,7 +710,11 @@
             </ul>
 
             <div class="nav-right">
-                <a href="/contact" class="btn-appointment">Download Brochure</a>
+                @if(!empty($siteSettings['brochure_file']))
+                    <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-appointment">Download Brochure</a>
+                @else
+                    <a href="/contact" class="btn-appointment">Download Brochure</a>
+                @endif
             </div>
         </div>
     </nav>
@@ -802,7 +806,7 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="d-flex align-items-center mb-3 footer-logo-wrap">
                         @if(!empty($siteSettings['site_logo']))
-                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" style="height:60px;width:auto;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;">
+                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" style="height:80px;width:auto;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;">
                         @else
                             <strong class="text-white" style="font-size:1.1rem;">{{ $siteSettings['site_name'] ?? 'SR Greenscapes' }}</strong>
                         @endif

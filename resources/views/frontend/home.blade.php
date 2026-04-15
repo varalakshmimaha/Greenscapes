@@ -353,22 +353,36 @@
         overflow: hidden;
     }
     .diff-card {
-        background: #fff;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.4s;
         height: 100%;
-        border: 1px solid #eee;
+        text-align: center;
+        background: #eaf5ea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 35px 25px 30px;
+        border: none;
     }
     .diff-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 35px rgba(0,0,0,0.1);
-        border-color: rgba(139,195,74,0.3);
+        box-shadow: none;
+        transform: translateY(-8px);
     }
     .diff-card .diff-img {
-        height: 180px;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: #e6f0e6;
         overflow: hidden;
+        margin-bottom: 22px;
+        flex-shrink: 0;
+        border: 4px solid rgba(139,195,74,0.25);
+        transition: border-color 0.3s;
+    }
+    .diff-card:hover .diff-img {
+        border-color: var(--primary);
     }
     .diff-card .diff-img img {
         width: 100%;
@@ -377,27 +391,27 @@
         transition: transform 0.4s;
     }
     .diff-card:hover .diff-img img {
-        transform: scale(1.05);
+        transform: scale(1.08);
     }
     .diff-card .diff-body {
-        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
     .diff-card .diff-body h6 {
         font-weight: 700;
         font-size: 0.95rem;
-        color: var(--dark);
-        margin-bottom: 8px;
+        color: #2d3a2d;
+        margin: 0;
+        line-height: 1.4;
     }
     .diff-card .diff-body p {
         font-size: 0.82rem;
-        color: #777;
-        margin-bottom: 0;
-        line-height: 1.6;
-    }
-    @media (max-width: 575px) {
-        .diff-card .diff-img { height: 150px; }
-        .diff-card .diff-body { padding: 16px; }
-        .diff-card .diff-body h6 { font-size: 0.88rem; }
+        color: #555;
+        margin: 0;
+        line-height: 1.7;
     }
 
     /* ===== SERVICES ===== */
@@ -448,69 +462,52 @@
         margin: 0 auto 50px;
     }
     .service-card {
-        border-radius: 20px;
+        background: #fff;
+        border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        transition: all 0.4s;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        transition: all 0.3s;
         height: 100%;
-        text-align: center;
-        cursor: default;
-        background: #eaf5ea;
+        border: 1px solid #eee;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        position: relative;
-        padding: 35px 25px 30px;
-        border: none;
     }
     .service-card:hover {
-        box-shadow: none;
-        transform: translateY(-8px);
+        transform: translateY(-6px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+        border-color: rgba(139,195,74,0.3);
     }
     .service-card .svc-img-wrap {
-        width: 130px;
-        height: 130px;
-        border-radius: 50%;
-        background: #e6f0e6;
-        position: relative;
+        aspect-ratio: 4/3;
         overflow: hidden;
-        margin-bottom: 22px;
-        flex-shrink: 0;
-        border: 4px solid rgba(139,195,74,0.25);
-        transition: border-color 0.3s;
-    }
-    .service-card:hover .svc-img-wrap {
-        border-color: var(--primary);
+        background: #fff;
     }
     .service-card .svc-img-wrap img {
-        transition: transform 0.4s;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        display: block;
+        transition: transform 0.4s;
     }
     .service-card:hover .svc-img-wrap img {
-        transform: scale(1.08);
+        transform: scale(1.05);
     }
     .service-card .svc-body {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+        padding: 20px;
+        text-align: center;
     }
     .service-card .svc-body h5 {
         font-weight: 700;
-        color: #2d3a2d;
+        color: var(--dark);
         font-size: 1.1rem;
-        margin: 0;
+        margin-bottom: 10px;
         line-height: 1.4;
     }
     .service-card .svc-body .svc-desc {
         font-size: 0.84rem;
-        color: #555;
-        margin: 0;
+        color: #777;
+        margin-bottom: 12px;
         line-height: 1.7;
-        flex: 1;
     }
     .service-card .svc-link {
         display: inline-flex;
@@ -520,7 +517,6 @@
         font-weight: 600;
         font-size: 0.88rem;
         text-decoration: none;
-        margin-top: 12px;
         transition: all 0.3s;
     }
     .service-card .svc-link:hover {
@@ -533,6 +529,9 @@
     }
     .service-card .svc-link:hover i {
         transform: translateX(3px);
+    }
+    @media (max-width: 575px) {
+        .service-card .svc-body { padding: 16px; }
     }
 
     /* ===== PROCESS SECTION ===== */
@@ -1021,17 +1020,21 @@
             <div class="hero-text">
                 @if($banners->count())
                     @foreach($banners as $index => $banner)
+                        @if($banner->title || $banner->subtitle || $banner->description)
                         <div class="hero-slide-text" data-slide="{{ $index }}" style="{{ $index !== 0 ? 'display:none;' : '' }}">
-                            <p class="hero-company">{{ $banner->subtitle ?? 'SR GREENSCAPES PVT LTD' }}</p>
-                            <h1>{{ $banner->title ?? 'Designing Landscapes That Perform, Sustain, and Inspire' }}</h1>
-                            <p class="hero-sub mb-4">{{ $banner->description ?? 'Science-Driven Sustainable Landscaping Across India' }}</p>
+                            @if($banner->subtitle)<p class="hero-company">{{ $banner->subtitle }}</p>@endif
+                            @if($banner->title)<h1>{{ $banner->title }}</h1>@endif
+                            @if($banner->description)<p class="hero-sub mb-4">{{ $banner->description }}</p>@endif
+                            @if($banner->button_text)
                             <div class="d-flex gap-3 mt-4">
                                 <a href="{{ $banner->button_link ?? '/projects' }}" class="btn-theme">
-                                    {{ $banner->button_text ?? 'Discover Projects' }}
+                                    {{ $banner->button_text }}
                                     <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
                                 </a>
                             </div>
+                            @endif
                         </div>
+                        @endif
                     @endforeach
                 @else
                     <div class="hero-slide-text" data-slide="0">

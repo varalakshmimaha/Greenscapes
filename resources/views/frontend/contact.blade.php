@@ -751,9 +751,15 @@
                     </div>
                     <h5>Download Our Brochure</h5>
                     <p>Get our complete company profile with service details, project portfolio, and pricing.</p>
-                    <a href="#" class="btn-download-brochure">
-                        <i class="fas fa-download"></i> Download PDF
-                    </a>
+                    @if(!empty($siteSettings['brochure_file']))
+                        <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-download-brochure">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    @else
+                        <a href="#" class="btn-download-brochure disabled" style="opacity:0.5;pointer-events:none;">
+                            <i class="fas fa-download"></i> Coming Soon
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>

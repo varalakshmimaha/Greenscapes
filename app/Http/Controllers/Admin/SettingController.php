@@ -61,4 +61,24 @@ class SettingController extends Controller
         }
         return back()->with('success', 'Footer settings updated successfully.');
     }
+
+    public function brochure()
+    {
+        $settings = Setting::where('group', 'brochure')->pluck('value', 'key');
+        return view('admin.settings.brochure', compact('settings'));
+    }
+
+    public function updateBrochure(Request $request)
+    {
+        $request->validate([
+            'brochure_file' => 'nullable|mimes:pdf',
+        ]);
+
+        if ($request->hasFile('brochure_file')) {
+            $path = $request->file('brochure_file')->store('settings', 'public');
+            Setting::set('brochure_file', $path, 'brochure');
+        }
+
+        return back()->with('success', 'Brochure updated successfully.');
+    }
 }

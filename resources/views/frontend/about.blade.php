@@ -296,22 +296,36 @@
 
     /* ===== WHAT MAKES US DIFFERENT CARDS ===== */
     .about-diff-card {
-        background: #fff;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: all 0.4s;
         height: 100%;
-        border: 1px solid #eee;
+        text-align: center;
+        background: #eaf5ea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 35px 25px 30px;
+        border: none;
     }
     .about-diff-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 35px rgba(0,0,0,0.1);
-        border-color: rgba(139,195,74,0.3);
+        box-shadow: none;
+        transform: translateY(-8px);
     }
     .about-diff-img {
-        height: 180px;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: #e6f0e6;
         overflow: hidden;
+        margin-bottom: 22px;
+        flex-shrink: 0;
+        border: 4px solid rgba(139,195,74,0.25);
+        transition: border-color 0.3s;
+    }
+    .about-diff-card:hover .about-diff-img {
+        border-color: var(--primary);
     }
     .about-diff-img img {
         width: 100%;
@@ -320,22 +334,27 @@
         transition: transform 0.4s;
     }
     .about-diff-card:hover .about-diff-img img {
-        transform: scale(1.05);
+        transform: scale(1.08);
     }
     .about-diff-body {
-        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
     }
     .about-diff-body h6 {
         font-weight: 700;
         font-size: 0.95rem;
-        color: var(--dark);
-        margin-bottom: 8px;
+        color: #2d3a2d;
+        margin: 0;
+        line-height: 1.4;
     }
     .about-diff-body p {
         font-size: 0.82rem;
-        color: #777;
-        margin-bottom: 0;
-        line-height: 1.6;
+        color: #555;
+        margin: 0;
+        line-height: 1.7;
     }
 
     /* ===== MODERN TEAM SECTION ===== */
@@ -571,8 +590,7 @@
         .about-team-card .at-role { font-size: 12px; }
         .about-team-card .at-bio { font-size: 12px; }
         .about-team-avatar { width: 70px; height: 70px; }
-        .about-diff-img { height: 150px; }
-        .about-diff-body { padding: 16px; }
+        .about-diff-img { width: 100px; height: 100px; }
         .about-diff-body h6 { font-size: 0.88rem; }
         .director-card { padding: 25px 18px 22px; }
         .director-img { width: 110px; height: 110px; }

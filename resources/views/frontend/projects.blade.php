@@ -287,15 +287,17 @@
         <!-- Filter Buttons -->
         <div class="filter-btns" data-aos="fade-up">
             <button class="filter-btn active" onclick="filterProjects('all', this)">All</button>
-            <button class="filter-btn" onclick="filterProjects('RESIDENTIAL', this)">Residential</button>
-            <button class="filter-btn" onclick="filterProjects('COMMERCIAL', this)">Commercial</button>
-            <button class="filter-btn" onclick="filterProjects('INSTITUTIONAL', this)">Institutional</button>
-            <button class="filter-btn" onclick="filterProjects('SPECIALIZED', this)">Specialized</button>
+            @php
+                $categories = $projects->pluck('category')->filter()->unique()->sort();
+            @endphp
+            @foreach($categories as $cat)
+                <button class="filter-btn" onclick="filterProjects('{{ strtoupper($cat) }}', this)">{{ $cat }}</button>
+            @endforeach
         </div>
 
         <div class="row g-4" id="projectsGrid">
             @forelse($projects as $project)
-                <div class="col-lg-4 col-md-6 project-item" data-type="{{ $project->status ?? 'RESIDENTIAL' }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
+                <div class="col-lg-4 col-md-6 project-item" data-type="{{ strtoupper($project->category ?? $project->status) }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <a href="{{ route('project.detail', $project->slug) }}" class="text-decoration-none">
                         <div class="proj-card">
                             <img loading="lazy" src="{{ asset('storage/' . ($project->featured_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $project->title }}">
