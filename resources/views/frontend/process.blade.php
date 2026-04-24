@@ -222,7 +222,7 @@
        WHAT INFLUENCES — MODERN NUMBERED CARDS
        ============================================= */
     .proc-invest-section {
-        padding: 90px 0 80px;
+        padding: 50px 0 70px;
         background: #fff;
     }
     .invest-card {

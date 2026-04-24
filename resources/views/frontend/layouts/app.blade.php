@@ -63,9 +63,12 @@
         }
         .navbar-brand-custom .brand-logo {
             height: 80px;
-            width: auto;
+            width: 80px;
             margin-right: 10px;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #fff;
+            padding: 4px;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             -ms-interpolation-mode: bicubic;
@@ -96,16 +99,16 @@
             position: relative;
         }
         .nav-menu > li > a {
-            color: rgba(255,255,255,0.85);
+            color: #fff;
             text-decoration: none;
-            padding: 18px 14px;
+            padding: 18px 16px;
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 13px;
-            font-weight: 500;
+            gap: 6px;
+            font-size: 15px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.6px;
             transition: color 0.3s;
         }
         .nav-menu > li > a:hover,
@@ -190,6 +193,32 @@
         .nav-right {
             display: flex;
             align-items: center;
+            gap: 14px;
+        }
+        .nav-social-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-social-icons a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .nav-social-icons a:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
         .btn-appointment {
             background: var(--primary);
@@ -329,6 +358,14 @@
             background: var(--dark-bg);
             color: #fff;
             padding: 60px 0 20px;
+        }
+        .footer > .container {
+            max-width: 1320px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .footer .row {
+            --bs-gutter-x: 2rem;
         }
         .footer h5 {
             font-weight: 700;
@@ -643,13 +680,13 @@
     <div class="top-bar">
         <div class="container d-flex justify-content-between align-items-center top-bar-inner">
             <div class="top-bar-left">
-                <i class="fas fa-phone-alt"></i> +91 9845728507, +91 9113620609
+                <i class="fas fa-phone-alt"></i> +91 9845728507, +91 6361115701
             </div>
             <div class="top-bar-center" style="color: var(--primary); font-weight: 700;">
                 Welcome to SR Greenscapes Pvt Ltd
             </div>
             <div class="top-bar-right">
-                <i class="fas fa-envelope"></i> srgreenscapes@gmail.com, mdsrgreenscapes@gmail.com
+                <i class="fas fa-envelope"></i> mdsrgreenscapes@gmail.com
             </div>
         </div>
     </div>
@@ -672,44 +709,52 @@
             </button>
 
             <ul class="nav-menu" id="navMenu">
-                @if(isset($navMenus) && $navMenus->count())
-                    @foreach($navMenus as $menu)
-                        @if(strtolower($menu->title) === 'about us')
-                            <li>
-                                <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">{{ strtoupper($menu->title) }}</a>
-                            </li>
-                        @elseif(strtolower($menu->title) === 'services')
-                            <li>
-                                <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">{{ strtoupper($menu->title) }}</a>
-                            </li>
-                        @elseif($menu->has_dropdown && $menu->children->count())
-                            <li>
-                                <a href="{{ $menu->url }}">{{ strtoupper($menu->title) }} <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                                <div class="dropdown-menu-custom">
-                                    @foreach($menu->children as $child)
-                                        <a href="{{ $child->url }}">{{ $child->title }}</a>
-                                    @endforeach
-                                </div>
-                            </li>
+                <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a></li>
+                <li>
+                    <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <a href="/about">Our Story</a>
+                        <a href="/about#team">Our Team</a>
+                        <a href="/about#mission">Mission & Vision</a>
+                        <a href="/about#values">Our Values</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                    <div class="dropdown-menu-custom">
+                        @if(isset($navServiceCategories) && $navServiceCategories->count())
+                            @foreach($navServiceCategories as $cat)
+                                @if($cat->service)
+                                    <a href="{{ route('service.detail', $cat->service->slug) }}">{{ $cat->name }}</a>
+                                @endif
+                            @endforeach
                         @else
-                            <li>
-                                <a href="{{ $menu->url }}" class="{{ request()->is(ltrim($menu->url, '/') ?: '/') ? 'active' : '' }}">
-                                    {{ strtoupper($menu->title) }}
-                                </a>
-                            </li>
+                            <a href="/services">All Services</a>
                         @endif
-                    @endforeach
-                @else
-                    <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a></li>
-                    <li><a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US</a></li>
-                    <li><a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES</a></li>
-                    <li><a href="/projects" class="{{ request()->is('projects*') ? 'active' : '' }}">PROJECTS</a></li>
-                    <li><a href="/faqs" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQ'S</a></li>
-                    <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">CONTACTS</a></li>
-                @endif
+                    </div>
+                </li>
+                <li><a href="/projects" class="{{ request()->is('projects*') ? 'active' : '' }}">PROJECTS</a></li>
+                <li><a href="/process" class="{{ request()->is('process*') ? 'active' : '' }}">OUR PROCESS</a></li>
+                <li>
+                    <a href="#" class="{{ request()->is('blogs*') || request()->is('gallery*') || request()->is('videos*') || request()->is('faqs') ? 'active' : '' }}">RESOURCES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <a href="/blogs">Blog</a>
+                        <a href="/gallery">Gallery</a>
+                        <a href="/videos">Videos</a>
+                        <a href="/faqs">FAQ's</a>
+                    </div>
+                </li>
+                <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">CONTACTS</a></li>
             </ul>
 
             <div class="nav-right">
+                <div class="nav-social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61579521119580" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/sr_greenscapes/?hl=en" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/GreenscapesSr" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.youtube.com/@srgreenscapes" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
                 @if(!empty($siteSettings['brochure_file']))
                     <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-appointment">Download Brochure</a>
                 @else
@@ -806,7 +851,7 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="d-flex align-items-center mb-3 footer-logo-wrap">
                         @if(!empty($siteSettings['site_logo']))
-                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" style="height:80px;width:auto;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;">
+                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" style="height:90px;width:90px;object-fit:cover;border-radius:50%;background:#fff;padding:4px;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;">
                         @else
                             <strong class="text-white" style="font-size:1.1rem;">{{ $siteSettings['site_name'] ?? 'SR Greenscapes' }}</strong>
                         @endif
@@ -854,14 +899,13 @@
                             <div>
                                 <span>Phone / WhatsApp:</span><br>
                                 <a href="tel:+919845728507" style="color:rgba(255,255,255,0.75);text-decoration:none;">+91 9845728507</a><br>
-                                <a href="tel:+919113620609" style="color:rgba(255,255,255,0.75);text-decoration:none;">+91 9113620609</a>
+                                <a href="tel:+916361115701" style="color:rgba(255,255,255,0.75);text-decoration:none;">+91 6361115701</a>
                             </div>
                         </li>
                         <li>
                             <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <span>Email:</span><br>
-                                <a href="mailto:srgreenscapes@gmail.com" style="color:rgba(255,255,255,0.75);text-decoration:none;">srgreenscapes@gmail.com</a><br>
                                 <a href="mailto:mdsrgreenscapes@gmail.com" style="color:rgba(255,255,255,0.75);text-decoration:none;">mdsrgreenscapes@gmail.com</a>
                             </div>
                         </li>

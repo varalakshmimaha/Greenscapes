@@ -324,7 +324,7 @@
                 ],
                 'Team & Contact' => [
                     ['q' => 'Who is behind SR Greenscapes Pvt Ltd?', 'a' => 'Our team includes PhD horticulture professionals, landscape designers, project managers, and skilled horticulture experts. MDs: Dr. Supriya Narayan & Mr. Srinidhi AT, supported by a strategic advisory panel.'],
-                    ['q' => 'How can I contact you?', 'a' => 'Phone / WhatsApp: +91 9845728507, +91 9113620609<br>Email: srgreenscapes@gmail.com, mdsrgreenscapes@gmail.com'],
+                    ['q' => 'How can I contact you?', 'a' => 'Phone / WhatsApp: +91 9845728507, +91 6361115701<br>Email: mdsrgreenscapes@gmail.com'],
                     ['q' => 'Where is your office located?', 'a' => 'Sy No. 32/40, Ground Floor, Jinnagara, Gangalu Main Road, Near Jinnagara Basaveshwara Temple, Hoskote Taluk, Bangalore – 562114, Karnataka, India'],
                     ['q' => 'Are you open on Sundays?', 'a' => 'Yes, we operate 24 &times; 7, ensuring uninterrupted service and support for our clients.'],
                 ],

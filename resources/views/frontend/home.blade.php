@@ -48,24 +48,25 @@
         opacity: 1;
     }
     .hero-text .hero-company {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: rgba(255,255,255,0.8);
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: rgba(255,255,255,0.9);
+        letter-spacing: 2px;
+        margin-bottom: 10px;
         text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 15px;
     }
     .hero-text h1 {
-        font-size: 2.8rem;
+        font-size: 3.4rem;
         font-weight: 900;
         color: #fff;
-        line-height: 1.2;
+        line-height: 1.15;
         text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        margin-bottom: 12px;
     }
     .hero-text .hero-sub {
-        font-size: 1.05rem;
-        color: rgba(255,255,255,0.9);
-        margin-top: 15px;
+        font-size: 1.25rem;
+        color: rgba(255,255,255,0.92);
+        margin-top: 10px;
         font-weight: 400;
         letter-spacing: 0.5px;
     }
@@ -1038,9 +1039,9 @@
                     @endforeach
                 @else
                     <div class="hero-slide-text" data-slide="0">
-                        <p class="hero-company">SR GREENSCAPES PVT LTD</p>
-                        <h1>Designing Landscapes That Perform, Sustain, and Inspire</h1>
-                        <p class="hero-sub mb-4">Science-Driven Sustainable Landscaping Across India</p>
+                        <p class="hero-company">Welcome</p>
+                        <h1>SR GREENSCAPES Pvt Ltd</h1>
+                        <p class="hero-sub mb-4">Science driven sustainable landscaping</p>
                         <div class="d-flex gap-3 mt-4">
                             <a href="/projects" class="btn-theme">
                                 Discover Projects
