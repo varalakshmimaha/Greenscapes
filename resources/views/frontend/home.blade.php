@@ -50,7 +50,7 @@
     }
     .hero-text h1 {
         font-family: 'Poppins', sans-serif;
-        font-size: 3.2rem;
+        font-size: 2.6rem;
         font-weight: 800;
         color: #fff;
         line-height: 1.2;
@@ -58,6 +58,7 @@
         margin-bottom: 30px;
         text-transform: uppercase;
         letter-spacing: 2px;
+        white-space: nowrap;
     }
     .hero-text .hero-company {
         font-family: 'Poppins', sans-serif;
