@@ -48,7 +48,7 @@
 
         /* ===== NAVBAR ===== */
         .main-navbar {
-            background: var(--dark-bg);
+            background: #1e3838;
             padding: 8px 0;
             z-index: 1050;
         }
