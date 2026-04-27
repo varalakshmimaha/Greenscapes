@@ -397,9 +397,9 @@
         }
         /* Force exact match with sibling inputs — higher specificity overrides browser UA */
         select.gcta-input {
-            background-color: #fafdf7;
+            background-color: #ffffff;
             color: #333;
-            border: 1.5px solid #e0edd8;
+            border: 1.5px solid #d9d9d9;
         }
         select.home-cta-input {
             background-color: rgba(255,255,255,0.07);
@@ -1113,7 +1113,7 @@
         .gcta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 14px; padding: 32px 28px; box-shadow: 0 15px 40px rgba(0,0,0,0.22); }
         .gcta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
         .gcta-row { display: flex; gap: 10px; margin-bottom: 10px; }
-        .gcta-input { flex: 1; border: 1.5px solid #e0edd8; border-radius: 8px; padding: 10px 13px; font-size: 0.83rem; background: #fafdf7; width: 100%; transition: border-color 0.2s; color: #333; }
+        .gcta-input { flex: 1; border: 1.5px solid #d9d9d9; border-radius: 8px; padding: 10px 13px; font-size: 0.83rem; background: #ffffff; width: 100%; transition: border-color 0.2s; color: #333; }
         .gcta-input::placeholder { color: #aaa; }
         .gcta-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(139,195,74,0.15); }
         .gcta-textarea { display: block; width: 100%; height: 78px; resize: none; margin-bottom: 12px; }
