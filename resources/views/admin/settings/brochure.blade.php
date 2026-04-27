@@ -16,6 +16,9 @@
     <li class="nav-item">
         <a class="nav-link {{ request()->routeIs('admin.settings.brochure') ? 'active' : '' }}" href="{{ route('admin.settings.brochure') }}" style="{{ request()->routeIs('admin.settings.brochure') ? 'background:var(--primary-green);' : '' }}">Brochure</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->routeIs('admin.settings.integrations') ? 'active' : '' }}" href="{{ route('admin.settings.integrations') }}" style="{{ request()->routeIs('admin.settings.integrations') ? 'background:var(--primary-green);' : '' }}">Integrations</a>
+    </li>
 </ul>
 
 <div class="card">

@@ -5,7 +5,7 @@
     /* ===== HERO BANNER ===== */
     .contact-hero {
         position: relative;
-        height: 420px;
+        height: 320px;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -127,10 +127,10 @@
         transition: color 0.4s;
     }
     .qi-text p, .qi-text a {
-        font-size: 0.88rem;
+        font-size: 0.93rem;
         color: #666;
         margin: 0;
-        line-height: 1.6;
+        line-height: 1.7;
         text-decoration: none;
         transition: color 0.4s;
     }
@@ -218,10 +218,11 @@
         margin-bottom: 12px;
     }
     .info-box p {
-        font-size: 0.95rem;
-        line-height: 1.6;
+        font-size: 0.97rem;
+        line-height: 1.75;
         margin: 0;
         opacity: 0.95;
+        text-align: justify;
     }
 
     /* Right: Contact Form */
@@ -251,7 +252,7 @@
     }
     .contact-form-card .form-intro {
         color: #888;
-        font-size: 0.88rem;
+        font-size: 0.95rem;
         margin-bottom: 30px;
     }
     .form-floating-custom {
@@ -523,7 +524,7 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 991px) {
-        .contact-hero { height: 320px; }
+        .contact-hero { height: 260px; }
         .contact-hero h1 { font-size: 2.2rem; }
         .quick-info-inner { grid-template-columns: 1fr; }
         .qi-item { border-right: 0; border-bottom: 1px solid #f0f0f0; }
@@ -546,7 +547,7 @@
         .cta-left h3 { font-size: 1.5rem; }
     }
     @media (max-width: 480px) {
-        .contact-hero { height: 250px !important; }
+        .contact-hero { height: 180px; }
         .contact-hero h1 { font-size: 1.4rem; }
         .contact-hero p { font-size: 0.82rem; }
         .qi-item { padding: 15px 14px; }
@@ -582,12 +583,6 @@
 <!-- MAIN CONTACT: Office Details + Form -->
 <section class="contact-main">
     <div class="container">
-        <div class="contact-section-header">
-            <div class="label-tag"><i class="fas fa-paper-plane"></i> Get In Touch</div>
-            <h2>We'd Love to Hear From You</h2>
-            <p>Have a project in mind? Fill out the form or reach us at our office — we're here to bring your green vision to life.</p>
-        </div>
-
         <div class="row g-4">
             <!-- Left: Office Info -->
             <div class="col-lg-5">
@@ -697,7 +692,7 @@
                 <div class="info-box" style="background:var(--primary-dark);">
                     <div class="icon"><i class="fas fa-clock"></i></div>
                     <h5>Working Hours</h5>
-                    <p>Mon &ndash; Sat: 9:00 AM &ndash; 6:00 PM<br>Sunday: By Appointment</p>
+                    <p>24/7 — Always Available</p>
                 </div>
             </div>
         </div>
@@ -793,23 +788,20 @@
                         <input type="hidden" name="source" value="contact-cta">
                         <div class="contact-cta-row">
                             <input type="text" name="name" class="contact-cta-input" placeholder="Your Name *" required>
-                            <input type="email" name="email" class="contact-cta-input" placeholder="Email Address (Optional)">
-                        </div>
-                        <div class="contact-cta-row">
-                            <select name="subject" class="contact-cta-input" required>
-                                <option value="">Select Service *</option>
-                                <option>Landscape Design & Execution</option>
-                                <option>Hardscape & Softscape Development</option>
-                                <option>Commercial Campus Landscaping</option>
-                                <option>Specialized Garden Services</option>
-                                <option>Nursery & Plant Supply</option>
-                                <option>Horticulture Consultancy</option>
-                                <option>Landscape Maintenance (AMC)</option>
-                                <option>Event Styling & Green Decor</option>
-                                <option>Others</option>
-                            </select>
                             <input type="text" name="phone" class="contact-cta-input" placeholder="Phone Number *" required>
                         </div>
+                        <select name="subject" class="contact-cta-input" style="margin-bottom:10px;" required>
+                            <option value="">Select Service *</option>
+                            <option>Landscape Design & Execution</option>
+                            <option>Hardscape & Softscape Development</option>
+                            <option>Commercial Campus Landscaping</option>
+                            <option>Specialized Garden Services</option>
+                            <option>Nursery & Plant Supply</option>
+                            <option>Horticulture Consultancy</option>
+                            <option>Landscape Maintenance (AMC)</option>
+                            <option>Event Styling & Green Decor</option>
+                            <option>Others</option>
+                        </select>
                         <textarea name="details" class="contact-cta-input contact-cta-textarea" placeholder="Your message"></textarea>
                         <button type="submit" class="contact-cta-submit">SUBMIT</button>
                     </form>

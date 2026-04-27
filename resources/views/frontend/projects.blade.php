@@ -187,6 +187,7 @@
         line-height: 1.8;
         max-width: 750px;
         margin: 0 auto;
+        text-align: justify;
     }
     .other-proj-slider-wrap {
         width: 100%;
@@ -236,7 +237,7 @@
         .other-proj-title { font-size: 1.5rem; }
     }
     @media (max-width: 575px) {
-        .projects-hero { height: 180px; }
+        .projects-hero { height: 220px; }
         .projects-hero-content h1 { font-size: 1.8rem; }
         .proj-card { height: 250px; border-radius: 12px; }
         .proj-card .proj-badge { font-size: 0.6rem; padding: 4px 10px; top: 10px; right: 10px; }
@@ -244,9 +245,6 @@
         .proj-card .proj-overlay h5 { font-size: 0.85rem; }
         .proj-card .proj-overlay p { font-size: 0.72rem; }
         .proj-card .view-btn { width: 40px; height: 40px; font-size: 14px; }
-        .stats-bar-section .rounded-4 { padding: 12px 8px !important; }
-        .stats-bar-section .text-white.fw-bold.lh-1 { font-size: 2rem !important; }
-        .stats-bar-section .text-uppercase { font-size: 0.7rem !important; }
         .other-proj-section { padding: 50px 0 40px; }
         .other-proj-slide { flex: 0 0 220px; height: 150px; border-radius: 12px; }
         .other-proj-slider { gap: 14px; }
@@ -254,7 +252,7 @@
         .other-proj-desc { font-size: 0.88rem; }
     }
     @media (max-width: 480px) {
-        .projects-hero { height: 200px; }
+        .projects-hero { height: 180px; }
         .projects-hero-content h1 { font-size: 1.4rem; }
         .filter-btns .filter-btn { font-size: 11px; padding: 6px 12px; }
         .proj-card { height: 300px; }
@@ -373,7 +371,7 @@
     <div class="position-absolute rounded-circle" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
 
     <div class="container position-relative z-1 py-4">
-        <div class="row justify-content-center g-4">
+        <div class="row justify-content-center g-3">
             @php
                 $fallbackStats = [
                     (object)['icon' => 'fas fa-calendar-check', 'number' => '5', 'suffix' => '+', 'label' => 'Successful Years'],
@@ -388,29 +386,21 @@
             @endphp
 
             @foreach($activeStats as $stat)
-            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 180px; max-width: 250px;" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-                <div class="stat-card text-center p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
+            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 118px; max-width: 155px;" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
+                <div class="stat-card text-center p-3 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
                      style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); transition: transform 0.3s;"
                      onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-
-                    <!-- Diamond Icon Container -->
-                    <div class="icon-diamond mb-4 position-relative d-flex align-items-center justify-content-center"
-                         style="width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; transform: rotate(45deg);">
-                        <i class="{{ $stat->icon }} text-white fs-4" style="transform: rotate(-45deg);"></i>
+                    <div class="icon-diamond mb-2 position-relative d-flex align-items-center justify-content-center"
+                         style="width: 46px; height: 46px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; transform: rotate(45deg);">
+                        <i class="{{ $stat->icon }} text-white" style="transform: rotate(-45deg); font-size: 1rem;"></i>
                     </div>
-
-                    <!-- Number -->
-                    <div class="stat-num text-white fw-bold lh-1 mb-3" style="font-size: 2.8rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
-
-                    <!-- Line with Dot separator -->
-                    <div class="d-flex align-items-center justify-content-center w-100 px-3 mb-3">
+                    <div class="stat-num text-white fw-bold lh-1 mb-2" style="font-size: 1.75rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
+                    <div class="d-flex align-items-center justify-content-center w-100 px-2 mb-2">
                         <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
-                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #fff; margin: 0 8px;"></div>
+                        <div style="width: 5px; height: 5px; border-radius: 50%; background: #fff; margin: 0 6px;"></div>
                         <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
                     </div>
-
-                    <!-- Text Label -->
-                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $stat->label }}</div>
+                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.62rem; letter-spacing: 0.4px; white-space: nowrap;">{{ $stat->label }}</div>
                 </div>
             </div>
             @endforeach
@@ -820,20 +810,17 @@
                             <input type="text" name="name" class="proj-cta-input" placeholder="Name *" required>
                             <input type="text" name="phone" class="proj-cta-input" placeholder="Phone *" required>
                         </div>
-                        <div class="proj-cta-row">
-                            <input type="text" name="subject" class="proj-cta-input" placeholder="City">
-                            <select name="message" class="proj-cta-input" required>
-                                <option value="">Select Service *</option>
-                                <option>Residential Landscaping</option>
-                                <option>Commercial Landscaping</option>
-                                <option>Terrace / Rooftop Garden</option>
-                                <option>Miyawaki Forest</option>
-                                <option>Maintenance (AMC)</option>
-                                <option>Vertical Garden</option>
-                                <option>Water Bodies</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
+                        <select name="message" class="proj-cta-input" style="margin-bottom:10px;" required>
+                            <option value="">Select Service *</option>
+                            <option>Residential Landscaping</option>
+                            <option>Commercial Landscaping</option>
+                            <option>Terrace / Rooftop Garden</option>
+                            <option>Miyawaki Forest</option>
+                            <option>Maintenance (AMC)</option>
+                            <option>Vertical Garden</option>
+                            <option>Water Bodies</option>
+                            <option>Others</option>
+                        </select>
                         <textarea name="details" class="proj-cta-input proj-cta-textarea" placeholder="Message"></textarea>
                         <button type="submit" class="proj-cta-submit">SUBMIT</button>
                     </form>

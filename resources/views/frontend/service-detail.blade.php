@@ -93,7 +93,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 50px;
-        align-items: start;
+        align-items: center;
     }
     .sd-content-left .sd-label {
         display: inline-flex;
@@ -134,7 +134,7 @@
 
     /* Right: Description */
     .sd-content-right {
-        padding-top: 10px;
+        padding-top: 0;
     }
     .sd-content-right .sd-sub {
         display: inline-flex;
@@ -149,16 +149,9 @@
         border-left: 3px solid var(--primary);
         padding-left: 12px;
     }
-    .sd-content-right .sd-short-desc {
-        font-size: 1.05rem;
-        color: #444;
-        line-height: 1.85;
-        margin-bottom: 22px;
-        font-weight: 500;
-    }
     .sd-content-right .sd-full-desc {
         color: #666;
-        font-size: 0.93rem;
+        font-size: 0.95rem;
         line-height: 1.9;
     }
     .sd-content-right .sd-full-desc h2,
@@ -171,6 +164,7 @@
     }
     .sd-content-right .sd-full-desc p {
         margin-bottom: 12px;
+        text-align: justify;
     }
     .sd-content-right .sd-full-desc ul,
     .sd-content-right .sd-full-desc ol {
@@ -278,6 +272,7 @@
         color: #6b776b;
         margin-bottom: 0;
         line-height: 1.75;
+        text-align: justify;
     }
     .sd-category-list {
         margin: 0;
@@ -326,7 +321,7 @@
     .sd-rel-card .rel-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
     .sd-rel-card:hover .rel-img img { transform: scale(1.1); }
     .sd-rel-card .rel-name { font-weight: 700; font-size: 1.05rem; color: #2d3a2d; margin-bottom: 8px; }
-    .sd-rel-card .rel-desc { font-size: 0.82rem; color: #555; line-height: 1.65; flex: 1; margin-bottom: 14px; }
+    .sd-rel-card .rel-desc { font-size: 0.82rem; color: #555; line-height: 1.65; flex: 1; margin-bottom: 14px; text-align: justify; }
     .sd-rel-card .rel-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 600; font-size: 0.85rem; transition: all 0.3s; }
     .sd-rel-card:hover .rel-link { gap: 12px; }
     .sd-rel-card .rel-link i { font-size: 0.7rem; }
@@ -425,10 +420,6 @@
 
             {{-- Right: Description --}}
             <div class="sd-content-right" data-aos="fade-left" data-aos-delay="100">
-                @if($service->description)
-                    <p class="sd-short-desc">{{ Str::limit(strip_tags($service->description), 200) }}</p>
-                @endif
-
                 <div class="sd-full-desc">
                     {!! $service->description !!}
                 </div>

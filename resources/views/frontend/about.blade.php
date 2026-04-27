@@ -5,7 +5,7 @@
     /* ===== HERO SECTION ===== */
     .about-hero {
         position: relative;
-        height: 380px;
+        height: 320px;
         background: url('{{ asset('storage/About Us/2.1  Science-Driven Approach.jpg') }}') center/cover no-repeat;
         display: flex;
         align-items: center;
@@ -68,6 +68,7 @@
         line-height: 1.9;
         color: #555;
         margin-bottom: 30px;
+        text-align: justify;
     }
     .story-img-wrap {
         position: relative;
@@ -160,9 +161,11 @@
     }
     .vision-card p {
         color: #666;
-        line-height: 1.7;
+        font-size: 0.95rem;
+        line-height: 1.75;
         margin-bottom: 0;
         transition: color 0.3s;
+        text-align: justify;
     }
     .vision-card:hover p {
         color: #444;
@@ -314,14 +317,14 @@
         transform: translateY(-8px);
     }
     .about-diff-img {
-        width: 130px;
-        height: 130px;
+        width: 175px;
+        height: 175px;
         border-radius: 50%;
         background: #e6f0e6;
         overflow: hidden;
         margin-bottom: 22px;
         flex-shrink: 0;
-        border: 4px solid rgba(139,195,74,0.25);
+        border: 5px solid rgba(139,195,74,0.3);
         transition: border-color 0.3s;
     }
     .about-diff-card:hover .about-diff-img {
@@ -345,16 +348,17 @@
     }
     .about-diff-body h6 {
         font-weight: 700;
-        font-size: 0.95rem;
-        color: #2d3a2d;
+        font-size: 1.1rem;
+        color: #111;
         margin: 0;
         line-height: 1.4;
     }
     .about-diff-body p {
-        font-size: 0.82rem;
+        font-size: 0.88rem;
         color: #555;
         margin: 0;
-        line-height: 1.7;
+        line-height: 1.75;
+        text-align: justify;
     }
 
     /* ===== MODERN TEAM SECTION ===== */
@@ -434,7 +438,7 @@
     }
     .team-img-wrapper {
         position: relative;
-        height: 260px;
+        height: 320px;
         width: 100%;
         overflow: hidden;
         background: #f4fbf4;
@@ -484,19 +488,21 @@
     }
     .team-bio {
         color: #666;
-        font-size: 0.9rem;
-        line-height: 1.6;
+        font-size: 0.92rem;
+        line-height: 1.65;
         margin: 0;
+        text-align: justify;
     }
 
     @media (max-width: 991px) {
+        .about-hero { height: 260px; }
         .about-hero h1 { font-size: 2.2rem; }
         .story-title, .team-header-title { font-size: 2rem; }
         .story-img { height: 350px; margin-top: 40px; }
-        .team-img-wrapper { height: 280px; }
+        .team-img-wrapper { height: 300px; }
     }
     @media (max-width: 575px) {
-        .team-img-wrapper { height: 320px; }
+        .team-img-wrapper { height: 280px; }
     }
     /* ===== TESTIMONIALS SECTION ===== */
     .about-testi-section {
@@ -590,8 +596,8 @@
         .about-team-card .at-role { font-size: 12px; }
         .about-team-card .at-bio { font-size: 12px; }
         .about-team-avatar { width: 70px; height: 70px; }
-        .about-diff-img { width: 100px; height: 100px; }
-        .about-diff-body h6 { font-size: 0.88rem; }
+        .about-diff-img { width: 130px; height: 130px; }
+        .about-diff-body h6 { font-size: 1rem; }
         .director-card { padding: 25px 18px 22px; }
         .director-img { width: 110px; height: 110px; }
         .director-name { font-size: 0.95rem; }
@@ -864,215 +870,6 @@
     </div>
 </section>
 
-<!-- ===== CTA SPLIT CARD — About Us Only ===== -->
-<section class="footer-cta-wrap">
-    <div class="footer-cta-container">
-        <div class="cta-split-card">
-
-            <!-- LEFT: Men Serving Image + Testimonial -->
-            <div class="cta-img-panel">
-                <img loading="lazy" src="{{ asset('storage/About Us/2.5  End-to-End Execution.jpg') }}" alt="SR Greenscapes Professional Service">
-                <div class="cta-quote-overlay">
-                    <blockquote>"They made my home sparkle!<br>Highly professional and fast service"</blockquote>
-                    <span class="cta-quote-author">Stiven Dowson</span>
-                </div>
-            </div>
-
-            <!-- RIGHT: Contact Form -->
-            <div class="cta-form-panel">
-                <span class="cta-contact-label">● Contact Us</span>
-                <h2 class="cta-form-heading">Ready to Get Started?</h2>
-                <p style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:20px;line-height:1.7;">Share your requirements and our team will get back to you within 24 hours with a tailored solution for your landscape needs.</p>
-
-                <form action="{{ route('contact.submit') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="source" value="about-cta">
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <input type="text" name="first_name" class="form-control" placeholder="First Name">
-                        </div>
-                        <div class="col-6">
-                            <input type="text" name="last_name" class="form-control" placeholder="Last Name">
-                        </div>
-                        <div class="col-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email (Optional)">
-                        </div>
-                        <div class="col-6">
-                            <input type="text" name="phone" class="form-control" placeholder="Phone" required>
-                        </div>
-                        <div class="col-6">
-                            <select name="subject" class="form-control">
-                                <option value="">Select Service</option>
-                                <option>Landscape Design & Execution</option>
-                                <option>Hardscape & Softscape Development</option>
-                                <option>Commercial Campus Landscaping</option>
-                                <option>Specialized Garden Services</option>
-                                <option>Nursery & Plant Supply</option>
-                                <option>Horticulture Consultancy</option>
-                                <option>Landscape Maintenance (AMC)</option>
-                                <option>Event Styling & Green Decor</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" name="address" class="form-control" placeholder="Address">
-                        </div>
-                        <div class="col-12">
-                            <textarea name="message" class="form-control" rows="4" placeholder="Message"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn-cta-submit">SUBMIT REQUEST</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<style>
-    /* ===== CTA SPLIT CARD — About Us ===== */
-    .footer-cta-wrap {
-        padding: 80px 0;
-        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
-        position: relative;
-    }
-    .footer-cta-wrap::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(10, 30, 10, 0.55);
-    }
-    .footer-cta-container {
-        position: relative;
-        z-index: 2;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    .cta-split-card {
-        display: flex;
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-        min-height: 520px;
-    }
-    /* Left image panel */
-    .cta-img-panel {
-        flex: 0 0 44%;
-        position: relative;
-        overflow: hidden;
-    }
-    .cta-img-panel img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    .cta-img-panel::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.7) 100%);
-    }
-    .cta-quote-overlay {
-        position: absolute;
-        bottom: 30px;
-        left: 26px;
-        right: 26px;
-        z-index: 2;
-        color: #fff;
-    }
-    .cta-quote-overlay blockquote {
-        font-size: 1.08rem;
-        font-weight: 700;
-        line-height: 1.5;
-        margin: 0 0 12px;
-        font-style: italic;
-    }
-    .cta-quote-author {
-        display: inline-block;
-        background: rgba(255,255,255,0.18);
-        border: 1px solid rgba(255,255,255,0.35);
-        padding: 5px 16px;
-        border-radius: 50px;
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: #fff;
-    }
-    /* Right form panel */
-    .cta-form-panel {
-        flex: 1;
-        background: linear-gradient(135deg, #f0fbe8 0%, #e8f5d8 100%);
-        padding: 44px 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .cta-contact-label {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        background: rgba(139,195,74,0.2);
-        color: #3a6b1a;
-        border-radius: 50px;
-        padding: 5px 16px;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 1.2px;
-        text-transform: uppercase;
-        margin-bottom: 12px;
-    }
-    .cta-form-heading {
-        font-size: 2rem;
-        font-weight: 800;
-        color: #1a2a1a;
-        margin-bottom: 24px;
-        line-height: 1.2;
-    }
-    .cta-form-panel .form-control {
-        border: 1.5px solid #d4e8c2;
-        border-radius: 10px;
-        padding: 11px 14px;
-        font-size: 0.88rem;
-        color: #333;
-        background: #fff;
-        transition: border-color 0.2s;
-    }
-    .cta-form-panel .form-control:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(139,195,74,0.2);
-        outline: none;
-    }
-    .cta-form-panel .form-control::placeholder { color: #aaa; }
-    .btn-cta-submit {
-        background: var(--primary);
-        color: #fff;
-        border: none;
-        border-radius: 50px;
-        padding: 13px 36px;
-        font-size: 0.85rem;
-        font-weight: 800;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s;
-        width: 100%;
-        margin-top: 6px;
-    }
-    .btn-cta-submit:hover {
-        background: #3a6b1a;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(139,195,74,0.35);
-    }
-    @media (max-width: 991px) {
-        .cta-split-card { flex-direction: column; }
-        .cta-img-panel { flex: 0 0 300px; }
-        .cta-form-panel { padding: 32px 24px; }
-        .cta-form-heading { font-size: 1.6rem; }
-    }
-</style>
 
 @endsection
 
@@ -1088,4 +885,90 @@
         offset: 100
     });
 </script>
+@endsection
+
+@section('cta')
+<section class="about-cta-wrapper">
+    <div class="container">
+        <div class="about-cta-section">
+            <div class="about-cta-overlay"></div>
+            <div class="about-cta-inner">
+                <div class="about-cta-left">
+                    <h2 class="about-cta-company">SR GREENSCAPES PVT LTD</h2>
+                    <p class="about-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
+                    <p class="about-cta-desc">
+                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space.<br>Let's build something beautiful together.
+                    </p>
+                </div>
+                <div class="about-cta-card">
+                    <h4 class="about-cta-card-title">Book Consultation</h4>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="source" value="about-cta">
+                        <div class="about-cta-row">
+                            <input type="text" name="name" class="about-cta-input" placeholder="Name *" required>
+                            <input type="text" name="phone" class="about-cta-input" placeholder="Phone *" required>
+                        </div>
+                        <select name="message" class="about-cta-input" style="margin-bottom:10px;">
+                            <option value="">Select Service *</option>
+                            <option>Landscape Design & Execution</option>
+                            <option>Specialized Garden Services</option>
+                            <option>Nursery & Plant Supply</option>
+                            <option>Landscape Maintenance</option>
+                            <option>Horticulture Consultancy</option>
+                            <option>Others</option>
+                        </select>
+                        <textarea name="details" class="about-cta-input about-cta-textarea" placeholder="Message"></textarea>
+                        <button type="submit" class="about-cta-submit">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .about-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
+    .about-cta-section {
+        position: relative;
+        background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
+        padding: 60px 50px; overflow: hidden; border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(26,58,26,0.25);
+    }
+    .about-cta-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.55) 55%, rgba(15,30,15,0.3) 100%);
+        border-radius: 30px;
+    }
+    .about-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .about-cta-left { flex: 1; max-width: 460px; }
+    .about-cta-company { color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
+    .about-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .about-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; }
+    .about-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+    .about-cta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
+    .about-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    .about-cta-input { flex: 1; border: 1px solid #e0e0e0; border-radius: 8px; padding: 11px 14px; font-size: 13px; background: #fafafa; width: 100%; transition: border-color 0.2s; color: #333; }
+    .about-cta-input::placeholder { color: #999; }
+    .about-cta-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+    .about-cta-textarea { display: block; width: 100%; height: 80px; resize: vertical; margin-bottom: 12px; }
+    .about-cta-submit { display: block; width: 100%; background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 13px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+    .about-cta-submit:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,195,74,0.3); }
+    @media (max-width: 991px) {
+        .about-cta-wrapper { padding: 40px 0 60px; }
+        .about-cta-section { padding: 40px 24px; border-radius: 24px; }
+        .about-cta-overlay { border-radius: 24px; }
+        .about-cta-inner { flex-direction: column; }
+        .about-cta-card { width: 100%; }
+        .about-cta-company { font-size: 1.4rem; }
+    }
+    @media (max-width: 575px) {
+        .about-cta-wrapper { padding: 25px 0 40px; }
+        .about-cta-section { padding: 25px 16px; border-radius: 18px; }
+        .about-cta-overlay { border-radius: 18px; }
+        .about-cta-company { font-size: 1.1rem; }
+        .about-cta-card { padding: 20px 16px; }
+        .about-cta-card-title { font-size: 1.1rem; }
+        .about-cta-row { flex-direction: column; gap: 8px; }
+    }
+</style>
 @endsection

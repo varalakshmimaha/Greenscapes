@@ -46,27 +46,28 @@
 
     /* ===== FAQ SECTION ===== */
     .faq-section {
-        padding: 70px 0 90px;
+        padding: 30px 0 90px;
         background: #f7f9fb;
     }
     .faq-heading {
         margin-bottom: 10px;
     }
     .faq-heading h2 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
         font-weight: 800;
         color: var(--primary);
     }
     .faq-heading p {
         color: #888;
-        font-size: 0.92rem;
+        font-size: 1rem;
         max-width: 450px;
         line-height: 1.7;
+        text-align: justify;
     }
 
     /* ===== TWO COLUMN LAYOUT ===== */
     .faq-layout {
-        margin-top: 40px;
+        margin-top: 0;
     }
 
     .faq-cat-pills {
@@ -162,9 +163,9 @@
     .faq-acc-header .q-text {
         flex: 1;
         font-weight: 700;
-        font-size: 0.95rem;
+        font-size: 1rem;
         color: var(--dark);
-        line-height: 1.45;
+        line-height: 1.5;
     }
     .faq-acc-item.open .faq-acc-header .q-text {
         color: var(--primary-dark);
@@ -187,13 +188,13 @@
     .faq-acc-body {
         display: none;
         padding: 0 24px 22px 24px;
-        color: #666;
-        font-size: 0.88rem;
-        line-height: 1.85;
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.9;
         border-top: 1px solid #f5f5f5;
         padding-top: 16px;
         margin-top: -2px;
-        text-align: left;
+        text-align: justify;
     }
     .faq-acc-item.open .faq-acc-body {
         display: block;
@@ -212,7 +213,7 @@
         .faq-cat-pills { flex-wrap: wrap; }
     }
     @media (max-width: 575px) {
-        .faq-hero { height: 180px; }
+        .faq-hero { height: 220px; }
         .faq-hero-content h1 { font-size: 1.6rem; }
         .faq-hero-content p { font-size: 0.88rem; }
         .faq-heading h2 { font-size: 1.6rem; }
@@ -224,10 +225,10 @@
         .faq-acc-header .q-text { font-size: 0.85rem; }
         .faq-acc-header .q-toggle { width: 28px; height: 28px; min-width: 28px; font-size: 15px; }
         .faq-acc-body { padding: 0 16px 16px; font-size: 0.82rem; }
-        .faq-section { padding: 40px 0 50px; }
+        .faq-section { padding: 20px 0 50px; }
     }
     @media (max-width: 480px) {
-        .faq-hero { height: 200px; }
+        .faq-hero { height: 180px; }
         .faq-hero-content h1 { font-size: 1.4rem; }
         .faq-hero-content p { font-size: 0.82rem; }
         .faq-cat-pill { font-size: 11px; padding: 6px 12px; }
@@ -336,9 +337,6 @@
         @endphp
 
         <div class="faq-layout">
-            <div class="text-center mb-4">
-                <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--primary);">SR Greenscapes Pvt Ltd &ndash; FAQ &#127807;</h2>
-            </div>
             <!-- TOP: PILLS -->
             <div class="faq-cat-pills">
                 @foreach($activeCats as $idx => $cat)
@@ -387,76 +385,6 @@
     </div>
 </section>
 
-@section('cta')
-<!-- FAQs Page CTA — Book Consultation -->
-<section class="faq-cta-wrapper">
-    <div class="container">
-        <div class="faq-cta-section">
-            <div class="faq-cta-overlay"></div>
-            <div class="faq-cta-inner">
-                <div class="faq-cta-left">
-                    <h2 class="faq-cta-company">SR GREENSCAPES PVT LTD</h2>
-                    <p class="faq-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
-                    <p class="faq-cta-desc">Still have questions about our landscaping?<br>Feel free to contact our support team or book a consultation.</p>
-                </div>
-                <div class="faq-cta-card">
-                    <h4 class="faq-cta-card-title">Book Consultation</h4>
-                    <form action="{{ route('contact.submit') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="source" value="faq-cta">
-                        <div class="faq-cta-row">
-                            <input type="text" name="name" class="faq-cta-input" placeholder="Name *" required>
-                            <input type="text" name="phone" class="faq-cta-input" placeholder="Phone *" required>
-                        </div>
-                        <div class="faq-cta-row">
-                            <input type="text" name="subject" class="faq-cta-input" placeholder="City">
-                            <select name="message" class="faq-cta-input" required>
-                                <option value="">Select Service *</option>
-                                <option>Landscape Design & Execution</option>
-                                <option>Specialized Garden Services</option>
-                                <option>Nursery & Plant Supply</option>
-                                <option>Landscape Maintenance</option>
-                                <option>Horticulture Consultancy</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
-                        <textarea name="details" class="faq-cta-input faq-cta-textarea" placeholder="Message"></textarea>
-                        <button type="submit" class="faq-cta-submit">SUBMIT</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<style>
-    .faq-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
-    .faq-cta-section { position: relative; background: url('{{ asset('storage/banners/7Y3HMip9xIwGpteCyZhegEkqwr4MpYeF348aEQ4q.jpg') }}') center/cover no-repeat; padding: 60px 50px; overflow: hidden; border-radius: 30px; box-shadow: 0 20px 60px rgba(26,58,26,0.25); }
-    .faq-cta-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.55) 55%, rgba(15,30,15,0.3) 100%); border-radius: 30px; }
-    .faq-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .faq-cta-left { flex: 1; max-width: 460px; }
-    .faq-cta-company { color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
-    .faq-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-    .faq-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; }
-    .faq-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-    .faq-cta-card-title { font-weight: 800; color: var(--dark); margin-bottom: 20px; font-size: 1.3rem; }
-    .faq-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
-    .faq-cta-input { flex: 1; border: 1px solid #e0e0e0; border-radius: 8px; padding: 11px 14px; font-size: 13px; background: #fafafa; width: 100%; transition: border-color 0.2s; color: var(--dark); }
-    .faq-cta-input::placeholder { color: #999; }
-    .faq-cta-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
-    .faq-cta-input option { background: #fff; color: var(--dark); }
-    .faq-cta-textarea { display: block; width: 100%; height: 80px; resize: vertical; margin-bottom: 12px; }
-    .faq-cta-submit { display: block; width: 100%; background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 13px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
-    .faq-cta-submit:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,195,74,0.3); }
-    @media (max-width: 991px) {
-        .faq-cta-wrapper { padding: 40px 0 60px; }
-        .faq-cta-section { padding: 40px 24px; border-radius: 24px; }
-        .faq-cta-overlay { border-radius: 24px; }
-        .faq-cta-inner { flex-direction: column; }
-        .faq-cta-card { width: 100%; }
-        .faq-cta-company { font-size: 1.4rem; }
-    }
-</style>
-@endsection
 @endsection
 
 @section('scripts')
@@ -485,4 +413,90 @@
         if (!wasOpen) item.classList.add('open');
     }
 </script>
+@endsection
+
+@section('cta')
+<section class="faq-cta-wrapper">
+    <div class="container">
+        <div class="faq-cta-section">
+            <div class="faq-cta-overlay"></div>
+            <div class="faq-cta-inner">
+                <div class="faq-cta-left">
+                    <h2 class="faq-cta-company">SR GREENSCAPES PVT LTD</h2>
+                    <p class="faq-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
+                    <p class="faq-cta-desc">
+                        Still have questions? Our landscape experts are happy to guide you. Get personalised advice for your home, office, or institutional greenery project.
+                    </p>
+                </div>
+                <div class="faq-cta-card">
+                    <h4 class="faq-cta-card-title">Book Consultation</h4>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="source" value="faq-cta">
+                        <div class="faq-cta-row">
+                            <input type="text" name="name" class="faq-cta-input" placeholder="Name *" required>
+                            <input type="text" name="phone" class="faq-cta-input" placeholder="Phone *" required>
+                        </div>
+                        <select name="message" class="faq-cta-input" style="margin-bottom:10px;">
+                            <option value="">Select Service *</option>
+                            <option>Landscape Design & Execution</option>
+                            <option>Specialized Garden Services</option>
+                            <option>Nursery & Plant Supply</option>
+                            <option>Landscape Maintenance</option>
+                            <option>Horticulture Consultancy</option>
+                            <option>Others</option>
+                        </select>
+                        <textarea name="details" class="faq-cta-input faq-cta-textarea" placeholder="Message"></textarea>
+                        <button type="submit" class="faq-cta-submit">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .faq-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
+    .faq-cta-section {
+        position: relative;
+        background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
+        padding: 60px 50px; overflow: hidden; border-radius: 30px;
+        box-shadow: 0 20px 60px rgba(26,58,26,0.25);
+    }
+    .faq-cta-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.55) 55%, rgba(15,30,15,0.3) 100%);
+        border-radius: 30px;
+    }
+    .faq-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+    .faq-cta-left { flex: 1; max-width: 460px; }
+    .faq-cta-company { color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
+    .faq-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    .faq-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; }
+    .faq-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+    .faq-cta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
+    .faq-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    .faq-cta-input { flex: 1; border: 1px solid #e0e0e0; border-radius: 8px; padding: 11px 14px; font-size: 13px; background: #fafafa; width: 100%; transition: border-color 0.2s; color: #333; }
+    .faq-cta-input::placeholder { color: #999; }
+    .faq-cta-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+    .faq-cta-textarea { display: block; width: 100%; height: 80px; resize: vertical; margin-bottom: 12px; }
+    .faq-cta-submit { display: block; width: 100%; background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 13px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+    .faq-cta-submit:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,195,74,0.3); }
+    @media (max-width: 991px) {
+        .faq-cta-wrapper { padding: 40px 0 60px; }
+        .faq-cta-section { padding: 40px 24px; border-radius: 24px; }
+        .faq-cta-overlay { border-radius: 24px; }
+        .faq-cta-inner { flex-direction: column; }
+        .faq-cta-card { width: 100%; }
+        .faq-cta-company { font-size: 1.4rem; }
+    }
+    @media (max-width: 575px) {
+        .faq-cta-wrapper { padding: 25px 0 40px; }
+        .faq-cta-section { padding: 25px 16px; border-radius: 18px; }
+        .faq-cta-overlay { border-radius: 18px; }
+        .faq-cta-company { font-size: 1.1rem; }
+        .faq-cta-card { padding: 20px 16px; }
+        .faq-cta-card-title { font-size: 1.1rem; }
+        .faq-cta-row { flex-direction: column; gap: 8px; }
+    }
+</style>
 @endsection

@@ -203,11 +203,12 @@
         line-height: 1.4;
     }
     .service-card .svc-body .svc-desc {
-        font-size: 0.84rem;
+        font-size: 0.9rem;
         color: #777;
         margin: 0;
-        line-height: 1.7;
+        line-height: 1.75;
         flex: 1;
+        text-align: justify;
     }
     .service-card .svc-link {
         display: inline-flex;
@@ -356,13 +357,15 @@
     .why-card-desc {
         color: #666;
         font-size: 0.95rem;
-        line-height: 1.7;
+        line-height: 1.75;
         margin: 0;
+        text-align: justify;
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 991px) {
         .svc-hero { height: 260px; }
+
         .svc-hero-content h1 { font-size: 2.2rem; }
         .cat-header h2 { font-size: 1.8rem; }
         .service-card { padding: 30px 20px 25px; }
@@ -392,7 +395,7 @@
         .why-card-desc { font-size: 0.82rem; }
     }
     @media (max-width: 480px) {
-        .svc-hero { height: 200px; }
+        .svc-hero { height: 180px; }
         .svc-hero-content h1 { font-size: 1.4rem; }
         .svc-hero-content p { font-size: 0.8rem; }
         .service-card .svc-body { padding: 14px; }
@@ -416,12 +419,6 @@
 <!-- ===== ALL 9 SERVICES GRID ===== -->
 <section class="cat-section">
     <div class="container">
-        <div class="cat-header text-center" data-aos="fade-up">
-            <span class="cat-header-label"><i class="fas fa-leaf"></i> WHAT WE OFFER</span>
-            <h2>Our Professional <span>Services</span></h2>
-            <p>Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
-        </div>
-
         <div class="row g-4 justify-content-center">
             @foreach($services as $service)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 60 }}">
@@ -506,22 +503,19 @@
                             <input type="text" name="name" class="svc-cta-input" placeholder="Name *" required>
                             <input type="text" name="phone" class="svc-cta-input" placeholder="Phone *" required>
                         </div>
-                        <div class="svc-cta-row">
-                            <input type="text" name="subject" class="svc-cta-input" placeholder="City">
-                            <select name="message" class="svc-cta-input" required>
-                                <option value="">Select Service *</option>
-                                <option>Landscape Design & Execution</option>
-                                <option>Specialized Garden Services</option>
-                                <option>Hardscape & Softscape Development</option>
-                                <option>Nursery & Plant Supply</option>
-                                <option>Landscape Maintenance</option>
-                                <option>Horticulture Consultancy</option>
-                                <option>Garden Supplies</option>
-                                <option>Green Gifts</option>
-                                <option>Event Styling</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
+                        <select name="message" class="svc-cta-input" style="margin-bottom:10px;" required>
+                            <option value="">Select Service *</option>
+                            <option>Landscape Design & Execution</option>
+                            <option>Specialized Garden Services</option>
+                            <option>Hardscape & Softscape Development</option>
+                            <option>Nursery & Plant Supply</option>
+                            <option>Landscape Maintenance</option>
+                            <option>Horticulture Consultancy</option>
+                            <option>Garden Supplies</option>
+                            <option>Green Gifts</option>
+                            <option>Event Styling</option>
+                            <option>Others</option>
+                        </select>
                         <textarea name="details" class="svc-cta-input svc-cta-textarea" placeholder="Message"></textarea>
                         <button type="submit" class="svc-cta-submit">SUBMIT</button>
                     </form>

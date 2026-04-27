@@ -32,43 +32,75 @@
         z-index: 5;
         display: flex;
         align-items: center;
+        justify-content: center;
     }
     .hero-inner .container {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 40px;
+        justify-content: center;
     }
     .hero-text {
-        flex: 1;
-        max-width: 550px;
+        text-align: center;
+        max-width: 700px;
+        width: 100%;
     }
     .hero-slide-text {
         transition: opacity 0.4s ease;
         opacity: 1;
     }
+    .hero-text h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 3.2rem;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.2;
+        text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
     .hero-text .hero-company {
-        font-size: 1.3rem;
-        font-weight: 500;
-        color: rgba(255,255,255,0.9);
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #fff;
         letter-spacing: 2px;
         margin-bottom: 10px;
         text-transform: uppercase;
-    }
-    .hero-text h1 {
-        font-size: 3.4rem;
-        font-weight: 900;
-        color: #fff;
-        line-height: 1.15;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        margin-bottom: 12px;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.3);
     }
     .hero-text .hero-sub {
-        font-size: 1.25rem;
-        color: rgba(255,255,255,0.92);
-        margin-top: 10px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        color: #fff;
+        margin-top: 6px;
         font-weight: 400;
-        letter-spacing: 0.5px;
+        letter-spacing: 1px;
+        font-style: normal;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    }
+    .btn-book-consult {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--primary);
+        color: #fff;
+        padding: 14px 34px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        margin-top: 10px;
+    }
+    .btn-book-consult:hover {
+        background: #fff;
+        color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     .hero-banner .carousel-control-prev,
     .hero-banner .carousel-control-next {
@@ -104,49 +136,6 @@
         border-color: var(--primary);
     }
 
-    /* ===== CONSULTATION FORM ===== */
-    .consultation-form {
-        background: rgba(255,255,255,0.97);
-        border-radius: 12px;
-        padding: 30px 25px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        width: 420px;
-        min-width: 420px;
-    }
-    .consultation-form h4 {
-        font-weight: 800;
-        color: var(--dark);
-        margin-bottom: 20px;
-        font-size: 1.3rem;
-    }
-    .consultation-form .form-control {
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 11px 14px;
-        font-size: 13px;
-        background: #fafafa;
-    }
-    .consultation-form .form-control:focus {
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(76,175,80,0.1);
-    }
-    .btn-submit {
-        background: var(--dark-bg);
-        color: #fff;
-        border: none;
-        padding: 13px 35px;
-        border-radius: 8px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 13px;
-        width: 100%;
-        transition: all 0.3s;
-    }
-    .btn-submit:hover {
-        background: var(--primary-dark);
-        color: #fff;
-    }
 
     /* ===== ABOUT SECTION ===== */
     .about-section {
@@ -226,10 +215,11 @@
         flex: 1;
     }
     .about-text {
-        font-size: 0.92rem;
+        font-size: 0.95rem;
         line-height: 1.85;
         color: #666;
         margin-bottom: 30px;
+        text-align: justify;
     }
     .about-text strong {
         color: var(--dark);
@@ -403,13 +393,13 @@
     }
     .diff-card .diff-body h6 {
         font-weight: 700;
-        font-size: 0.95rem;
+        font-size: 1.1rem;
         color: #2d3a2d;
         margin: 0;
         line-height: 1.4;
     }
     .diff-card .diff-body p {
-        font-size: 0.82rem;
+        font-size: 0.95rem;
         color: #555;
         margin: 0;
         line-height: 1.7;
@@ -500,15 +490,16 @@
     .service-card .svc-body h5 {
         font-weight: 700;
         color: var(--dark);
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         margin-bottom: 10px;
         line-height: 1.4;
     }
     .service-card .svc-body .svc-desc {
-        font-size: 0.84rem;
+        font-size: 0.9rem;
         color: #777;
         margin-bottom: 12px;
-        line-height: 1.7;
+        line-height: 1.75;
+        text-align: justify;
     }
     .service-card .svc-link {
         display: inline-flex;
@@ -889,12 +880,10 @@
     @media (max-width: 991px) {
         .hero-banner, .hero-banner .carousel-item { height: auto; min-height: auto; max-height: 450px; }
         .hero-inner { position: relative; padding: 30px 0; }
-        .hero-text h1 { font-size: 1.6rem; }
-        .hero-text .hero-sub { font-size: 0.85rem; }
-        .hero-text .hero-company { font-size: 0.75rem; }
-        .hero-inner .container { flex-direction: column; justify-content: center; text-align: center; gap: 25px; }
-        .hero-text { max-width: 100%; }
-        .consultation-form { width: 100%; min-width: unset; }
+        .hero-text h1 { font-size: 2.2rem; letter-spacing: 1.5px; }
+        .hero-text .hero-company { font-size: 1rem; letter-spacing: 1.5px; }
+        .hero-text .hero-sub { font-size: 0.95rem; }
+        .btn-book-consult { padding: 12px 28px; font-size: 0.88rem; }
         .stat-number { font-size: 2rem; }
         .services-section { padding: 50px 0; }
         .portfolio-section { padding: 50px 0; }
@@ -902,15 +891,12 @@
     @media (max-width: 575px) {
         .hero-banner { margin: 8px 10px 0; border-radius: 20px; min-height: 60vh; }
         .hero-banner .carousel-item { min-height: 60vh; }
-        .hero-text h1 { font-size: 1.3rem; }
-        .hero-text .hero-sub { font-size: 0.78rem; }
-        .hero-text .hero-company { font-size: 0.68rem; letter-spacing: 1.5px; }
+        .hero-text h1 { font-size: 1.6rem; letter-spacing: 1px; }
+        .hero-text .hero-company { font-size: 0.82rem; letter-spacing: 1.5px; }
+        .hero-text .hero-sub { font-size: 0.8rem; }
+        .btn-book-consult { padding: 11px 24px; font-size: 0.82rem; }
         .hero-inner { padding: 20px 0; }
         .hero-inner .container { gap: 18px; }
-        .consultation-form { padding: 20px 16px; }
-        .consultation-form h4 { font-size: 1.1rem; margin-bottom: 14px; }
-        .consultation-form .form-control { padding: 9px 12px; font-size: 12px; }
-        .btn-submit { padding: 11px; font-size: 12px; }
         .hero-banner .carousel-control-prev,
         .hero-banner .carousel-control-next { width: 35px; height: 35px; margin: 0 8px; }
         .hero-banner .carousel-indicators button { width: 8px; height: 8px; }
@@ -946,7 +932,6 @@
         .hero-text { text-align: center; }
         .hero-text h1 { font-size: 1.8rem; }
         .hero-text p { font-size: 0.9rem; }
-        .consultation-form { width: 100% !important; min-width: unset !important; max-width: 100%; }
         .about-heading-row { flex-direction: column; gap: 15px; }
         .about-features-row { flex-direction: column; gap: 15px; }
         .about-feature-card { min-width: unset; }
@@ -1015,7 +1000,7 @@
         </button>
     </div>
 
-    <!-- Hero Content Overlay: Text Left + Form Right -->
+    <!-- Hero Content Overlay: Centered -->
     <div class="hero-inner">
         <div class="container">
             <div class="hero-text">
@@ -1023,76 +1008,29 @@
                     @foreach($banners as $index => $banner)
                         @if($banner->title || $banner->subtitle || $banner->description)
                         <div class="hero-slide-text" data-slide="{{ $index }}" style="{{ $index !== 0 ? 'display:none;' : '' }}">
-                            @if($banner->subtitle)<p class="hero-company">{{ $banner->subtitle }}</p>@endif
                             @if($banner->title)<h1>{{ $banner->title }}</h1>@endif
-                            @if($banner->description)<p class="hero-sub mb-4">{{ $banner->description }}</p>@endif
-                            @if($banner->button_text)
-                            <div class="d-flex gap-3 mt-4">
-                                <a href="{{ $banner->button_link ?? '/projects' }}" class="btn-theme">
-                                    {{ $banner->button_text }}
-                                    <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                            @if($banner->subtitle)<p class="hero-company">{{ $banner->subtitle }}</p>@endif
+                            @if($banner->description)<p class="hero-sub">{{ $banner->description }}</p>@endif
+                            <div class="mt-4">
+                                <a href="/contact" class="btn-book-consult">
+                                    <i class="fas fa-calendar-check"></i> Book Consultation
                                 </a>
                             </div>
-                            @endif
                         </div>
                         @endif
                     @endforeach
                 @else
                     <div class="hero-slide-text" data-slide="0">
-                        <p class="hero-company">Welcome</p>
                         <h1>SR GREENSCAPES Pvt Ltd</h1>
-                        <p class="hero-sub mb-4">Science driven sustainable landscaping</p>
-                        <div class="d-flex gap-3 mt-4">
-                            <a href="/projects" class="btn-theme">
-                                Discover Projects
-                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                        <p class="hero-company">Welcome</p>
+                        <p class="hero-sub">Science driven sustainable landscaping</p>
+                        <div class="mt-4">
+                            <a href="/contact" class="btn-book-consult">
+                                <i class="fas fa-calendar-check"></i> Book Consultation
                             </a>
                         </div>
                     </div>
                 @endif
-            </div>
-            <div class="consultation-form">
-                <h4>Book A Free Consultation</h4>
-                <form action="{{ route('contact.submit') }}" method="POST">
-                    @csrf
-                    <div class="row g-2">
-                        <div class="col-6">
-                            <input type="text" name="name" class="form-control" placeholder="Name*" required>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" name="phone" class="form-control" placeholder="Phone*" required>
-                        </div>
-                        <div class="col-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email">
-                        </div>
-                        <div class="col-6">
-                            <select name="subject" class="form-control" required>
-                                <option value="">Select Service *</option>
-                                <option>Landscape Design & Execution</option>
-                                <option>Hardscape & Softscape Development</option>
-                                <option>Commercial Campus Landscaping</option>
-                                <option>Specialized Garden Services</option>
-                                <option>Nursery & Plant Supply</option>
-                                <option>Horticulture Consultancy</option>
-                                <option>Landscape Maintenance (AMC)</option>
-                                <option>Event Styling & Green Decor</option>
-                                <option>Others</option>
-                            </select>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" name="message" class="form-control" placeholder="City">
-                        </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control" placeholder="Address">
-                        </div>
-                        <div class="col-12">
-                            <textarea class="form-control" rows="2" placeholder="Message"></textarea>
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn-submit">SUBMIT REQUEST</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
@@ -1398,7 +1336,7 @@
     <div class="position-absolute rounded-circle blur-bg" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
 
     <div class="container position-relative z-1 py-4">
-        <div class="row justify-content-center g-4">
+        <div class="row justify-content-center g-3">
             @php
                 $fallbackStats = [
                     (object)['icon' => 'fas fa-calendar-check', 'number' => '5', 'suffix' => '+', 'label' => 'Successful Years'],
@@ -1413,21 +1351,21 @@
             @endphp
 
             @foreach($activeCounters as $stat)
-            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 180px; max-width: 250px;">
-                <div class="stat-card text-center p-4 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
+            <div class="col-6 col-md-4 col-lg-auto" style="flex: 1 1 118px; max-width: 155px;">
+                <div class="stat-card text-center p-3 rounded-4 h-100 d-flex flex-column align-items-center justify-content-center"
                      style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); transition: transform 0.3s;"
                      onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <div class="icon-diamond mb-4 position-relative d-flex align-items-center justify-content-center"
-                         style="width: 60px; height: 60px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 12px; transform: rotate(45deg);">
-                        <i class="{{ $stat->icon }} text-white fs-4" style="transform: rotate(-45deg);"></i>
+                    <div class="icon-diamond mb-2 position-relative d-flex align-items-center justify-content-center"
+                         style="width: 46px; height: 46px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; transform: rotate(45deg);">
+                        <i class="{{ $stat->icon }} text-white" style="transform: rotate(-45deg); font-size: 1rem;"></i>
                     </div>
-                    <div class="stat-num text-white fw-bold lh-1 mb-3" style="font-size: 2.8rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
-                    <div class="d-flex align-items-center justify-content-center w-100 px-3 mb-3">
+                    <div class="stat-num text-white fw-bold lh-1 mb-2" style="font-size: 1.75rem;">{{ $stat->number }}{{ $stat->suffix }}</div>
+                    <div class="d-flex align-items-center justify-content-center w-100 px-2 mb-2">
                         <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
-                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #fff; margin: 0 8px;"></div>
+                        <div style="width: 5px; height: 5px; border-radius: 50%; background: #fff; margin: 0 6px;"></div>
                         <div style="flex-grow: 1; height: 1px; background: rgba(255,255,255,0.4);"></div>
                     </div>
-                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $stat->label }}</div>
+                    <div class="stat-txt text-white fw-bold text-uppercase" style="font-size: 0.62rem; letter-spacing: 0.4px; white-space: nowrap;">{{ $stat->label }}</div>
                 </div>
             </div>
             @endforeach
@@ -1736,7 +1674,7 @@
                 <!-- Left: Heading Text -->
                 <div class="home-cta-left">
                     <span class="home-cta-label">YOUR INQUIRY</span>
-                    <h2 class="home-cta-heading">Start A Conversation<br>With Us</h2>
+                    <h2 class="home-cta-heading">Start A Conversation With Us</h2>
                     <p class="home-cta-desc">
                         Reach out to discuss your ideas and outdoor needs.<br>
                         We're here to help your garden thrive beautifully<br>
@@ -1752,24 +1690,21 @@
                         @csrf
                         <input type="hidden" name="source" value="home-cta">
                         <div class="home-cta-row">
-                            <input type="text"  name="name"  class="home-cta-input" placeholder="Your Name *" required>
-                            <input type="text"  name="phone" class="home-cta-input" placeholder="Phone Number *" required>
+                            <input type="text" name="name" class="home-cta-input" placeholder="Your Name *" required>
+                            <input type="text" name="phone" class="home-cta-input" placeholder="Phone Number *" required>
                         </div>
-                        <div class="home-cta-row">
-                            <select name="subject" class="home-cta-input">
-                                <option value="">Select Service *</option>
-                                <option>Landscape Design & Execution</option>
-                                <option>Hardscape & Softscape Development</option>
-                                <option>Commercial Campus Landscaping</option>
-                                <option>Specialized Garden Services</option>
-                                <option>Nursery & Plant Supply</option>
-                                <option>Horticulture Consultancy</option>
-                                <option>Landscape Maintenance (AMC)</option>
-                                <option>Event Styling & Green Decor</option>
-                                <option>Others</option>
-                            </select>
-                            <input type="text" name="city" class="home-cta-input" placeholder="City">
-                        </div>
+                        <select name="subject" class="home-cta-input" style="margin-bottom:10px;">
+                            <option value="">Select Service *</option>
+                            <option>Landscape Design & Execution</option>
+                            <option>Hardscape & Softscape Development</option>
+                            <option>Commercial Campus Landscaping</option>
+                            <option>Specialized Garden Services</option>
+                            <option>Nursery & Plant Supply</option>
+                            <option>Horticulture Consultancy</option>
+                            <option>Landscape Maintenance (AMC)</option>
+                            <option>Event Styling & Green Decor</option>
+                            <option>Others</option>
+                        </select>
                         <textarea name="inquiry_message" class="home-cta-input home-cta-textarea" placeholder="Your message"></textarea>
                         <button type="submit" class="home-cta-submit">SEND MESSAGE</button>
                     </form>
@@ -1843,6 +1778,7 @@
         font-weight: 800;
         line-height: 1.2;
         margin-bottom: 18px;
+        white-space: nowrap;
     }
     .home-cta-desc {
         color: rgba(255,255,255,0.6);

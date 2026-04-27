@@ -20,7 +20,10 @@ use App\Models\Counter;
 use App\Models\Testimonial;
 use App\Models\Blog;
 use App\Models\Video;
+use App\Mail\ContactInquiry;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -214,6 +217,22 @@ class HomeController extends Controller
         return view('frontend.process');
     }
 
+    public function privacyPolicy()
+    {
+        return view('frontend.privacy-policy');
+    }
+
+    public function terms()
+    {
+        return view('frontend.terms');
+    }
+
+    public function sitemap()
+    {
+        $services = Service::where('is_active', true)->orderBy('order')->get();
+        return view('frontend.sitemap', compact('services'));
+    }
+
     public function contact()
     {
         return view('frontend.contact');
@@ -222,14 +241,26 @@ class HomeController extends Controller
     public function submitContact(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'required|string|max:20',
+            'name'    => 'required|string|max:255',
+            'email'   => 'nullable|email|max:255',
+            'phone'   => 'required|string|max:20',
             'subject' => 'nullable|string|max:255',
             'message' => 'nullable|string',
+            'details' => 'nullable|string',
         ]);
 
         Contact::create($request->only('name', 'email', 'phone', 'subject', 'message', 'source'));
+
+        $notificationEmail = Setting::get('notification_email');
+        if ($notificationEmail) {
+            try {
+                Mail::to($notificationEmail)->send(new ContactInquiry($request->only(
+                    'name', 'email', 'phone', 'subject', 'message', 'details', 'source'
+                )));
+            } catch (\Exception $e) {
+                Log::error('Contact inquiry email failed: ' . $e->getMessage());
+            }
+        }
 
         return back()->with('success', 'Thank you! Your message has been sent successfully.');
     }

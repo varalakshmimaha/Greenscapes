@@ -44,6 +44,9 @@ Route::get('/videos', [HomeController::class, 'videos'])->name('videos');
 Route::get('/process', [HomeController::class, 'process'])->name('process');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact.submit');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+Route::get('/sitemap', [HomeController::class, 'sitemap'])->name('sitemap');
 
 // ========================
 // Admin Auth Routes
@@ -121,4 +124,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', \App\Http\Middleware
     Route::post('settings/footer', [SettingController::class, 'updateFooter'])->name('settings.updateFooter');
     Route::get('settings/brochure', [SettingController::class, 'brochure'])->name('settings.brochure');
     Route::post('settings/brochure', [SettingController::class, 'updateBrochure'])->name('settings.updateBrochure');
+    Route::get('settings/integrations', [SettingController::class, 'integrations'])->name('settings.integrations');
+    Route::post('settings/integrations', [SettingController::class, 'updateIntegrations'])->name('settings.updateIntegrations');
 });
