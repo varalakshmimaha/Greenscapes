@@ -58,10 +58,11 @@
     .proc-title {
         font-size: 2rem;
         font-weight: 800;
-        color: #1a2a1a;
+        color: #1a2d1a;
         line-height: 1.25;
         margin-bottom: 16px;
     }
+    .proc-title span { color: var(--primary); }
 
     /* =============================================
        OUR PROCESS — MODERN VERTICAL TIMELINE
@@ -173,7 +174,7 @@
     .tl-content-card h4 {
         font-weight: 800;
         font-size: 1.1rem;
-        color: #1a2a1a;
+        color: var(--primary-dark);
         margin-bottom: 10px;
         display: flex;
         align-items: center;
@@ -407,11 +408,12 @@
         font-size: 1rem;
     }
     .proc-why-heading {
-        color: #fff;
-        font-size: 2.2rem;
+        color: #fff !important;
+        font-size: 1.55rem;
         font-weight: 800;
-        line-height: 1.25;
+        line-height: 1.2;
         margin-bottom: 40px;
+        white-space: nowrap;
     }
     .proc-why-heading span {
         color: var(--primary);
@@ -473,7 +475,7 @@
         .proc-why-img-panel { flex: none; height: 300px; }
         .proc-why-img-panel::after { display: none; }
         .proc-why-content { padding: 40px 30px; }
-        .proc-why-heading { font-size: 1.7rem; margin-bottom: 30px; }
+        .proc-why-heading { font-size: 1.25rem; margin-bottom: 30px; white-space: normal; }
         .proc-why-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
         /* Timeline: stack vertically, line on left */
@@ -506,7 +508,7 @@
     @media (max-width: 768px) {
         .proc-why-img-panel { height: 240px; }
         .proc-why-content { padding: 30px 20px; }
-        .proc-why-heading { font-size: 1.5rem; margin-bottom: 24px; }
+        .proc-why-heading { font-size: 1.1rem; margin-bottom: 24px; white-space: normal; }
         .proc-why-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     }
 
@@ -566,7 +568,7 @@
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="proc-label">How We Work</span>
-            <h2 class="proc-title">Our Process &mdash; From Vision to Living Landscape</h2>
+            <h2 class="proc-title">Our Process &mdash; From Vision to <span>Living Landscape</span></h2>
             <p style="color:#666; font-size:0.95rem; max-width:680px; margin:0 auto;">From your vision to a thriving living landscape &mdash; we design, build, and nurture outdoor spaces that grow in beauty and value over time.</p>
         </div>
 
@@ -622,7 +624,7 @@
 </section>
 
 <!-- Why Clients Choose SR Greenscapes -->
-<section class="proc-why-section">
+<section class="proc-why-section" id="why-choose-us">
     <div class="proc-why-bg"></div>
     <div class="proc-why-inner">
         <!-- Left: Image -->
@@ -633,7 +635,7 @@
         <!-- Right: Content -->
         <div class="proc-why-content" data-aos="fade-left">
             <div class="proc-why-badge">WHY CHOOSE US <i class="fas fa-leaf"></i></div>
-            <h2 class="proc-why-heading">Trusted Professionals For<br>Complete <span>Garden Services</span></h2>
+            <h2 class="proc-why-heading">Trusted Professionals For Complete <span>Garden Services</span></h2>
 
             <div class="proc-why-grid">
                 @php
@@ -662,11 +664,11 @@
 <!-- ============================================
      WHAT INFLUENCES YOUR LANDSCAPE INVESTMENT
      ============================================ -->
-<section class="proc-invest-section">
+<section class="proc-invest-section" id="investment-factors">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="proc-label">Investment Factors</span>
-            <h2 class="proc-title">What Influences Your Landscape Investment</h2>
+            <h2 class="proc-title">What Influences Your <span>Landscape Investment</span></h2>
             <p style="color:#666; font-size:0.95rem; max-width:720px; margin:0 auto;">A Scientific & Thoughtful Approach to Every Project. Our pricing is carefully derived based on site conditions, design complexity, plant selection, and long-term sustainability goals &mdash; ensuring you receive maximum value for your investment.</p>
         </div>
 

@@ -8,7 +8,7 @@
     .sscd-hero {
         position: relative;
         width: 100%;
-        min-height: 380px;
+        height: 320px;
         display: flex;
         align-items: center;
         overflow: hidden;
@@ -17,7 +17,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ $subCategory->image ? asset("storage/" . $subCategory->image) : ($category->image ? asset("storage/" . $category->image) : ($service->image ? asset("storage/" . $service->image) : asset("storage/Home/1.2 Cover photo 2.jpg"))) }}') center/cover no-repeat;
+        background: url('{{ asset("storage/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
         transition: transform 8s ease;
     }
     .sscd-hero:hover::before { transform: scale(1.03); }
@@ -86,7 +86,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 50px;
-        align-items: start;
+        align-items: center;
     }
     .sscd-content-left .sscd-label {
         display: inline-flex;
@@ -147,11 +147,13 @@
         line-height: 1.85;
         margin-bottom: 22px;
         font-weight: 500;
+        text-align: justify;
     }
     .sscd-content-right .sscd-full-desc {
         color: #666;
         font-size: 0.93rem;
         line-height: 1.9;
+        text-align: justify;
     }
     .sscd-content-right .sscd-full-desc h2,
     .sscd-content-right .sscd-full-desc h3,
@@ -160,8 +162,9 @@
         font-weight: 700;
         margin-top: 20px;
         margin-bottom: 8px;
+        text-align: left;
     }
-    .sscd-content-right .sscd-full-desc p { margin-bottom: 12px; }
+    .sscd-content-right .sscd-full-desc p { margin-bottom: 12px; text-align: justify; }
     .sscd-content-right .sscd-full-desc ul,
     .sscd-content-right .sscd-full-desc ol { padding-left: 20px; margin-bottom: 14px; }
     .sscd-content-right .sscd-full-desc li { margin-bottom: 5px; line-height: 1.75; }

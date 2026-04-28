@@ -2,7 +2,23 @@
   "permissions": {
     "allow": [
       "Bash(php artisan tinker '--execute=:*)",
-      "Read(//c/Users/varalakshmi/Desktop/Nursary/resources/views/frontend/**)"
+      "Read(//c/Users/varalakshmi/Desktop/Nursary/resources/views/frontend/**)",
+      "Bash('/c/Program Files/Git/cmd/git.exe' commit -m 'Initial commit - SR Greenscapes website with Laravel 11, admin panel, frontend pages, CTA sections, team categories, counters, testimonials:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/services/commercial-campus-landscaping)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/services/landscape-design-execution)",
+      "Bash(curl -s http://127.0.0.1:8000/services/landscape-design-execution)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/our-team)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/services)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/about)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:8000/services/category/landscaping-services)",
+      "Bash(curl -s -o /dev/null -w \"home: %{http_code}\\\\n\" http://127.0.0.1:8000/)",
+      "Bash(curl -s -o /dev/null -w \"services: %{http_code}\\\\n\" http://127.0.0.1:8000/services)",
+      "Bash(curl -s -o /dev/null -w \"cat-landscaping: %{http_code}\\\\n\" http://127.0.0.1:8000/services/category/landscaping-services)",
+      "Bash(curl -s -o /dev/null -w \"service-detail: %{http_code}\\\\n\" http://127.0.0.1:8000/services/landscape-design-execution)",
+      "Bash(curl -s -o /dev/null -w \"about: %{http_code}\\\\n\" http://127.0.0.1:8000/about)",
+      "Bash(xargs grep:*)"
     ]
   }
 }

@@ -16,7 +16,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('storage/banners/3pl1gRy59ySBn4viINYs279UJvvPZHE8R4dvzLVt.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
     }
     .faq-hero::after {
         content: '';

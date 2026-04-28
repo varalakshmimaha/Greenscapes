@@ -64,8 +64,8 @@
             padding: 12px 0;
         }
         .navbar-brand-custom .brand-logo {
-            height: 80px;
-            width: 80px;
+            height: 110px;
+            width: 110px;
             margin-right: 10px;
             object-fit: cover;
             border-radius: 50%;
@@ -254,9 +254,10 @@
         .section-title {
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--dark);
+            color: #1a2d1a;
             margin-bottom: 10px;
         }
+        .section-title span { color: var(--primary); }
         .section-subtitle {
             color: var(--gray);
             font-size: 0.95rem;
@@ -488,11 +489,11 @@
             margin-bottom: 16px;
         }
         .footer-brand-logo {
-            width: 56px; height: 56px; min-width: 56px;
+            width: 110px; height: 110px; min-width: 110px;
             border-radius: 50%;
             object-fit: cover;
             background: #fff;
-            padding: 3px;
+            padding: 4px;
         }
         .footer-brand-name {
             display: flex;
@@ -501,6 +502,12 @@
         }
         .footer-brand-name strong {
             font-size: 1.1rem; font-weight: 800; color: #fff;
+        }
+        .footer-brand-tagline {
+            font-size: 0.8rem; font-weight: 500;
+            color: var(--primary); font-style: italic;
+            display: flex; align-items: center; gap: 5px;
+            margin-top: 4px;
         }
         .footer-brand-name span {
             font-size: 0.72rem; font-weight: 400;
@@ -668,7 +675,7 @@
                 gap: 28px;
                 padding: 0 0 32px;
             }
-            .footer-brand-logo { width: 46px; height: 46px; min-width: 46px; }
+            .footer-brand-logo { width: 80px; height: 80px; min-width: 80px; }
         }
 
         /* ===== FOOTER CTA — SPLIT CARD DESIGN ===== */
@@ -912,7 +919,7 @@
             .top-bar-left, .top-bar-right { font-size: 0.72rem; }
             .top-bar-center { font-size: 0.75rem; }
             .navbar-brand-custom .brand-text { font-size: 1rem; }
-            .navbar-brand-custom .brand-logo { height: 60px; }
+            .navbar-brand-custom .brand-logo { height: 80px; width: 80px; }
             .whatsapp-float { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 24px; }
             .btn-theme { padding: 12px 22px; font-size: 12px; }
             .section-title { font-size: 1.4rem; }
@@ -923,6 +930,135 @@
             .top-bar-left, .top-bar-right { font-size: 0.68rem; word-break: break-all; }
             .navbar-brand-custom .brand-text { font-size: 0.9rem; }
             .footer-bottom { font-size: 12px; }
+        }
+
+        /* ===== SERVICES DROPDOWN — 2-COLUMN GRID ===== */
+        .nav-menu > li:hover > .dropdown-services-grid {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr;
+            min-width: 460px;
+        }
+        .dropdown-services-grid a {
+            white-space: nowrap;
+            line-height: 1.4;
+        }
+        @media (max-width: 991px) {
+            .nav-menu > li.dropdown-open > .dropdown-services-grid {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                min-width: unset;
+            }
+        }
+
+        /* ===== SHARED CTA (about / home) ===== */
+        .about-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
+        .about-cta-section {
+            position: relative;
+            background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
+            padding: 60px 50px; overflow: hidden; border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(26,58,26,0.25);
+        }
+        .about-cta-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.55) 55%, rgba(15,30,15,0.3) 100%);
+            border-radius: 30px;
+        }
+        .about-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+        .about-cta-left { flex: 1; max-width: 460px; }
+        .about-cta-section .about-cta-company { color: #fff !important; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
+        /* All page CTAs — company name always white */
+        .proj-cta-company, .svc-cta-company, .faq-cta-company,
+        .contact-cta-company, .contact-cta-heading, .proc-cta-company, .gcta-company,
+        .blogs-cta-company, .gallery-cta-company,
+        .videos-cta-company, .testi-cta-company,
+        .service-category-cta-company, .service-subcategory-cta-company {
+            color: #fff !important;
+        }
+        .about-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+        .about-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; text-align: left; }
+        .about-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+        .about-cta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
+        .about-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
+        .about-cta-input { flex: 1; border: 1px solid #e0e0e0; border-radius: 8px; padding: 11px 14px; font-size: 13px; background: #fafafa; width: 100%; transition: border-color 0.2s; color: #333; }
+        .about-cta-input::placeholder { color: #999; }
+        .about-cta-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
+        .about-cta-textarea { display: block; width: 100%; height: 80px; resize: vertical; margin-bottom: 12px; }
+        .about-cta-submit { display: block; width: 100%; background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 13px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
+        .about-cta-submit:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,195,74,0.3); }
+        @media (max-width: 991px) {
+            .about-cta-wrapper { padding: 40px 0 60px; }
+            .about-cta-section { padding: 40px 24px; border-radius: 24px; }
+            .about-cta-overlay { border-radius: 24px; }
+            .about-cta-inner { flex-direction: column; }
+            .about-cta-card { width: 100%; }
+            .about-cta-company { font-size: 1.4rem; }
+        }
+        @media (max-width: 575px) {
+            .about-cta-wrapper { padding: 25px 0 40px; }
+            .about-cta-section { padding: 25px 16px; border-radius: 18px; }
+            .about-cta-overlay { border-radius: 18px; }
+            .about-cta-company { font-size: 1.1rem; }
+            .about-cta-card { padding: 20px 16px; }
+            .about-cta-card-title { font-size: 1.1rem; }
+            .about-cta-row { flex-direction: column; gap: 8px; }
+        }
+
+        /* ===== GLOBAL HEADING & CONTENT STYLES ===== */
+        /* Section h1/h2 — dark base, span highlights in green (mixed) */
+        section h1:not(.text-white):not([style*="color"]),
+        section h2:not(.text-white):not([style*="color"]),
+        .container h2:not(.text-white):not([style*="color"]) {
+            color: #1a2d1a;
+        }
+        /* Hero headings always stay white */
+        .hero-text h1, .hero-text h2,
+        .hero-slide-text h1, .hero-slide-text h2,
+        .sd-hero-title, .scd-hero-title, .sscd-hero-title,
+        .pd-hero-title,
+        .proc-hero-content h1, .about-hero h1,
+        .svc-hero-content h1 {
+            color: #fff !important;
+        }
+        .hero-text .hero-company,
+        .hero-text .hero-sub {
+            color: #fff !important;
+        }
+        /* Page hero titles — always white */
+        .faq-hero-content h1, .faq-hero-content p,
+        .about-hero-content h1, .about-hero-content p,
+        .blogs-hero-content h1, .gallery-hero-content h1,
+        .videos-hero-content h1, .testi-hero-content h1,
+        .contact-hero-content h1, .contact-hero .hero-content h1 {
+            color: #fff !important;
+        }
+        /* Project cards — title & location always white */
+        .project-content-bottom h5,
+        .project-content-bottom p,
+        .project-content-bottom h4,
+        .project-content-bottom h3 {
+            color: #fff !important;
+        }
+        section h1 span:not([style]),
+        section h2 span:not([style]),
+        .container h2 span:not([style]) {
+            color: var(--primary);
+        }
+        /* h3–h6 subheadings — solid green */
+        section h3:not(.text-white):not([style*="color"]),
+        section h4:not(.text-white):not([style*="color"]),
+        section h5:not(.text-white):not([style*="color"]),
+        section h6:not(.text-white):not([style*="color"]),
+        .container h3:not(.text-white):not([style*="color"]),
+        .container h4:not(.text-white):not([style*="color"]) {
+            color: var(--primary-dark);
+        }
+        /* Justify all paragraph content in sections */
+        section p:not([class*="hero"]):not([class*="cta-tagline"]):not([class*="footer"]),
+        .story-text,
+        .blog-content p,
+        .service-desc,
+        .about-para {
+            text-align: justify;
         }
 
     </style>
@@ -945,7 +1081,10 @@
     <div class="top-bar">
         <div class="container d-flex justify-content-between align-items-center top-bar-inner">
             <div class="top-bar-left">
-                <i class="fas fa-phone-alt"></i> +91 6361115701
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+919845728507" style="color:inherit;text-decoration:none;">+91 9845728507</a>
+                &nbsp;|&nbsp;
+                <a href="tel:+916361115701" style="color:inherit;text-decoration:none;">+91 6361115701</a>
             </div>
             <div class="top-bar-center" style="color: var(--primary); font-weight: 700;">
                 Welcome to SR Greenscapes Pvt Ltd
@@ -978,15 +1117,16 @@
                 <li>
                     <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
                     <div class="dropdown-menu-custom">
-                        <a href="/about">Our Story</a>
-                        <a href="/about#team">Our Team</a>
-                        <a href="/about#mission">Mission & Vision</a>
-                        <a href="/about#values">Our Values</a>
+                        <a href="/about#vision">Vision &amp; Mission</a>
+                        <a href="/about#values">Core Values</a>
+                        <a href="/about#different">What Makes Us Different</a>
+                        <a href="/about#team">Team</a>
+                        <a href="/about#testimonials">Testimonials</a>
                     </div>
                 </li>
                 <li>
                     <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                    <div class="dropdown-menu-custom">
+                    <div class="dropdown-menu-custom dropdown-services-grid">
                         @if(isset($navServiceCategories) && $navServiceCategories->count())
                             @foreach($navServiceCategories as $cat)
                                 @if($cat->service)
@@ -999,7 +1139,13 @@
                     </div>
                 </li>
                 <li><a href="/projects" class="{{ request()->is('projects*') ? 'active' : '' }}">PROJECTS</a></li>
-                <li><a href="/process" class="{{ request()->is('process*') ? 'active' : '' }}">OUR PROCESS</a></li>
+                <li>
+                    <a href="/process" class="{{ request()->is('process*') ? 'active' : '' }}">OUR PROCESS <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <a href="/process#why-choose-us">Why You Choose Us</a>
+                        <a href="/process#investment-factors">Investment Factors</a>
+                    </div>
+                </li>
                 <li>
                     <a href="#" class="{{ request()->is('blogs*') || request()->is('gallery*') || request()->is('videos*') || request()->is('faqs') ? 'active' : '' }}">RESOURCES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
                     <div class="dropdown-menu-custom">
@@ -1014,11 +1160,11 @@
 
             <div class="nav-right">
                 <div class="nav-social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61579521119580" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/sr_greenscapes/?hl=en" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/GreenscapesSr" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.youtube.com/@srgreenscapes" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                    <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
                 @if(!empty($siteSettings['brochure_file']))
                     <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-appointment">Brochure</a>
@@ -1152,7 +1298,7 @@
                             <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="footer-brand-logo">
                         @endif
                         <div class="footer-brand-name">
-                            <strong>SR Greenscapes</strong>
+                            <strong>SR GREENSCAPES</strong>
                             <span>Pvt Ltd</span>
                         </div>
                     </div>
@@ -1160,9 +1306,6 @@
                     <div class="footer-address">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>{{ $siteSettings['address'] ?? 'Sy No. 32/40, Ground Floor, Jinnagara, Gangalu Main Road, Hoskote Taluk, Bangalore - 562114' }}</span>
-                    </div>
-                    <div class="footer-tagline">
-                        <i class="fas fa-leaf"></i> Sowing Science, Growing Beauty
                     </div>
                 </div>
 
@@ -1214,11 +1357,12 @@
                     <div class="footer-social-wrap">
                         <span class="footer-social-label">Follow Us</span>
                         <div class="footer-social-icons">
-                            <a href="https://www.facebook.com/profile.php?id=61579521119580" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/sr_greenscapes/?hl=en" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://x.com/GreenscapesSr" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
-                            <a href="https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://www.youtube.com/@srgreenscapes" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
+                            <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            @if(!empty($siteSettings['pinterest_url']))<a href="{{ $siteSettings['pinterest_url'] }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>@endif
                         </div>
                     </div>
                 </div>
@@ -1288,7 +1432,7 @@
     </a>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/919845728507" class="whatsapp-float" target="_blank" title="WhatsApp">
+    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number'] ?? '919845728507') }}" class="whatsapp-float" target="_blank" title="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 

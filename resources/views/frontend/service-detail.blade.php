@@ -8,7 +8,7 @@
     .sd-hero {
         position: relative;
         width: 100%;
-        min-height: 380px;
+        height: 320px;
         display: flex;
         align-items: center;
         overflow: hidden;
@@ -17,7 +17,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ $service->image ? asset("storage/" . $service->image) : asset("storage/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
+        background: url('{{ asset("storage/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
         transition: transform 8s ease;
     }
     .sd-hero:hover::before { transform: scale(1.03); }
@@ -153,6 +153,7 @@
         color: #666;
         font-size: 0.95rem;
         line-height: 1.9;
+        text-align: justify;
     }
     .sd-content-right .sd-full-desc h2,
     .sd-content-right .sd-full-desc h3,
@@ -161,6 +162,7 @@
         font-weight: 700;
         margin-top: 20px;
         margin-bottom: 8px;
+        text-align: left;
     }
     .sd-content-right .sd-full-desc p {
         margin-bottom: 12px;
@@ -246,7 +248,7 @@
     }
     .sd-category-img {
         width: 100%;
-        height: 160px;
+        height: 240px;
         border-radius: 14px;
         overflow: hidden;
         margin-bottom: 18px;
@@ -472,37 +474,5 @@
 </section>
 @endif
 
-{{-- ===== 4. RELATED SERVICES ===== --}}
-@if($relatedServices->count())
-<section class="sd-related">
-    <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <span class="sd-section-label"><i class="fas fa-star"></i> You May Also Like</span>
-            <h2 class="sd-section-title">Related <span>Services</span></h2>
-        </div>
-
-        <div class="row g-4 justify-content-center">
-            @foreach($relatedServices as $related)
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
-                    <a href="{{ route('service.detail', $related->slug) }}" class="sd-rel-card">
-                        <div class="rel-img">
-                            @if($related->image)
-                                <img loading="lazy" src="{{ asset('storage/' . $related->image) }}" alt="{{ $related->name }}">
-                            @else
-                                <div style="width:100%;height:100%;background:#2d3a2d;display:flex;align-items:center;justify-content:center;">
-                                    <i class="fas fa-leaf" style="font-size:2rem;color:#4a6a4a;"></i>
-                                </div>
-                            @endif
-                        </div>
-                        <span class="rel-name">{{ $related->name }}</span>
-                        <span class="rel-desc">{{ Str::limit(strip_tags($related->description), 90) }}</span>
-                        <span class="rel-link">Explore Service <i class="fas fa-arrow-right"></i></span>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
 
 @endsection

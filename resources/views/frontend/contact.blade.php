@@ -216,6 +216,7 @@
         font-weight: 700;
         font-size: 1.3rem;
         margin-bottom: 12px;
+        color: #fff !important;
     }
     .info-box p {
         font-size: 0.97rem;
@@ -452,27 +453,74 @@
         transform: translateY(-3px);
     }
 
+    /* Contact Quick Info (above brochure) */
+    .cta-contact-info {
+        margin-bottom: 20px;
+    }
+    .cta-contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 18px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+    .cta-contact-info-item:last-child { margin-bottom: 0; }
+    .cta-ci-icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        border-radius: 10px;
+        background: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #fff;
+    }
+    .cta-ci-text span {
+        display: block;
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.45);
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        margin-bottom: 3px;
+    }
+    .cta-ci-text a,
+    .cta-ci-text p {
+        color: #fff !important;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin: 0;
+        text-decoration: none;
+        line-height: 1.5;
+    }
+    .cta-ci-text a:hover { color: var(--accent) !important; }
+
     /* Brochure Card */
     .brochure-download {
         background: linear-gradient(135deg, var(--primary-darker) 0%, var(--primary-dark) 100%);
-        border-radius: 20px;
-        padding: 40px 35px;
+        border-radius: 16px;
+        padding: 24px 24px;
         text-align: center;
-        height: 100%;
+        height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        gap: 16px;
+        width: 100%;
     }
     .brochure-icon-wrap {
-        width: 90px;
-        height: 90px;
+        width: 72px;
+        height: 72px;
         border-radius: 50%;
         background: rgba(255,255,255,0.12);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 25px;
+        margin-bottom: 16px;
         position: relative;
     }
     .brochure-icon-wrap::after {
@@ -485,35 +533,31 @@
     }
     @keyframes spin { 100% { transform: rotate(360deg); } }
     .brochure-icon-wrap i {
-        font-size: 36px;
+        font-size: 28px;
         color: #fff;
     }
     .brochure-download h5 {
-        color: #fff;
+        color: #fff !important;
         font-weight: 700;
-        font-size: 1.15rem;
-        margin-bottom: 8px;
-    }
-    .brochure-download p {
-        color: rgba(255,255,255,0.6);
-        font-size: 0.85rem;
-        margin-bottom: 25px;
-        line-height: 1.6;
+        font-size: 1.1rem;
+        margin: 0;
     }
     .btn-download-brochure {
         background: #fff;
         color: var(--primary-dark);
-        padding: 14px 35px;
+        padding: 14px 20px;
         border-radius: 50px;
         font-weight: 700;
         font-size: 0.85rem;
         text-decoration: none;
-        display: inline-flex;
+        display: flex;
         align-items: center;
+        justify-content: center;
         gap: 10px;
         transition: all 0.3s;
         letter-spacing: 0.5px;
         text-transform: uppercase;
+        width: 100%;
     }
     .btn-download-brochure:hover {
         background: var(--accent);
@@ -673,26 +717,19 @@
 <!-- COLORED INFO BLOCKS -->
 <section class="info-blocks-section">
     <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5">
                 <div class="info-box" style="background:var(--primary);">
                     <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                     <h5>Registered Office</h5>
                     <p>Sy No. 32/40, Ground Floor, Jinnagara, Gangalu Main Road, Near Jinnagara Basaveshwara Temple, Hoskote Taluk, Bangalore - 562114</p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="info-box" style="background:#fff; color:var(--dark); box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #eef0ee;">
                     <div class="icon" style="background:var(--light-green); color:var(--primary-dark);"><i class="fas fa-globe-asia"></i></div>
-                    <h5 style="color:var(--dark);">Operational Presence</h5>
+                    <h5 style="color:var(--dark) !important;">Operational Presence</h5>
                     <p style="color:#555;">Headquartered in Bengaluru with pan-India project execution across residential, commercial, and institutional sectors.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="info-box" style="background:var(--primary-dark);">
-                    <div class="icon"><i class="fas fa-clock"></i></div>
-                    <h5>Working Hours</h5>
-                    <p>24/7 — Always Available</p>
                 </div>
             </div>
         </div>
@@ -728,31 +765,52 @@
                     <div class="cta-social">
                         <h6>Follow Us On Social Media</h6>
                         <div class="cta-social-links">
-                            <a href="https://www.facebook.com/profile.php?id=61579521119580" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/sr_greenscapes/?hl=en" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/?viewAsMember=true" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://x.com/GreenscapesSr" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-                            <a href="https://www.pinterest.com/srgreenscapes/" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="https://www.youtube.com/@srgreenscapes" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                            <a href="https://wa.me/919845728507" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            @if(!empty($siteSettings['facebook_url']))<a href="{{ $siteSettings['facebook_url'] }}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>@endif
+                            @if(!empty($siteSettings['instagram_url']))<a href="{{ $siteSettings['instagram_url'] }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>@endif
+                            @if(!empty($siteSettings['linkedin_url']))<a href="{{ $siteSettings['linkedin_url'] }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>@endif
+                            @if(!empty($siteSettings['x_url']))<a href="{{ $siteSettings['x_url'] }}" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>@endif
+                            @if(!empty($siteSettings['pinterest_url']))<a href="{{ $siteSettings['pinterest_url'] }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>@endif
+                            @if(!empty($siteSettings['youtube_url']))<a href="{{ $siteSettings['youtube_url'] }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>@endif
+                            @if(!empty($siteSettings['whatsapp_number']))<a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number']) }}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>@endif
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5">
-                <div class="brochure-download">
-                    <div class="brochure-icon-wrap">
-                        <i class="fas fa-file-pdf"></i>
+                <!-- Quick Contact Info -->
+                <div class="cta-contact-info">
+                    <div class="cta-contact-info-item">
+                        <div class="cta-ci-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="cta-ci-text">
+                            <span>Call Us</span>
+                            <a href="tel:+919845728507">+91 98457 28507</a>
+                            <a href="tel:+916361115701">+91 63611 15701</a>
+                        </div>
                     </div>
+                    <div class="cta-contact-info-item">
+                        <div class="cta-ci-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="cta-ci-text">
+                            <span>Email Us</span>
+                            <a href="mailto:info@srgreenscapes.com">info@srgreenscapes.com</a>
+                        </div>
+                    </div>
+                    <div class="cta-contact-info-item">
+                        <div class="cta-ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="cta-ci-text">
+                            <span>Our Office</span>
+                            <p>Sy No. 32/40, Jinnagara, Hoskote Taluk, Bangalore - 562114</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="brochure-download">
                     <h5>Download Our Brochure</h5>
-                    <p>Get our complete company profile with service details, project portfolio, and pricing.</p>
                     @if(!empty($siteSettings['brochure_file']))
                         <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-download-brochure">
                             <i class="fas fa-download"></i> Download PDF
                         </a>
                     @else
                         <a href="#" class="btn-download-brochure disabled" style="opacity:0.5;pointer-events:none;">
-                            <i class="fas fa-download"></i> Coming Soon
+                            <i class="fas fa-download"></i> Download PDF
                         </a>
                     @endif
                 </div>
@@ -762,35 +820,28 @@
 </section>
 
 @section('cta')
-<!-- Contact Page CTA — Reach Our Team -->
-<section class="contact-cta-wrapper">
+<section class="about-cta-wrapper">
     <div class="container">
-        <div class="contact-cta-section">
-            <div class="contact-cta-overlay"></div>
-            <div class="contact-cta-inner">
-
-                <!-- Left: Company Info -->
-                <div class="contact-cta-left">
-                    <h2 class="contact-cta-heading">SR GREENSCAPES PVT LTD</h2>
-                    <p style="color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px;"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
-                    <p class="contact-cta-desc">
-                        Reach out to discuss your ideas and outdoor needs.<br>
-                        We're here to help your garden thrive beautifully.
+        <div class="about-cta-section">
+            <div class="about-cta-overlay"></div>
+            <div class="about-cta-inner">
+                <div class="about-cta-left">
+                    <h2 class="about-cta-company">SR GREENSCAPES PVT LTD</h2>
+                    <p class="about-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
+                    <p class="about-cta-desc">
+                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space.<br>Let's build something beautiful together.
                     </p>
                 </div>
-
-                <!-- Right: Floating Form Card -->
-                <div class="contact-cta-card">
-                    <h4 class="contact-cta-card-title">Book Consultation</h4>
-                    <p class="contact-cta-card-sub">Share your details and we'll respond with the right garden solution for you.</p>
+                <div class="about-cta-card">
+                    <h4 class="about-cta-card-title">Book Consultation</h4>
                     <form action="{{ route('contact.submit') }}" method="POST">
                         @csrf
                         <input type="hidden" name="source" value="contact-cta">
-                        <div class="contact-cta-row">
-                            <input type="text" name="name" class="contact-cta-input" placeholder="Your Name *" required>
-                            <input type="text" name="phone" class="contact-cta-input" placeholder="Phone Number *" required>
+                        <div class="about-cta-row">
+                            <input type="text" name="name" class="about-cta-input" placeholder="Name *" required>
+                            <input type="text" name="phone" class="about-cta-input" placeholder="Phone *" required>
                         </div>
-                        <select name="subject" class="contact-cta-input" style="margin-bottom:10px;" required>
+                        <select name="message" class="about-cta-input" style="margin-bottom:10px;">
                             <option value="">Select Service *</option>
                             <option>Landscape Design & Execution</option>
                             <option>Hardscape & Softscape Development</option>
@@ -802,158 +853,13 @@
                             <option>Event Styling & Green Decor</option>
                             <option>Others</option>
                         </select>
-                        <textarea name="details" class="contact-cta-input contact-cta-textarea" placeholder="Your message"></textarea>
-                        <button type="submit" class="contact-cta-submit">SUBMIT</button>
+                        <textarea name="details" class="about-cta-input about-cta-textarea" placeholder="Message"></textarea>
+                        <button type="submit" class="about-cta-submit">SUBMIT</button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
-
-<style>
-    .contact-cta-wrapper {
-        padding: 60px 0 80px;
-        background: #f9fbf7;
-    }
-    .contact-cta-section {
-        position: relative;
-        background: url('{{ asset('storage/banners/ueaz16XcDCJsllA9ie8MX688BRmk319Eli32FS27.jpg') }}') center/cover no-repeat;
-        padding: 70px 50px;
-        overflow: hidden;
-        border-radius: 30px;
-        box-shadow: 0 20px 60px rgba(26, 58, 26, 0.25);
-    }
-    .contact-cta-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.6) 55%, rgba(15,30,15,0.25) 100%);
-        border-radius: 30px;
-    }
-    .contact-cta-inner {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 40px;
-    }
-
-    /* Left */
-    .contact-cta-left { flex: 1; max-width: 460px; }
-    .contact-cta-label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: rgba(255,255,255,0.55);
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 14px;
-    }
-    .contact-cta-line {
-        display: inline-block;
-        height: 2px;
-        width: 40px;
-        background: var(--primary);
-    }
-    .contact-cta-heading {
-        color: #fff;
-        font-size: 2.4rem;
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 18px;
-    }
-    .contact-cta-desc {
-        color: rgba(255,255,255,0.6);
-        font-size: 0.95rem;
-        line-height: 1.75;
-    }
-
-    /* Right Card */
-    .contact-cta-card {
-        width: 420px;
-        flex-shrink: 0;
-        background: rgba(22, 42, 22, 0.92);
-        backdrop-filter: blur(12px);
-        border-radius: 16px;
-        padding: 30px 28px;
-        border: 1px solid rgba(255,255,255,0.08);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
-    .contact-cta-card-title {
-        color: #fff;
-        font-size: 1.25rem;
-        font-weight: 800;
-        margin-bottom: 6px;
-    }
-    .contact-cta-card-sub {
-        color: rgba(255,255,255,0.5);
-        font-size: 0.8rem;
-        margin-bottom: 20px;
-        line-height: 1.5;
-    }
-    .contact-cta-row {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-    .contact-cta-input {
-        flex: 1;
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 8px;
-        padding: 11px 14px;
-        color: #fff;
-        font-size: 0.87rem;
-        width: 100%;
-        transition: border-color 0.2s;
-        margin-bottom: 0;
-    }
-    .contact-cta-input::placeholder { color: rgba(255,255,255,0.35); }
-    .contact-cta-input:focus {
-        outline: none;
-        border-color: var(--primary);
-        background: rgba(255,255,255,0.1);
-    }
-    .contact-cta-input option { background: #1a2a1a; color: #fff; }
-    .contact-cta-textarea {
-        display: block;
-        width: 100%;
-        height: 90px;
-        resize: vertical;
-        margin-bottom: 14px;
-        margin-top: 10px;
-    }
-    .contact-cta-submit {
-        display: block;
-        width: 100%;
-        background: var(--primary);
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        padding: 13px;
-        font-weight: 800;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    .contact-cta-submit:hover {
-        background: #3a6b1a;
-        transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(139,195,74,0.3);
-    }
-    @media (max-width: 991px) {
-        .contact-cta-wrapper { padding: 40px 0 60px; }
-        .contact-cta-section { padding: 40px 24px; border-radius: 24px; }
-        .contact-cta-overlay { border-radius: 24px; }
-        .contact-cta-inner { flex-direction: column; }
-        .contact-cta-card { width: 100%; }
-        .contact-cta-heading { font-size: 1.8rem; }
-    }
-</style>
 @endsection
 @endsection

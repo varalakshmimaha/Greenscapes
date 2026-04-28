@@ -180,7 +180,7 @@
         line-height: 1.3;
         margin-bottom: 15px;
     }
-    .other-proj-title span { color: inherit; }
+    .other-proj-title span { color: var(--primary); }
     .other-proj-desc {
         color: #666;
         font-size: 0.95rem;
@@ -411,7 +411,7 @@
 <!-- Spacer between Counter and Testimonials -->
 <section style="background: #f9fbf9; padding: 40px 0 20px;">
     <div class="container text-center">
-        <h2 class="fw-bold mb-3" style="color: var(--primary); font-size: 2rem;">What Our Clients Say</h2>
+        <h2 class="fw-bold mb-3" style="color: #1a2d1a; font-size: 2rem;">What Our Clients <span style="color: var(--primary);">Say</span></h2>
         <p style="color: #777; max-width: 550px; margin: 0 auto;">Hear from the people who trust us with their green spaces</p>
     </div>
 </section>

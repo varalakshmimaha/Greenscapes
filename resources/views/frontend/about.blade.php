@@ -62,7 +62,7 @@
         line-height: 1.3;
         margin-bottom: 25px;
     }
-    .story-title span { color: inherit; }
+    .story-title span { color: var(--primary); }
     .story-text {
         font-size: 1.05rem;
         line-height: 1.9;
@@ -693,7 +693,7 @@
 </section>
 
 <!-- Core Values -->
-<section class="values-section">
+<section class="values-section" id="values">
     <div class="container">
         <div class="text-center mb-5">
             <span class="story-label" style="color:var(--primary)">Our Core Values</span>
@@ -733,7 +733,7 @@
 </section>
 
 <!-- What Makes Us Different -->
-<section class="diff-section" style="padding: 80px 0; background: #f8faf8;">
+<section class="diff-section" id="different" style="padding: 80px 0; background: #f8faf8;">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="story-label">Why We Stand Out</span>
@@ -824,7 +824,7 @@
 </section>
 
 <!-- What Our Clients Are Saying -->
-<section class="about-testi-section">
+<section class="about-testi-section" id="testimonials">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <span class="story-label">Testimonials</span>
@@ -926,49 +926,4 @@
         </div>
     </div>
 </section>
-<style>
-    .about-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
-    .about-cta-section {
-        position: relative;
-        background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
-        padding: 60px 50px; overflow: hidden; border-radius: 30px;
-        box-shadow: 0 20px 60px rgba(26,58,26,0.25);
-    }
-    .about-cta-overlay {
-        position: absolute; inset: 0;
-        background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.55) 55%, rgba(15,30,15,0.3) 100%);
-        border-radius: 30px;
-    }
-    .about-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-    .about-cta-left { flex: 1; max-width: 460px; }
-    .about-cta-company { color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
-    .about-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-    .about-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; }
-    .about-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
-    .about-cta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
-    .about-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
-    .about-cta-input { flex: 1; border: 1px solid #e0e0e0; border-radius: 8px; padding: 11px 14px; font-size: 13px; background: #fafafa; width: 100%; transition: border-color 0.2s; color: #333; }
-    .about-cta-input::placeholder { color: #999; }
-    .about-cta-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(76,175,80,0.1); }
-    .about-cta-textarea { display: block; width: 100%; height: 80px; resize: vertical; margin-bottom: 12px; }
-    .about-cta-submit { display: block; width: 100%; background: var(--primary); color: #fff; border: none; border-radius: 8px; padding: 13px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; }
-    .about-cta-submit:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(139,195,74,0.3); }
-    @media (max-width: 991px) {
-        .about-cta-wrapper { padding: 40px 0 60px; }
-        .about-cta-section { padding: 40px 24px; border-radius: 24px; }
-        .about-cta-overlay { border-radius: 24px; }
-        .about-cta-inner { flex-direction: column; }
-        .about-cta-card { width: 100%; }
-        .about-cta-company { font-size: 1.4rem; }
-    }
-    @media (max-width: 575px) {
-        .about-cta-wrapper { padding: 25px 0 40px; }
-        .about-cta-section { padding: 25px 16px; border-radius: 18px; }
-        .about-cta-overlay { border-radius: 18px; }
-        .about-cta-company { font-size: 1.1rem; }
-        .about-cta-card { padding: 20px 16px; }
-        .about-cta-card-title { font-size: 1.1rem; }
-        .about-cta-row { flex-direction: column; gap: 8px; }
-    }
-</style>
 @endsection
