@@ -1165,13 +1165,9 @@
                             @if($hasChildren)
                                 <div class="dropdown-menu-custom{{ $isServicesMenu ? ' dropdown-services-grid' : '' }}">
                                     @if($isServicesMenu)
-                                        @if(isset($navServiceCategories) && $navServiceCategories->count())
-                                            @foreach($navServiceCategories as $cat)
-                                                @if($cat->service)
-                                                    <a href="{{ route('service.category.detail', [$cat->service->slug, $cat->slug]) }}">{{ $cat->name }}</a>
-                                                @else
-                                                    <a href="/services">{{ $cat->name }}</a>
-                                                @endif
+                                        @if(isset($navServices) && $navServices->count())
+                                            @foreach($navServices as $svc)
+                                                <a href="{{ route('service.detail', $svc->slug) }}">{{ $svc->name }}</a>
                                             @endforeach
                                         @else
                                             <a href="/services">All Services</a>
@@ -1209,13 +1205,9 @@
                     <li>
                         <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
                         <div class="dropdown-menu-custom dropdown-services-grid">
-                            @if(isset($navServiceCategories) && $navServiceCategories->count())
-                                @foreach($navServiceCategories as $cat)
-                                    @if($cat->service)
-                                        <a href="{{ route('service.category.detail', [$cat->service->slug, $cat->slug]) }}">{{ $cat->name }}</a>
-                                    @else
-                                        <a href="/services">{{ $cat->name }}</a>
-                                    @endif
+                            @if(isset($navServices) && $navServices->count())
+                                @foreach($navServices as $svc)
+                                    <a href="{{ route('service.detail', $svc->slug) }}">{{ $svc->name }}</a>
                                 @endforeach
                             @else
                                 <a href="/services">All Services</a>

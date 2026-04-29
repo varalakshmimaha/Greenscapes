@@ -460,8 +460,6 @@
                     <div class="proj-testi-rating-stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                     </div>
-                    <p class="proj-testi-rating-from">From 3k Members,</p>
-                    <p class="proj-testi-rating-google">Reviewed by Google</p>
                     <div class="proj-testi-avatars">
                         @foreach($avatarImages as $idx => $avImg)
                             <img loading="lazy" src="{{ asset('storage/' . $avImg) }}" alt="Member {{ $idx + 1 }}">
