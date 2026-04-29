@@ -943,20 +943,25 @@
             .footer-bottom { font-size: 12px; }
         }
 
-        /* ===== SERVICES DROPDOWN — 2-COLUMN GRID ===== */
+        /* ===== SERVICES DROPDOWN — 4-COLUMN GRID ===== */
         .nav-menu > li:hover > .dropdown-services-grid {
             display: grid !important;
-            grid-template-columns: 1fr 1fr;
-            min-width: 460px;
+            grid-template-columns: repeat(4, 1fr);
+            min-width: 720px;
         }
         .dropdown-services-grid a {
-            white-space: nowrap;
+            white-space: normal;
             line-height: 1.4;
+            font-size: 13px;
+            text-align: center;
+            padding: 12px 14px;
+            border-right: 1px solid #f0f0f0;
         }
+        .dropdown-services-grid a:last-child { border-right: none; }
         @media (max-width: 991px) {
             .nav-menu > li.dropdown-open > .dropdown-services-grid {
                 display: grid !important;
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 min-width: unset;
             }
         }
