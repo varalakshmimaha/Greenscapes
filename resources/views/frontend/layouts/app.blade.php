@@ -947,8 +947,8 @@
         .nav-menu > li:hover > .dropdown-services-grid {
             display: block !important;
             min-width: 220px;
-            left: auto;
-            right: 0;
+            left: 0;
+            right: auto;
         }
         .dropdown-services-grid a {
             white-space: nowrap;
