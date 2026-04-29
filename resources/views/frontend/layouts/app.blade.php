@@ -947,11 +947,10 @@
             .footer-bottom { font-size: 12px; }
         }
 
-        /* ===== SERVICES DROPDOWN — 4-COLUMN GRID ===== */
+        /* ===== SERVICES DROPDOWN — VERTICAL LIST ===== */
         .nav-menu > li:hover > .dropdown-services-grid {
-            display: grid !important;
-            grid-template-columns: repeat(4, max-content);
-            min-width: max-content;
+            display: block !important;
+            min-width: 220px;
             left: auto;
             right: 0;
         }
@@ -960,18 +959,12 @@
             line-height: 1;
             font-size: 13px;
             padding: 11px 18px;
-            border-right: 1px solid #f0f0f0;
+            border-right: none;
+            border-bottom: 1px solid #f0f0f0;
+            display: block;
             text-align: left;
         }
-        .dropdown-services-grid a:nth-child(4n) { border-right: none; }
-        @media (max-width: 991px) {
-            .nav-menu > li.dropdown-open > .dropdown-services-grid {
-                display: grid !important;
-                grid-template-columns: 1fr 1fr;
-                min-width: unset;
-            }
-            .dropdown-services-grid a { white-space: normal; }
-        }
+        .dropdown-services-grid a:last-child { border-bottom: none; }
 
         /* ===== SHARED CTA (about / home) ===== */
         .about-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
