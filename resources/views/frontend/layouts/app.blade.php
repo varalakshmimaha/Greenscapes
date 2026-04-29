@@ -625,17 +625,13 @@
             padding-top: 18px;
             border-top: 1px solid rgba(255,255,255,0.08);
             width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: nowrap;
         }
         .footer-social-label {
+            display: block;
             font-size: 0.68rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.9px;
             color: rgba(255,255,255,0.4);
-            white-space: nowrap;
-            flex-shrink: 0;
+            margin-bottom: 10px;
         }
         .footer-social-icons {
             display: flex; gap: 5px; flex-wrap: nowrap;
