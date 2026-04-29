@@ -816,7 +816,6 @@
                         </a>
                     @endif
                     <div style="margin-top:8px;">
-                        <p style="color:rgba(255,255,255,0.7);font-size:0.75rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">Follow Us</p>
                         <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
                             <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="Instagram"><i class="fab fa-instagram"></i></a>
