@@ -1446,7 +1446,8 @@
                             <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
                             <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                             <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                            @if(!empty($siteSettings['pinterest_url']))<a href="{{ $siteSettings['pinterest_url'] }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>@endif
+                            <a href="{{ $siteSettings['pinterest_url'] ?? 'https://in.pinterest.com/srgreenscapes/' }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number'] ?? '919845728507') }}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
