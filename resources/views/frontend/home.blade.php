@@ -145,22 +145,20 @@
         overflow: hidden;
     }
     .about-label {
-        color: var(--primary);
+        display: block;
+        text-align: center;
+        color: var(--primary-dark);
         font-weight: 700;
-        font-size: 14px;
+        font-size: 0.72rem;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 12px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
+        letter-spacing: 2px;
+        margin-bottom: 14px;
     }
-    .about-label::before {
-        content: '';
-        width: 8px;
-        height: 8px;
-        background: var(--primary);
-        border-radius: 50%;
+    .about-label span, .about-label {
+        display: inline-block;
+        background: rgba(139,195,74,0.12);
+        padding: 6px 20px;
+        border-radius: 50px;
     }
     .about-heading-row {
         display: flex;
@@ -1009,8 +1007,8 @@
                     @foreach($banners as $index => $banner)
                         @if($banner->title || $banner->subtitle || $banner->description)
                         <div class="hero-slide-text" data-slide="{{ $index }}" style="{{ $index !== 0 ? 'display:none;' : '' }}">
-                            @if($banner->title)<h1>{{ $banner->title }}</h1>@endif
                             @if($banner->subtitle)<p class="hero-company">{{ $banner->subtitle }}</p>@endif
+                            @if($banner->title)<h1>{{ $banner->title }}</h1>@endif
                             @if($banner->description)<p class="hero-sub">{{ $banner->description }}</p>@endif
                             <div class="mt-4">
                                 <a href="/contact" class="btn-book-consult">
@@ -1022,8 +1020,8 @@
                     @endforeach
                 @else
                     <div class="hero-slide-text" data-slide="0">
-                        <h1>SR GREENSCAPES Pvt Ltd</h1>
                         <p class="hero-company">Welcome</p>
+                        <h1>SR GREENSCAPES Pvt Ltd</h1>
                         <p class="hero-sub">Science driven sustainable landscaping</p>
                         <div class="mt-4">
                             <a href="/contact" class="btn-book-consult">
@@ -1096,9 +1094,9 @@
 <section class="diff-section">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
-            <p class="about-label d-flex justify-content-center">What Makes Us Different</p>
+            <p class="about-label">What Makes Us Different</p>
             <h2 class="section-title">Why Homeowners Trust Our <span>Landscaping Expertise</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 650px;">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
+            <p class="text-muted mx-auto" style="max-width: 650px; text-align: justify;">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
         </div>
 
         <div class="row g-4">
@@ -1138,7 +1136,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <p class="about-label">What We Offer</p>
             <h2 class="section-title">Our Professional <span>Services</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 650px;">Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
+            <p class="text-muted mx-auto" style="max-width: 650px; text-align: justify;">Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
         </div>
 
         <div class="row g-4">
@@ -1286,9 +1284,9 @@
 <section class="process-section">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
-            <p class="about-label d-flex justify-content-center">Structured, Measurable, Repeatable</p>
+            <p class="about-label">Structured, Measurable, Repeatable</p>
             <h2 class="section-title">Our <span>Process</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 650px;">A systematic approach rooted in science and precision, ensuring every project is delivered with consistency, quality, and lasting impact.</p>
+            <p class="text-muted mx-auto" style="max-width: 650px; text-align: justify;">A systematic approach rooted in science and precision, ensuring every project is delivered with consistency, quality, and lasting impact.</p>
         </div>
 
         @php
@@ -1379,11 +1377,11 @@
 <section class="portfolio-section text-center py-5" id="portfolio">
     <div class="container">
         <div class="mb-5" data-aos="fade-up">
-            <p class="about-label d-flex justify-content-center">Featured Portfolio</p>
+            <p class="about-label">Featured Portfolio</p>
             <h2 class="section-title">Crafting Landscapes That <span>Perform, Evolve and Inspire</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 800px;">
-                Every project is a reflection of our commitment to scientific planning, thoughtful design and 
-                sustainable execution. Our portfolio showcases a diverse range of landscapes- each uniquely 
+            <p class="text-muted mx-auto" style="max-width: 800px; text-align: justify;">
+                Every project is a reflection of our commitment to scientific planning, thoughtful design and
+                sustainable execution. Our portfolio showcases a diverse range of landscapes — each uniquely
                 designed to respond to its environment, purpose and client vision.
             </p>
         </div>

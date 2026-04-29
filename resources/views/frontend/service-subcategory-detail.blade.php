@@ -66,9 +66,9 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(139,195,74,0.15);
-        border: 1px solid rgba(139,195,74,0.3);
-        color: var(--primary);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
         padding: 8px 18px;
         border-radius: 50px;
         font-size: 0.82rem;

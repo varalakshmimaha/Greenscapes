@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Menu;
+use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\Setting;
 use App\Models\TeamCategory;
@@ -48,6 +49,9 @@ class AppServiceProvider extends ServiceProvider
                 // Navbar dropdown data
                 if (Schema::hasTable('team_categories')) {
                     $view->with('navTeamCategories', TeamCategory::where('is_active', true)->orderBy('order')->get());
+                }
+                if (Schema::hasTable('services')) {
+                    $view->with('navServices', Service::where('is_active', true)->orderBy('order')->get());
                 }
                 if (Schema::hasTable('service_categories')) {
                     $view->with('navServiceCategories', ServiceCategory::where('is_active', true)->orderBy('order')->with('service')->get());

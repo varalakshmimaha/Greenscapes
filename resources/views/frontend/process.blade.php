@@ -47,13 +47,16 @@
 
     /* ===== SHARED ===== */
     .proc-label {
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 14px;
         display: inline-block;
+        background: rgba(139,195,74,0.12);
+        color: var(--primary-dark);
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
     }
     .proc-title {
         font-size: 2rem;
@@ -107,7 +110,7 @@
     /* Left items: content left, visual right */
     .tl-item.tl-left .tl-content {
         width: 44%;
-        text-align: right;
+        text-align: left;
         padding-right: 50px;
     }
     .tl-item.tl-left .tl-visual {
@@ -181,7 +184,7 @@
         gap: 10px;
     }
     .tl-item.tl-left .tl-content-card h4 {
-        justify-content: flex-end;
+        justify-content: flex-start;
     }
     .tl-content-card h4 i {
         font-size: 0.9rem;

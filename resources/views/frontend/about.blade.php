@@ -392,6 +392,7 @@
         line-height: 1.7;
         max-width: 600px;
         margin: 0 auto;
+        text-align: justify;
     }
     .modern-team-category {
         text-align: center;
@@ -463,30 +464,41 @@
         transform: scale(1.08);
     }
     .team-info {
-        padding: 25px 20px;
+        padding: 0;
         text-align: center;
         background: #fff;
         position: relative;
         z-index: 2;
     }
+    .team-name-box {
+        border-top: 3px solid var(--primary);
+        padding: 14px 16px 12px;
+        background: #fff;
+    }
     .team-info h5 {
         font-weight: 800;
         color: #1a3a1a;
-        font-size: 1.2rem;
-        margin-bottom: 5px;
+        font-size: 1.05rem;
+        margin-bottom: 4px;
         transition: color 0.3s;
+        line-height: 1.3;
     }
     .modern-team-card:hover .team-info h5 { color: var(--primary); }
     .team-role {
         display: block;
-        color: var(--primary);
-        font-size: 0.85rem;
-        font-weight: 700;
+        color: #666;
+        font-size: 0.78rem;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-bottom: 12px;
+        margin-bottom: 0;
+        background: #f8faf8;
+        padding: 5px 12px;
+        border-radius: 50px;
+        display: inline-block;
     }
     .team-bio {
+        display: none;
         color: #666;
         font-size: 0.92rem;
         line-height: 1.65;
@@ -804,11 +816,10 @@
                                             @endif
                                         </div>
                                         <div class="team-info">
-                                            <h5>{{ $member->name }}</h5>
-                                            <span class="team-role">{{ $member->role }}</span>
-                                            @if($member->bio)
-                                                <p class="team-bio">{{ Str::limit($member->bio, 80) }}</p>
-                                            @endif
+                                            <div class="team-name-box">
+                                                <h5>{{ $member->name }}</h5>
+                                                <span class="team-role">{{ $member->role }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

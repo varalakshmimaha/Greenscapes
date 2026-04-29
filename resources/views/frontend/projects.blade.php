@@ -165,13 +165,16 @@
         overflow: hidden;
     }
     .other-proj-label {
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 12px;
         display: inline-block;
+        background: rgba(139,195,74,0.12);
+        color: var(--primary-dark);
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
     }
     .other-proj-title {
         font-size: 1.8rem;
@@ -624,7 +627,7 @@
         text-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
     .proj-testi-rating-stars {
-        color: #2d5a1e;
+        color: #c8830a;
         font-size: 1.1rem;
         margin-bottom: 18px;
         letter-spacing: 4px;
@@ -637,8 +640,8 @@
     }
     .proj-testi-rating-google {
         font-size: 0.85rem;
-        color: #2d5a27;
-        font-weight: 500;
+        color: #1a3a1a;
+        font-weight: 600;
         margin-bottom: 24px;
     }
     .proj-testi-avatars {
@@ -739,7 +742,7 @@
         margin-bottom: 2px;
     }
     .proj-testi-author-role {
-        color: rgba(255,255,255,0.45);
+        color: rgba(255,255,255,0.75);
         font-size: 0.78rem;
         letter-spacing: 0.5px;
     }

@@ -103,10 +103,6 @@
             <a href="{{ route('admin.menus.index') }}" class="{{ request()->routeIs('admin.menus.*') ? 'active' : '' }}">
                 <i class="fas fa-bars"></i> Navigation Menus
             </a>
-            <a href="{{ route('admin.about.index') }}" class="{{ request()->routeIs('admin.about.*') ? 'active' : '' }}">
-                <i class="fas fa-info-circle"></i> About Us
-            </a>
-
             {{-- Teams Dropdown --}}
             <div class="nav-dropdown {{ request()->routeIs('admin.team.*') || request()->routeIs('admin.team-categories.*') ? 'open' : '' }}">
                 <a href="javascript:void(0)" class="nav-dropdown-toggle">

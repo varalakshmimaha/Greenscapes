@@ -46,6 +46,13 @@
             overflow-x: hidden;
         }
 
+        /* Consistent max-width across all screen sizes ≥ 1200px */
+        @media (min-width: 1200px) {
+            .container, .container-lg, .container-xl {
+                max-width: 1200px !important;
+            }
+        }
+
         /* ===== NAVBAR ===== */
         .main-navbar {
             background: #1e3838;
@@ -194,13 +201,16 @@
 
         .nav-right {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 8px;
         }
         .nav-social-icons {
             display: flex;
             align-items: center;
-            gap: 7px;
+            justify-content: space-between;
+            width: 100%;
         }
         .nav-social-icons a {
             width: 30px;
@@ -234,6 +244,7 @@
             letter-spacing: 0.5px;
             text-decoration: none;
             transition: all 0.3s;
+            white-space: nowrap;
         }
         .btn-appointment:hover {
             background: var(--accent);
@@ -1090,7 +1101,10 @@
                 Welcome to SR Greenscapes Pvt Ltd
             </div>
             <div class="top-bar-right">
-                <i class="fas fa-envelope"></i> info@srgreenscapes.com
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:info@srgreenscapes.com" style="color:inherit;text-decoration:none;">info@srgreenscapes.com</a>
+                &nbsp;|&nbsp;
+                <a href="mailto:md@srgreenscapes.com" style="color:inherit;text-decoration:none;">md@srgreenscapes.com</a>
             </div>
         </div>
     </div>
@@ -1113,52 +1127,120 @@
             </button>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a></li>
-                <li>
-                    <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                    <div class="dropdown-menu-custom">
-                        <a href="/about#vision">Vision &amp; Mission</a>
-                        <a href="/about#values">Core Values</a>
-                        <a href="/about#different">What Makes Us Different</a>
-                        <a href="/about#team">Team</a>
-                        <a href="/about#testimonials">Testimonials</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                    <div class="dropdown-menu-custom dropdown-services-grid">
-                        @if(isset($navServiceCategories) && $navServiceCategories->count())
-                            @foreach($navServiceCategories as $cat)
-                                @if($cat->service)
-                                    <a href="{{ route('service.detail', $cat->service->slug) }}">{{ $cat->name }}</a>
-                                @endif
-                            @endforeach
-                        @else
-                            <a href="/services">All Services</a>
-                        @endif
-                    </div>
-                </li>
-                <li><a href="/projects" class="{{ request()->is('projects*') ? 'active' : '' }}">PROJECTS</a></li>
-                <li>
-                    <a href="/process" class="{{ request()->is('process*') ? 'active' : '' }}">OUR PROCESS <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                    <div class="dropdown-menu-custom">
-                        <a href="/process#why-choose-us">Why You Choose Us</a>
-                        <a href="/process#investment-factors">Investment Factors</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" class="{{ request()->is('blogs*') || request()->is('gallery*') || request()->is('videos*') || request()->is('faqs') ? 'active' : '' }}">RESOURCES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-                    <div class="dropdown-menu-custom">
-                        <a href="/blogs">Blog</a>
-                        <a href="/gallery">Gallery</a>
-                        <a href="/videos">Videos</a>
-                        <a href="/faqs">FAQ's</a>
-                    </div>
-                </li>
-                <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">CONTACTS</a></li>
+                @if(isset($navMenus) && $navMenus->count())
+                    @foreach($navMenus as $menu)
+                        @php
+                            // Resolve href from named route or direct URL
+                            $menuHref = '#';
+                            if (!empty($menu->route)) {
+                                try { $menuHref = route($menu->route); } catch (\Exception $e) { $menuHref = $menu->url ?: '#'; }
+                            } elseif (!empty($menu->url)) {
+                                $menuHref = $menu->url;
+                            }
+                            // Services menu always gets the dynamic services dropdown
+                            $isServicesMenu = ($menu->url === '/services' || $menu->route === 'services');
+                            // Only show dropdown if there are real DB children, or it's the special services menu
+                            $hasChildren = $menu->children->isNotEmpty() || $isServicesMenu;
+                            // Active state
+                            $menuPath = ltrim(parse_url($menuHref, PHP_URL_PATH) ?? '', '/');
+                            if ($menuHref === '/' || $menuPath === '') {
+                                $isActive = request()->is('/');
+                            } else {
+                                $isActive = request()->is($menuPath) || request()->is($menuPath . '/*');
+                            }
+                        @endphp
+                        <li>
+                            <a href="{{ $menuHref }}" class="{{ $isActive ? 'active' : '' }}">
+                                {{ $menu->title }}
+                                @if($hasChildren)<i class="fas fa-chevron-down" style="font-size:10px;"></i>@endif
+                            </a>
+                            @if($hasChildren)
+                                <div class="dropdown-menu-custom{{ $isServicesMenu ? ' dropdown-services-grid' : '' }}">
+                                    @if($isServicesMenu)
+                                        @if(isset($navServiceCategories) && $navServiceCategories->count())
+                                            @foreach($navServiceCategories as $cat)
+                                                @if($cat->service)
+                                                    <a href="{{ route('service.category.detail', [$cat->service->slug, $cat->slug]) }}">{{ $cat->name }}</a>
+                                                @else
+                                                    <a href="/services">{{ $cat->name }}</a>
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            <a href="/services">All Services</a>
+                                        @endif
+                                    @else
+                                        @foreach($menu->children as $child)
+                                            @php
+                                                $childHref = '#';
+                                                if (!empty($child->route)) {
+                                                    try { $childHref = route($child->route); } catch (\Exception $e) { $childHref = $child->url ?: '#'; }
+                                                } elseif (!empty($child->url)) {
+                                                    $childHref = $child->url;
+                                                }
+                                            @endphp
+                                            <a href="{{ $childHref }}">{{ $child->title }}</a>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            @endif
+                        </li>
+                    @endforeach
+                @else
+                    {{-- Fallback if DB menu is empty --}}
+                    <li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">HOME</a></li>
+                    <li>
+                        <a href="/about" class="{{ request()->is('about*') ? 'active' : '' }}">ABOUT US <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <div class="dropdown-menu-custom">
+                            <a href="/about#vision">Vision &amp; Mission</a>
+                            <a href="/about#values">Core Values</a>
+                            <a href="/about#different">What Makes Us Different</a>
+                            <a href="/about#team">Team</a>
+                            <a href="/about#testimonials">Testimonials</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/services" class="{{ request()->is('services*') ? 'active' : '' }}">SERVICES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <div class="dropdown-menu-custom dropdown-services-grid">
+                            @if(isset($navServiceCategories) && $navServiceCategories->count())
+                                @foreach($navServiceCategories as $cat)
+                                    @if($cat->service)
+                                        <a href="{{ route('service.category.detail', [$cat->service->slug, $cat->slug]) }}">{{ $cat->name }}</a>
+                                    @else
+                                        <a href="/services">{{ $cat->name }}</a>
+                                    @endif
+                                @endforeach
+                            @else
+                                <a href="/services">All Services</a>
+                            @endif
+                        </div>
+                    </li>
+                    <li><a href="/projects" class="{{ request()->is('projects*') ? 'active' : '' }}">PROJECTS</a></li>
+                    <li>
+                        <a href="/process" class="{{ request()->is('process*') ? 'active' : '' }}">OUR PROCESS <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <div class="dropdown-menu-custom">
+                            <a href="/process#why-choose-us">Why You Choose Us</a>
+                            <a href="/process#investment-factors">Investment Factors</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/blogs" class="{{ request()->is('blogs*') || request()->is('gallery*') || request()->is('videos*') ? 'active' : '' }}">RESOURCES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <div class="dropdown-menu-custom">
+                            <a href="/blogs">Blog</a>
+                            <a href="/gallery">Gallery</a>
+                            <a href="/videos">Videos</a>
+                        </div>
+                    </li>
+                    <li><a href="/faqs" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQ's</a></li>
+                    <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">CONTACT US</a></li>
+                @endif
             </ul>
 
             <div class="nav-right">
+                @if(!empty($siteSettings['brochure_file']))
+                    <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-appointment"><i class="fas fa-download" style="font-size:11px;margin-right:5px;"></i>Download Brochure</a>
+                @else
+                    <a href="/contact" class="btn-appointment"><i class="fas fa-download" style="font-size:11px;margin-right:5px;"></i>Download Brochure</a>
+                @endif
                 <div class="nav-social-icons">
                     <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1166,11 +1248,6 @@
                     <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
-                @if(!empty($siteSettings['brochure_file']))
-                    <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-appointment">Brochure</a>
-                @else
-                    <a href="/contact" class="btn-appointment">Brochure</a>
-                @endif
             </div>
         </div>
     </nav>

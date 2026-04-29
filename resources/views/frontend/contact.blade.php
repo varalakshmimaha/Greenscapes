@@ -617,6 +617,7 @@
             <i class="fas fa-leaf"></i>
             <span></span>
         </div>
+        <div style="display:inline-block;background:rgba(139,195,74,0.18);color:#8BC34A;padding:6px 20px;border-radius:50px;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;">Get In Touch</div>
         <h1>Let&rsquo;s Build Your Green Vision</h1>
         <p>Connect with SR Greenscapes Pvt Ltd to design sustainable, functional and future-ready landscapes across India.</p>
     </div>
@@ -765,12 +766,12 @@
                     <div class="cta-social">
                         <h6>Follow Us On Social Media</h6>
                         <div class="cta-social-links">
-                            @if(!empty($siteSettings['facebook_url']))<a href="{{ $siteSettings['facebook_url'] }}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>@endif
-                            @if(!empty($siteSettings['instagram_url']))<a href="{{ $siteSettings['instagram_url'] }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>@endif
-                            @if(!empty($siteSettings['linkedin_url']))<a href="{{ $siteSettings['linkedin_url'] }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>@endif
-                            @if(!empty($siteSettings['x_url']))<a href="{{ $siteSettings['x_url'] }}" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>@endif
+                            <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
                             @if(!empty($siteSettings['pinterest_url']))<a href="{{ $siteSettings['pinterest_url'] }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>@endif
-                            @if(!empty($siteSettings['youtube_url']))<a href="{{ $siteSettings['youtube_url'] }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>@endif
+                            <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                             @if(!empty($siteSettings['whatsapp_number']))<a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number']) }}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>@endif
                         </div>
                     </div>
@@ -813,6 +814,17 @@
                             <i class="fas fa-download"></i> Download PDF
                         </a>
                     @endif
+                    <div style="margin-top:8px;">
+                        <p style="color:rgba(255,255,255,0.7);font-size:0.75rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">Follow Us</p>
+                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                            <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="X"><i class="fab fa-x-twitter"></i></a>
+                            <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="YouTube"><i class="fab fa-youtube"></i></a>
+                            @if(!empty($siteSettings['whatsapp_number']))<a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number']) }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>@endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
