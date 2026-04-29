@@ -500,7 +500,7 @@
             margin-bottom: 16px;
         }
         .footer-brand-logo {
-            width: 110px; height: 110px; min-width: 110px;
+            width: 80px; height: 80px; min-width: 80px;
             border-radius: 50%;
             object-fit: cover;
             background: #fff;
@@ -512,7 +512,8 @@
             line-height: 1.25;
         }
         .footer-brand-name strong {
-            font-size: 1.1rem; font-weight: 800; color: #fff;
+            font-size: 0.95rem; font-weight: 800; color: #fff;
+            white-space: nowrap;
         }
         .footer-brand-tagline {
             font-size: 0.8rem; font-weight: 500;
