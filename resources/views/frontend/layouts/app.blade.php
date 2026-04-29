@@ -946,24 +946,27 @@
         /* ===== SERVICES DROPDOWN — 4-COLUMN GRID ===== */
         .nav-menu > li:hover > .dropdown-services-grid {
             display: grid !important;
-            grid-template-columns: repeat(4, 1fr);
-            min-width: 720px;
+            grid-template-columns: repeat(4, max-content);
+            min-width: max-content;
+            left: auto;
+            right: 0;
         }
         .dropdown-services-grid a {
-            white-space: normal;
-            line-height: 1.4;
+            white-space: nowrap;
+            line-height: 1;
             font-size: 13px;
-            text-align: center;
-            padding: 12px 14px;
+            padding: 11px 18px;
             border-right: 1px solid #f0f0f0;
+            text-align: left;
         }
-        .dropdown-services-grid a:last-child { border-right: none; }
+        .dropdown-services-grid a:nth-child(4n) { border-right: none; }
         @media (max-width: 991px) {
             .nav-menu > li.dropdown-open > .dropdown-services-grid {
                 display: grid !important;
                 grid-template-columns: 1fr 1fr;
                 min-width: unset;
             }
+            .dropdown-services-grid a { white-space: normal; }
         }
 
         /* ===== SHARED CTA (about / home) ===== */
