@@ -625,19 +625,23 @@
             padding-top: 18px;
             border-top: 1px solid rgba(255,255,255,0.08);
             width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
         }
         .footer-social-label {
-            display: block;
             font-size: 0.68rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.9px;
             color: rgba(255,255,255,0.4);
-            margin-bottom: 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .footer-social-icons {
-            display: flex; gap: 8px; flex-wrap: wrap;
+            display: flex; gap: 6px; flex-wrap: nowrap;
         }
         .footer-social-icons a {
-            width: 34px; height: 34px;
+            width: 30px; height: 30px;
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 50%;
@@ -1430,6 +1434,7 @@
                             <div class="footer-contact-detail">
                                 <span class="footer-contact-label">Email Us</span>
                                 <a href="mailto:info@srgreenscapes.com">info@srgreenscapes.com</a>
+                                <a href="mailto:md@srgreenscapes.com">md@srgreenscapes.com</a>
                             </div>
                         </li>
                     </ul>

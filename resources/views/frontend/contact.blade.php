@@ -793,6 +793,7 @@
                         <div class="cta-ci-text">
                             <span>Email Us</span>
                             <a href="mailto:info@srgreenscapes.com">info@srgreenscapes.com</a>
+                            <a href="mailto:md@srgreenscapes.com">md@srgreenscapes.com</a>
                         </div>
                     </div>
                     <div class="cta-contact-info-item">
