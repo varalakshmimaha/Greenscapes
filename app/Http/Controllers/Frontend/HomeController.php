@@ -212,6 +212,14 @@ class HomeController extends Controller
         return view('frontend.videos', compact('videos'));
     }
 
+    public function resources()
+    {
+        $blogs   = Blog::where('is_published', true)->orderBy('published_at', 'desc')->take(3)->get();
+        $gallery = Gallery::where('is_active', true)->orderBy('order')->take(6)->get();
+        $videos  = Video::where('is_active', true)->orderBy('order')->take(3)->get();
+        return view('frontend.resources', compact('blogs', 'gallery', 'videos'));
+    }
+
     public function process()
     {
         return view('frontend.process');

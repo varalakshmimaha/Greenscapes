@@ -1223,11 +1223,11 @@
                         </div>
                     </li>
                     <li>
-                        <a href="/blogs" class="{{ request()->is('blogs*') || request()->is('gallery*') || request()->is('videos*') ? 'active' : '' }}">RESOURCES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+                        <a href="/resources" class="{{ request()->is('resources*') || request()->is('blogs*') || request()->is('gallery*') || request()->is('videos*') ? 'active' : '' }}">RESOURCES <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
                         <div class="dropdown-menu-custom">
-                            <a href="/blogs">Blog</a>
-                            <a href="/gallery">Gallery</a>
-                            <a href="/videos">Videos</a>
+                            <a href="/resources#gallery">Gallery</a>
+                            <a href="/resources#blogs">Blog</a>
+                            <a href="/resources#videos">Videos</a>
                         </div>
                     </li>
                     <li><a href="/faqs" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQ's</a></li>

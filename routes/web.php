@@ -35,6 +35,8 @@ Route::get('/services/{serviceSlug}/{categorySlug}', [HomeController::class, 'se
 Route::get('/services/{serviceSlug}/{categorySlug}/{subCategorySlug}', [HomeController::class, 'serviceSubCategoryDetail'])->name('service.subcategory.detail');
 Route::get('/projects', [HomeController::class, 'projects'])->name('projects');
 Route::get('/projects/{slug}', [HomeController::class, 'projectDetail'])->name('project.detail');
+Route::get('/resources', [HomeController::class, 'resources'])->name('resources');
+Route::get('/resource', fn() => redirect('/resources', 301));
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/faqs', [HomeController::class, 'faqs'])->name('faqs');
 Route::get('/testimonials', [HomeController::class, 'testimonials'])->name('testimonials');
