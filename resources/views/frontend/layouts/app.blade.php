@@ -638,16 +638,16 @@
             flex-shrink: 0;
         }
         .footer-social-icons {
-            display: flex; gap: 6px; flex-wrap: nowrap;
+            display: flex; gap: 5px; flex-wrap: nowrap;
         }
         .footer-social-icons a {
-            width: 30px; height: 30px;
+            width: 26px; height: 26px;
             background: rgba(255,255,255,0.06);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             color: rgba(255,255,255,0.75);
-            font-size: 13px;
+            font-size: 11px;
             text-decoration: none;
             transition: all 0.3s;
         }
