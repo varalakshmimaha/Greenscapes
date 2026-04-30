@@ -63,6 +63,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-left: 0;
         }
         .navbar-brand-custom {
             display: flex;
