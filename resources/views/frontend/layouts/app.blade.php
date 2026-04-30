@@ -134,14 +134,14 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: transparent;
+            background: #1e3838;
             min-width: 230px;
-            box-shadow: none;
-            border-top: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            border-top: 3px solid var(--primary);
             z-index: 1060;
             white-space: normal;
             padding: 6px 0;
-            border-radius: 0;
+            border-radius: 0 0 8px 8px;
         }
         .nav-menu > li:hover > .dropdown-menu-custom {
             display: block;
