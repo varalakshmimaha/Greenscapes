@@ -174,8 +174,9 @@
     /* Left: Office Landing Image */
     .contact-landing-img {
         width: 100%;
-        height: 100%;
-        min-height: 520px;
+        height: 600px; /* Increased height */
+        aspect-ratio: 1 / 1; /* Force square shape */
+        min-height: 600px;
         border-radius: 24px;
         overflow: hidden;
         box-shadow: 0 12px 45px rgba(0,0,0,0.1);
@@ -230,11 +231,15 @@
     .contact-form-card {
         background: #fff;
         border-radius: 20px;
-        padding: 45px 40px;
+        padding: 45px 30px 30px; /* Reduced to ensure button visibility */
         box-shadow: 0 8px 40px rgba(0,0,0,0.06);
         border: 1px solid rgba(0,0,0,0.04);
         position: relative;
         overflow: hidden;
+        height: 600px; /* Match image height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centering with reduced internal margins */
     }
     .contact-form-card::before {
         content: '';
@@ -248,8 +253,10 @@
     .contact-form-card h4 {
         font-weight: 800;
         color: var(--dark);
-        font-size: 1.35rem;
-        margin-bottom: 5px;
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 15px; /* Reduced from 25px */
+        text-align: center;
     }
     .contact-form-card .form-intro {
         color: #888;
@@ -258,14 +265,14 @@
     }
     .form-floating-custom {
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 14px; /* Reduced from 20px */
     }
     .form-floating-custom .form-control,
     .form-floating-custom .form-select {
         border: 2px solid #eef0ee;
         border-radius: 12px;
-        padding: 14px 16px;
-        font-size: 0.9rem;
+        padding: 12px 14px;
+        font-size: 0.88rem;
         background: #fafcfa;
         transition: all 0.3s;
         height: auto;
@@ -282,7 +289,7 @@
         color: var(--dark);
         text-transform: uppercase;
         letter-spacing: 0.8px;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
         display: block;
     }
     .form-floating-custom label .required {
@@ -293,7 +300,7 @@
         background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
         color: #fff;
         border: none;
-        padding: 16px 45px;
+        padding: 12px 45px;
         border-radius: 12px;
         font-weight: 700;
         font-size: 0.9rem;
@@ -580,7 +587,8 @@
         .qi-item:last-child { border-bottom: 0; }
         .contact-main { padding: 60px 0 50px; }
         .office-card { margin-bottom: 30px; }
-        .contact-form-card { padding: 30px 25px; }
+        .contact-form-card { padding: 30px 25px; height: auto; }
+        .contact-landing-img { height: 350px; min-height: 350px; margin-bottom: 30px; }
         .cta-features { grid-template-columns: 1fr; }
         .cta-left { margin-bottom: 40px; }
         .brochure-download { margin-top: 20px; }
@@ -635,17 +643,16 @@
     <div class="container">
         <div class="row g-4">
             <!-- Left: Office Info -->
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div class="contact-landing-img">
                     <img loading="lazy" src="{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}" alt="SR Greenscapes Office Interior">
                 </div>
             </div>
 
             <!-- Right: Contact Form -->
-            <div class="col-lg-7">
+            <div class="col-lg-6">
                 <div class="contact-form-card" id="contactForm">
                     <h4>Send Us a Message</h4>
-                    <p class="form-intro">Fill in the details below and our team will get back to you within 24 hours.</p>
 
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show mb-4" style="border-radius:12px; border:0; background: #e8f5e9; color: var(--primary-dark);">
@@ -701,7 +708,7 @@
                             <div class="col-12">
                                 <div class="form-floating-custom">
                                     <label>Your Message</label>
-                                    <textarea name="details" class="form-control" rows="4" placeholder="Tell us about your project or requirements...">{{ old('details') }}</textarea>
+                                    <textarea name="details" class="form-control" rows="3" placeholder="Tell us about your project or requirements...">{{ old('details') }}</textarea>
                                 </div>
                             </div>
                             <div class="col-12">

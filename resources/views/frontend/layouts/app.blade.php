@@ -77,9 +77,9 @@
             margin-right: 12px;
         }
         .navbar-brand-custom .brand-logo {
-            height: 95px;
-            width: 95px;
-            min-width: 95px;
+            height: 100px;
+            width: 100px;
+            min-width: 100px;
             margin-right: 8px;
             object-fit: contain;
             object-position: center;
@@ -105,15 +105,15 @@
             letter-spacing: 0.8px;
         }
         .navbar-brand-custom .brand-text .brand-line-1 {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
         }
         .navbar-brand-custom .brand-text .brand-line-2 {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             margin-top: 2px;
         }
         .navbar-brand-custom .brand-text .brand-line-3 {
             display: block;
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: #fff;
             letter-spacing: 2.2px;
@@ -1030,10 +1030,10 @@
             .top-bar-left span, .top-bar-right span { display: none; } /* Hide the pipes | on mobile */
             .top-bar-center { font-size: 0.75rem; order: -1; margin-bottom: 4px; }
             
-            .navbar-brand-custom .brand-logo { height: 65px; width: 65px; min-width: 65px; }
+            .navbar-brand-custom .brand-logo { height: 70px; width: 70px; min-width: 70px; }
             .navbar-brand-custom .brand-text .brand-line-1,
-            .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.85rem; }
-            .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.6rem; letter-spacing: 1.5px; }
+            .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.95rem; }
+            .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.65rem; letter-spacing: 1.5px; }
             
             .whatsapp-float { bottom: 20px; right: 15px; width: 50px; height: 50px; font-size: 26px; }
             .call-float { bottom: 82px; right: 15px; width: 50px; height: 50px; font-size: 22px; box-shadow: 0 4px 15px rgba(25,118,210,0.3); }
