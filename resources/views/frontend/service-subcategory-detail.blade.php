@@ -164,7 +164,7 @@
         margin-bottom: 8px;
         text-align: left;
     }
-    .sscd-content-right .sscd-full-desc p { margin-bottom: 12px; text-align: justify; }
+    .sscd-content-right .sscd-full-desc p { margin-bottom: 12px; text-align: justify !important; }
     .sscd-content-right .sscd-full-desc ul,
     .sscd-content-right .sscd-full-desc ol { padding-left: 20px; margin-bottom: 14px; }
     .sscd-content-right .sscd-full-desc li { margin-bottom: 5px; line-height: 1.75; }

@@ -153,7 +153,7 @@
         color: #666;
         font-size: 0.95rem;
         line-height: 1.9;
-        text-align: justify;
+        text-align: justify !important;
     }
     .sd-content-right .sd-full-desc h2,
     .sd-content-right .sd-full-desc h3,
@@ -166,7 +166,7 @@
     }
     .sd-content-right .sd-full-desc p {
         margin-bottom: 12px;
-        text-align: center;
+        text-align: justify !important;
     }
     .sd-content-right .sd-full-desc ul,
     .sd-content-right .sd-full-desc ol {
