@@ -68,7 +68,7 @@
         line-height: 1.9;
         color: #555;
         margin-bottom: 30px;
-        text-align: center;
+        text-align: justify;
     }
     .story-img-wrap {
         position: relative;

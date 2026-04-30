@@ -147,13 +147,13 @@
         line-height: 1.85;
         margin-bottom: 22px;
         font-weight: 500;
-        text-align: center;
+        text-align: justify;
     }
     .sscd-content-right .sscd-full-desc {
         color: #666;
         font-size: 0.93rem;
         line-height: 1.9;
-        text-align: center;
+        text-align: justify;
     }
     .sscd-content-right .sscd-full-desc h2,
     .sscd-content-right .sscd-full-desc h3,
@@ -164,7 +164,7 @@
         margin-bottom: 8px;
         text-align: left;
     }
-    .sscd-content-right .sscd-full-desc p { margin-bottom: 12px; text-align: center; }
+    .sscd-content-right .sscd-full-desc p { margin-bottom: 12px; text-align: justify; }
     .sscd-content-right .sscd-full-desc ul,
     .sscd-content-right .sscd-full-desc ol { padding-left: 20px; margin-bottom: 14px; }
     .sscd-content-right .sscd-full-desc li { margin-bottom: 5px; line-height: 1.75; }
