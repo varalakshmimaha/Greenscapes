@@ -116,6 +116,7 @@
             white-space: nowrap;
             flex: 1;
             justify-content: center;
+            gap: 30px;
         }
         .nav-menu > li {
             position: relative;
@@ -123,10 +124,10 @@
         .nav-menu > li > a {
             color: #fff;
             text-decoration: none;
-            padding: 14px 10px;
+            padding: 14px 0;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
@@ -143,17 +144,18 @@
             position: absolute;
             top: 100%;
             left: 0;
+            right: auto;
             background: rgba(255,255,255,0.88);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            min-width: 190px;
-            max-width: 210px;
+            width: 220px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             border-top: 3px solid var(--primary);
             z-index: 1060;
             white-space: normal;
-            padding: 4px 0;
+            padding: 0;
             border-radius: 0 0 8px 8px;
+            margin-top: 5px;
         }
         .nav-menu > li:hover > .dropdown-menu-custom {
             display: block;
@@ -162,7 +164,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 9px 16px;
+            padding: 10px 20px;
             color: #1a2a1a;
             text-decoration: none;
             font-size: 13px;
@@ -171,7 +173,7 @@
         }
         .nav-menu .dropdown-menu-custom a {
             display: block;
-            padding: 9px 16px;
+            padding: 8px 20px;
             color: #1a2a1a;
             text-decoration: none;
             font-size: 13px;
@@ -180,8 +182,16 @@
         }
         .nav-menu .dropdown-menu-custom a:hover,
         .nav-menu .dropdown-menu-custom .dropdown-item-custom:hover {
-            background: rgba(139,195,74,0.12);
+            background-color: #eaeaea;
             color: var(--primary-dark);
+        }
+        /* Narrower dropdown for RESOURCE menu (6th item) */
+        .nav-menu > li:nth-child(6) .dropdown-menu-custom {
+            width: 50%;
+            right: 0;
+            left: auto;
+            max-height: 120px;
+            overflow: hidden;
         }
         /* Nested sub-dropdown (flyout) */
         .nav-menu .dropdown-submenu {
@@ -986,7 +996,7 @@
             border-radius: 30px;
         }
         .about-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
-        .about-cta-left { flex: 1; max-width: 460px; }
+        .about-cta-left { flex: 1; max-width: 460px; display: flex; flex-direction: column; justify-content: center; text-align: left; }
         .about-cta-section .about-cta-company { color: #fff !important; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
         /* All page CTAs — company name always white */
         .proj-cta-company, .svc-cta-company, .faq-cta-company,
@@ -997,7 +1007,7 @@
             color: #fff !important;
         }
         .about-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-        .about-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; text-align: left; }
+        .about-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; text-align: justify; text-justify: inter-word; margin-bottom: 0; }
         .about-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
         .about-cta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
         .about-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
@@ -1269,15 +1279,12 @@
                 <div class="gcta-overlay"></div>
                 <div class="gcta-inner">
                     <div class="gcta-left">
-                        <p class="gcta-eyebrow"><i class="fas fa-leaf"></i> Get In Touch</p>
+                        @unless(request()->routeIs('resources'))
+                            <p class="gcta-eyebrow"><i class="fas fa-leaf"></i> Get In Touch</p>
+                        @endunless
                         <h2 class="gcta-company">SR Greenscapes Pvt Ltd</h2>
                         <p class="gcta-tagline"><i class="fas fa-quote-left"></i> Sowing Science, Growing Beauty</p>
-                        <p class="gcta-desc">Ready to transform your space? Our landscape experts are here to bring your vision to life — scientifically, sustainably, and beautifully.</p>
-                        <ul class="gcta-points">
-                            <li><i class="fas fa-check-circle"></i> Free site consultation</li>
-                            <li><i class="fas fa-check-circle"></i> Science-driven design</li>
-                            <li><i class="fas fa-check-circle"></i> Pan-India execution</li>
-                        </ul>
+                        <p class="gcta-desc">Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space. Let's build something beautiful together.</p>
                     </div>
                     <div class="gcta-card">
                         <h4 class="gcta-card-title">Book a Consultation</h4>
@@ -1320,9 +1327,12 @@
         }
         .gcta-inner {
             position: relative; z-index: 2;
-            display: flex; align-items: center; justify-content: space-between; gap: 40px;
+            display: grid; 
+            grid-template-columns: 1fr 420px;
+            gap: 60px;
+            align-items: flex-start;
         }
-        .gcta-left { flex: 1; max-width: 480px; }
+        .gcta-left { width: 100%; text-align: left; display: flex; flex-direction: column; justify-content: center; }
         .gcta-eyebrow {
             display: inline-flex; align-items: center; gap: 7px;
             background: rgba(139,195,74,0.18); color: var(--primary);
@@ -1333,10 +1343,18 @@
         .gcta-company { color: #fff; font-size: 1.9rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 10px; line-height: 1.2; }
         .gcta-tagline { color: var(--accent); font-size: 0.95rem; font-weight: 500; font-style: italic; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
         .gcta-tagline i { font-size: 0.78rem; opacity: 0.7; }
-        .gcta-desc { color: rgba(255,255,255,0.62); font-size: 0.92rem; line-height: 1.78; margin-bottom: 22px; }
-        .gcta-points { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
-        .gcta-points li { color: rgba(255,255,255,0.82); font-size: 0.87rem; display: flex; align-items: center; gap: 9px; }
-        .gcta-points li i { color: var(--primary); font-size: 0.8rem; flex-shrink: 0; }
+        .gcta-desc { color: rgba(255,255,255,0.82); font-size: 0.92rem; line-height: 1.78; margin-bottom: 0; text-align: justify; text-justify: inter-word; max-width: 600px; }
+        .proj-cta-left, .svc-cta-left, .faq-cta-left, .contact-cta-left, .proc-cta-left, .about-cta-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+        .proj-cta-desc, .svc-cta-desc, .faq-cta-desc, .contact-cta-desc, .proc-cta-desc, .about-cta-desc, .gcta-desc {
+            text-align: justify;
+            text-justify: inter-word;
+            margin-bottom: 0;
+        }
         .gcta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 14px; padding: 32px 28px; box-shadow: 0 15px 40px rgba(0,0,0,0.22); }
         .gcta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
         .gcta-row { display: flex; gap: 10px; margin-bottom: 10px; }
@@ -1350,10 +1368,11 @@
             .gcta-wrapper { padding: 40px 0 60px; }
             .gcta-section { padding: 40px 28px; border-radius: 24px; }
             .gcta-overlay { border-radius: 24px; }
-            .gcta-inner { flex-direction: column; gap: 32px; }
-            .gcta-left { max-width: 100%; }
+            .gcta-inner { grid-template-columns: 1fr; gap: 32px; }
+            .gcta-left, .proj-cta-left, .svc-cta-left, .faq-cta-left, .contact-cta-left, .proc-cta-left, .about-cta-left { max-width: 100%; width: 100%; }
             .gcta-card { width: 100%; }
             .gcta-company { font-size: 1.5rem; }
+            .gcta-desc { max-width: 100%; text-align: justify; }
         }
         @media (max-width: 575px) {
             .gcta-wrapper { padding: 25px 0 40px; }
@@ -1363,6 +1382,7 @@
             .gcta-card { padding: 22px 18px; }
             .gcta-card-title { font-size: 1.1rem; }
             .gcta-row { flex-direction: column; gap: 8px; }
+            .gcta-desc { font-size: 0.85rem; text-align: justify; }
         }
     </style>
     @endif
@@ -1386,7 +1406,7 @@
                     <p class="footer-about-text">Creating High-Performance, Science-Driven Sustainable Landscapes. Based in Bengaluru with Pan-India Project Execution.</p>
                     <div class="footer-address">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>{{ $siteSettings['address'] ?? 'Sy No. 32/40, Ground Floor, Jinnagara, Gangalu Main Road, Hoskote Taluk, Bangalore - 562114' }}</span>
+                        <span>{{ $siteSettings['address'] ?? '3rd floor, Thanks Court, 3rd B Main Road, Kalyan Nagar, Bengaluru, Karnataka - 560043' }}</span>
                     </div>
                 </div>
 

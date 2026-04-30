@@ -414,3 +414,47 @@
 </script>
 
 @endsection
+
+@section('cta')
+<section class="about-cta-wrapper">
+    <div class="container">
+        <div class="about-cta-section">
+            <div class="about-cta-overlay"></div>
+            <div class="about-cta-inner">
+                <div class="about-cta-left">
+                    <h2 class="about-cta-company">SR GREENSCAPES PVT LTD</h2>
+                    <p class="about-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
+                    <p class="about-cta-desc">
+                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space. Let's build something beautiful together.
+                    </p>
+                </div>
+                <div class="about-cta-card">
+                    <h4 class="about-cta-card-title">Book Consultation</h4>
+                    <form action="{{ route('contact.submit') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="source" value="contact-cta">
+                        <div class="about-cta-row">
+                            <input type="text" name="name" class="about-cta-input" placeholder="Name *" required>
+                            <input type="text" name="phone" class="about-cta-input" placeholder="Phone *" required>
+                        </div>
+                        <select name="message" class="about-cta-input" style="margin-bottom:10px;">
+                            <option value="">Select Service *</option>
+                            <option>Landscape Design & Execution</option>
+                            <option>Hardscape & Softscape Development</option>
+                            <option>Commercial Campus Landscaping</option>
+                            <option>Specialized Garden Services</option>
+                            <option>Nursery & Plant Supply</option>
+                            <option>Horticulture Consultancy</option>
+                            <option>Landscape Maintenance (AMC)</option>
+                            <option>Event Styling & Green Decor</option>
+                            <option>Others</option>
+                        </select>
+                        <textarea name="details" class="about-cta-input about-cta-textarea" placeholder="Message"></textarea>
+                        <button type="submit" class="about-cta-submit">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endsection

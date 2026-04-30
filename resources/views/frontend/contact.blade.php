@@ -416,40 +416,45 @@
         font-size: 12px;
         min-width: 16px;
     }
-    .cta-social {
-        margin-top: 35px;
-        padding-top: 25px;
+
+    /* Social Media Section */
+    .cta-social-wrap {
+        margin-top: 20px;
+        padding-top: 20px;
         border-top: 1px solid rgba(255,255,255,0.1);
     }
-    .cta-social h6 {
-        color: rgba(255,255,255,0.4);
-        font-size: 0.72rem;
+    .cta-social-label {
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 14px;
+        letter-spacing: 0.9px;
+        color: rgba(255,255,255,0.4);
+        margin-bottom: 12px;
     }
-    .cta-social-links {
+    .cta-social-icons {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
     }
-    .cta-social-links a {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.07);
-        color: #fff;
+    .cta-social-icons a {
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
+        color: rgba(255,255,255,0.8);
         font-size: 16px;
+        text-decoration: none;
         transition: all 0.3s;
-        border: 1px solid rgba(255,255,255,0.08);
     }
-    .cta-social-links a:hover {
+    .cta-social-icons a:hover {
         background: var(--primary);
         border-color: var(--primary);
+        color: #fff;
         transform: translateY(-3px);
     }
 
@@ -763,16 +768,16 @@
                         <div class="cta-feat-item"><i class="fas fa-check-circle"></i> Nursery & Plant Supply</div>
                         <div class="cta-feat-item"><i class="fas fa-check-circle"></i> Maintenance & Care</div>
                     </div>
-                    <div class="cta-social">
-                        <h6>Follow Us On Social Media</h6>
-                        <div class="cta-social-links">
+                    <div class="cta-social-wrap">
+                        <span class="cta-social-label">Follow Us On Social Media</span>
+                        <div class="cta-social-icons">
                             <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
                             <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-                            @if(!empty($siteSettings['pinterest_url']))<a href="{{ $siteSettings['pinterest_url'] }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>@endif
                             <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                            @if(!empty($siteSettings['whatsapp_number']))<a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number']) }}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>@endif
+                            <a href="{{ $siteSettings['pinterest_url'] ?? 'https://in.pinterest.com/srgreenscapes/' }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number'] ?? '919845728507') }}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         </div>
                     </div>
                 </div>
@@ -815,16 +820,6 @@
                             <i class="fas fa-download"></i> Download PDF
                         </a>
                     @endif
-                    <div style="margin-top:8px;">
-                        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-                            <a href="{{ $siteSettings['facebook_url'] ?? 'https://www.facebook.com/profile.php?id=61579521119580' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="X"><i class="fab fa-x-twitter"></i></a>
-                            <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="YouTube"><i class="fab fa-youtube"></i></a>
-                            @if(!empty($siteSettings['whatsapp_number']))<a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number']) }}" target="_blank" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;text-decoration:none;" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>@endif
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -841,7 +836,7 @@
                     <h2 class="about-cta-company">SR GREENSCAPES PVT LTD</h2>
                     <p class="about-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
                     <p class="about-cta-desc">
-                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space.<br>Let's build something beautiful together.
+                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space. Let's build something beautiful together.
                     </p>
                 </div>
                 <div class="about-cta-card">

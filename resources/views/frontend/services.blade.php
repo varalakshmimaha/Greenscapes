@@ -490,8 +490,7 @@
                     <h2 class="svc-cta-company">SR GREENSCAPES PVT LTD</h2>
                     <p class="svc-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
                     <p class="svc-cta-desc">
-                        Reach out to discuss your ideas and outdoor needs.<br>
-                        We're here to help your garden thrive beautifully.
+                        Reach out to discuss your ideas and outdoor needs. We're here to help your garden thrive beautifully.
                     </p>
                 </div>
                 <div class="svc-cta-card">
@@ -545,7 +544,7 @@
     .svc-cta-left { flex: 1; max-width: 460px; }
     .svc-cta-company { color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
     .svc-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-    .svc-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; }
+    .svc-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; text-align: justify; }
     .svc-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
     .svc-cta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
     .svc-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }

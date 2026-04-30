@@ -800,7 +800,7 @@
                 <div class="proj-cta-left">
                     <h2 class="proj-cta-company">SR GREENSCAPES PVT LTD</h2>
                     <p class="proj-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
-                    <p class="proj-cta-desc">Have a similar project in mind?<br>Fill out the form and we'll get back to you with a free initial estimate.</p>
+                    <p class="proj-cta-desc">Have a similar project in mind? Fill out the form and we'll get back to you with a free initial estimate.</p>
                 </div>
                 <div class="proj-cta-card">
                     <h4 class="proj-cta-card-title">Book Consultation</h4>
@@ -838,7 +838,7 @@
     .proj-cta-left { flex: 1; max-width: 460px; }
     .proj-cta-company { color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
     .proj-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-    .proj-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; }
+    .proj-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; text-align: justify; }
     .proj-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
     .proj-cta-card-title { font-weight: 800; color: var(--dark); margin-bottom: 20px; font-size: 1.3rem; }
     .proj-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
@@ -863,7 +863,7 @@
         .proj-cta-overlay { border-radius: 18px; }
         .proj-cta-company { font-size: 1.1rem; }
         .proj-cta-tagline { font-size: 0.85rem; }
-        .proj-cta-desc { font-size: 0.82rem; }
+        .proj-cta-desc { font-size: 0.82rem; text-align: justify; }
         .proj-cta-card { padding: 20px 16px; }
         .proj-cta-card-title { font-size: 1.1rem; margin-bottom: 14px; }
         .proj-cta-row { flex-direction: column; gap: 8px; }

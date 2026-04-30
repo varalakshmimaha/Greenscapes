@@ -55,7 +55,7 @@
         color: #fff;
         line-height: 1.2;
         text-shadow: 0 2px 12px rgba(0,0,0,0.35);
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         text-transform: uppercase;
         letter-spacing: 2px;
         white-space: nowrap;
@@ -66,7 +66,7 @@
         font-weight: 600;
         color: #fff;
         letter-spacing: 2px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         text-transform: uppercase;
         text-shadow: 0 1px 6px rgba(0,0,0,0.3);
     }
@@ -74,7 +74,8 @@
         font-family: 'Poppins', sans-serif;
         font-size: 1.1rem;
         color: #fff;
-        margin-top: 6px;
+        margin-top: 0;
+        margin-bottom: 20px;
         font-weight: 400;
         letter-spacing: 1px;
         font-style: normal;
@@ -95,7 +96,7 @@
         text-decoration: none;
         transition: all 0.3s;
         box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-        margin-top: 10px;
+        margin-top: 0;
     }
     .btn-book-consult:hover {
         background: #fff;
@@ -1673,7 +1674,7 @@
                     <h2 class="about-cta-company">SR GREENSCAPES PVT LTD</h2>
                     <p class="about-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
                     <p class="about-cta-desc">
-                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space.<br>Let's build something beautiful together.
+                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space. Let's build something beautiful together.
                     </p>
                 </div>
                 <div class="about-cta-card">
@@ -1736,4 +1737,3 @@
     }
 </script>
 @endsection
-

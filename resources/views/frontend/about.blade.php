@@ -908,7 +908,7 @@
                     <h2 class="about-cta-company">SR GREENSCAPES PVT LTD</h2>
                     <p class="about-cta-tagline"><i class="fas fa-leaf"></i> Sowing Science, Growing Beauty</p>
                     <p class="about-cta-desc">
-                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space.<br>Let's build something beautiful together.
+                        Our PhD horticulture professionals and landscape designers are ready to bring world-class greenery to your space. Let's build something beautiful together.
                     </p>
                 </div>
                 <div class="about-cta-card">

@@ -471,7 +471,7 @@
     .faq-cta-left { flex: 1; max-width: 460px; }
     .faq-cta-company { color: #fff; font-size: 1.8rem; font-weight: 900; letter-spacing: 1px; margin-bottom: 12px; }
     .faq-cta-tagline { color: var(--primary); font-size: 1rem; font-weight: 500; font-style: italic; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-    .faq-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; }
+    .faq-cta-desc { color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.75; text-align: justify; }
     .faq-cta-card { width: 420px; flex-shrink: 0; background: rgba(255,255,255,0.97); border-radius: 12px; padding: 30px 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
     .faq-cta-card-title { font-weight: 800; color: #1a3a1a; margin-bottom: 20px; font-size: 1.3rem; }
     .faq-cta-row { display: flex; gap: 10px; margin-bottom: 10px; }
