@@ -173,7 +173,8 @@
 
     /* Left: Office Landing Image */
     .contact-landing-img {
-        width: 100%;
+        width: min(100%, 300px);
+        align-self: center;
         height: 100%;
         min-height: 480px;
         border-radius: 20px;

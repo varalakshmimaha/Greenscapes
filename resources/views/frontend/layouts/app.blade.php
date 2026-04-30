@@ -91,19 +91,34 @@
         .navbar-brand-custom .brand-text {
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
             color: #fff;
             font-weight: 700;
-            font-size: 0.88rem;
-            line-height: 1.2;
-            white-space: nowrap;
+            line-height: 1.02;
         }
-        .navbar-brand-custom .brand-text strong { color: #fff; }
-        .navbar-brand-custom .brand-text small {
+        .navbar-brand-custom .brand-text .brand-line-1,
+        .navbar-brand-custom .brand-text .brand-line-2 {
+            display: block;
+            color: #fff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .navbar-brand-custom .brand-text .brand-line-1 {
+            font-size: 0.88rem;
+        }
+        .navbar-brand-custom .brand-text .brand-line-2 {
+            font-size: 0.88rem;
+            margin-top: 2px;
+        }
+        .navbar-brand-custom .brand-text .brand-line-3 {
             display: block;
             font-size: 0.58rem;
-            font-weight: 400;
+            font-weight: 500;
             color: #fff;
-            letter-spacing: 1px;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            margin-top: 4px;
         }
 
         /* Nav items: fill remaining space, centered */
@@ -542,22 +557,29 @@
         .footer-brand-name {
             display: flex;
             flex-direction: column;
-            line-height: 1.25;
+            align-items: flex-start;
+            line-height: 1.02;
         }
-        .footer-brand-name strong {
-            font-size: 0.95rem; font-weight: 800; color: #fff;
-            white-space: nowrap;
-        }
-        .footer-brand-tagline {
-            font-size: 0.8rem; font-weight: 500;
-            color: var(--primary); font-style: italic;
-            display: flex; align-items: center; gap: 5px;
-            margin-top: 4px;
-        }
-        .footer-brand-name span {
-            font-size: 0.72rem; font-weight: 400;
+        .footer-brand-name .brand-line-1,
+        .footer-brand-name .brand-line-2 {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 800;
             color: #fff;
-            letter-spacing: 1.5px; text-transform: uppercase;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .footer-brand-name .brand-line-2 {
+            margin-top: 2px;
+        }
+        .footer-brand-name .brand-line-3 {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: 2.2px;
+            text-transform: uppercase;
+            margin-top: 5px;
         }
         .footer-about-text {
             color: rgba(255,255,255,0.58);
@@ -968,8 +990,9 @@
             .top-bar-left, .top-bar-right { font-size: 0.72rem; }
             .top-bar-center { font-size: 0.75rem; }
             .navbar-brand-custom .brand-logo { height: 60px; width: 60px; min-width: 60px; }
-            .navbar-brand-custom .brand-text { font-size: 0.78rem; }
-            .navbar-brand-custom .brand-text small { font-size: 0.52rem; }
+            .navbar-brand-custom .brand-text .brand-line-1,
+            .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.78rem; }
+            .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.52rem; letter-spacing: 1.8px; }
             .whatsapp-float { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 24px; }
             .btn-theme { padding: 12px 22px; font-size: 12px; }
             .section-title { font-size: 1.4rem; }
@@ -1093,13 +1116,112 @@
         .container h4:not(.text-white):not([style*="color"]) {
             color: var(--primary-dark);
         }
-        /* Justify all paragraph content in sections */
-        section p:not([class*="hero"]):not([class*="cta-tagline"]):not([class*="footer"]),
+        /* Shared body-copy alignment: justify descriptive content, not headings/labels */
+        section p:where(:not([class*="hero"]):not([class*="label"]):not([class*="tagline"]):not([class*="footer"]):not([class*="company"]):not([class*="brand"]):not([class*="badge"]):not([class*="eyebrow"]):not([class*="role"]):not([class*="date"]):not([class*="name"]):not([class*="cta-text"])),
         .story-text,
+        .about-para,
+        .faq-body,
+        .blog-excerpt,
         .blog-content p,
-        .service-desc,
-        .about-para {
-            text-align: center;
+        .blog-content li,
+        .blog-card-excerpt,
+        .related-blog-card p,
+        .blog-contact-card p,
+        .about-feature-card p,
+        .diff-card .diff-body p,
+        .about-diff-body p,
+        .vision-card p,
+        .value-card p,
+        .exp-body p,
+        .service-card .svc-body .svc-desc,
+        .process-card .card-body-custom p,
+        .process-step-info p,
+        .tl-content-card p,
+        .invest-card .invest-desc,
+        .proc-why-content p,
+        .res-blog-excerpt,
+        .res-video-desc,
+        .proj-testi-quote-text,
+        .about-testi-text,
+        .testi-text-content,
+        .video-card-body p,
+        .svc-card-body p,
+        .subcat-card-body p,
+        .why-card-desc,
+        .sd-content-right .sd-short-desc,
+        .sd-content-right .sd-full-desc,
+        .sd-content-right .sd-full-desc p,
+        .sd-content-right .sd-full-desc li,
+        .sd-category-desc,
+        .sd-rel-card .rel-desc,
+        .scd-content-right .scd-short-desc,
+        .scd-content-right .scd-full-desc,
+        .scd-content-right .scd-full-desc p,
+        .scd-content-right .scd-full-desc li,
+        .scd-subcat-desc,
+        .scd-sib-card .sib-desc,
+        .sscd-content-right .sscd-short-desc,
+        .sscd-content-right .sscd-full-desc,
+        .sscd-content-right .sscd-full-desc p,
+        .sscd-content-right .sscd-full-desc li,
+        .sscd-sib-card .sib-desc,
+        .policy-card p,
+        .terms-card p {
+            text-align: justify !important;
+            text-justify: inter-word;
+        }
+        .about-feature-card p,
+        .diff-card .diff-body p,
+        .about-diff-body p,
+        .vision-card p,
+        .value-card p,
+        .exp-body p,
+        .service-card .svc-body .svc-desc,
+        .process-card .card-body-custom p,
+        .process-step-info p,
+        .tl-content-card p,
+        .invest-card .invest-desc,
+        .res-blog-excerpt,
+        .res-video-desc,
+        .proj-testi-quote-text,
+        .about-testi-text,
+        .testi-text-content,
+        .video-card-body p,
+        .svc-card-body p,
+        .subcat-card-body p,
+        .why-card-desc,
+        .sd-rel-card .rel-desc,
+        .scd-sib-card .sib-desc,
+        .sscd-sib-card .sib-desc {
+            width: 100%;
+        }
+        /* Keep selected hero/banner descriptions centered */
+        .faq-hero-content p,
+        .res-hero p,
+        .contact-hero p,
+        .contact-hero .hero-content p {
+            text-align: center !important;
+        }
+        /* Keep specific section intro descriptions centered */
+        .diff-section .text-center > .text-muted,
+        .services-section .text-center > .text-muted,
+        .process-section .text-center > .text-muted,
+        .portfolio-section .text-center > .text-muted,
+        .team-header-desc,
+        .other-proj-desc,
+        .proc-timeline-section .text-center > p,
+        .proc-invest-section .text-center > p,
+        .projects-hero-content p {
+            text-align: center !important;
+        }
+        /* FAQ banner description stays on one line on desktop */
+        .faq-hero-content p {
+            white-space: nowrap;
+        }
+        @media (max-width: 767px) {
+            .faq-hero-content p {
+                white-space: normal;
+            }
         }
 
     </style>
@@ -1147,8 +1269,9 @@
                     <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="brand-logo">
                 @endif
                 <div class="brand-text">
-                    <strong>SR GREENSCAPES</strong>
-                    <small>Pvt Ltd</small>
+                    <span class="brand-line-1">SR</span>
+                    <span class="brand-line-2">GREENSCAPES</span>
+                    <span class="brand-line-3">PVT LTD</span>
                 </div>
             </a>
 
@@ -1408,8 +1531,9 @@
                             <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="footer-brand-logo">
                         @endif
                         <div class="footer-brand-name">
-                            <strong>SR GREENSCAPES</strong>
-                            <span>Pvt Ltd</span>
+                            <span class="brand-line-1">SR</span>
+                            <span class="brand-line-2">GREENSCAPES</span>
+                            <span class="brand-line-3">PVT LTD</span>
                         </div>
                     </div>
                     <p class="footer-about-text">Creating High-Performance, Science-Driven Sustainable Landscapes. Based in Bengaluru with Pan-India Project Execution.</p>

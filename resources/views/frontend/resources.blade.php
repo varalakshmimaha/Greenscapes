@@ -41,7 +41,7 @@
         margin-bottom: 14px;
     }
     .res-hero h1 {
-        color: #fff;
+        color: #fff !important;
         font-size: 2.6rem;
         font-weight: 800;
         margin-bottom: 12px;

@@ -538,18 +538,19 @@
     /* Left */
     .proj-testi-badge {
         display: inline-block;
-        background: rgba(139,195,74,0.15);
-        color: var(--primary);
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
         padding: 8px 20px;
         border-radius: 50px;
         font-size: 0.8rem;
         font-weight: 600;
         letter-spacing: 0.5px;
         margin-bottom: 20px;
-        border: 1px solid rgba(139,195,74,0.25);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
     }
     .proj-testi-heading {
-        color: #fff;
+        color: #ffffff !important;
         font-size: 2.2rem;
         font-weight: 800;
         line-height: 1.25;
