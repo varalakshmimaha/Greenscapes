@@ -72,14 +72,12 @@
             flex-shrink: 0;
         }
         .navbar-brand-custom .brand-logo {
-            height: 75px;
-            width: 75px;
-            min-width: 75px;
+            height: 70px;
+            width: 70px;
+            min-width: 70px;
             margin-right: 8px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 50%;
-            background: #fff;
-            padding: 3px;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
             -ms-interpolation-mode: bicubic;
