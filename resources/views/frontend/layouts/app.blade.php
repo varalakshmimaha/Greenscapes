@@ -63,7 +63,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            max-width: 100% !important;
             padding-left: 10px;
+            padding-right: 10px;
         }
         .navbar-brand-custom {
             display: flex;
@@ -113,14 +115,14 @@
         .nav-menu > li > a {
             color: #fff;
             text-decoration: none;
-            padding: 18px 16px;
+            padding: 18px 10px;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 15px;
+            gap: 4px;
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.6px;
+            letter-spacing: 0.4px;
             transition: color 0.3s;
         }
         .nav-menu > li > a:hover,
