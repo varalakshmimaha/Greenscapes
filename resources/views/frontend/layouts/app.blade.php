@@ -134,9 +134,9 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: #fff;
+            background: #1e3838;
             min-width: 230px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             border-top: 3px solid var(--primary);
             z-index: 1060;
             white-space: normal;
@@ -151,7 +151,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 10px 20px;
-            color: #333;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s;
@@ -160,15 +160,15 @@
         .nav-menu .dropdown-menu-custom a {
             display: block;
             padding: 10px 20px;
-            color: #333;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s;
         }
         .nav-menu .dropdown-menu-custom a:hover,
         .nav-menu .dropdown-menu-custom .dropdown-item-custom:hover {
-            background: var(--light-green);
-            color: var(--primary-dark);
+            background: rgba(139,195,74,0.15);
+            color: var(--primary);
         }
         /* Nested sub-dropdown (flyout) */
         .nav-menu .dropdown-submenu {
@@ -179,9 +179,9 @@
             position: absolute;
             top: 0;
             left: 100%;
-            background: #fff;
+            background: #1e3838;
             min-width: 220px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
             border-left: 3px solid var(--primary);
             z-index: 1070;
             padding: 6px 0;
@@ -193,14 +193,14 @@
         .nav-menu .dropdown-submenu-menu a {
             display: block;
             padding: 9px 20px;
-            color: #333;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
             font-size: 13px;
             transition: all 0.3s;
         }
         .nav-menu .dropdown-submenu-menu a:hover {
-            background: var(--light-green);
-            color: var(--primary-dark);
+            background: rgba(139,195,74,0.15);
+            color: var(--primary);
             padding-left: 25px;
         }
 
