@@ -627,9 +627,9 @@
 
 <!-- Hero Section -->
 <section class="about-hero">
-    <div class="hero-content">
-        <h1 data-aos="fade-up">About Us</h1>
-        <div class="breadcrumb-custom" data-aos="fade-up" data-aos-delay="100">
+    <div class="hero-content text-center">
+        <h1 data-aos="fade-up" class="text-center">About Us</h1>
+        <div class="breadcrumb-custom text-center" data-aos="fade-up" data-aos-delay="100" style="justify-content: center !important;">
             <a href="/">Home</a>
             <span>/</span>
             <span>About Us</span>

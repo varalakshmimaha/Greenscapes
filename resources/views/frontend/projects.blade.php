@@ -412,10 +412,10 @@
 </section>
 
 <!-- Spacer between Counter and Testimonials -->
-<section style="background: #f9fbf9; padding: 40px 0 20px;">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-3" style="color: #1a2d1a; font-size: 2rem;">What Our Clients <span style="color: var(--primary);">Say</span></h2>
-        <p style="color: #777; max-width: 550px; margin: 0 auto;">Hear from the people who trust us with their green spaces</p>
+<section style="background: #f9fbf9; padding: 60px 0 30px;">
+    <div class="container text-center" data-aos="fade-up">
+        <h2 class="fw-bold mb-3" style="color: #1a2d1a; font-size: 2.2rem;">What Our Clients <span style="color: var(--primary);">Say</span></h2>
+        <p class="text-muted mx-auto text-center" style="max-width: 600px; font-size: 1.05rem; line-height: 1.6; text-align: center !important;">Hear from the people who trust us with their green spaces</p>
     </div>
 </section>
 

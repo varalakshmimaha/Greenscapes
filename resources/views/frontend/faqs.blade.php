@@ -72,8 +72,8 @@
 
     .faq-cat-pills {
         display: flex;
-        flex-wrap: nowrap;
-        gap: 6px;
+        flex-wrap: wrap;
+        gap: 8px;
         margin-bottom: 40px;
         justify-content: center;
     }
@@ -244,9 +244,9 @@
 
 <!-- HERO BANNER -->
 <section class="faq-hero">
-    <div class="faq-hero-content">
-        <h1>Frequently Asked Questions</h1>
-        <p>Everything you need to know about our landscaping, delivery, and services.</p>
+    <div class="faq-hero-content text-center">
+        <h1 class="text-center">Frequently Asked Questions</h1>
+        <p class="text-center" style="text-align: center !important;">Everything you need to know about our landscaping, delivery, and services.</p>
     </div>
 </section>
 

@@ -410,9 +410,9 @@
 
 <!-- Hero Banner -->
 <div class="svc-hero">
-    <div class="svc-hero-content" data-aos="fade-up">
-        <h1>Our Services</h1>
-        <p>Comprehensive landscaping solutions from design to maintenance</p>
+    <div class="svc-hero-content text-center" data-aos="fade-up">
+        <h1 class="text-center">Our Services</h1>
+        <p class="text-center" style="text-align: center !important;">Comprehensive landscaping solutions from design to maintenance</p>
     </div>
 </div>
 

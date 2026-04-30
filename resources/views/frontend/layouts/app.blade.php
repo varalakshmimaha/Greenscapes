@@ -62,7 +62,7 @@
         .main-navbar .container {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between; /* Changed from flex-start to push toggle to right */
             max-width: 100% !important;
             padding-left: 16px;
             padding-right: 16px;
@@ -77,9 +77,9 @@
             margin-right: 12px;
         }
         .navbar-brand-custom .brand-logo {
-            height: 85px;
-            width: 85px;
-            min-width: 85px;
+            height: 95px;
+            width: 95px;
+            min-width: 95px;
             margin-right: 8px;
             object-fit: contain;
             object-position: center;
@@ -105,15 +105,15 @@
             letter-spacing: 0.8px;
         }
         .navbar-brand-custom .brand-text .brand-line-1 {
-            font-size: 0.88rem;
+            font-size: 1.05rem;
         }
         .navbar-brand-custom .brand-text .brand-line-2 {
-            font-size: 0.88rem;
+            font-size: 1.05rem;
             margin-top: 2px;
         }
         .navbar-brand-custom .brand-text .brand-line-3 {
             display: block;
-            font-size: 0.58rem;
+            font-size: 0.72rem;
             font-weight: 500;
             color: #fff;
             letter-spacing: 2.2px;
@@ -131,7 +131,7 @@
             white-space: nowrap;
             flex: 1;
             justify-content: center;
-            gap: 30px;
+            gap: 25px; /* Slightly reduced gap for larger font */
         }
         .nav-menu > li {
             position: relative;
@@ -143,10 +143,10 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 12px;
+            font-size: 14px; /* Increased from 12px */
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
             transition: color 0.3s;
         }
         .nav-menu > li > a:hover,
@@ -284,7 +284,7 @@
             border: none;
             padding: 10px 22px;
             border-radius: 25px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -300,11 +300,22 @@
         /* Mobile Toggle */
         .nav-toggle {
             display: none;
-            background: none;
-            border: none;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             color: #fff;
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            display: none; /* Hidden by default, shown in media query */
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .nav-toggle:hover {
+            background: var(--primary);
+            border-color: var(--primary);
         }
 
         /* ===== GENERAL ===== */
@@ -917,7 +928,35 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 991px) {
-            .nav-toggle { display: block; }
+            .nav-toggle { display: flex; } /* Show toggle on mobile */
+            .main-navbar .container { justify-content: space-between; }
+            
+            /* Ensure hero content stays visible over images */
+            .hero-inner {
+                position: absolute !important;
+                inset: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                z-index: 10 !important;
+            }
+            .hero-text {
+                padding: 0 20px;
+                width: 100%;
+            }
+            .hero-text h1 {
+                font-size: 1.8rem !important;
+                white-space: normal !important;
+                line-height: 1.3 !important;
+            }
+            .hero-text .hero-sub {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+            .btn-book-consult {
+                padding: 12px 24px !important;
+                font-size: 0.85rem !important;
+            }
             .nav-menu {
                 display: none;
                 flex-direction: column;
@@ -986,16 +1025,22 @@
 
         /* ===== MOBILE RESPONSIVE ===== */
         @media (max-width: 575px) {
-            .top-bar .top-bar-inner { flex-direction: column; gap: 4px; text-align: center; font-size: 0.75rem; }
-            .top-bar-left, .top-bar-right { font-size: 0.72rem; }
-            .top-bar-center { font-size: 0.75rem; }
-            .navbar-brand-custom .brand-logo { height: 60px; width: 60px; min-width: 60px; }
+            .top-bar .top-bar-inner { flex-direction: column; gap: 6px; text-align: center; padding: 10px 15px; }
+            .top-bar-left, .top-bar-right { font-size: 0.72rem; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+            .top-bar-left span, .top-bar-right span { display: none; } /* Hide the pipes | on mobile */
+            .top-bar-center { font-size: 0.75rem; order: -1; margin-bottom: 4px; }
+            
+            .navbar-brand-custom .brand-logo { height: 65px; width: 65px; min-width: 65px; }
             .navbar-brand-custom .brand-text .brand-line-1,
-            .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.78rem; }
-            .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.52rem; letter-spacing: 1.8px; }
-            .whatsapp-float { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 24px; }
-            .btn-theme { padding: 12px 22px; font-size: 12px; }
-            .section-title { font-size: 1.4rem; }
+            .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.85rem; }
+            .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.6rem; letter-spacing: 1.5px; }
+            
+            .whatsapp-float { bottom: 20px; right: 15px; width: 50px; height: 50px; font-size: 26px; }
+            .call-float { bottom: 82px; right: 15px; width: 50px; height: 50px; font-size: 22px; box-shadow: 0 4px 15px rgba(25,118,210,0.3); }
+            
+            .nav-menu { max-height: 80vh; overflow-y: auto; }
+            .btn-theme { padding: 12px 24px; font-size: 12px; width: 100%; justify-content: center; }
+            .section-title { font-size: 1.35rem; line-height: 1.3; }
             .section-subtitle { font-size: 0.85rem; margin-bottom: 25px; }
         }
         @media (max-width: 400px) {
@@ -1214,14 +1259,11 @@
         .projects-hero-content p {
             text-align: center !important;
         }
-        /* FAQ banner description stays on one line on desktop */
+        /* FAQ banner description - two lines centered */
         .faq-hero-content p {
-            white-space: nowrap;
-        }
-        @media (max-width: 767px) {
-            .faq-hero-content p {
-                white-space: normal;
-            }
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
 
     </style>
@@ -1246,7 +1288,7 @@
             <div class="top-bar-left">
                 <i class="fas fa-phone-alt"></i>
                 <a href="tel:+919845728507" style="color:inherit;text-decoration:none;">+91 9845728507</a>
-                &nbsp;|&nbsp;
+                <span class="mx-2">|</span>
                 <a href="tel:+916361115701" style="color:inherit;text-decoration:none;">+91 6361115701</a>
             </div>
             <div class="top-bar-center" style="color: var(--primary); font-weight: 700;">
@@ -1255,7 +1297,7 @@
             <div class="top-bar-right">
                 <i class="fas fa-envelope"></i>
                 <a href="mailto:info@srgreenscapes.com" style="color:inherit;text-decoration:none;">info@srgreenscapes.com</a>
-                &nbsp;|&nbsp;
+                <span class="mx-2">|</span>
                 <a href="mailto:md@srgreenscapes.com" style="color:inherit;text-decoration:none;">md@srgreenscapes.com</a>
             </div>
         </div>
@@ -1375,9 +1417,17 @@
                             <a href="/resources#videos">Videos</a>
                         </div>
                     </li>
-                    <li><a href="/faqs" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQ's</a></li>
+                    <li><a href="/faqs" class="{{ request()->is('faqs') ? 'active' : '' }}">FAQ'S</a></li>
                     <li><a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">CONTACT US</a></li>
                 @endif
+                {{-- Visible only on mobile inside the menu --}}
+                <li class="d-lg-none mt-3 px-3 pb-3">
+                    @if(!empty($siteSettings['brochure_file']))
+                        <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-theme w-100" style="justify-content: center;"><i class="fas fa-download me-2"></i>Download Brochure</a>
+                    @else
+                        <a href="/contact" class="btn-theme w-100" style="justify-content: center;"><i class="fas fa-download me-2"></i>Download Brochure</a>
+                    @endif
+                </li>
             </ul>
 
             <div class="nav-right">

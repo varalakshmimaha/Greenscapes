@@ -173,13 +173,12 @@
 
     /* Left: Office Landing Image */
     .contact-landing-img {
-        width: min(100%, 300px);
-        align-self: center;
+        width: 100%;
         height: 100%;
-        min-height: 480px;
-        border-radius: 20px;
+        min-height: 520px;
+        border-radius: 24px;
         overflow: hidden;
-        box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+        box-shadow: 0 12px 45px rgba(0,0,0,0.1);
     }
     .contact-landing-img img {
         width: 100%;
@@ -614,18 +613,18 @@
 
 <!-- HERO BANNER -->
 <section class="contact-hero">
-    <div class="hero-content">
-        <div class="breadcrumb-nav">
+    <div class="hero-content text-center">
+        <div class="breadcrumb-nav text-center">
             <a href="{{ url('/') }}">Home</a> <span>&nbsp;/&nbsp; Contact Us</span>
         </div>
-        <div class="hero-leaf-divider">
+        <div class="hero-leaf-divider text-center" style="justify-content: center !important;">
             <span></span>
             <i class="fas fa-leaf"></i>
             <span></span>
         </div>
-        <div style="display:inline-block;background:rgba(139,195,74,0.18);color:#8BC34A;padding:6px 20px;border-radius:50px;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;">Get In Touch</div>
-        <h1>Let&rsquo;s Build Your Green Vision</h1>
-        <p>Connect with SR Greenscapes Pvt Ltd to design sustainable, functional and future-ready landscapes across India.</p>
+        <div class="text-center" style="display:inline-block;background:rgba(139,195,74,0.18);color:#8BC34A;padding:6px 20px;border-radius:50px;font-size:0.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;">Get In Touch</div>
+        <h1 class="text-center">Let&rsquo;s Build Your Green Vision</h1>
+        <p class="text-center" style="text-align: center !important; margin: 0 auto;">Connect with SR Greenscapes Pvt Ltd to design sustainable, functional and future-ready landscapes across India.</p>
     </div>
 </section>
 

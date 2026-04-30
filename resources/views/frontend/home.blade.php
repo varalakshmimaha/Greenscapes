@@ -1097,7 +1097,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <p class="about-label">What Makes Us Different</p>
             <h2 class="section-title">Why Clients Trust <span>Our Expertise</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 650px; text-align: center;">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
+            <p class="text-muted mx-auto text-center" style="max-width: 650px; text-align: center !important;">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
         </div>
 
         <div class="row g-4">
@@ -1137,7 +1137,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <p class="about-label">What We Offer</p>
             <h2 class="section-title">Our Professional <span>Services</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 650px; text-align: center;">Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
+            <p class="text-muted mx-auto text-center" style="max-width: 650px; text-align: center !important;">Comprehensive landscaping solutions powered by science, sustainability, and a passion for green spaces.</p>
         </div>
 
         <div class="row g-4">
@@ -1287,7 +1287,7 @@
         <div class="text-center mb-5" data-aos="fade-up">
             <p class="about-label">Structured, Measurable, Repeatable</p>
             <h2 class="section-title">Our <span>Process</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 650px; text-align: center;">A systematic approach rooted in science and precision, ensuring every project is delivered with consistency, quality, and lasting impact.</p>
+            <p class="text-muted mx-auto text-center" style="max-width: 650px; text-align: center !important;">A systematic approach rooted in science and precision, ensuring every project is delivered with consistency, quality, and lasting impact.</p>
         </div>
 
         @php
@@ -1380,7 +1380,7 @@
         <div class="mb-5" data-aos="fade-up">
             <p class="about-label">Featured Portfolio</p>
             <h2 class="section-title">Crafting Landscapes That <span>Perform, Evolve and Inspire</span></h2>
-            <p class="text-muted mx-auto" style="max-width: 800px; text-align: center;">
+            <p class="text-muted mx-auto text-center" style="max-width: 800px; text-align: center !important;">
                 Every project is a reflection of our commitment to scientific planning, thoughtful design and
                 sustainable execution. Our portfolio showcases a diverse range of landscapes — each uniquely
                 designed to respond to its environment, purpose and client vision.
