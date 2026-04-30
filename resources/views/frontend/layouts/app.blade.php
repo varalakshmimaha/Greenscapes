@@ -915,6 +915,10 @@
                 background: rgba(255,255,255,0.05);
                 display: none;
             }
+            .dropdown-services-grid {
+                width: 100% !important;
+                min-width: 0;
+            }
             .nav-menu .dropdown-menu-custom a {
                 color: rgba(255,255,255,0.7);
                 padding: 8px 30px;
@@ -978,8 +982,13 @@
         }
 
         /* ===== SERVICES DROPDOWN — same style as Our Process ===== */
+        .dropdown-services-grid {
+            width: auto !important;
+            min-width: 320px;
+        }
         .dropdown-services-grid a {
-            white-space: nowrap;
+            white-space: normal;
+            overflow-wrap: anywhere;
         }
 
         /* ===== SHARED CTA (about / home) ===== */
