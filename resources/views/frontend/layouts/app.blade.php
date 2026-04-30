@@ -137,13 +137,15 @@
         .nav-menu > li > a.active {
             color: var(--accent);
         }
-        /* Dropdown: white background */
+        /* Dropdown: semi-transparent white */
         .nav-menu .dropdown-menu-custom {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
-            background: #fff;
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             min-width: 190px;
             max-width: 210px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
@@ -190,7 +192,9 @@
             position: absolute;
             top: 0;
             left: 100%;
-            background: #fff;
+            background: rgba(255,255,255,0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             min-width: 200px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             border-left: 3px solid var(--primary);
