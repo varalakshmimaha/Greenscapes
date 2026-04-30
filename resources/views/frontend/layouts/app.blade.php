@@ -79,12 +79,12 @@
             width: 100px;
             min-width: 100px;
             margin-right: 8px;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
             border-radius: 50%;
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            -ms-interpolation-mode: bicubic;
+            background: #fff;
+            padding: 5px;
+            image-rendering: auto;
         }
         .navbar-brand-custom .brand-text {
             color: #fff;
