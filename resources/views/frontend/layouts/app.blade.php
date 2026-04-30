@@ -92,7 +92,7 @@
             display: block;
             font-size: 0.65rem;
             font-weight: 400;
-            color: rgba(255,255,255,0.6);
+            color: #fff;
             letter-spacing: 1px;
         }
 
@@ -273,6 +273,7 @@
             color: var(--gray);
             font-size: 0.95rem;
             margin-bottom: 40px;
+            text-align: center;
         }
         .about-label {
             color: var(--primary);
@@ -523,7 +524,7 @@
         }
         .footer-brand-name span {
             font-size: 0.72rem; font-weight: 400;
-            color: rgba(255,255,255,0.45);
+            color: #fff;
             letter-spacing: 1.5px; text-transform: uppercase;
         }
         .footer-about-text {
@@ -944,24 +945,10 @@
             .footer-bottom { font-size: 12px; }
         }
 
-        /* ===== SERVICES DROPDOWN — VERTICAL LIST ===== */
-        .nav-menu > li:hover > .dropdown-services-grid {
-            display: block !important;
-            min-width: 220px;
-            left: 0;
-            right: auto;
-        }
+        /* ===== SERVICES DROPDOWN — same style as Our Process ===== */
         .dropdown-services-grid a {
             white-space: nowrap;
-            line-height: 1;
-            font-size: 13px;
-            padding: 11px 18px;
-            border-right: none;
-            border-bottom: 1px solid #f0f0f0;
-            display: block;
-            text-align: left;
         }
-        .dropdown-services-grid a:last-child { border-bottom: none; }
 
         /* ===== SHARED CTA (about / home) ===== */
         .about-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
@@ -1117,11 +1104,11 @@
             <a href="{{ url('/') }}" class="navbar-brand-custom">
                 @if(!empty($siteSettings['site_logo']))
                     <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="brand-logo">
-                @else
-                    <div class="brand-text">
-                        {{ $siteSettings['site_name'] ?? 'SR Greenscapes' }}
-                    </div>
                 @endif
+                <div class="brand-text">
+                    <strong>SR GREENSCAPES</strong>
+                    <small>Pvt Ltd</small>
+                </div>
             </a>
 
             <button class="nav-toggle" onclick="document.getElementById('navMenu').classList.toggle('show')">
@@ -1240,7 +1227,6 @@
                     <a href="{{ $siteSettings['instagram_url'] ?? 'https://www.instagram.com/sr_greenscapes/?hl=en' }}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="{{ $siteSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/' }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="{{ $siteSettings['x_url'] ?? 'https://x.com/GreenscapesSr' }}" target="_blank" title="X"><i class="fab fa-x-twitter"></i></a>
-                    <a href="{{ $siteSettings['pinterest_url'] ?? 'https://in.pinterest.com/srgreenscapes/' }}" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
                     <a href="{{ $siteSettings['youtube_url'] ?? 'https://www.youtube.com/@srgreenscapes' }}" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp_number'] ?? '919845728507') }}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>

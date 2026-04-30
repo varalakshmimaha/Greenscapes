@@ -1095,7 +1095,7 @@
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
             <p class="about-label">What Makes Us Different</p>
-            <h2 class="section-title">Why Homeowners Trust Our <span>Landscaping Expertise</span></h2>
+            <h2 class="section-title">Why Clients Trust <span>Our Expertise</span></h2>
             <p class="text-muted mx-auto" style="max-width: 650px; text-align: justify;">Every project is guided by scientific assessment, expert execution and a commitment to sustainable, long-lasting results.</p>
         </div>
 
