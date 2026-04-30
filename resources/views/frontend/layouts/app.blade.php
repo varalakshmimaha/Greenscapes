@@ -56,17 +56,17 @@
         /* ===== NAVBAR ===== */
         .main-navbar {
             background: #1e3838;
-            padding: 4px 0;
+            padding: 6px 0;
             z-index: 1050;
         }
         .main-navbar .container {
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 10px;
+            gap: 16px;
             max-width: 100% !important;
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 16px;
+            padding-right: 16px;
         }
         .navbar-brand-custom {
             display: flex;
@@ -76,10 +76,10 @@
             flex-shrink: 0;
         }
         .navbar-brand-custom .brand-logo {
-            height: 68px;
-            width: 68px;
-            min-width: 68px;
-            margin-right: 8px;
+            height: 85px;
+            width: 85px;
+            min-width: 85px;
+            margin-right: 0;
             object-fit: contain;
             object-position: center;
             border-radius: 50%;
@@ -87,20 +87,7 @@
             padding: 4px;
             image-rendering: auto;
         }
-        .navbar-brand-custom .brand-text {
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.88rem;
-            line-height: 1.2;
-            white-space: nowrap;
-        }
-        .navbar-brand-custom .brand-text small {
-            display: block;
-            font-size: 0.58rem;
-            font-weight: 400;
-            color: #fff;
-            letter-spacing: 1px;
-        }
+        .navbar-brand-custom .brand-text { display: none; }
 
         .nav-menu {
             display: flex;
@@ -941,8 +928,7 @@
             .top-bar .top-bar-inner { flex-direction: column; gap: 4px; text-align: center; font-size: 0.75rem; }
             .top-bar-left, .top-bar-right { font-size: 0.72rem; }
             .top-bar-center { font-size: 0.75rem; }
-            .navbar-brand-custom .brand-text { font-size: 0.8rem; }
-            .navbar-brand-custom .brand-logo { height: 55px; width: 55px; min-width: 55px; }
+            .navbar-brand-custom .brand-logo { height: 60px; width: 60px; min-width: 60px; }
             .whatsapp-float { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 24px; }
             .btn-theme { padding: 12px 22px; font-size: 12px; }
             .section-title { font-size: 1.4rem; }
@@ -951,7 +937,6 @@
         @media (max-width: 400px) {
             .top-bar { padding: 6px 0; }
             .top-bar-left, .top-bar-right { font-size: 0.68rem; word-break: break-all; }
-            .navbar-brand-custom .brand-text { font-size: 0.9rem; }
             .footer-bottom { font-size: 12px; }
         }
 
