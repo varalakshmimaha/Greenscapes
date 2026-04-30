@@ -76,7 +76,8 @@
             width: 70px;
             min-width: 70px;
             margin-right: 8px;
-            object-fit: contain;
+            object-fit: cover;
+            object-position: center;
             border-radius: 50%;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
