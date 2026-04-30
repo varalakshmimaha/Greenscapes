@@ -75,9 +75,9 @@
             flex-shrink: 0;
         }
         .navbar-brand-custom .brand-logo {
-            height: 95px;
-            width: 95px;
-            min-width: 95px;
+            height: 98px;
+            width: 98px;
+            min-width: 98px;
             margin-right: 8px;
             object-fit: cover;
             object-position: center;
