@@ -68,7 +68,7 @@
         color: #555;
         font-size: 0.93rem;
         line-height: 1.85;
-        text-align: justify;
+        text-align: center;
         margin-bottom: 14px;
     }
     .terms-card ul {

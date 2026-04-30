@@ -18,7 +18,16 @@
       "Bash(curl -s -o /dev/null -w \"cat-landscaping: %{http_code}\\\\n\" http://127.0.0.1:8000/services/category/landscaping-services)",
       "Bash(curl -s -o /dev/null -w \"service-detail: %{http_code}\\\\n\" http://127.0.0.1:8000/services/landscape-design-execution)",
       "Bash(curl -s -o /dev/null -w \"about: %{http_code}\\\\n\" http://127.0.0.1:8000/about)",
-      "Bash(xargs grep:*)"
+      "Bash(xargs grep:*)",
+      "Bash(ls -la deploy*)",
+      "Bash(ls -la .github)",
+      "Bash(ls -la Makefile)",
+      "PowerShell(cd \"c:\\\\Users\\\\varalakshmi\\\\Desktop\\\\Nursary\"; Start-Process -FilePath \"php\" -ArgumentList \"artisan\", \"serve\", \"--host=127.0.0.1\", \"--port=8000\" -WindowStyle Normal; Start-Sleep -Seconds 3; try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000\" -UseBasicParsing -TimeoutSec 5; \"Server running - HTTP $\\($r.StatusCode\\)\" } catch { \"Error: $_\" })",
+      "PowerShell(Start-Sleep -Seconds 4; try { $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8000\" -UseBasicParsing -TimeoutSec 5; \"Server running - HTTP $\\($r.StatusCode\\)\" } catch { \"Not up yet: $_\" })",
+      "Bash(where mysql *)",
+      "Bash(where mysqld *)",
+      "Read(//c//**)",
+      "Bash(xargs sed *)"
     ]
   }
 }

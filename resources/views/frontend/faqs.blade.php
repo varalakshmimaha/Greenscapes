@@ -62,7 +62,7 @@
         font-size: 1rem;
         max-width: 450px;
         line-height: 1.7;
-        text-align: justify;
+        text-align: center;
     }
 
     /* ===== TWO COLUMN LAYOUT ===== */
@@ -194,7 +194,7 @@
         border-top: 1px solid #f5f5f5;
         padding-top: 16px;
         margin-top: -2px;
-        text-align: justify;
+        text-align: center;
     }
     .faq-acc-item.open .faq-acc-body {
         display: block;

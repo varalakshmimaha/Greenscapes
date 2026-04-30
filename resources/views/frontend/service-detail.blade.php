@@ -153,7 +153,7 @@
         color: #666;
         font-size: 0.95rem;
         line-height: 1.9;
-        text-align: justify;
+        text-align: center;
     }
     .sd-content-right .sd-full-desc h2,
     .sd-content-right .sd-full-desc h3,
@@ -166,7 +166,7 @@
     }
     .sd-content-right .sd-full-desc p {
         margin-bottom: 12px;
-        text-align: justify;
+        text-align: center;
     }
     .sd-content-right .sd-full-desc ul,
     .sd-content-right .sd-full-desc ol {
@@ -274,7 +274,7 @@
         color: #6b776b;
         margin-bottom: 0;
         line-height: 1.75;
-        text-align: justify;
+        text-align: center;
     }
     .sd-category-list {
         margin: 0;
@@ -323,7 +323,7 @@
     .sd-rel-card .rel-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
     .sd-rel-card:hover .rel-img img { transform: scale(1.1); }
     .sd-rel-card .rel-name { font-weight: 700; font-size: 1.05rem; color: #2d3a2d; margin-bottom: 8px; }
-    .sd-rel-card .rel-desc { font-size: 0.82rem; color: #555; line-height: 1.65; flex: 1; margin-bottom: 14px; text-align: justify; }
+    .sd-rel-card .rel-desc { font-size: 0.82rem; color: #555; line-height: 1.65; flex: 1; margin-bottom: 14px; text-align: center; }
     .sd-rel-card .rel-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 600; font-size: 0.85rem; transition: all 0.3s; }
     .sd-rel-card:hover .rel-link { gap: 12px; }
     .sd-rel-card .rel-link i { font-size: 0.7rem; }

@@ -208,7 +208,7 @@
         margin: 0;
         line-height: 1.75;
         flex: 1;
-        text-align: justify;
+        text-align: center;
     }
     .service-card .svc-link {
         display: inline-flex;
@@ -359,7 +359,7 @@
         font-size: 0.95rem;
         line-height: 1.75;
         margin: 0;
-        text-align: justify;
+        text-align: center;
     }
 
     /* ===== RESPONSIVE ===== */

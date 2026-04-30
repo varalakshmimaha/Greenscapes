@@ -68,7 +68,7 @@
         line-height: 1.9;
         color: #555;
         margin-bottom: 30px;
-        text-align: justify;
+        text-align: center;
     }
     .story-img-wrap {
         position: relative;
@@ -165,7 +165,7 @@
         line-height: 1.75;
         margin-bottom: 0;
         transition: color 0.3s;
-        text-align: justify;
+        text-align: center;
     }
     .vision-card:hover p {
         color: #444;
@@ -358,7 +358,7 @@
         color: #555;
         margin: 0;
         line-height: 1.75;
-        text-align: justify;
+        text-align: center;
     }
 
     /* ===== MODERN TEAM SECTION ===== */
@@ -392,7 +392,7 @@
         line-height: 1.7;
         max-width: 600px;
         margin: 0 auto;
-        text-align: justify;
+        text-align: center;
     }
     .modern-team-category {
         text-align: center;
@@ -503,7 +503,7 @@
         font-size: 0.92rem;
         line-height: 1.65;
         margin: 0;
-        text-align: justify;
+        text-align: center;
     }
 
     @media (max-width: 991px) {

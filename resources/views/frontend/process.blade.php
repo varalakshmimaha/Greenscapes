@@ -195,7 +195,7 @@
         color: #666;
         line-height: 1.8;
         margin: 0;
-        text-align: justify;
+        text-align: center;
     }
 
     /* Visual circle image */
@@ -332,7 +332,7 @@
         color: #666;
         line-height: 1.75;
         margin-bottom: 16px;
-        text-align: justify;
+        text-align: center;
     }
     .invest-impact {
         background: linear-gradient(135deg, #f1f8e9 0%, #f8fdf4 100%);

@@ -223,7 +223,7 @@
         line-height: 1.75;
         margin: 0;
         opacity: 0.95;
-        text-align: justify;
+        text-align: center;
     }
 
     /* Right: Contact Form */

@@ -190,7 +190,7 @@
         line-height: 1.8;
         max-width: 750px;
         margin: 0 auto;
-        text-align: justify;
+        text-align: center;
     }
     .other-proj-slider-wrap {
         width: 100%;

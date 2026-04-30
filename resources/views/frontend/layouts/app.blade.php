@@ -272,6 +272,7 @@
             font-weight: 800;
             color: #1a2d1a;
             margin-bottom: 10px;
+            text-align: center;
         }
         .section-title span { color: var(--primary); }
         .section-subtitle {
@@ -1063,7 +1064,7 @@
         .blog-content p,
         .service-desc,
         .about-para {
-            text-align: justify;
+            text-align: center;
         }
 
     </style>

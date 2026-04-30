@@ -121,7 +121,7 @@
     .res-blog-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
     .res-blog-date { font-size: 0.75rem; color: #999; margin-bottom: 8px; }
     .res-blog-title { font-size: 1rem; font-weight: 700; color: #1a3a1a; margin-bottom: 8px; line-height: 1.4; }
-    .res-blog-excerpt { font-size: 0.85rem; color: #666; line-height: 1.7; flex: 1; text-align: justify; }
+    .res-blog-excerpt { font-size: 0.85rem; color: #666; line-height: 1.7; flex: 1; text-align: center; }
     .res-blog-read { font-size: 0.8rem; font-weight: 700; color: var(--primary); margin-top: 12px; }
     /* Gallery grid */
     .res-gallery-grid {
