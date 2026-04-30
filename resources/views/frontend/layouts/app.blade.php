@@ -63,10 +63,10 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            gap: 16px;
             max-width: 100% !important;
             padding-left: 16px;
             padding-right: 16px;
+            gap: 0;
         }
         .navbar-brand-custom {
             display: flex;
@@ -74,12 +74,13 @@
             text-decoration: none;
             padding: 4px 0;
             flex-shrink: 0;
+            margin-right: 12px;
         }
         .navbar-brand-custom .brand-logo {
             height: 85px;
             width: 85px;
             min-width: 85px;
-            margin-right: 0;
+            margin-right: 8px;
             object-fit: contain;
             object-position: center;
             border-radius: 50%;
@@ -87,8 +88,25 @@
             padding: 4px;
             image-rendering: auto;
         }
-        .navbar-brand-custom .brand-text { display: none; }
+        .navbar-brand-custom .brand-text {
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.88rem;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        .navbar-brand-custom .brand-text strong { color: #fff; }
+        .navbar-brand-custom .brand-text small {
+            display: block;
+            font-size: 0.58rem;
+            font-weight: 400;
+            color: #fff;
+            letter-spacing: 1px;
+        }
 
+        /* Nav items: fill remaining space, centered */
         .nav-menu {
             display: flex;
             list-style: none;
@@ -96,6 +114,8 @@
             padding: 0;
             align-items: center;
             white-space: nowrap;
+            flex: 1;
+            justify-content: center;
         }
         .nav-menu > li {
             position: relative;
@@ -103,7 +123,7 @@
         .nav-menu > li > a {
             color: #fff;
             text-decoration: none;
-            padding: 14px 9px;
+            padding: 14px 10px;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -117,16 +137,16 @@
         .nav-menu > li > a.active {
             color: var(--accent);
         }
+        /* Dropdown: white background */
         .nav-menu .dropdown-menu-custom {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
-            background: #1e3838;
-            min-width: 180px;
-            width: max-content;
-            max-width: 240px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: #fff;
+            min-width: 190px;
+            max-width: 210px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             border-top: 3px solid var(--primary);
             z-index: 1060;
             white-space: normal;
@@ -140,8 +160,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 16px;
-            color: #fff;
+            padding: 9px 16px;
+            color: #1a2a1a;
             text-decoration: none;
             font-size: 13px;
             transition: all 0.3s;
@@ -149,16 +169,17 @@
         }
         .nav-menu .dropdown-menu-custom a {
             display: block;
-            padding: 8px 16px;
-            color: #fff;
+            padding: 9px 16px;
+            color: #1a2a1a;
             text-decoration: none;
             font-size: 13px;
             transition: all 0.3s;
+            line-height: 1.4;
         }
         .nav-menu .dropdown-menu-custom a:hover,
         .nav-menu .dropdown-menu-custom .dropdown-item-custom:hover {
-            background: transparent;
-            color: var(--primary);
+            background: rgba(139,195,74,0.12);
+            color: var(--primary-dark);
         }
         /* Nested sub-dropdown (flyout) */
         .nav-menu .dropdown-submenu {
@@ -169,9 +190,9 @@
             position: absolute;
             top: 0;
             left: 100%;
-            background: transparent;
-            min-width: 220px;
-            box-shadow: none;
+            background: #fff;
+            min-width: 200px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             border-left: 3px solid var(--primary);
             z-index: 1070;
             padding: 6px 0;
@@ -183,14 +204,14 @@
         .nav-menu .dropdown-submenu-menu a {
             display: block;
             padding: 9px 20px;
-            color: rgba(255,255,255,0.85);
+            color: #1a2a1a;
             text-decoration: none;
             font-size: 13px;
             transition: all 0.3s;
         }
         .nav-menu .dropdown-submenu-menu a:hover {
-            background: rgba(139,195,74,0.15);
-            color: var(--primary);
+            background: rgba(139,195,74,0.12);
+            color: var(--primary-dark);
             padding-left: 25px;
         }
 
@@ -200,7 +221,7 @@
             align-items: flex-end;
             justify-content: center;
             gap: 6px;
-            margin-left: auto;
+            flex-shrink: 0;
         }
         .nav-social-icons {
             display: flex;
@@ -929,6 +950,8 @@
             .top-bar-left, .top-bar-right { font-size: 0.72rem; }
             .top-bar-center { font-size: 0.75rem; }
             .navbar-brand-custom .brand-logo { height: 60px; width: 60px; min-width: 60px; }
+            .navbar-brand-custom .brand-text { font-size: 0.78rem; }
+            .navbar-brand-custom .brand-text small { font-size: 0.52rem; }
             .whatsapp-float { bottom: 20px; right: 15px; width: 48px; height: 48px; font-size: 24px; }
             .btn-theme { padding: 12px 22px; font-size: 12px; }
             .section-title { font-size: 1.4rem; }
