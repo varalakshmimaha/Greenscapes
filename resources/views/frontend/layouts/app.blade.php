@@ -268,7 +268,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 10px;
             transition: all 0.3s;
             border: 1px solid rgba(255,255,255,0.15);
         }
@@ -282,9 +282,9 @@
             background: var(--primary);
             color: #fff;
             border: none;
-            padding: 10px 22px;
+            padding: 8px 18px;
             border-radius: 25px;
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
