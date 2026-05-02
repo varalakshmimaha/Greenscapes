@@ -912,8 +912,8 @@
         .top-bar {
             background-color: #ffffff;
             border-bottom: 1px solid #e8ede9;
-            padding: 3px 0;
-            font-size: 0.78rem;
+            padding: 1px 0;
+            font-size: 0.75rem;
             color: #666;
             font-weight: 500;
         }
