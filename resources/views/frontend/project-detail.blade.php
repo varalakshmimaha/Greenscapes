@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', ($project->title ?? 'Project Details') . ' - SR Greenscapes')
 
@@ -17,7 +17,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset("storage/Home/1.1Cover photo 1.jpg") }}') center/cover no-repeat;
+        background: url('{{ asset("images/Home/1.1Cover photo 1.jpg") }}') center/cover no-repeat;
         transition: transform 8s ease;
     }
     .pd-hero:hover::before { transform: scale(1.03); }
@@ -305,7 +305,7 @@
                     @if($project->featured_image)
                         <img loading="lazy" src="{{ asset('storage/' . $project->featured_image) }}" alt="{{ $project->title }}">
                     @else
-                        <img loading="lazy" src="{{ asset('storage/Home/1.1Cover photo 1.jpg') }}" alt="{{ $project->title }}">
+                        <img loading="lazy" src="{{ asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $project->title }}">
                     @endif
                 </div>
             </div>

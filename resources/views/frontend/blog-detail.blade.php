@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', $blog->title . ' - SR Greenscapes')
 
@@ -15,7 +15,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
         transform: scale(1.03);
     }
     .blog-banner::after {
@@ -451,7 +451,7 @@
                 <img
                     class="blog-featured-image"
                     loading="lazy"
-                    src="{{ $blog->image ? asset('storage/' . $blog->image) : asset('storage/Home/1.5 Cover photo 5.jpg') }}"
+                    src="{{ $blog->image ? asset('storage/' . $blog->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}"
                     alt="{{ $blog->title }}"
                 >
 
@@ -562,7 +562,7 @@
                 @foreach($relatedBlogs as $rb)
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <a href="{{ route('blog.detail', $rb->slug) }}" class="related-blog-card">
-                            <img loading="lazy" src="{{ $rb->image ? asset('storage/' . $rb->image) : asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $rb->title }}">
+                            <img loading="lazy" src="{{ $rb->image ? asset('storage/' . $rb->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $rb->title }}">
 
                             <div class="rbc-body">
                                 <div class="rbc-meta">

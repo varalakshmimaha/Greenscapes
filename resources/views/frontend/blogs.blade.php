@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', 'Blogs - SR Greenscapes')
 
@@ -18,7 +18,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
     }
     .blogs-hero::after {
         content: '';
@@ -172,7 +172,7 @@
                             @if($blog->image)
                                 <img loading="lazy" src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
                             @else
-                                <img loading="lazy" src="{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $blog->title }}">
+                                <img loading="lazy" src="{{ asset('images/Home/1.5 Cover photo 5.jpg') }}" alt="{{ $blog->title }}">
                             @endif
                         </div>
                         <div class="blog-card-body">

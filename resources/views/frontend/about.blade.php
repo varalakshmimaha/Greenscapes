@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('styles')
 <style>
@@ -6,7 +6,7 @@
     .about-hero {
         position: relative;
         height: 320px;
-        background: url('{{ asset('storage/About Us/2.1  Science-Driven Approach.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/About Us/2.1  Science-Driven Approach.jpg') }}') center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -667,7 +667,7 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="story-img-wrap">
-                    <img loading="lazy" src="{{ asset('storage/' . ($overview->image ?? 'About Us/2.2 Sustainability at the Core.jpg')) }}" alt="Our Story" class="story-img">
+                    <img loading="lazy" src="{{ $overview->image ? asset('storage/' . $overview->image) : asset('images/About Us/2.2 Sustainability at the Core.jpg') }}" alt="Our Story" class="story-img">
                 </div>
             </div>
         </div>

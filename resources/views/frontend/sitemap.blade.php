@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', 'Sitemap — SR Greenscapes')
 
@@ -12,7 +12,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
     }
     .sitemap-hero::after {
         content: '';

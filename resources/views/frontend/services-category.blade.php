@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', $category->name . ' - SR Greenscapes')
 
@@ -18,7 +18,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ $category->image ? asset("storage/" . $category->image) : asset("storage/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
+        background: url('{{ $category->image ? asset("storage/" . $category->image) : asset("images/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
     }
     .svc-hero::after {
         content: '';

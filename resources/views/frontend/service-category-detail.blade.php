@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', $category->name . ' - ' . $service->name . ' - SR Greenscapes')
 
@@ -17,7 +17,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset("storage/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
+        background: url('{{ asset("images/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
         transition: transform 8s ease;
     }
     .scd-hero:hover::before { transform: scale(1.03); }
@@ -373,7 +373,7 @@
                     @elseif($service->image)
                         <img loading="lazy" src="{{ asset('storage/' . $service->image) }}" alt="{{ $category->name }}">
                     @else
-                        <img loading="lazy" src="{{ asset('storage/Home/1.1Cover photo 1.jpg') }}" alt="{{ $category->name }}">
+                        <img loading="lazy" src="{{ asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $category->name }}">
                     @endif
                 </div>
 
@@ -424,7 +424,7 @@
                             @elseif($category->image)
                                 <img loading="lazy" src="{{ asset('storage/' . $category->image) }}" alt="{{ $sub->name }}">
                             @else
-                                <img loading="lazy" src="{{ asset('storage/' . ($service->image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $sub->name }}">
+                                <img loading="lazy" src="{{ $service->image ? asset('storage/' . $service->image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $sub->name }}">
                             @endif
                         </div>
                         <div class="scd-subcat-body">

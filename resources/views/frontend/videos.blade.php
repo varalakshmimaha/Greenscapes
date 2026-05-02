@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', 'Videos - SR Greenscapes')
 
@@ -18,7 +18,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.3 Cover photo 3.jpg') }}') center/cover no-repeat;
     }
     .videos-hero::after {
         content: '';
@@ -165,7 +165,7 @@
                                 @if($ytId)
                                     <img loading="lazy" src="https://img.youtube.com/vi/{{ $ytId }}/maxresdefault.jpg" alt="{{ $video->title }}">
                                 @else
-                                    <img loading="lazy" src="{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}" alt="{{ $video->title }}">
+                                    <img loading="lazy" src="{{ asset('images/Home/1.3 Cover photo 3.jpg') }}" alt="{{ $video->title }}">
                                 @endif
                             @endif
                             <div class="play-icon"><i class="fas fa-play ms-1"></i></div>

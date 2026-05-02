@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('styles')
 <style>
@@ -16,7 +16,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
     }
     .faq-hero::after {
         content: '';
@@ -274,13 +274,13 @@
                 'Team & Contact' => 'Meet our team, find our office and get in touch through multiple channels.',
             ];
             $catImages = [
-                'About Us' => asset('storage/About Us/2.1  Science-Driven Approach.jpg'),
-                'Services & Projects' => asset('storage/Home/1.17 Specialized Garden Services.jpg'),
-                'Consultation & Project Process' => asset('storage/Construction/4.1 Consultation  Site Assessment.jpg'),
-                'Landscape & Garden Design' => asset('storage/Home/1.18 Hardscape  Softscape Development.jpg'),
-                'Garden Maintenance & Irrigation' => asset('storage/Home/1.19 Landscape Maintenance.png'),
-                'Nursery & Plant Orders' => asset('storage/Home/1.20 Nursery  Plant Supply.jpg'),
-                'Team & Contact' => asset('storage/Home/1.3 Cover photo 3.jpg'),
+                'About Us' => asset('images/About Us/2.1  Science-Driven Approach.jpg'),
+                'Services & Projects' => asset('images/Home/1.17 Specialized Garden Services.jpg'),
+                'Consultation & Project Process' => asset('images/Construction/4.1 Consultation  Site Assessment.jpg'),
+                'Landscape & Garden Design' => asset('images/Home/1.18 Hardscape  Softscape Development.jpg'),
+                'Garden Maintenance & Irrigation' => asset('images/Home/1.19 Landscape Maintenance.png'),
+                'Nursery & Plant Orders' => asset('images/Home/1.20 Nursery  Plant Supply.jpg'),
+                'Team & Contact' => asset('images/Home/1.3 Cover photo 3.jpg'),
             ];
 
             // Use DB data if available, otherwise hardcoded

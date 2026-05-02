@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('styles')
 <style>
@@ -970,22 +970,22 @@
                 @endforeach
             @else
                 <div class="carousel-item h-100 active">
-                    <img loading="eager" fetchpriority="high" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Landscape Design">
+                    <img loading="eager" fetchpriority="high" src="{{ asset('images/Home/1.2 Cover photo 2.jpg') }}" alt="Landscape Design">
                 </div>
                 <div class="carousel-item h-100">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.2 Cover photo 2.jpg') }}" alt="Garden">
+                    <img loading="lazy" src="{{ asset('images/Home/1.2 Cover photo 2.jpg') }}" alt="Garden">
                 </div>
                 <div class="carousel-item h-100">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.3 Cover photo 3.jpg') }}" alt="Plants">
+                    <img loading="lazy" src="{{ asset('images/Home/1.3 Cover photo 3.jpg') }}" alt="Plants">
                 </div>
                 <div class="carousel-item h-100">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.4 Cover photo  4.jpg') }}" alt="Outdoor Space">
+                    <img loading="lazy" src="{{ asset('images/Home/1.4 Cover photo  4.jpg') }}" alt="Outdoor Space">
                 </div>
                 <div class="carousel-item h-100">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}" alt="Landscaping">
+                    <img loading="lazy" src="{{ asset('images/Home/1.5 Cover photo 5.jpg') }}" alt="Landscaping">
                 </div>
                 <div class="carousel-item h-100">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.6 Cover photo 6.jpg') }}" alt="Green Space">
+                    <img loading="lazy" src="{{ asset('images/Home/1.6 Cover photo 6.jpg') }}" alt="Green Space">
                 </div>
             @endif
         </div>
@@ -1084,7 +1084,7 @@
             <div class="col-lg-6 position-relative ps-lg-5">
                 <div class="position-absolute" style="top: -20px; bottom: 20px; left: 30px; right: 0; border-radius: 20px; z-index: 0; background: var(--light-green);"></div>
                 <div class="position-relative z-1 p-3">
-                    <img loading="lazy" src="{{ asset('storage/Home/1.11 Climate-Resilient Design.jpg') }}" alt="SR Greenscapes Landscaping" class="img-fluid w-100" style="border-radius: 20px; object-fit: cover; max-height: 600px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
+                    <img loading="lazy" src="{{ asset('images/Home/1.11 Climate-Resilient Design.jpg') }}" alt="SR Greenscapes Landscaping" class="img-fluid w-100" style="border-radius: 20px; object-fit: cover; max-height: 600px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);">
                 </div>
             </div>
         </div>
@@ -1118,7 +1118,7 @@
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <div class="diff-card">
                         <div class="diff-img">
-                            <img loading="lazy" src="{{ asset('storage/' . $item['img']) }}" alt="{{ $item['title'] }}">
+                            <img loading="lazy" src="{{ asset('images/' . $item['img']) }}" alt="{{ $item['title'] }}">
                         </div>
                         <div class="diff-body">
                             <h6>{{ $item['title'] }}</h6>
@@ -1307,7 +1307,7 @@
                     <div class="process-step-container">
                         <div class="process-circle-outer">
                             <div class="process-circle-inner">
-                                <img loading="lazy" src="{{ asset('storage/' . $step['img']) }}" alt="{{ $step['title'] }}">
+                                <img loading="lazy" src="{{ asset('images/' . $step['img']) }}" alt="{{ $step['title'] }}">
                             </div>
                             <div class="step-badge-circle">{{ $step['num'] }}</div>
                         </div>
@@ -1331,7 +1331,7 @@
 </section>
 
 <!-- Stats Section (New Pattern Design) -->
-<section class="stats-bar-section py-5 my-5 position-relative" style="background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat; overflow: hidden; border-radius: 0;">
+<section class="stats-bar-section py-5 my-5 position-relative" style="background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat; overflow: hidden; border-radius: 0;">
     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(17, 45, 20, 0.85); z-index: 0;"></div>
     <div class="position-absolute rounded-circle blur-bg" style="width: 300px; height: 300px; background: rgba(189, 228, 57, 0.1); top: -100px; left: -100px; filter: blur(80px); z-index: 0;"></div>
     <div class="position-absolute rounded-circle blur-bg" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
@@ -1392,7 +1392,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
-                            <img loading="lazy" src="{{ asset('storage/' . ($p->featured_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
+                            <img loading="lazy" src="{{ $p->featured_image ? asset('storage/' . $p->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
                                 {{ $p->category ?? ucfirst($p->status) }}
                             </div>
@@ -1431,10 +1431,10 @@
                     
                     <div class="faq-images-split mt-4 mb-4">
                         <div class="img-shape-left">
-                            <img loading="lazy" src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Expert">
+                            <img loading="lazy" src="{{ asset('images/Home/1.7 Cover photo 7.jpg') }}" alt="Expert">
                         </div>
                         <div class="img-shape-right">
-                            <img loading="lazy" src="{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}" alt="Garden">
+                            <img loading="lazy" src="{{ asset('images/Home/1.7 Cover photo 7.jpg') }}" alt="Garden">
                         </div>
                     </div>
 

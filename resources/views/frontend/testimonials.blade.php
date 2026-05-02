@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', 'Testimonials - SR Greenscapes')
 
@@ -18,7 +18,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
     }
     .testi-hero::after {
         content: '';
@@ -147,9 +147,9 @@
         @php
             // Fallback testimonials if none are in database
             $fallbackTestimonials = [
-                (object)['name' => 'Eleanor Pena', 'designation' => 'Founder', 'message' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'image' => 'storage/Home/1.7 Cover photo 7.jpg', 'rating' => 5],
-                (object)['name' => 'Emily Carter', 'designation' => 'Senior Project Manager', 'message' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'image' => 'storage/Home/1.8 Science-Driven Approach.jpg', 'rating' => 5],
-                (object)['name' => 'Bessie Cooper', 'designation' => 'Client', 'message' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'image' => 'storage/Home/1.9 Sustainability at the Core.jpg', 'rating' => 5],
+                (object)['name' => 'Eleanor Pena', 'designation' => 'Founder', 'message' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'image' => 'images/Home/1.7 Cover photo 7.jpg', 'rating' => 5],
+                (object)['name' => 'Emily Carter', 'designation' => 'Senior Project Manager', 'message' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'image' => 'images/Home/1.8 Science-Driven Approach.jpg', 'rating' => 5],
+                (object)['name' => 'Bessie Cooper', 'designation' => 'Client', 'message' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'image' => 'images/Home/1.9 Sustainability at the Core.jpg', 'rating' => 5],
                 (object)['name' => 'John Doe', 'designation' => 'Property Owner', 'message' => 'They improved our lawn beautifully. The turfing looks fresh, even, and very professionally done. The team worked with care and kept us updated throughout the process. We\'re really happy with the final result.', 'rating' => 5],
             ];
             
@@ -174,7 +174,7 @@
                         @php $tPhoto = $t->photo ?? $t->image ?? null; @endphp
                         @if($tPhoto)
                             @php
-                                $imgSrc = !str_contains($tPhoto, 'storage') ? asset('storage/' . $tPhoto) : asset($tPhoto);
+                                $imgSrc = (str_starts_with($tPhoto, 'storage/') || str_starts_with($tPhoto, 'images/')) ? asset($tPhoto) : asset('storage/' . $tPhoto);
                             @endphp
                             <img loading="lazy" src="{{ $imgSrc }}" alt="{{ $t->name }}">
                         @else

@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', 'Our Process - SR Greenscapes')
 
@@ -18,7 +18,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
     }
     .proc-hero::after {
         content: '';
@@ -359,7 +359,7 @@
     .proc-why-bg {
         position: absolute;
         inset: 0;
-        background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
         opacity: 0.15;
     }
     .proc-why-inner {
@@ -632,7 +632,7 @@
     <div class="proc-why-inner">
         <!-- Left: Image -->
         <div class="proc-why-img-panel" data-aos="fade-right">
-            <img loading="lazy" src="{{ asset('storage/About Us/2.5  End-to-End Execution.jpg') }}" alt="SR Greenscapes Professional">
+            <img loading="lazy" src="{{ asset('images/About Us/2.5  End-to-End Execution.jpg') }}" alt="SR Greenscapes Professional">
         </div>
 
         <!-- Right: Content -->

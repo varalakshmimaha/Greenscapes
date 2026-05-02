@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -759,7 +759,7 @@
         /* ===== FOOTER CTA — SPLIT CARD DESIGN ===== */
         .footer-cta-wrap {
             padding: 80px 0;
-            background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
+            background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
             position: relative;
         }
         .footer-cta-wrap::before {

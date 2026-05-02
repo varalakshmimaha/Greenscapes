@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', $service->name . ' - SR Greenscapes')
 
@@ -17,7 +17,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset("storage/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
+        background: url('{{ asset("images/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
         transition: transform 8s ease;
     }
     .sd-hero:hover::before { transform: scale(1.03); }
@@ -405,7 +405,7 @@
                     @if($service->image)
                         <img loading="lazy" src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
                     @else
-                        <img loading="lazy" src="{{ asset('storage/Home/1.1Cover photo 1.jpg') }}" alt="{{ $service->name }}">
+                        <img loading="lazy" src="{{ asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $service->name }}">
                     @endif
                 </div>
 
@@ -447,7 +447,7 @@
                             @if($cat->image)
                                 <img loading="lazy" src="{{ asset('storage/' . $cat->image) }}" alt="{{ $cat->name }}">
                             @else
-                                <img loading="lazy" src="{{ asset('storage/' . ($service->image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $cat->name }}">
+                                <img loading="lazy" src="{{ $service->image ? asset('storage/' . $service->image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $cat->name }}">
                             @endif
                         </div>
                         <h5 class="sd-category-title">{{ $cat->name }}</h5>

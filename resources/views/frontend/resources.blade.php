@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', 'Resources - SR Greenscapes')
 
@@ -16,7 +16,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
     }
     .res-hero::after {
         content: '';

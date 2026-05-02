@@ -1,4 +1,4 @@
-@extends('frontend.layouts.app')
+﻿@extends('frontend.layouts.app')
 
 @section('title', 'Projects - SR Greenscapes')
 
@@ -18,7 +18,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
     }
     .projects-hero::after {
         content: '';
@@ -301,7 +301,7 @@
                 <div class="col-lg-4 col-md-6 project-item" data-type="{{ strtoupper($project->category ?? $project->status) }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <a href="{{ route('project.detail', $project->slug) }}" class="text-decoration-none">
                         <div class="proj-card">
-                            <img loading="lazy" src="{{ asset('storage/' . ($project->featured_image ?? 'Home/1.1Cover photo 1.jpg')) }}" alt="{{ $project->title }}">
+                            <img loading="lazy" src="{{ $project->featured_image ? asset('storage/' . $project->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $project->title }}">
                             <div class="proj-badge">{{ $project->category ?? ucfirst($project->status) }}</div>
                             <div class="view-btn"><i class="fas fa-arrow-right"></i></div>
                             <div class="proj-overlay">
@@ -368,7 +368,7 @@
 </section>
 
 <!-- Stats / Counter Section -->
-<section class="stats-bar-section py-5 my-0 position-relative" style="background: url('{{ asset('storage/Home/1.7 Cover photo 7.jpg') }}') center/cover fixed no-repeat; overflow: hidden;">
+<section class="stats-bar-section py-5 my-0 position-relative" style="background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover fixed no-repeat; overflow: hidden;">
     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(17, 45, 20, 0.85); z-index: 0;"></div>
     <div class="position-absolute rounded-circle" style="width: 300px; height: 300px; background: rgba(189, 228, 57, 0.1); top: -100px; left: -100px; filter: blur(80px); z-index: 0;"></div>
     <div class="position-absolute rounded-circle" style="width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); bottom: -150px; right: -100px; filter: blur(100px); z-index: 0;"></div>
@@ -525,7 +525,7 @@
     .proj-testi-bg {
         position: absolute;
         inset: 0;
-        background: url('{{ asset('storage/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
         z-index: 0;
     }
     .proj-testi-overlay {
