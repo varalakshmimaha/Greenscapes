@@ -158,6 +158,37 @@
         transform: translate(-50%, -50%) scale(1);
     }
 
+    /* ===== CUSTOM PROJECT CARD (matches home page portfolio) ===== */
+    .custom-project-card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .custom-project-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.14) !important;
+    }
+    .project-type-badge {
+        background: #fff;
+        color: #1a2a1a;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .project-content-bottom h5 {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+    .project-content-bottom p {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.8rem;
+        margin: 0;
+    }
+
     /* ===== OTHER PROJECTS SLIDER ===== */
     .other-proj-section {
         padding: 70px 0 60px;
