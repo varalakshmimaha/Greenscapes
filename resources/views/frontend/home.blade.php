@@ -700,7 +700,7 @@
         transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     }
-    .custom-project-img {
+    .custom-project-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -711,7 +711,6 @@
         left: 20px;
         right: 20px;
         z-index: 2;
-        transition: background 0.3s;
     }
     .project-type-badge {
         position: absolute;
@@ -726,6 +725,20 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         z-index: 3;
+    }
+    .project-title {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin: 0 0 5px 0;
+    }
+    .project-location {
+        color: rgba(255,255,255,0.9);
+        font-size: 0.85rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
     .project-content-bottom h5 {
         color: #fff;
@@ -1385,20 +1398,18 @@
         <div class="row portfolio-grid g-4">
             @foreach($projects->take(6) as $p)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="cursor: pointer;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
-                        <div class="project-img-container h-100 position-relative">
+                    <a href="{{ route('project.detail', $p->slug) }}" class="text-decoration-none">
+                        <div class="custom-project-card">
                             <img loading="lazy" src="{{ $p->featured_image ? \App\Helpers\ImageHelper::getImageUrl($p->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
                                 {{ $p->category ?? ucfirst($p->status) }}
                             </div>
-                            <div class="custom-project-overlay position-absolute">
-                                <div class="project-content-bottom text-white">
-                                    <h5 class="mb-1 fw-bold">{{ $p->title }}</h5>
-                                    <p class="mb-0 small"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
-                                </div>
+                            <div class="custom-project-overlay">
+                                <h5 class="project-title">{{ $p->title }}</h5>
+                                <p class="project-location"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>
