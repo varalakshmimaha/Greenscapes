@@ -707,10 +707,14 @@
     }
     .custom-project-overlay {
         position: absolute;
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding: 1.5rem;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
         z-index: 2;
+        text-align: left;
     }
     .project-type-badge {
         position: absolute;
@@ -730,7 +734,8 @@
         color: #fff !important;
         font-weight: 700;
         font-size: 1.1rem;
-        margin: 0 0 5px 0;
+        margin: 0 0 4px 0;
+        line-height: 1.3;
     }
     .project-location {
         color: rgba(255,255,255,0.9) !important;
@@ -738,12 +743,15 @@
         margin: 0;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         gap: 6px;
     }
     .project-content-bottom {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
+        text-align: left;
     }
     .project-content-bottom h5 {
         color: #fff !important;
@@ -1411,8 +1419,10 @@
                                 {{ $p->category ?? ucfirst($p->status) }}
                             </div>
                             <div class="custom-project-overlay">
-                                <h5 class="project-title text-white">{{ $p->title }}</h5>
-                                <p class="project-location"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
+                                <div class="project-content-bottom text-white">
+                                    <h5 class="project-title">{{ $p->title }}</h5>
+                                    <p class="project-location"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
+                                </div>
                             </div>
                         </div>
                     </a>
