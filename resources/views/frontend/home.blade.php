@@ -727,13 +727,13 @@
         z-index: 3;
     }
     .project-title {
-        color: #fff;
+        color: #fff !important;
         font-weight: 700;
         font-size: 1.1rem;
         margin: 0 0 5px 0;
     }
     .project-location {
-        color: rgba(255,255,255,0.9);
+        color: rgba(255,255,255,0.9) !important;
         font-size: 0.85rem;
         margin: 0;
         display: flex;
@@ -1411,7 +1411,7 @@
                                 {{ $p->category ?? ucfirst($p->status) }}
                             </div>
                             <div class="custom-project-overlay">
-                                <h5 class="project-title">{{ $p->title }}</h5>
+                                <h5 class="project-title text-white">{{ $p->title }}</h5>
                                 <p class="project-location"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
                             </div>
                         </div>
