@@ -1371,7 +1371,7 @@
             </p>
         </div>
 
-        <div class="row portfolio-grid g-4 justify-content-center">
+        <div class="row portfolio-grid g-4">
             @foreach($projects->take(6) as $p)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px; cursor: pointer;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
