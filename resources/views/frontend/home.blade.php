@@ -711,10 +711,6 @@
         left: 20px;
         right: 20px;
         z-index: 2;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 15px;
     }
     .project-type-badge {
         position: absolute;
@@ -734,8 +730,7 @@
         color: #fff !important;
         font-weight: 700;
         font-size: 1.1rem;
-        margin: 0;
-        flex: 1;
+        margin: 0 0 5px 0;
     }
     .project-location {
         color: rgba(255,255,255,0.9) !important;
@@ -744,7 +739,6 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        white-space: nowrap;
     }
     .project-content-bottom {
         display: flex;
