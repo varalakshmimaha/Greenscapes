@@ -689,14 +689,6 @@
         transition: transform 0.4s;
         box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
-    /* Masonry heights */
-    .portfolio-grid .col-lg-4:nth-child(even) .custom-project-card {
-        height: 480px;
-    }
-    .portfolio-grid .col-lg-4:nth-child(3n) .custom-project-card {
-        height: 420px;
-    }
-    
     .custom-project-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 20px 40px rgba(0,0,0,0.15);
@@ -1390,7 +1382,7 @@
         <div class="row portfolio-grid g-4">
             @foreach($projects->take(6) as $p)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
+                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px; cursor: pointer;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
                             <img loading="lazy" src="{{ $p->featured_image ? \App\Helpers\ImageHelper::getImageUrl($p->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
