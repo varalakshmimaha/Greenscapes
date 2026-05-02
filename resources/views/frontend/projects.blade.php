@@ -299,17 +299,20 @@
         <div class="row g-4" id="projectsGrid">
             @forelse($projects as $project)
                 <div class="col-lg-4 col-md-6 project-item" data-type="{{ strtoupper($project->category ?? $project->status) }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
-                    <a href="{{ route('project.detail', $project->slug) }}" class="text-decoration-none">
-                        <div class="proj-card">
-                            <img loading="lazy" src="{{ $project->featured_image ? \App\Helpers\ImageHelper::getImageUrl($project->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $project->title }}">
-                            <div class="proj-badge">{{ $project->category ?? ucfirst($project->status) }}</div>
-                            <div class="view-btn"><i class="fas fa-arrow-right"></i></div>
-                            <div class="proj-overlay">
-                                <h5>{{ $project->title }}</h5>
-                                <p><i class="fas fa-map-marker-alt me-1"></i> {{ $project->location ?? $project->client_name ?? 'Location' }}</p>
+                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px; cursor: pointer;" onclick="window.location.href='{{ route('project.detail', $project->slug) }}'">
+                        <div class="project-img-container h-100 position-relative">
+                            <img loading="lazy" src="{{ $project->featured_image ? asset('storage/' . $project->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $project->title }}" class="w-100 h-100 object-fit-cover">
+                            <div class="project-type-badge position-absolute top-0 end-0 m-3">
+                                {{ $project->category ?? ucfirst($project->status) }}
+                            </div>
+                            <div class="custom-project-overlay position-absolute bottom-0 start-0 w-100 p-4" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                                <div class="project-content-bottom text-white">
+                                    <h5 class="mb-1 fw-bold">{{ $project->title }}</h5>
+                                    <p class="mb-0 small opacity-75"><i class="fas fa-map-marker-alt me-2"></i> {{ $project->location ?? $project->client_name ?? 'Location' }}</p>
+                                </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             @empty
                 <div class="col-12 text-center py-5">
