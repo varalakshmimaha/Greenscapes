@@ -298,25 +298,25 @@
             background: var(--primary);
             color: #fff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 11px;
-            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.5px;
             text-decoration: none;
             transition: all 0.3s;
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
-            gap: 7px;
-            box-shadow: 0 4px 12px rgba(139,195,74,0.35);
+            gap: 5px;
+            box-shadow: 0 3px 8px rgba(139,195,74,0.3);
         }
         .btn-appointment:hover {
             background: var(--primary-dark);
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(139,195,74,0.4);
+            box-shadow: 0 5px 14px rgba(139,195,74,0.4);
         }
 
         /* Mobile Toggle */
