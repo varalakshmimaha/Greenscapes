@@ -139,7 +139,7 @@
         .nav-menu > li > a {
             color: #fff;
             text-decoration: none;
-            padding: 14px 0;
+            padding: 14px 12px;
             display: flex;
             align-items: center;
             gap: 6px;
