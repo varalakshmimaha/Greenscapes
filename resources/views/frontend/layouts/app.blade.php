@@ -68,7 +68,7 @@
         /* ===== NAVBAR ===== */
         .main-navbar {
             background: #1e3838;
-            padding: 4px 0;
+            padding: 2px 0;
             z-index: 1050;
             margin-bottom: 0;
         }
@@ -85,14 +85,14 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            padding: 4px 0;
+            padding: 2px 0;
             flex-shrink: 0;
             margin-right: 12px;
         }
         .navbar-brand-custom .brand-logo {
-            height: 100px;
-            width: 100px;
-            min-width: 100px;
+            height: 75px;
+            width: 75px;
+            min-width: 75px;
             margin-right: 8px;
             object-fit: contain;
             object-position: center;
@@ -925,10 +925,14 @@
         .top-bar {
             background-color: #ffffff;
             border-bottom: 1px solid #e8ede9;
-            padding: 0;
+            padding: 2px 0;
             font-size: 0.75rem;
             color: #666;
             font-weight: 500;
+            line-height: 1;
+        }
+        .top-bar .top-bar-inner {
+            min-height: 24px;
         }
         .top-bar i {
             color: var(--primary);
@@ -1041,12 +1045,12 @@
 
         /* ===== MOBILE RESPONSIVE ===== */
         @media (max-width: 575px) {
-            .top-bar .top-bar-inner { flex-direction: column; gap: 3px; text-align: center; padding: 5px 15px; }
+            .top-bar .top-bar-inner { flex-direction: column; gap: 3px; text-align: center; padding: 2px 15px; }
             .top-bar-left, .top-bar-right { font-size: 0.72rem; display: flex; flex-direction: column; align-items: center; gap: 2px; }
             .top-bar-left span, .top-bar-right span { display: none; } /* Hide the pipes | on mobile */
             .top-bar-center { font-size: 0.75rem; order: -1; margin-bottom: 2px; }
             
-            .navbar-brand-custom .brand-logo { height: 70px; width: 70px; min-width: 70px; }
+            .navbar-brand-custom .brand-logo { height: 60px; width: 60px; min-width: 60px; }
             .navbar-brand-custom .brand-text .brand-line-1,
             .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.95rem; }
             .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.65rem; letter-spacing: 1.5px; }
