@@ -740,14 +740,20 @@
         align-items: center;
         gap: 6px;
     }
+    .project-content-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
     .project-content-bottom h5 {
-        color: #fff;
+        color: #fff !important;
         font-weight: 700;
         font-size: 1.1rem;
-        margin-bottom: 5px;
+        margin: 0 0 4px 0;
+        line-height: 1.3;
     }
     .project-content-bottom p {
-        color: rgba(255,255,255,0.9);
+        color: rgba(255,255,255,0.9) !important;
         font-size: 0.85rem;
         margin: 0;
         display: flex;
