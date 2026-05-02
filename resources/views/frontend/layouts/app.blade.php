@@ -56,7 +56,7 @@
         /* ===== NAVBAR ===== */
         .main-navbar {
             background: #1e3838;
-            padding: 6px 0;
+            padding: 4px 0;
             z-index: 1050;
         }
         .main-navbar .container {
@@ -246,10 +246,10 @@
 
         .nav-right {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            justify-content: center;
-            gap: 6px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
             flex-shrink: 0;
         }
         .nav-social-icons {
@@ -282,15 +282,18 @@
             background: var(--primary);
             color: #fff;
             border: none;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 25px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             text-decoration: none;
             transition: all 0.3s;
             white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
         .btn-appointment:hover {
             background: var(--accent);
@@ -909,7 +912,7 @@
         .top-bar {
             background-color: #ffffff;
             border-bottom: 1px solid #e8ede9;
-            padding: 10px 0;
+            padding: 5px 0;
             font-size: 0.85rem;
             color: #666;
             font-weight: 500;
@@ -1025,10 +1028,10 @@
 
         /* ===== MOBILE RESPONSIVE ===== */
         @media (max-width: 575px) {
-            .top-bar .top-bar-inner { flex-direction: column; gap: 6px; text-align: center; padding: 10px 15px; }
-            .top-bar-left, .top-bar-right { font-size: 0.72rem; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+            .top-bar .top-bar-inner { flex-direction: column; gap: 3px; text-align: center; padding: 5px 15px; }
+            .top-bar-left, .top-bar-right { font-size: 0.72rem; display: flex; flex-direction: column; align-items: center; gap: 2px; }
             .top-bar-left span, .top-bar-right span { display: none; } /* Hide the pipes | on mobile */
-            .top-bar-center { font-size: 0.75rem; order: -1; margin-bottom: 4px; }
+            .top-bar-center { font-size: 0.75rem; order: -1; margin-bottom: 2px; }
             
             .navbar-brand-custom .brand-logo { height: 70px; width: 70px; min-width: 70px; }
             .navbar-brand-custom .brand-text .brand-line-1,
@@ -1044,7 +1047,7 @@
             .section-subtitle { font-size: 0.85rem; margin-bottom: 25px; }
         }
         @media (max-width: 400px) {
-            .top-bar { padding: 6px 0; }
+            .top-bar { padding: 3px 0; }
             .top-bar-left, .top-bar-right { font-size: 0.68rem; word-break: break-all; }
             .footer-bottom { font-size: 12px; }
         }

@@ -684,7 +684,6 @@
         border-radius: 20px;
         overflow: hidden;
         height: 380px;
-        margin-bottom: 30px;
         cursor: pointer;
         transition: transform 0.4s;
         box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -1379,7 +1378,7 @@
             </p>
         </div>
 
-        <div class="row portfolio-grid g-4">
+        <div class="row portfolio-grid g-4 justify-content-center">
             @foreach($projects->take(6) as $p)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px; cursor: pointer;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
