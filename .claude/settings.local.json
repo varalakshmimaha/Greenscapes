@@ -27,7 +27,11 @@
       "Bash(where mysql *)",
       "Bash(where mysqld *)",
       "Read(//c//**)",
-      "Bash(xargs sed *)"
+      "Bash(xargs sed *)",
+      "Bash(Remove-Item \"C:\\\\Users\\\\varalakshmi\\\\Desktop\\\\Nursary\\\\.git\\\\index.lock\" -Force)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\varalakshmi\\Desktop\\Nursary\\.git"
     ]
   }
 }

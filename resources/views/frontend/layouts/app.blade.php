@@ -246,17 +246,17 @@
 
         .nav-right {
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 8px;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 4px;
             flex-shrink: 0;
         }
         .nav-social-icons {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            width: 100%;
+            justify-content: flex-end;
+            gap: 6px;
         }
         .nav-social-icons a {
             width: 24px;
