@@ -1714,8 +1714,8 @@
 
         /* ===== NAVBAR MOBILE ===== */
         @media (max-width: 575px) {
-            .top-bar { font-size: 0.75rem; padding: 6px 0; }
-            .navbar-custom { padding: 8px 0; }
+            .top-bar { font-size: 0.75rem; padding: 2px 0; }
+            .navbar-custom { padding: 4px 0; }
             .navbar-custom .brand-text strong { font-size: 0.95rem; }
             .btn-appointment { padding: 5px 10px; font-size: 10px; }
         }
