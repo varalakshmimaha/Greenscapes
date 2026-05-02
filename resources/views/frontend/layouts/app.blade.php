@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -68,14 +68,14 @@
         /* ===== NAVBAR ===== */
         .main-navbar {
             background: #1e3838;
-            padding: 0;
+            padding: 8px 0;
             z-index: 1050;
             margin-bottom: 0;
         }
         .main-navbar .container {
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Changed from flex-start to push toggle to right */
+            justify-content: space-between;
             max-width: 100% !important;
             padding-left: 16px;
             padding-right: 16px;
@@ -85,28 +85,23 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            padding: 0;
+            padding: 6px 0;
             flex-shrink: 0;
-            margin-right: 12px;
-            position: relative;
-            min-height: 48px; /* To give the nav a stable height */
+            margin-right: 16px;
+            gap: 10px;
         }
         .navbar-brand-custom .brand-logo {
-            height: 100px;
-            width: 100px;
-            min-width: 100px;
-            margin-right: 8px;
+            height: 70px;
+            width: 70px;
+            min-width: 70px;
             object-fit: contain;
             object-position: center;
             border-radius: 50%;
             background: #fff;
             padding: 4px;
             image-rendering: auto;
-            position: absolute; /* Take it out of flow so navbar shrinks */
-            top: -20px; /* Let it sit naturally, maybe overflow bottom */
-            left: 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            z-index: 1060;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: block;
         }
         .navbar-brand-custom .brand-text {
             display: flex;
@@ -115,7 +110,6 @@
             color: #fff;
             font-weight: 700;
             line-height: 1;
-            padding-left: 110px; /* Space for the absolute logo */
             justify-content: center;
         }
         .navbar-brand-custom .brand-text .brand-line-1,
@@ -131,16 +125,16 @@
         }
         .navbar-brand-custom .brand-text .brand-line-2 {
             font-size: 0.95rem;
-            margin-top: 0px;
+            margin-top: 2px;
         }
         .navbar-brand-custom .brand-text .brand-line-3 {
             display: block;
             font-size: 0.65rem;
             font-weight: 500;
-            color: #fff;
+            color: rgba(255,255,255,0.8);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 1px;
+            margin-top: 3px;
         }
 
         /* Nav items: fill remaining space, centered */
@@ -304,22 +298,25 @@
             background: var(--primary);
             color: #fff;
             border: none;
-            padding: 5px 10px;
+            padding: 10px 20px;
             border-radius: 25px;
-            font-size: 10px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             text-decoration: none;
             transition: all 0.3s;
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 7px;
+            box-shadow: 0 4px 12px rgba(139,195,74,0.35);
         }
         .btn-appointment:hover {
-            background: var(--accent);
-            color: var(--dark);
+            background: var(--primary-dark);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(139,195,74,0.4);
         }
 
         /* Mobile Toggle */
@@ -1062,12 +1059,11 @@
             .top-bar-left span, .top-bar-right span { display: none; } /* Hide the pipes | on mobile */
             .top-bar-center { font-size: 0.75rem; order: -1; margin-bottom: 2px; }
             
-            .navbar-brand-custom { min-height: 40px; }
-            .navbar-brand-custom .brand-logo { height: 80px; width: 80px; min-width: 80px; top: -15px; }
-            .navbar-brand-custom .brand-text { padding-left: 90px; }
+            .navbar-brand-custom { gap: 8px; padding: 4px 0; }
+            .navbar-brand-custom .brand-logo { height: 52px; width: 52px; min-width: 52px; }
             .navbar-brand-custom .brand-text .brand-line-1,
-            .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.95rem; }
-            .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.65rem; letter-spacing: 1.5px; }
+            .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.85rem; }
+            .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.6rem; letter-spacing: 1.5px; }
             
             .whatsapp-float { bottom: 20px; right: 15px; width: 50px; height: 50px; font-size: 26px; }
             .call-float { bottom: 82px; right: 15px; width: 50px; height: 50px; font-size: 22px; box-shadow: 0 4px 15px rgba(25,118,210,0.3); }
