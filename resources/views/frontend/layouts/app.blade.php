@@ -88,18 +88,25 @@
             padding: 0;
             flex-shrink: 0;
             margin-right: 12px;
+            position: relative;
+            min-height: 48px; /* To give the nav a stable height */
         }
         .navbar-brand-custom .brand-logo {
-            height: 45px;
-            width: 45px;
-            min-width: 45px;
+            height: 100px;
+            width: 100px;
+            min-width: 100px;
             margin-right: 8px;
             object-fit: contain;
             object-position: center;
             border-radius: 50%;
             background: #fff;
-            padding: 2px;
+            padding: 4px;
             image-rendering: auto;
+            position: absolute; /* Take it out of flow so navbar shrinks */
+            top: -20px; /* Let it sit naturally, maybe overflow bottom */
+            left: 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 1060;
         }
         .navbar-brand-custom .brand-text {
             display: flex;
@@ -108,6 +115,8 @@
             color: #fff;
             font-weight: 700;
             line-height: 1;
+            padding-left: 110px; /* Space for the absolute logo */
+            justify-content: center;
         }
         .navbar-brand-custom .brand-text .brand-line-1,
         .navbar-brand-custom .brand-text .brand-line-2 {
@@ -926,14 +935,16 @@
             background-color: #ffffff;
             border-bottom: 1px solid #e8ede9;
             padding: 0;
-            font-size: 0.70rem;
+            font-size: 0.65rem;
             color: #666;
             font-weight: 500;
-            line-height: 1;
+            line-height: normal;
+            position: relative;
+            z-index: 1040;
         }
         .top-bar .top-bar-inner {
-            min-height: 18px;
-            padding: 2px 0;
+            min-height: 12px;
+            padding: 1px 0;
         }
         .top-bar i {
             color: var(--primary);
@@ -1051,7 +1062,9 @@
             .top-bar-left span, .top-bar-right span { display: none; } /* Hide the pipes | on mobile */
             .top-bar-center { font-size: 0.75rem; order: -1; margin-bottom: 2px; }
             
-            .navbar-brand-custom .brand-logo { height: 60px; width: 60px; min-width: 60px; }
+            .navbar-brand-custom { min-height: 40px; }
+            .navbar-brand-custom .brand-logo { height: 80px; width: 80px; min-width: 80px; top: -15px; }
+            .navbar-brand-custom .brand-text { padding-left: 90px; }
             .navbar-brand-custom .brand-text .brand-line-1,
             .navbar-brand-custom .brand-text .brand-line-2 { font-size: 0.95rem; }
             .navbar-brand-custom .brand-text .brand-line-3 { font-size: 0.65rem; letter-spacing: 1.5px; }
