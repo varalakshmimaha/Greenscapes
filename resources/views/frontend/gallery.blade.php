@@ -297,7 +297,7 @@
             @forelse($gallery as $idx => $item)
                 <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item" data-category="{{ $item->category ?? '' }}" data-aos="fade-up" data-aos-delay="{{ ($idx % 4) * 80 }}">
                     <div class="gallery-item" onclick="openLightbox({{ $idx }})">
-                        <img loading="lazy" src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title ?? 'Gallery' }}">
+                        <img loading="lazy" src="@imageUrl($item->image)" alt="{{ $item->title ?? 'Gallery' }}">
                         <div class="g-zoom"><i class="fas fa-expand"></i></div>
                         <div class="g-overlay">
                             @if($item->title)<h5>{{ $item->title }}</h5>@endif
@@ -343,7 +343,7 @@
 const galleryItems = [
     @foreach($gallery as $item)
     {
-        src: '{{ asset("storage/" . $item->image) }}',
+        src: '<?php echo \App\Helpers\ImageHelper::getImageUrl($item->image); ?>',
         title: '{{ addslashes($item->title ?? "") }}',
         category: '{{ addslashes($item->category ?? "") }}'
     },

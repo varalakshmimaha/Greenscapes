@@ -38,7 +38,7 @@
                         <i class="fas fa-file-pdf text-danger fa-2x"></i>
                         <div>
                             <p class="mb-1 fw-semibold">{{ basename($settings['brochure_file']) }}</p>
-                            <a href="{{ asset('storage/' . $settings['brochure_file']) }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                            <a href="@imageUrl($settings['brochure_file'])" target="_blank" class="btn btn-sm btn-outline-primary">
                                 <i class="fas fa-eye me-1"></i>View PDF
                             </a>
                         </div>

@@ -67,7 +67,7 @@
                     <label class="form-label">Featured Image</label>
                     @if($project->featured_image)
                         <div class="mb-2">
-                            <img src="{{ asset('storage/'.$project->featured_image) }}" class="img-thumbnail" style="max-height:120px" alt="">
+                            <img src="@imageUrl($project->featured_image)" class="img-thumbnail" style="max-height:120px" alt="">
                         </div>
                     @endif
                     <input type="file" name="featured_image" class="form-control" accept="image/*">
@@ -90,7 +90,7 @@
                         @foreach($project->gallery_images as $galleryImg)
                             <div class="col-md-3 col-sm-4 col-6">
                                 <div class="position-relative border rounded overflow-hidden">
-                                    <img src="{{ asset('storage/'.$galleryImg) }}" class="img-fluid" style="height:120px;width:100%;object-fit:cover;" alt="">
+                                    <img src="@imageUrl($galleryImg)" class="img-fluid" style="height:120px;width:100%;object-fit:cover;" alt="">
                                     <div class="form-check position-absolute top-0 end-0 m-1">
                                         <input type="checkbox" name="remove_gallery[]" value="{{ $galleryImg }}" class="form-check-input bg-danger border-danger" id="rm_{{ $loop->index }}" title="Remove this image">
                                         <label class="form-check-label text-white small" for="rm_{{ $loop->index }}">

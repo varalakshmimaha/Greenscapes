@@ -19,7 +19,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             @if($about->image)
-                                <img src="{{ asset('storage/'.$about->image) }}" class="img-thumbnail-sm" alt="">
+                                <img src="@imageUrl($about->image)" class="img-thumbnail-sm" alt="">
                             @else
                                 <span class="text-muted"><i class="fas fa-image"></i></span>
                             @endif

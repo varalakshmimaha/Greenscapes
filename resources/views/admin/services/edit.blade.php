@@ -30,7 +30,7 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Image</label>
                     @if($service->image)
-                        <div class="mb-2"><img src="{{ asset('storage/'.$service->image) }}" class="img-thumbnail" style="max-height:150px" alt=""></div>
+                        <div class="mb-2"><img src="@imageUrl($service->image)" class="img-thumbnail" style="max-height:150px" alt=""></div>
                     @endif
                     <input type="file" name="image" class="form-control" accept="image/*">
                     <small class="text-muted">Leave empty to keep current image</small>
@@ -39,7 +39,7 @@
                     <label class="form-label">PDF Brochure <span class="text-muted">(Optional)</span></label>
                     @if($service->pdf)
                         <div class="mb-2 d-flex align-items-center gap-2">
-                            <a href="{{ asset('storage/'.$service->pdf) }}" target="_blank" class="btn btn-sm btn-outline-success">
+                            <a href="@imageUrl($service->pdf)" target="_blank" class="btn btn-sm btn-outline-success">
                                 <i class="fas fa-file-pdf me-1"></i> View Current PDF
                             </a>
                             <label class="form-check-label">

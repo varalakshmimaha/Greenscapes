@@ -19,7 +19,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             @if($service->image)
-                                <img src="{{ asset('storage/'.$service->image) }}" class="img-thumbnail-sm" style="max-height:40px;" alt="">
+                                <img src="@imageUrl($service->image)" class="img-thumbnail-sm" style="max-height:40px;" alt="">
                             @else
                                 <div style="width:40px;height:40px;background:#e8f5e3;color:#4a7c3f;border-radius:8px;display:flex;align-items:center;justify-content:center;">
                                     <i class="{{ $service->icon ?? 'fas fa-leaf' }}"></i>

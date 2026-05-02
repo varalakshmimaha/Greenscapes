@@ -334,7 +334,7 @@
                                 <article class="tm-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                                     <div class="tm-avatar" aria-label="Avatar of {{ $member->name }}">
                                         @if($member->photo)
-                                            <img loading="lazy" src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}">
+                                            <img loading="lazy" src="@imageUrl($member->photo)" alt="{{ $member->name }}">
                                         @else
                                             <div class="tm-avatar-initials">{{ collect(explode(' ', $member->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->filter(fn($l) => ctype_alpha($l))->take(2)->implode('') }}</div>
                                         @endif
@@ -355,7 +355,7 @@
                                 <article class="tm-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                                     <div class="tm-avatar" aria-label="Avatar of {{ $member->name }}">
                                         @if($member->photo)
-                                            <img loading="lazy" src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}">
+                                            <img loading="lazy" src="@imageUrl($member->photo)" alt="{{ $member->name }}">
                                         @else
                                             <div class="tm-avatar-initials">{{ collect(explode(' ', $member->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->filter(fn($l) => ctype_alpha($l))->take(2)->implode('') }}</div>
                                         @endif
@@ -373,7 +373,7 @@
                                 <article class="tm-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                                     <div class="tm-avatar" aria-label="Avatar of {{ $member->name }}">
                                         @if($member->photo)
-                                            <img loading="lazy" src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}">
+                                            <img loading="lazy" src="@imageUrl($member->photo)" alt="{{ $member->name }}">
                                         @else
                                             <div class="tm-avatar-initials">{{ collect(explode(' ', $member->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->filter(fn($l) => ctype_alpha($l))->take(2)->implode('') }}</div>
                                         @endif
@@ -404,7 +404,7 @@
                     <article class="tm-card" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <div class="tm-avatar" aria-label="Avatar of {{ $member->name }}">
                             @if($member->photo)
-                                <img loading="lazy" src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}">
+                                <img loading="lazy" src="@imageUrl($member->photo)" alt="{{ $member->name }}">
                             @else
                                 <div class="tm-avatar-initials">{{ collect(explode(' ', $member->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->filter(fn($l) => ctype_alpha($l))->take(2)->implode('') }}</div>
                             @endif

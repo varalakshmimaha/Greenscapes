@@ -19,7 +19,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>
                             @if($video->thumbnail)
-                                <img src="{{ asset('storage/'.$video->thumbnail) }}" class="img-thumbnail-sm" alt="">
+                                <img src="@imageUrl($video->thumbnail)" class="img-thumbnail-sm" alt="">
                             @else
                                 <div style="width:60px;height:60px;background:#f0f0f0;border-radius:8px;display:flex;align-items:center;justify-content:center;">
                                     <i class="fas fa-play text-muted"></i>

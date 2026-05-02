@@ -13,7 +13,7 @@
     <div class="col-md-4 col-sm-6">
         <div class="card h-100">
             @if($member->photo)
-                <img src="{{ asset('storage/'.$member->photo) }}" class="card-img-top" style="height:200px;object-fit:cover;" alt="">
+                <img src="@imageUrl($member->photo)" class="card-img-top" style="height:200px;object-fit:cover;" alt="">
             @else
                 <div style="height:200px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;">
                     <i class="fas fa-user fa-3x text-muted"></i>

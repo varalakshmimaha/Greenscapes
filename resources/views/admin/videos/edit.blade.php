@@ -27,7 +27,7 @@
             <div class="mb-3">
                 <label class="form-label">Thumbnail Image</label>
                 @if($video->thumbnail)
-                    <div class="mb-2"><img src="{{ asset('storage/'.$video->thumbnail) }}" class="img-thumbnail" style="max-height:150px" alt=""></div>
+                    <div class="mb-2"><img src="@imageUrl($video->thumbnail)" class="img-thumbnail" style="max-height:150px" alt=""></div>
                 @endif
                 <input type="file" name="thumbnail" class="form-control" accept="image/*">
                 <small class="text-muted">Leave empty to keep current thumbnail</small>

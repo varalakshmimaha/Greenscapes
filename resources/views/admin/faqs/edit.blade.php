@@ -38,7 +38,7 @@
                 <label class="form-label">Category Image <small class="text-muted">(shown on frontend for this category tab)</small></label>
                 @if($faq->image)
                     <div class="mb-2">
-                        <img src="{{ asset('storage/' . $faq->image) }}" alt="" class="img-thumbnail" style="max-height:120px;">
+                        <img src="@imageUrl($faq->image)" alt="" class="img-thumbnail" style="max-height:120px;">
                         <div class="form-check mt-1">
                             <input type="checkbox" name="remove_image" class="form-check-input" id="remove_image">
                             <label class="form-check-label text-danger" for="remove_image">Remove image</label>

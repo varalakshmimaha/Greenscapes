@@ -174,7 +174,7 @@
                         @php $tPhoto = $t->photo ?? $t->image ?? null; @endphp
                         @if($tPhoto)
                             @php
-                                $imgSrc = (str_starts_with($tPhoto, 'storage/') || str_starts_with($tPhoto, 'images/')) ? asset($tPhoto) : asset('storage/' . $tPhoto);
+                                $imgSrc = (str_starts_with($tPhoto, 'images/')) ? asset($tPhoto) : \App\Helpers\ImageHelper::getImageUrl($tPhoto);
                             @endphp
                             <img loading="lazy" src="{{ $imgSrc }}" alt="{{ $t->name }}">
                         @else

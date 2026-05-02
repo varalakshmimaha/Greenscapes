@@ -26,7 +26,7 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Photo</label>
                     @if($testimonial->photo)
-                        <div class="mb-2"><img src="{{ asset('storage/'.$testimonial->photo) }}" class="img-thumbnail" style="max-height:150px" alt=""></div>
+                        <div class="mb-2"><img src="@imageUrl($testimonial->photo)" class="img-thumbnail" style="max-height:150px" alt=""></div>
                     @endif
                     <input type="file" name="photo" class="form-control" accept="image/*">
                     <small class="text-muted">Leave empty to keep current photo</small>

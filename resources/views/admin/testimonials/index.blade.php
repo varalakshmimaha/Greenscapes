@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="d-flex align-items-center mb-3">
                     @if($testimonial->photo)
-                        <img src="{{ asset('storage/'.$testimonial->photo) }}" class="rounded-circle me-3" style="width:50px;height:50px;object-fit:cover;" alt="">
+                        <img src="@imageUrl($testimonial->photo)" class="rounded-circle me-3" style="width:50px;height:50px;object-fit:cover;" alt="">
                     @else
                         <div class="rounded-circle me-3 d-flex align-items-center justify-content-center" style="width:50px;height:50px;background:#f0f0f0;">
                             <i class="fas fa-user text-muted"></i>

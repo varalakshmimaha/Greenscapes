@@ -12,7 +12,7 @@
     @forelse($galleries as $gallery)
     <div class="col-md-3 col-sm-6">
         <div class="card h-100">
-            <img src="{{ asset('storage/'.$gallery->image) }}" class="card-img-top" style="height:200px;object-fit:cover;" alt="">
+            <img src="@imageUrl($gallery->image)" class="card-img-top" style="height:200px;object-fit:cover;" alt="">
             <div class="card-body">
                 <h6 class="card-title mb-1">{{ $gallery->title ?? 'Untitled' }}</h6>
                 @if($gallery->category)

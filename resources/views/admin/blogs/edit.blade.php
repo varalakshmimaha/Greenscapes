@@ -36,7 +36,7 @@
                     <div class="mb-3">
                         <label class="form-label">Featured Image</label>
                         @if($blog->image)
-                            <div class="mb-2"><img src="{{ asset('storage/'.$blog->image) }}" class="img-thumbnail w-100" alt=""></div>
+                            <div class="mb-2"><img src="@imageUrl($blog->image)" class="img-thumbnail w-100" alt=""></div>
                         @endif
                         <input type="file" name="image" class="form-control" accept="image/*">
                         <small class="text-muted">Leave empty to keep current</small>

@@ -10,8 +10,10 @@ use App\Models\ServiceCategory;
 use App\Models\Setting;
 use App\Models\TeamCategory;
 use App\Models\Video;
+use App\Helpers\ImageHelper;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,15 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Register image helper Blade directive
+        Blade::directive('imageUrl', function ($path) {
+            return "<?php echo \App\Helpers\ImageHelper::getImageUrl({$path}); ?>";
+        });
+
+        Blade::directive('imageExists', function ($path) {
+            return "<?php echo \App\Helpers\ImageHelper::imageExists({$path}) ? 'true' : 'false'; ?>";
+        });
+
         try {
         if (Schema::hasTable('settings') && Schema::hasTable('menus')) {
             View::composer('frontend.*', function ($view) {

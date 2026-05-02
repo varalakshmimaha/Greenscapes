@@ -21,7 +21,7 @@
                         <td>{{ Str::limit($faq->question, 50) }}</td>
                         <td>
                             @if($faq->image)
-                                <img src="{{ asset('storage/' . $faq->image) }}" alt="" class="img-thumbnail-sm" style="max-height:40px;">
+                                <img src="@imageUrl($faq->image)" alt="" class="img-thumbnail-sm" style="max-height:40px;">
                             @else
                                 <span class="text-muted">-</span>
                             @endif

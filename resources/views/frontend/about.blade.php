@@ -667,7 +667,7 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="story-img-wrap">
-                    <img loading="lazy" src="{{ $overview?->image ? asset('storage/' . $overview->image) : asset('images/About Us/2.2 Sustainability at the Core.jpg') }}" alt="Our Story" class="story-img">
+                    <img loading="lazy" src="{{ $overview?->image ? '@imageUrl($overview->image)' : asset('images/About Us/2.2 Sustainability at the Core.jpg') }}" alt="Our Story" class="story-img">
                 </div>
             </div>
         </div>
@@ -770,7 +770,7 @@
                 <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <div class="about-diff-card">
                         <div class="about-diff-img">
-                            <img loading="lazy" src="{{ asset('storage/' . $item['img']) }}" alt="{{ $item['title'] }}">
+                            <img loading="lazy" src="@imageUrl($item['img'])" alt="{{ $item['title'] }}">
                         </div>
                         <div class="about-diff-body">
                             <h6>{{ $item['title'] }}</h6>
@@ -808,7 +808,7 @@
                                     <div class="team-card-inner">
                                         <div class="team-img-wrapper">
                                             @if($member->photo)
-                                                <img loading="lazy" src="{{ asset('storage/' . $member->photo) }}" alt="{{ $member->name }}">
+                                                <img loading="lazy" src="@imageUrl($member->photo)" alt="{{ $member->name }}">
                                             @else
                                                 <div class="team-placeholder">
                                                     {{ collect(explode(' ', $member->name))->map(fn($w) => strtoupper(substr($w, 0, 1)))->filter(fn($l) => ctype_alpha($l))->take(2)->implode('') }}
@@ -865,7 +865,7 @@
                         <div class="about-testi-author">
                             @php $tPhoto = $t->photo ?? $t->image ?? null; @endphp
                             @if($tPhoto)
-                                <img loading="lazy" src="{{ asset('storage/' . $tPhoto) }}" alt="{{ $t->name }}">
+                                <img loading="lazy" src="@imageUrl($tPhoto)" alt="{{ $t->name }}">
                             @else
                                 <div class="about-testi-avatar"><i class="fas fa-user"></i></div>
                             @endif

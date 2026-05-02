@@ -259,8 +259,8 @@
             width: 100%;
         }
         .nav-social-icons a {
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             background: rgba(255,255,255,0.08);
             color: #fff;
@@ -268,7 +268,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 10px;
+            font-size: 8px;
             transition: all 0.3s;
             border: 1px solid rgba(255,255,255,0.15);
         }
@@ -282,9 +282,9 @@
             background: var(--primary);
             color: #fff;
             border: none;
-            padding: 8px 18px;
+            padding: 6px 12px;
             border-radius: 25px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -1308,7 +1308,7 @@
         <div class="container">
             <a href="{{ url('/') }}" class="navbar-brand-custom">
                 @if(!empty($siteSettings['site_logo']))
-                    <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="brand-logo">
+                    <img src="@imageUrl($siteSettings['site_logo'])" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="brand-logo">
                 @endif
                 <div class="brand-text">
                     <span class="brand-line-1">SR</span>
@@ -1423,7 +1423,7 @@
                 {{-- Visible only on mobile inside the menu --}}
                 <li class="d-lg-none mt-3 px-3 pb-3">
                     @if(!empty($siteSettings['brochure_file']))
-                        <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-theme w-100" style="justify-content: center;"><i class="fas fa-download me-2"></i>Download Brochure</a>
+                        <a href="@imageUrl($siteSettings['brochure_file'])" download class="btn-theme w-100" style="justify-content: center;"><i class="fas fa-download me-2"></i>Download Brochure</a>
                     @else
                         <a href="/contact" class="btn-theme w-100" style="justify-content: center;"><i class="fas fa-download me-2"></i>Download Brochure</a>
                     @endif
@@ -1432,7 +1432,7 @@
 
             <div class="nav-right">
                 @if(!empty($siteSettings['brochure_file']))
-                    <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-appointment"><i class="fas fa-download" style="font-size:11px;margin-right:5px;"></i>Download Brochure</a>
+                    <a href="@imageUrl($siteSettings['brochure_file'])" download class="btn-appointment"><i class="fas fa-download" style="font-size:11px;margin-right:5px;"></i>Download Brochure</a>
                 @else
                     <a href="/contact" class="btn-appointment"><i class="fas fa-download" style="font-size:11px;margin-right:5px;"></i>Download Brochure</a>
                 @endif
@@ -1578,7 +1578,7 @@
                 <div class="footer-col footer-col-brand">
                     <div class="footer-brand-wrap">
                         @if(!empty($siteSettings['site_logo']))
-                            <img src="{{ asset('storage/' . $siteSettings['site_logo']) }}" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="footer-brand-logo">
+                            <img src="@imageUrl($siteSettings['site_logo'])" alt="{{ $siteSettings['site_name'] ?? 'Logo' }}" class="footer-brand-logo">
                         @endif
                         <div class="footer-brand-name">
                             <span class="brand-line-1">SR</span>
@@ -1697,7 +1697,7 @@
             .top-bar { font-size: 0.75rem; padding: 6px 0; }
             .navbar-custom { padding: 8px 0; }
             .navbar-custom .brand-text strong { font-size: 0.95rem; }
-            .btn-appointment { padding: 6px 14px; font-size: 11px; }
+            .btn-appointment { padding: 5px 10px; font-size: 10px; }
         }
 
         /* ===== CTA SECTIONS MOBILE ===== */

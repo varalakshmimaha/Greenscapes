@@ -17,7 +17,7 @@
                     @forelse($banners as $banner)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td><img src="{{ asset('storage/'.$banner->image) }}" class="img-thumbnail-sm" alt=""></td>
+                        <td><img src="@imageUrl($banner->image)" class="img-thumbnail-sm" alt=""></td>
                         <td>{{ $banner->title ?? '-' }}</td>
                         <td>{{ $banner->subtitle ?? '-' }}</td>
                         <td><span class="badge bg-secondary">{{ $banner->order ?? 0 }}</span></td>

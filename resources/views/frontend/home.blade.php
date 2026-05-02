@@ -965,7 +965,7 @@
             @if($banners->count())
                 @foreach($banners as $index => $banner)
                     <div class="carousel-item h-100 {{ $index === 0 ? 'active' : '' }}">
-                        <img {{ $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' }} src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}">
+                        <img {{ $index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"' }} src="@imageUrl($banner->image)" alt="{{ $banner->title }}">
                     </div>
                 @endforeach
             @else
@@ -1146,7 +1146,7 @@
                     <div class="service-card">
                         @if($service->image)
                         <div class="svc-img-wrap">
-                            <img loading="lazy" src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
+                            <img loading="lazy" src="@imageUrl($service->image)" alt="{{ $service->name }}">
                         </div>
                         @endif
                         <div class="svc-body">
@@ -1392,7 +1392,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
-                            <img loading="lazy" src="{{ $p->featured_image ? asset('storage/' . $p->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
+                            <img loading="lazy" src="{{ $p->featured_image ? '@imageUrl($p->featured_image)' : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
                                 {{ $p->category ?? ucfirst($p->status) }}
                             </div>

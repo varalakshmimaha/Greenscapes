@@ -819,7 +819,7 @@
                 <div class="brochure-download">
                     <h5>Download Our Brochure</h5>
                     @if(!empty($siteSettings['brochure_file']))
-                        <a href="{{ asset('storage/' . $siteSettings['brochure_file']) }}" download class="btn-download-brochure">
+                        <a href="@imageUrl($siteSettings['brochure_file'])" download class="btn-download-brochure">
                             <i class="fas fa-download"></i> Download PDF
                         </a>
                     @else

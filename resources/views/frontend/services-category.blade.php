@@ -269,7 +269,7 @@
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $idx * 100 }}">
                         <a href="{{ route('services.subcategory', [$category->slug, $sub->slug]) }}" class="subcat-card">
                             <div class="subcat-card-img">
-                                <img loading="lazy" src="{{ asset('storage/' . ($subCatImages[$idx % count($subCatImages)] ?? $subCatImages[0])) }}" alt="{{ $sub->name }}">
+                                <img loading="lazy" src="@imageUrl($subCatImages[$idx % count($subCatImages)] ?? $subCatImages[0])" alt="{{ $sub->name }}">
                                 <span class="service-count">{{ $serviceCount }} {{ Str::plural('Service', $serviceCount) }}</span>
                             </div>
                             <div class="subcat-card-body">

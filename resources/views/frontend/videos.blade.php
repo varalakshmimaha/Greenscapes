@@ -154,7 +154,7 @@
                     <div class="video-card">
                         <div class="video-card-thumb" onclick="openVideo('{{ $video->video_url }}')">
                             @if($video->thumbnail)
-                                <img loading="lazy" src="{{ asset('storage/' . $video->thumbnail) }}" alt="{{ $video->title }}">
+                                <img loading="lazy" src="@imageUrl($video->thumbnail)" alt="{{ $video->title }}">
                             @else
                                 @php
                                     $ytId = '';

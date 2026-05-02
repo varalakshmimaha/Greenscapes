@@ -31,7 +31,7 @@
                     <label class="form-label">Site Logo</label>
                     @if(isset($settings['site_logo']) && $settings['site_logo'])
                         <div class="mb-2 p-3 bg-light rounded text-center">
-                            <img src="{{ asset('storage/'.$settings['site_logo']) }}" style="max-height:80px" alt="Logo">
+                            <img src="@imageUrl($settings['site_logo'])" style="max-height:80px" alt="Logo">
                         </div>
                     @endif
                     <input type="file" name="site_logo" class="form-control" accept="image/*">
@@ -41,7 +41,7 @@
                     <label class="form-label">Site Favicon</label>
                     @if(isset($settings['site_favicon']) && $settings['site_favicon'])
                         <div class="mb-2 p-3 bg-light rounded text-center">
-                            <img src="{{ asset('storage/'.$settings['site_favicon']) }}" style="max-height:40px" alt="Favicon">
+                            <img src="@imageUrl($settings['site_favicon'])" style="max-height:40px" alt="Favicon">
                         </div>
                     @endif
                     <input type="file" name="site_favicon" class="form-control" accept="image/*">

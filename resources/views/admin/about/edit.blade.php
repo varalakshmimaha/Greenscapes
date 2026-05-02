@@ -33,7 +33,7 @@
             <div class="mb-3">
                 <label class="form-label">Image</label>
                 @if($about->image)
-                    <div class="mb-2"><img src="{{ asset('storage/'.$about->image) }}" class="img-thumbnail" style="max-height:150px" alt=""></div>
+                    <div class="mb-2"><img src="@imageUrl($about->image)" class="img-thumbnail" style="max-height:150px" alt=""></div>
                 @endif
                 <input type="file" name="image" class="form-control" accept="image/*">
                 <small class="text-muted">Leave empty to keep current image</small>

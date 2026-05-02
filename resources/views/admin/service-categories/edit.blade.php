@@ -33,7 +33,7 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Image</label>
                     @if($serviceCategory->image)
-                        <div class="mb-2"><img src="{{ asset('storage/'.$serviceCategory->image) }}" class="img-thumbnail" style="max-height:120px;" alt=""></div>
+                        <div class="mb-2"><img src="@imageUrl($serviceCategory->image)" class="img-thumbnail" style="max-height:120px;" alt=""></div>
                     @endif
                     <input type="file" name="image" class="form-control" accept="image/*">
                     <small class="text-muted">Leave empty to keep current image</small>
@@ -41,7 +41,7 @@
                 <div class="col-md-6 mb-3">
                     <label class="form-label">PDF</label>
                     @if($serviceCategory->pdf)
-                        <div class="mb-2"><a href="{{ asset('storage/'.$serviceCategory->pdf) }}" target="_blank" class="btn btn-sm btn-outline-success"><i class="fas fa-file-pdf me-1"></i>View Current PDF</a></div>
+                        <div class="mb-2"><a href="@imageUrl($serviceCategory->pdf)" target="_blank" class="btn btn-sm btn-outline-success"><i class="fas fa-file-pdf me-1"></i>View Current PDF</a></div>
                     @endif
                     <input type="file" name="pdf" class="form-control" accept=".pdf">
                     <small class="text-muted">Leave empty to keep current PDF</small>

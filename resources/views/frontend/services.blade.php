@@ -425,7 +425,7 @@
                     <div class="service-card">
                         @if($service->image)
                         <div class="svc-img-wrap">
-                            <img loading="lazy" src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->name }}">
+                            <img loading="lazy" src="@imageUrl($service->image)" alt="{{ $service->name }}">
                         </div>
                         @endif
                         <div class="svc-body">
