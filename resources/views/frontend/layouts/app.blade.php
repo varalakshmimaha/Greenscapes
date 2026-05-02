@@ -131,7 +131,7 @@
             white-space: nowrap;
             flex: 1;
             justify-content: center;
-            gap: 25px; /* Slightly reduced gap for larger font */
+            gap: 8px;
         }
         .nav-menu > li {
             position: relative;
@@ -143,7 +143,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 14px; /* Increased from 12px */
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.4px;
