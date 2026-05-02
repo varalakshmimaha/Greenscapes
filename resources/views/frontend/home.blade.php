@@ -699,16 +699,9 @@
     }
     .custom-project-overlay {
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 25px;
+        bottom: 0; left: 0; right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
         transition: background 0.3s;
-    }
-    .custom-project-card:hover .custom-project-overlay {
-        background: rgba(26,42,26,0.5); /* Greenish tint on hover */
     }
     .project-type-badge {
         position: absolute;
