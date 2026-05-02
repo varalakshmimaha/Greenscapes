@@ -82,11 +82,17 @@
         overflow: hidden;
         box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         transition: all 0.3s;
-        height: 380px;
+        height: 320px;
         position: relative;
         cursor: pointer;
-        border: 1px solid #eee;
-        background: #fff;
+    }
+    .proj-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        z-index: 1;
+        pointer-events: none;
     }
     .proj-card:hover {
         box-shadow: 0 12px 40px rgba(0,0,0,0.14);
@@ -118,11 +124,9 @@
     }
     .proj-card .proj-overlay {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 25px 20px;
-        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
         z-index: 2;
     }
     .proj-card .proj-overlay h5 {
@@ -132,9 +136,12 @@
         margin-bottom: 5px;
     }
     .proj-card .proj-overlay p {
-        color: rgba(255,255,255,0.7);
-        font-size: 0.8rem;
+        color: rgba(255,255,255,0.9);
+        font-size: 0.85rem;
         margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 5px;
     }
     .proj-card .view-btn {
         position: absolute;
@@ -263,7 +270,7 @@
 
     /* ===== MOBILE RESPONSIVE ===== */
     @media (max-width: 991px) {
-        .proj-card { height: 300px; }
+        .proj-card { height: 280px; }
         .proj-card .proj-overlay h5 { font-size: 0.95rem; }
         .filter-btns { gap: 6px; margin-bottom: 25px; }
         .filter-btns .filter-btn { padding: 6px 16px; font-size: 0.78rem; }
@@ -273,9 +280,9 @@
     @media (max-width: 575px) {
         .projects-hero { height: 220px; }
         .projects-hero-content h1 { font-size: 1.8rem; }
-        .proj-card { height: 250px; border-radius: 12px; }
+        .proj-card { height: 260px; border-radius: 12px; }
         .proj-card .proj-badge { font-size: 0.6rem; padding: 4px 10px; top: 10px; right: 10px; }
-        .proj-card .proj-overlay { padding: 15px; }
+        .proj-card .proj-overlay { padding: 0; bottom: 15px; left: 15px; right: 15px; }
         .proj-card .proj-overlay h5 { font-size: 0.85rem; }
         .proj-card .proj-overlay p { font-size: 0.72rem; }
         .proj-card .view-btn { width: 40px; height: 40px; font-size: 14px; }

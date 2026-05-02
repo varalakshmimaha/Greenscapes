@@ -683,10 +683,18 @@
         position: relative;
         border-radius: 20px;
         overflow: hidden;
-        height: 380px;
+        height: 320px;
         cursor: pointer;
         transition: transform 0.4s;
         box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .custom-project-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        z-index: 1;
+        pointer-events: none;
     }
     .custom-project-card:hover {
         transform: translateY(-10px);
@@ -699,8 +707,10 @@
     }
     .custom-project-overlay {
         position: absolute;
-        bottom: 0; left: 0; right: 0;
-        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        z-index: 2;
         transition: background 0.3s;
     }
     .project-type-badge {
@@ -715,6 +725,7 @@
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 1px;
+        z-index: 3;
     }
     .project-content-bottom h5 {
         color: #fff;
@@ -723,8 +734,8 @@
         margin-bottom: 5px;
     }
     .project-content-bottom p {
-        color: rgba(255,255,255,0.7);
-        font-size: 0.8rem;
+        color: rgba(255,255,255,0.9);
+        font-size: 0.85rem;
         margin: 0;
         display: flex;
         align-items: center;
@@ -1374,16 +1385,16 @@
         <div class="row portfolio-grid g-4">
             @foreach($projects->take(6) as $p)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px; cursor: pointer;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
+                    <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="cursor: pointer;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
                             <img loading="lazy" src="{{ $p->featured_image ? \App\Helpers\ImageHelper::getImageUrl($p->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
                                 {{ $p->category ?? ucfirst($p->status) }}
                             </div>
-                            <div class="custom-project-overlay position-absolute bottom-0 start-0 w-100 p-4" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                            <div class="custom-project-overlay position-absolute">
                                 <div class="project-content-bottom text-white">
                                     <h5 class="mb-1 fw-bold">{{ $p->title }}</h5>
-                                    <p class="mb-0 small opacity-75"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
+                                    <p class="mb-0 small"><i class="fas fa-map-marker-alt me-2"></i> {{ $p->location ?? $p->client_name ?? 'Location' }}</p>
                                 </div>
                             </div>
                         </div>
