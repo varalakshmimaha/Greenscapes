@@ -9,7 +9,7 @@
         max-height: 600px;
         overflow: hidden;
         border-radius: 30px;
-        margin: 15px 20px 0;
+        margin: 0 20px 0;
     }
     .hero-banner .carousel-item {
         min-height: auto;
@@ -897,7 +897,7 @@
         .portfolio-section { padding: 50px 0; }
     }
     @media (max-width: 575px) {
-        .hero-banner { margin: 8px 10px 0; border-radius: 20px; min-height: 60vh; }
+        .hero-banner { margin: 0 10px 0; border-radius: 20px; min-height: 60vh; }
         .hero-banner .carousel-item { min-height: 60vh; }
         .hero-text h1 { font-size: 1.6rem; letter-spacing: 1px; }
         .hero-text .hero-company { font-size: 0.82rem; letter-spacing: 1.5px; }
@@ -935,7 +935,7 @@
         .btn-theme { padding: 10px 20px; font-size: 12px; }
     }
     @media (max-width: 768px) {
-        .hero-banner { margin: 10px 10px 0; border-radius: 16px; }
+        .hero-banner { margin: 0 10px 0; border-radius: 16px; }
         .hero-inner .container { flex-direction: column; gap: 20px; padding: 20px 15px; }
         .hero-text { text-align: center; }
         .hero-text h1 { font-size: 1.8rem; }
@@ -946,7 +946,7 @@
     }
     @media (max-width: 400px) {
         .hero-text h1 { font-size: 1.3rem; }
-        .hero-banner { margin: 3px 3px 0; }
+        .hero-banner { margin: 0 3px 0; }
     }
 </style>
 @endsection

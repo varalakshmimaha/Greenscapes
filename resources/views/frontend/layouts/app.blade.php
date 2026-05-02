@@ -44,6 +44,18 @@
             font-family: 'Poppins', sans-serif;
             color: #333;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Global reset to remove gaps */
+        h1, h2, h3, h4, h5, h6, p, section {
+            margin: 0;
+        }
+
+        section:first-of-type {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
         }
 
         /* Consistent max-width across all screen sizes ≥ 1200px */
@@ -58,6 +70,7 @@
             background: #1e3838;
             padding: 4px 0;
             z-index: 1050;
+            margin-bottom: 0;
         }
         .main-navbar .container {
             display: flex;
