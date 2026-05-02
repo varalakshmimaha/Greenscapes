@@ -301,7 +301,7 @@
                 <div class="col-lg-4 col-md-6 project-item" data-type="{{ strtoupper($project->category ?? $project->status) }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <a href="{{ route('project.detail', $project->slug) }}" class="text-decoration-none">
                         <div class="proj-card">
-                            <img loading="lazy" src="{{ $project->featured_image ? asset('storage/' . $project->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $project->title }}">
+                            <img loading="lazy" src="{{ $project->featured_image ? \App\Helpers\ImageHelper::getImageUrl($project->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $project->title }}">
                             <div class="proj-badge">{{ $project->category ?? ucfirst($project->status) }}</div>
                             <div class="view-btn"><i class="fas fa-arrow-right"></i></div>
                             <div class="proj-overlay">

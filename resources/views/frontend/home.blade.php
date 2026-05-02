@@ -1392,7 +1392,7 @@
                 <div class="col-lg-4 col-md-6" data-aos="fade-up">
                     <div class="custom-project-card border rounded-4 overflow-hidden shadow-sm bg-white" style="height: 380px;" onclick="window.location.href='{{ route('project.detail', $p->slug) }}'">
                         <div class="project-img-container h-100 position-relative">
-                            <img loading="lazy" src="{{ $p->featured_image ? '@imageUrl($p->featured_image)' : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
+                            <img loading="lazy" src="{{ $p->featured_image ? \App\Helpers\ImageHelper::getImageUrl($p->featured_image) : asset('images/Home/1.1Cover photo 1.jpg') }}" alt="{{ $p->title }}" class="w-100 h-100 object-fit-cover">
                             <div class="project-type-badge position-absolute top-0 end-0 m-3">
                                 {{ $p->category ?? ucfirst($p->status) }}
                             </div>
