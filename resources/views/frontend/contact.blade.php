@@ -645,7 +645,7 @@
             <!-- Left: Office Info -->
             <div class="col-lg-6">
                 <div class="contact-landing-img">
-                    <img loading="lazy" src="{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}" alt="SR Greenscapes Office Interior">
+                    <img loading="lazy" src="{{ asset('images/Home/1.6 Cover photo 6.jpg') }}" alt="SR Greenscapes Office Interior">
                 </div>
             </div>
 

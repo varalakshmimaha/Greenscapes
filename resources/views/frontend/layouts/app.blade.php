@@ -1063,7 +1063,7 @@
         .about-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
         .about-cta-section {
             position: relative;
-            background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
+            background: url('{{ asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
             padding: 60px 50px; overflow: hidden; border-radius: 30px;
             box-shadow: 0 20px 60px rgba(26,58,26,0.25);
         }
@@ -1498,7 +1498,7 @@
         .gcta-wrapper { padding: 60px 0 80px; background: #f5f9f2; }
         .gcta-section {
             position: relative;
-            background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
+            background: url('{{ asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
             padding: 60px 50px; overflow: hidden; border-radius: 30px;
             box-shadow: 0 20px 60px rgba(26,58,26,0.25);
         }

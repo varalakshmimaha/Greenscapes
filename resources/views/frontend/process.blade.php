@@ -878,7 +878,7 @@
     .proc-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
     .proc-cta-section {
         position: relative;
-        background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
         padding: 60px 50px; overflow: hidden; border-radius: 30px;
         box-shadow: 0 20px 60px rgba(26,58,26,0.25);
     }

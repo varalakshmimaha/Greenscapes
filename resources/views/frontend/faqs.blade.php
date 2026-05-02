@@ -340,7 +340,7 @@
             <!-- TOP: PILLS -->
             <div class="faq-cat-pills">
                 @foreach($activeCats as $idx => $cat)
-                    <button class="faq-cat-pill {{ $idx === 0 ? 'active' : '' }}" onclick="switchFaqCat({{ $idx }}, this, '{{ $catImages[$cat] ?? asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}')">
+                    <button class="faq-cat-pill {{ $idx === 0 ? 'active' : '' }}" onclick="switchFaqCat({{ $idx }}, this, '{{ $catImages[$cat] ?? asset('images/Home/1.3 Cover photo 3.jpg') }}')">
                         {{ $cat }}
                     </button>
                 @endforeach
@@ -349,7 +349,7 @@
             <div class="faq-container">
                 <!-- LEFT SIDE IMAGE -->
                 <div class="faq-left-col">
-                    <img loading="lazy" src="{{ $catImages[$activeCats[0]] ?? asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}" id="faqMainImg" class="faq-left-img" alt="FAQ Category Image">
+                    <img loading="lazy" src="{{ $catImages[$activeCats[0]] ?? asset('images/Home/1.3 Cover photo 3.jpg') }}" id="faqMainImg" class="faq-left-img" alt="FAQ Category Image">
                 </div>
 
                 <!-- RIGHT SIDE QUESTION AND ANS -->
@@ -458,7 +458,7 @@
     .faq-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
     .faq-cta-section {
         position: relative;
-        background: url('{{ asset('storage/banners/UzLsmhyoocKjP5FDbGYxHVVSVkxrJaVqcw3hrUIB.jpg') }}') center/cover no-repeat;
+        background: url('{{ asset('images/Home/1.3 Cover photo 3.jpg') }}') center/cover no-repeat;
         padding: 60px 50px; overflow: hidden; border-radius: 30px;
         box-shadow: 0 20px 60px rgba(26,58,26,0.25);
     }
