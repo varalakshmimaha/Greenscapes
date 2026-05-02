@@ -68,7 +68,7 @@
         /* ===== NAVBAR ===== */
         .main-navbar {
             background: #1e3838;
-            padding: 2px 0;
+            padding: 0;
             z-index: 1050;
             margin-bottom: 0;
         }
@@ -85,20 +85,20 @@
             display: flex;
             align-items: center;
             text-decoration: none;
-            padding: 2px 0;
+            padding: 0;
             flex-shrink: 0;
             margin-right: 12px;
         }
         .navbar-brand-custom .brand-logo {
-            height: 75px;
-            width: 75px;
-            min-width: 75px;
+            height: 45px;
+            width: 45px;
+            min-width: 45px;
             margin-right: 8px;
             object-fit: contain;
             object-position: center;
             border-radius: 50%;
             background: #fff;
-            padding: 4px;
+            padding: 2px;
             image-rendering: auto;
         }
         .navbar-brand-custom .brand-text {
@@ -107,7 +107,7 @@
             align-items: flex-start;
             color: #fff;
             font-weight: 700;
-            line-height: 1.02;
+            line-height: 1;
         }
         .navbar-brand-custom .brand-text .brand-line-1,
         .navbar-brand-custom .brand-text .brand-line-2 {
@@ -118,20 +118,20 @@
             letter-spacing: 0.8px;
         }
         .navbar-brand-custom .brand-text .brand-line-1 {
-            font-size: 1.15rem;
+            font-size: 0.95rem;
         }
         .navbar-brand-custom .brand-text .brand-line-2 {
-            font-size: 1.15rem;
-            margin-top: 2px;
+            font-size: 0.95rem;
+            margin-top: 0px;
         }
         .navbar-brand-custom .brand-text .brand-line-3 {
             display: block;
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             font-weight: 500;
             color: #fff;
-            letter-spacing: 2.2px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 4px;
+            margin-top: 1px;
         }
 
         /* Nav items: fill remaining space, centered */
@@ -152,11 +152,11 @@
         .nav-menu > li > a {
             color: #fff;
             text-decoration: none;
-            padding: 14px 12px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.4px;
@@ -925,14 +925,15 @@
         .top-bar {
             background-color: #ffffff;
             border-bottom: 1px solid #e8ede9;
-            padding: 2px 0;
-            font-size: 0.75rem;
+            padding: 0;
+            font-size: 0.70rem;
             color: #666;
             font-weight: 500;
             line-height: 1;
         }
         .top-bar .top-bar-inner {
-            min-height: 24px;
+            min-height: 18px;
+            padding: 2px 0;
         }
         .top-bar i {
             color: var(--primary);
@@ -1714,10 +1715,10 @@
 
         /* ===== NAVBAR MOBILE ===== */
         @media (max-width: 575px) {
-            .top-bar { font-size: 0.75rem; padding: 2px 0; }
-            .navbar-custom { padding: 4px 0; }
-            .navbar-custom .brand-text strong { font-size: 0.95rem; }
-            .btn-appointment { padding: 5px 10px; font-size: 10px; }
+            .top-bar { font-size: 0.65rem; padding: 0; }
+            .navbar-custom { padding: 0; }
+            .navbar-custom .brand-text strong { font-size: 0.85rem; }
+            .btn-appointment { padding: 3px 8px; font-size: 9px; }
         }
 
         /* ===== CTA SECTIONS MOBILE ===== */
