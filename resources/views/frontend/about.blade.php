@@ -667,7 +667,7 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="story-img-wrap">
-                    <img loading="lazy" src="{{ $overview->image ? asset('storage/' . $overview->image) : asset('images/About Us/2.2 Sustainability at the Core.jpg') }}" alt="Our Story" class="story-img">
+                    <img loading="lazy" src="{{ $overview?->image ? asset('storage/' . $overview->image) : asset('images/About Us/2.2 Sustainability at the Core.jpg') }}" alt="Our Story" class="story-img">
                 </div>
             </div>
         </div>
