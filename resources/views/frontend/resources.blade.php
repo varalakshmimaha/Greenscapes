@@ -293,8 +293,8 @@
                 @foreach($blogs as $blog)
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <a href="{{ route('blog.detail', $blog->slug) }}" class="res-blog-card">
-                            @if($blog->featured_image)
-                                <img loading="lazy" src="{{ asset('storage/' . $blog->featured_image) }}" alt="{{ $blog->title }}" class="res-blog-img">
+                            @if($blog->image)
+                                <img loading="lazy" src="{{ \App\Helpers\ImageHelper::getImageUrl($blog->image) }}" alt="{{ $blog->title }}" class="res-blog-img">
                             @else
                                 <div class="res-blog-img-placeholder"><i class="fas fa-seedling"></i></div>
                             @endif
