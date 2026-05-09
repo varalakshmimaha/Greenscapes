@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // Create Admin User
         User::create([
             'name' => 'Admin',
-            'email' => 'admin@ecoscapes.in',
+            'email' => 'admin@srgreenscapes.com',
             'password' => Hash::make('password'),
             'is_admin' => true,
             'role' => 'admin',
@@ -72,22 +72,22 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Default FAQs
-        Faq::create(['question' => 'What services does Ecoscapes provide?', 'answer' => 'We provide complete landscaping solutions including landscape design, execution, and maintenance services.', 'order' => 1]);
+        Faq::create(['question' => 'What services does SR Greenscapes provide?', 'answer' => 'We provide complete landscaping solutions including landscape design, execution, and maintenance services.', 'order' => 1]);
         Faq::create(['question' => 'How long does a typical landscaping project take?', 'answer' => 'Project timelines vary based on scope. Small projects may take 1-2 weeks, while larger projects can take 4-8 weeks.', 'order' => 2]);
         Faq::create(['question' => 'Do you offer maintenance services?', 'answer' => 'Yes, we offer comprehensive landscape maintenance packages to keep your outdoor spaces looking beautiful year-round.', 'order' => 3]);
 
         // Default Settings
         $settings = [
-            ['key' => 'site_name', 'value' => 'Ecoscapes Landscaping Pvt Ltd', 'group' => 'general'],
-            ['key' => 'meta_title', 'value' => 'Ecoscapes - Professional Landscaping Services', 'group' => 'general'],
+            ['key' => 'site_name', 'value' => 'SR Greenscapes Pvt Ltd', 'group' => 'general'],
+            ['key' => 'meta_title', 'value' => 'SR Greenscapes - Professional Landscaping Services', 'group' => 'general'],
             ['key' => 'meta_description', 'value' => 'Professional landscaping services in Bangalore. Landscape design, execution, and maintenance.', 'group' => 'general'],
             ['key' => 'footer_description', 'value' => '3rd floor, Thanks Court, 3rd B Main Road, Near 4th Cross Ring, Thillai Nagar 2nd Block, Kalyan Nagar, Bengaluru, Bangalore 560043', 'group' => 'footer'],
-            ['key' => 'copyright_text', 'value' => 'Copyright 2025 Ecoscapes All rights reserved.', 'group' => 'footer'],
-            ['key' => 'facebook', 'value' => 'https://facebook.com/ecoscapes', 'group' => 'footer'],
-            ['key' => 'instagram', 'value' => 'https://instagram.com/ecoscapes', 'group' => 'footer'],
-            ['key' => 'linkedin', 'value' => 'https://linkedin.com/company/ecoscapes', 'group' => 'footer'],
+            ['key' => 'copyright_text', 'value' => '© 2025 SR Greenscapes Pvt Ltd. All rights reserved.', 'group' => 'footer'],
+            ['key' => 'facebook', 'value' => 'https://www.facebook.com/profile.php?id=61579521119580', 'group' => 'footer'],
+            ['key' => 'instagram', 'value' => 'https://www.instagram.com/sr_greenscapes/?hl=en', 'group' => 'footer'],
+            ['key' => 'linkedin', 'value' => 'https://www.linkedin.com/company/sr-greenscapes-pvt-ltd/', 'group' => 'footer'],
             ['key' => 'phone', 'value' => '+91-85522-22990', 'group' => 'contact'],
-            ['key' => 'email', 'value' => 'info@ecoscapes.in', 'group' => 'contact'],
+            ['key' => 'email', 'value' => 'info@srgreenscapes.com', 'group' => 'contact'],
             ['key' => 'address', 'value' => '3rd floor, Thanks Court, 3rd B Main Road, Kalyan Nagar, Bengaluru, Karnataka - 560043', 'group' => 'contact'],
             ['key' => 'google_map_url', 'value' => '', 'group' => 'contact'],
             ['key' => 'happy_clients', 'value' => '300', 'group' => 'stats'],

@@ -1,6 +1,10 @@
 ﻿@extends('frontend.layouts.app')
 
 @section('title', $blog->title . ' - SR Greenscapes')
+@section('meta_description', $blog->seo_description)
+@section('meta_image', $blog->image ? \App\Helpers\ImageHelper::getImageUrl($blog->image) : asset('images/Home/1.5 Cover photo 5.jpg'))
+@section('meta_type', 'article')
+@section('canonical_url', route('blog.detail', $blog->slug))
 
 @section('styles')
 <style>
@@ -60,18 +64,15 @@
     }
     .blog-detail-layout {
         display: grid;
-        grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.9fr);
-        gap: 34px;
-        align-items: start;
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 920px;
+        margin: 0 auto;
     }
-    .blog-article-card,
-    .blog-contact-card {
+    .blog-article-card {
         background: #fff;
         border-radius: 24px;
         border: 1px solid #edf3ea;
         box-shadow: 0 18px 45px rgba(22, 40, 22, 0.06);
-    }
-    .blog-article-card {
         overflow: hidden;
     }
     .blog-featured-image {
@@ -177,114 +178,6 @@
         color: #3e4d3d;
     }
 
-    .blog-sidebar {
-        position: sticky;
-        top: 110px;
-    }
-    .blog-contact-card {
-        padding: 30px 28px;
-        position: relative;
-        overflow: hidden;
-    }
-    .blog-contact-card::before {
-        content: '';
-        position: absolute;
-        inset: 0 0 auto 0;
-        height: 5px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
-    }
-    .blog-contact-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--primary);
-        font-size: 0.78rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1.2px;
-        margin-bottom: 12px;
-    }
-    .blog-contact-card h3 {
-        font-size: 1.55rem;
-        font-weight: 800;
-        color: #1c2d1c;
-        margin-bottom: 10px;
-    }
-    .blog-contact-card p {
-        color: #70806f;
-        font-size: 0.92rem;
-        line-height: 1.75;
-        margin-bottom: 20px;
-    }
-    .blog-contact-points {
-        display: grid;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    .blog-contact-point {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: #495847;
-        font-size: 0.86rem;
-    }
-    .blog-contact-point i {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        background: #eef7e8;
-        color: var(--primary-dark);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    .blog-contact-card .form-control,
-    .blog-contact-card .form-select,
-    .blog-contact-card textarea {
-        border: 1px solid #dde7d7;
-        border-radius: 14px;
-        padding: 13px 15px;
-        font-size: 0.9rem;
-        background: #fbfdf9;
-        box-shadow: none;
-    }
-    .blog-contact-card .form-control:focus,
-    .blog-contact-card .form-select:focus,
-    .blog-contact-card textarea:focus {
-        border-color: var(--primary);
-        background: #fff;
-        box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.08);
-    }
-    .blog-contact-card textarea {
-        min-height: 120px;
-        resize: vertical;
-    }
-    .blog-contact-submit {
-        width: 100%;
-        border: 0;
-        border-radius: 14px;
-        padding: 15px 18px;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: #fff;
-        font-size: 0.88rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .blog-contact-submit:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 30px rgba(76, 175, 80, 0.24);
-        color: #fff;
-    }
-    .blog-form-note {
-        margin-top: 12px;
-        font-size: 0.76rem;
-        color: #879486;
-        text-align: center;
-    }
-
     .related-blogs-section {
         padding: 0 0 80px;
         background: #fff;
@@ -381,12 +274,6 @@
         .blog-banner-inner {
             padding: 110px 0 56px;
         }
-        .blog-detail-layout {
-            grid-template-columns: 1fr;
-        }
-        .blog-sidebar {
-            position: static;
-        }
         .blog-featured-image {
             height: 360px;
         }
@@ -404,8 +291,7 @@
         .blog-featured-image {
             height: 240px;
         }
-        .blog-article-body,
-        .blog-contact-card {
+        .blog-article-body {
             padding: 24px 20px;
         }
         .blog-article-title {
@@ -478,72 +364,10 @@
                     @endif
 
                     <div class="blog-content">
-                        {!! $blog->content !!}
+                        {!! $blog->formatted_content !!}
                     </div>
                 </div>
             </div>
-
-            <aside class="blog-sidebar" data-aos="fade-up" data-aos-delay="100">
-                <div class="blog-contact-card">
-                    <div class="blog-contact-badge">
-                        <i class="fas fa-paper-plane"></i> Contact Us
-                    </div>
-                    <h3>Need help with a landscaping project?</h3>
-                    <p>Share your requirement with our team and we will get back to you with the right solution for your space.</p>
-
-                    <div class="blog-contact-points">
-                        <div class="blog-contact-point">
-                            <i class="fas fa-leaf"></i>
-                            <span>Consultation for residential, commercial and institutional landscapes</span>
-                        </div>
-                        <div class="blog-contact-point">
-                            <i class="fas fa-clock"></i>
-                            <span>Quick response from the SR Greenscapes team</span>
-                        </div>
-                    </div>
-
-                    @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show mb-3" style="border-radius: 14px; border: 0; background: #e8f5e9; color: var(--primary-dark);">
-                            <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    @endif
-
-                    @if($errors->any())
-                        <div class="alert alert-danger mb-3" style="border-radius: 14px; border: 0; background: #fdeaea; color: #b42318;">
-                            {{ $errors->first() }}
-                        </div>
-                    @endif
-
-                    <form action="{{ route('contact.submit') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="source" value="blog-detail:{{ $blog->slug }}">
-
-                        <div class="mb-3">
-                            <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{ old('name') }}" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{ old('phone') }}" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="email" name="email" class="form-control" placeholder="Email Address" value="{{ old('email') }}">
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject', 'Blog Enquiry') }}">
-                        </div>
-
-                        <div class="mb-3">
-                            <textarea name="message" class="form-control" placeholder="Tell us what you need...">{{ old('message') }}</textarea>
-                        </div>
-
-                        <button type="submit" class="blog-contact-submit">Send Enquiry</button>
-                        <div class="blog-form-note">Your details are safe with us.</div>
-                    </form>
-                </div>
-            </aside>
         </div>
     </div>
 </section>

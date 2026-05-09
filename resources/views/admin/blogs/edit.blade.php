@@ -25,6 +25,7 @@
                     <div class="mb-3">
                         <label class="form-label">Content <span class="text-danger">*</span></label>
                         <textarea name="content" class="form-control" rows="10" required>{{ old('content', $blog->content) }}</textarea>
+                        <small class="text-muted">Blank lines render as separate paragraphs. Lines starting with a dash, asterisk, or 1. render as lists.</small>
                     </div>
                 </div>
             </div>
