@@ -16,13 +16,13 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
     }
     .contact-hero::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(135deg, rgba(27,94,32,0.88) 0%, rgba(26,42,26,0.92) 100%);
+        background: linear-gradient(135deg, rgba(27,94,32,0.45) 0%, rgba(26,42,26,0.50) 100%);
     }
     .contact-hero .hero-content {
         position: relative;

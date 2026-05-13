@@ -98,7 +98,10 @@
 
             <div class="nav-label">Frontend Content</div>
             <a href="{{ route('admin.banners.index') }}" class="{{ request()->routeIs('admin.banners.*') ? 'active' : '' }}">
-                <i class="fas fa-image"></i> Banners
+                <i class="fas fa-image"></i> Home Banners
+            </a>
+            <a href="{{ route('admin.page-banners.index') }}" class="{{ request()->routeIs('admin.page-banners.*') ? 'active' : '' }}">
+                <i class="fas fa-panorama"></i> Page Banners
             </a>
             <a href="{{ route('admin.menus.index') }}" class="{{ request()->routeIs('admin.menus.*') ? 'active' : '' }}">
                 <i class="fas fa-bars"></i> Navigation Menus

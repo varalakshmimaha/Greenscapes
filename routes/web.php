@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TeamCategoryController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\PageBannerController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CounterController;
@@ -69,8 +70,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', \App\Http\Middleware
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Banners
+    // Home Banners (slider)
     Route::resource('banners', BannerController::class);
+
+    // Page Banners (hero images for inner pages)
+    Route::get('page-banners', [PageBannerController::class, 'index'])->name('page-banners.index');
+    Route::put('page-banners/{page}', [PageBannerController::class, 'update'])->name('page-banners.update');
+    Route::delete('page-banners/{page}', [PageBannerController::class, 'destroy'])->name('page-banners.destroy');
 
     // Navigation Menus
     Route::resource('menus', MenuController::class);

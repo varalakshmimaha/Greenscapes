@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Banner;
+use App\Models\PageBanner;
 use App\Models\Contact;
 use App\Models\Faq;
 use App\Models\Gallery;
@@ -54,7 +55,8 @@ class HomeController extends Controller
         }])->get();
         $activeCategory = null;
         $testimonials = Testimonial::where('is_active', true)->orderBy('order')->get();
-        return view('frontend.about', compact('about', 'teamMembers', 'teamCategories', 'activeCategory', 'testimonials'));
+        $pageBanner = PageBanner::where('page', 'about')->first();
+        return view('frontend.about', compact('about', 'teamMembers', 'teamCategories', 'activeCategory', 'testimonials', 'pageBanner'));
     }
 
     public function ourTeam(Request $request)
@@ -85,8 +87,8 @@ class HomeController extends Controller
             ->withCount('categories')
             ->orderBy('order')
             ->get();
-
-        return view('frontend.services', compact('services'));
+        $pageBanner = PageBanner::where('page', 'services')->first();
+        return view('frontend.services', compact('services', 'pageBanner'));
     }
 
 
@@ -163,7 +165,8 @@ class HomeController extends Controller
         $projects = Project::where('is_active', true)->orderBy('order')->paginate(12);
         $counters = Counter::where('is_active', true)->orderBy('order')->get();
         $testimonials = Testimonial::where('is_active', true)->orderBy('order')->get();
-        return view('frontend.projects', compact('projects', 'counters', 'testimonials'));
+        $pageBanner = PageBanner::where('page', 'projects')->first();
+        return view('frontend.projects', compact('projects', 'counters', 'testimonials', 'pageBanner'));
     }
 
     public function projectDetail($slug)
@@ -184,7 +187,8 @@ class HomeController extends Controller
         $faqs = Faq::where('is_active', true)->orderBy('order')->get();
         $faqCategories = $faqs->groupBy('category');
         $categories = \App\Models\Faq::CATEGORIES;
-        return view('frontend.faqs', compact('faqs', 'faqCategories', 'categories'));
+        $pageBanner = PageBanner::where('page', 'faqs')->first();
+        return view('frontend.faqs', compact('faqs', 'faqCategories', 'categories', 'pageBanner'));
     }
 
     public function testimonials()
@@ -217,12 +221,14 @@ class HomeController extends Controller
         $blogs   = Blog::where('is_published', true)->orderBy('published_at', 'desc')->take(3)->get();
         $gallery = Gallery::where('is_active', true)->orderBy('order')->take(6)->get();
         $videos  = Video::where('is_active', true)->orderBy('order')->take(3)->get();
-        return view('frontend.resources', compact('blogs', 'gallery', 'videos'));
+        $pageBanner = PageBanner::where('page', 'resources')->first();
+        return view('frontend.resources', compact('blogs', 'gallery', 'videos', 'pageBanner'));
     }
 
     public function process()
     {
-        return view('frontend.process');
+        $pageBanner = PageBanner::where('page', 'process')->first();
+        return view('frontend.process', compact('pageBanner'));
     }
 
     public function privacyPolicy()
@@ -243,7 +249,8 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('frontend.contact');
+        $pageBanner = PageBanner::where('page', 'contact')->first();
+        return view('frontend.contact', compact('pageBanner'));
     }
 
     public function submitContact(Request $request)

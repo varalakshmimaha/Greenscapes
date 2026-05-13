@@ -18,13 +18,13 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: url('{{ asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
+        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
     }
     .svc-hero::after {
         content: '';
         position: absolute;
         inset: 0;
-        background: rgba(20, 45, 25, 0.75);
+        background: rgba(20, 45, 25, 0.45);
     }
     .svc-hero-content {
         position: relative;
@@ -162,12 +162,12 @@
     .service-card .svc-img-wrap {
         aspect-ratio: 4/3;
         overflow: hidden;
-        background: #fff;
+        background: #f8f8f8;
     }
     .service-card .svc-img-wrap img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         display: block;
         transition: transform 0.4s;
     }
@@ -528,7 +528,7 @@
     .svc-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
     .svc-cta-section {
         position: relative;
-        background: url('{{ asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
+        background: url('{{ $ctaBanner && $ctaBanner->image ? asset('storage/' . $ctaBanner->image) : asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
         padding: 60px 50px; overflow: hidden; border-radius: 30px;
         box-shadow: 0 20px 60px rgba(26,58,26,0.25);
     }

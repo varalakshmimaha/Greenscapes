@@ -8,7 +8,7 @@
     .sd-hero {
         position: relative;
         width: 100%;
-        height: 320px;
+        height: 420px;
         display: flex;
         align-items: center;
         overflow: hidden;
@@ -16,16 +16,22 @@
     .sd-hero::before {
         content: '';
         position: absolute;
-        inset: 0;
-        background: url('{{ asset("images/Home/1.2 Cover photo 2.jpg") }}') center/cover no-repeat;
-        transition: transform 8s ease;
+        inset: -10px;
+        background: url('{{ asset("images/Home/1.1Cover photo 1.jpg") }}') center 40% / cover no-repeat;
+        transition: transform 10s ease;
     }
-    .sd-hero:hover::before { transform: scale(1.03); }
+    .sd-hero:hover::before { transform: scale(1.06); }
     .sd-hero::after {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(10,30,10,0.88) 0%, rgba(15,40,15,0.7) 50%, rgba(20,50,20,0.55) 100%);
+        background:
+            linear-gradient(to right, rgba(8,24,8,0.92) 0%, rgba(12,32,12,0.78) 45%, rgba(15,40,15,0.45) 100%),
+            linear-gradient(to bottom, rgba(8,24,8,0.2) 0%, transparent 40%, rgba(8,24,8,0.75) 100%);
+    }
+    @media (max-width: 768px) {
+        .sd-hero { height: 320px; }
+        .sd-hero-title { font-size: 2rem !important; }
     }
     .sd-hero-inner {
         position: relative;

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Menu;
+use App\Models\PageBanner;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\Setting;
@@ -37,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
         try {
         if (Schema::hasTable('settings') && Schema::hasTable('menus')) {
             View::composer('frontend.*', function ($view) {
+                if (Schema::hasTable('page_banners')) {
+                    $ctaBanner = PageBanner::where('page', 'cta')->first();
+                    $view->with('ctaBanner', $ctaBanner);
+                }
                 $view->with('siteSettings', Setting::pluck('value', 'key'));
                 $view->with('navMenus', Menu::whereNull('parent_id')
                     ->where('is_active', true)

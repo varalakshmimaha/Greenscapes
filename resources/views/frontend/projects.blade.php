@@ -18,13 +18,13 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
     }
     .projects-hero::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(20, 45, 25, 0.70);
+        background: rgba(20, 45, 25, 0.45);
     }
     .projects-hero-content {
         position: relative;
@@ -874,7 +874,7 @@
 </section>
 <style>
     .proj-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
-    .proj-cta-section { position: relative; background: url('{{ asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat; padding: 60px 50px; overflow: hidden; border-radius: 30px; box-shadow: 0 20px 60px rgba(26,58,26,0.25); }
+    .proj-cta-section { position: relative; background: url('{{ $ctaBanner && $ctaBanner->image ? asset('storage/' . $ctaBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat; padding: 60px 50px; overflow: hidden; border-radius: 30px; box-shadow: 0 20px 60px rgba(26,58,26,0.25); }
     .proj-cta-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(15,30,15,0.85) 0%, rgba(15,30,15,0.55) 55%, rgba(15,30,15,0.3) 100%); border-radius: 30px; }
     .proj-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
     .proj-cta-left { flex: 1; max-width: 460px; }

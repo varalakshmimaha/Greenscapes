@@ -16,13 +16,13 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
+        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
     }
     .faq-hero::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(20, 45, 25, 0.70);
+        background: rgba(20, 45, 25, 0.45);
     }
     .faq-hero-content {
         position: relative;
@@ -458,7 +458,7 @@
     .faq-cta-wrapper { padding: 60px 0 80px; background: #f9fbf7; }
     .faq-cta-section {
         position: relative;
-        background: url('{{ asset('images/Home/1.3 Cover photo 3.jpg') }}') center/cover no-repeat;
+        background: url('{{ $ctaBanner && $ctaBanner->image ? asset('storage/' . $ctaBanner->image) : asset('images/Home/1.3 Cover photo 3.jpg') }}') center/cover no-repeat;
         padding: 60px 50px; overflow: hidden; border-radius: 30px;
         box-shadow: 0 20px 60px rgba(26,58,26,0.25);
     }

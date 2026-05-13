@@ -6,7 +6,7 @@
     .about-hero {
         position: relative;
         height: 320px;
-        background: url('{{ asset('images/About Us/2.1  Science-Driven Approach.jpg') }}') center/cover no-repeat;
+        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/About Us/2.1  Science-Driven Approach.jpg') }}') center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -16,7 +16,7 @@
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(rgba(26,42,26,0.7), rgba(26,42,26,0.85));
+        background: linear-gradient(rgba(26,42,26,0.45), rgba(26,42,26,0.55));
     }
     .hero-content {
         position: relative;

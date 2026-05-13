@@ -471,12 +471,12 @@
     .service-card .svc-img-wrap {
         aspect-ratio: 4/3;
         overflow: hidden;
-        background: #fff;
+        background: #f8f8f8;
     }
     .service-card .svc-img-wrap img {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         display: block;
         transition: transform 0.4s;
     }
@@ -486,20 +486,26 @@
     .service-card .svc-body {
         padding: 20px;
         text-align: center;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
     .service-card .svc-body h5 {
         font-weight: 700;
         color: var(--dark);
-        font-size: 1.4rem;
-        margin-bottom: 10px;
+        font-size: 1.1rem;
+        margin: 0;
         line-height: 1.4;
     }
     .service-card .svc-body .svc-desc {
         font-size: 0.9rem;
         color: #777;
-        margin-bottom: 12px;
+        margin: 0;
         line-height: 1.75;
         text-align: center;
+        flex: 1;
     }
     .service-card .svc-link {
         display: inline-flex;

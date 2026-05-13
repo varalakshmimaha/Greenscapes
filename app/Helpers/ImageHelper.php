@@ -21,22 +21,24 @@ class ImageHelper
             return $path;
         }
 
-        // Check if storage symlink exists and is valid
-        $symlink = public_path('storage');
-        if (is_link($symlink) || is_dir($symlink)) {
-            // Symlink exists, use normal asset path
-            return asset('storage/' . $path);
-        }
-
-        // Fallback: Check if file exists in storage directory directly
+        // Check storage first (admin-uploaded images)
         $storagePath = storage_path('app/public/' . $path);
         if (file_exists($storagePath)) {
-            // Return direct storage path
+            $symlink = public_path('storage');
+            if (is_link($symlink) || is_dir($symlink)) {
+                return asset('storage/' . $path);
+            }
             $appUrl = config('app.url');
             return $appUrl . '/storage/' . $path;
         }
 
-        // Last resort: return asset path and let Laravel handle it
+        // Check public/images directory (seeded/bundled images)
+        $publicImagePath = public_path('images/' . $path);
+        if (file_exists($publicImagePath)) {
+            return asset('images/' . $path);
+        }
+
+        // Last resort: return storage asset path
         return asset('storage/' . $path);
     }
 
