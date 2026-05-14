@@ -14,17 +14,21 @@
         justify-content: center;
         text-align: center;
     }
-    .projects-hero::before {
-        content: '';
+    .projects-hero-bg-img {
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
     }
     .projects-hero::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
         background: rgba(20, 45, 25, 0.45);
+        z-index: 1;
     }
     .projects-hero-content {
         position: relative;
@@ -308,6 +312,7 @@
 
 <!-- Hero Section -->
 <div class="projects-hero">
+    <img class="projects-hero-bg-img" src="{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}" alt="Projects Banner" loading="eager">
     <div class="projects-hero-content" data-aos="fade-up">
         <h1>Our Projects</h1>
         <nav aria-label="breadcrumb">

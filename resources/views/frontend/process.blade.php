@@ -14,17 +14,21 @@
         justify-content: center;
         text-align: center;
     }
-    .proc-hero::before {
-        content: '';
+    .proc-hero-bg-img {
         position: absolute;
         inset: 0;
-        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.7 Cover photo 7.jpg') }}') center/cover no-repeat;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
     }
     .proc-hero::after {
         content: '';
         position: absolute;
         inset: 0;
         background: linear-gradient(135deg, rgba(15,30,15,0.45) 0%, rgba(26,42,26,0.50) 100%);
+        z-index: 1;
     }
     .proc-hero-content {
         position: relative;
@@ -552,6 +556,7 @@
 
 <!-- Hero Banner -->
 <div class="proc-hero">
+    <img class="proc-hero-bg-img" src="{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.7 Cover photo 7.jpg') }}" alt="Process Banner" loading="eager">
     <div class="proc-hero-content" data-aos="fade-up">
         <h1>Our Process</h1>
         <p>What Influences Your Landscape Investment</p>

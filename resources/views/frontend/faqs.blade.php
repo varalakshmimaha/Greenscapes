@@ -12,17 +12,21 @@
         justify-content: center;
         text-align: center;
     }
-    .faq-hero::before {
-        content: '';
+    .faq-hero-bg-img {
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
     }
     .faq-hero::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
         background: rgba(20, 45, 25, 0.45);
+        z-index: 1;
     }
     .faq-hero-content {
         position: relative;
@@ -244,6 +248,7 @@
 
 <!-- HERO BANNER -->
 <section class="faq-hero">
+    <img class="faq-hero-bg-img" src="{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.2 Cover photo 2.jpg') }}" alt="FAQs Banner" loading="eager">
     <div class="faq-hero-content text-center">
         <h1 class="text-center">Frequently Asked Questions</h1>
         <p class="text-center" style="text-align: center !important;">Everything you need to know about our landscaping, delivery, and services.</p>

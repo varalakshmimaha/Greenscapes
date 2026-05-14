@@ -12,17 +12,21 @@
         justify-content: center;
         text-align: center;
     }
-    .res-hero::before {
-        content: '';
+    .res-hero-bg-img {
         position: absolute;
         inset: 0;
-        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
     }
     .res-hero::after {
         content: '';
         position: absolute;
         inset: 0;
         background: linear-gradient(135deg, rgba(27,94,32,0.45) 0%, rgba(26,42,26,0.50) 100%);
+        z-index: 1;
     }
     .res-hero-content {
         position: relative;
@@ -244,6 +248,7 @@
 
 <!-- Hero -->
 <section class="res-hero">
+    <img class="res-hero-bg-img" src="{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}" alt="Resources Banner" loading="eager">
     <div class="res-hero-content">
         <div class="res-hero-label"><i class="fas fa-book-open" style="margin-right:6px;"></i> Explore</div>
         <h1>Resources</h1>

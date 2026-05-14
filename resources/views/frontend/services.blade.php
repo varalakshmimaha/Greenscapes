@@ -14,17 +14,21 @@
         justify-content: center;
         text-align: center;
     }
-    .svc-hero::before {
-        content: '';
+    .svc-hero-bg-img {
         position: absolute;
         inset: 0;
-        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.2 Cover photo 2.jpg') }}') center/cover no-repeat;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
     }
     .svc-hero::after {
         content: '';
         position: absolute;
         inset: 0;
         background: rgba(20, 45, 25, 0.45);
+        z-index: 1;
     }
     .svc-hero-content {
         position: relative;
@@ -410,6 +414,7 @@
 
 <!-- Hero Banner -->
 <div class="svc-hero">
+    <img class="svc-hero-bg-img" src="{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.2 Cover photo 2.jpg') }}" alt="Services Banner" loading="eager">
     <div class="svc-hero-content text-center" data-aos="fade-up">
         <h1 class="text-center">Our Services</h1>
         <p class="text-center" style="text-align: center !important;">Comprehensive landscaping solutions from design to maintenance</p>

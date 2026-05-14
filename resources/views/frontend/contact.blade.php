@@ -12,17 +12,21 @@
         justify-content: center;
         text-align: center;
     }
-    .contact-hero::before {
-        content: '';
+    .contact-hero-bg-img {
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}') center/cover no-repeat;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
     }
     .contact-hero::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
         background: linear-gradient(135deg, rgba(27,94,32,0.45) 0%, rgba(26,42,26,0.50) 100%);
+        z-index: 1;
     }
     .contact-hero .hero-content {
         position: relative;
@@ -621,6 +625,7 @@
 
 <!-- HERO BANNER -->
 <section class="contact-hero">
+    <img class="contact-hero-bg-img" src="{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/Home/1.5 Cover photo 5.jpg') }}" alt="Contact Banner" loading="eager">
     <div class="hero-content text-center">
         <div class="breadcrumb-nav text-center">
             <a href="{{ url('/') }}">Home</a> <span>&nbsp;/&nbsp; Contact Us</span>

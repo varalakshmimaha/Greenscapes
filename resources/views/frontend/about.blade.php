@@ -6,17 +6,27 @@
     .about-hero {
         position: relative;
         height: 320px;
-        background: url('{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/About Us/2.1  Science-Driven Approach.jpg') }}') center/cover no-repeat;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
+    }
+    .about-hero-bg-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
     }
     .about-hero::after {
         content: '';
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
         background: linear-gradient(rgba(26,42,26,0.45), rgba(26,42,26,0.55));
+        z-index: 1;
     }
     .hero-content {
         position: relative;
@@ -627,6 +637,7 @@
 
 <!-- Hero Section -->
 <section class="about-hero">
+    <img class="about-hero-bg-img" src="{{ $pageBanner && $pageBanner->image ? asset('storage/' . $pageBanner->image) : asset('images/About Us/2.1  Science-Driven Approach.jpg') }}" alt="About Us Banner" loading="eager">
     <div class="hero-content text-center">
         <h1 data-aos="fade-up" class="text-center">About Us</h1>
         <div class="breadcrumb-custom text-center" data-aos="fade-up" data-aos-delay="100" style="justify-content: center !important;">
