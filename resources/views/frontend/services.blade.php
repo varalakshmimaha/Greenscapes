@@ -47,7 +47,7 @@
 
     /* ===== CATEGORY SECTION ===== */
     .cat-section {
-        padding: 70px 0 30px;
+        padding: 100px 0 30px;
         background: #f8faf8;
     }
     .cat-section:nth-child(even) {

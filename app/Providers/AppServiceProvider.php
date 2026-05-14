@@ -38,10 +38,10 @@ class AppServiceProvider extends ServiceProvider
         try {
         if (Schema::hasTable('settings') && Schema::hasTable('menus')) {
             View::composer('frontend.*', function ($view) {
-                if (Schema::hasTable('page_banners')) {
-                    $ctaBanner = PageBanner::where('page', 'cta')->first();
-                    $view->with('ctaBanner', $ctaBanner);
-                }
+                $ctaBanner = Schema::hasTable('page_banners')
+                    ? PageBanner::where('page', 'cta')->first()
+                    : null;
+                $view->with('ctaBanner', $ctaBanner);
                 $view->with('siteSettings', Setting::pluck('value', 'key'));
                 $view->with('navMenus', Menu::whereNull('parent_id')
                     ->where('is_active', true)
