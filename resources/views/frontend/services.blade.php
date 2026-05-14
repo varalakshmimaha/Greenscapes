@@ -416,8 +416,11 @@
     </div>
 </div>
 
+<!-- Spacer below banner -->
+<div style="height: 60px; background: #f8faf8;"></div>
+
 <!-- ===== ALL 9 SERVICES GRID ===== -->
-<section class="cat-section" style="padding-top: 80px; margin-top: 40px;">
+<section class="cat-section" style="padding-top: 40px;">
     <div class="container">
         <div class="row g-4 justify-content-center">
             @foreach($services as $service)
