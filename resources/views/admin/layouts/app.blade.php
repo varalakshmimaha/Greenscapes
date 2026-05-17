@@ -171,6 +171,9 @@
             </a>
 
             <div class="nav-label">Configuration</div>
+            <a href="{{ route('admin.seo.index') }}" class="{{ request()->routeIs('admin.seo.*') ? 'active' : '' }}">
+                <i class="fas fa-search"></i> SEO Settings
+            </a>
             <a href="{{ route('admin.settings.general') }}" class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
                 <i class="fas fa-cog"></i> Settings
             </a>

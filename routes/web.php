@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Frontend\HomeController;
 
 // ========================
@@ -122,6 +123,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', \App\Http\Middleware
     Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
     Route::get('contacts/{contact}', [ContactController::class, 'show'])->name('contacts.show');
     Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+    // SEO
+    Route::get('seo', [SeoController::class, 'index'])->name('seo.index');
+    Route::put('seo', [SeoController::class, 'update'])->name('seo.update');
 
     // Settings
     Route::get('settings/general', [SettingController::class, 'general'])->name('settings.general');
