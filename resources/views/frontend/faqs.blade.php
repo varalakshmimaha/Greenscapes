@@ -1,5 +1,10 @@
 ﻿@extends('frontend.layouts.app')
 
+@section('title', 'Frequently Asked Questions | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Get answers to common questions about SR Greenscapes landscaping services, nursery & plant orders, garden design, maintenance, irrigation, and project process in Bengaluru.')
+@section('canonical_url', route('faqs'))
+@section('meta_image', asset('images/Home/1.2 Cover photo 2.jpg'))
+
 @section('styles')
 <style>
     /* ===== HERO ===== */
@@ -13,8 +18,8 @@
         text-align: center;
     }
     .faq-hero-bg-img {
-        position: absolute;
-        inset: 0;
+
+    inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -336,16 +341,31 @@
                 ],
             ];
 
-            // Force use of complete hardcoded data provided by the user
-            $activeCats = collect(array_keys($hardcodedFaqs));
-            $hasDbData = false;
+            if ($hasDbData) {
+                $activeCats = $faqCategories->keys()->filter(fn($k) => $k !== 'Home Page')->values();
+            } else {
+                $activeCats = collect(array_keys($hardcodedFaqs));
+            }
+
+            // Build per-category image map: DB FAQ image first, fallback to hardcoded
+            $catImgMap = [];
+            foreach ($activeCats as $cat) {
+                if ($hasDbData && isset($faqCategories[$cat])) {
+                    $first = $faqCategories[$cat]->first(fn($f) => !empty($f->image));
+                    $catImgMap[$cat] = $first
+                        ? asset('storage/' . $first->image)
+                        : ($catImages[$cat] ?? asset('images/Home/1.3 Cover photo 3.jpg'));
+                } else {
+                    $catImgMap[$cat] = $catImages[$cat] ?? asset('images/Home/1.3 Cover photo 3.jpg');
+                }
+            }
         @endphp
 
         <div class="faq-layout">
             <!-- TOP: PILLS -->
             <div class="faq-cat-pills">
                 @foreach($activeCats as $idx => $cat)
-                    <button class="faq-cat-pill {{ $idx === 0 ? 'active' : '' }}" onclick="switchFaqCat({{ $idx }}, this, '{{ $catImages[$cat] ?? asset('images/Home/1.3 Cover photo 3.jpg') }}')">
+                    <button class="faq-cat-pill {{ $idx === 0 ? 'active' : '' }}" onclick="switchFaqCat({{ $idx }}, this, '{{ $catImgMap[$cat] ?? asset('images/Home/1.3 Cover photo 3.jpg') }}')">
                         {{ $cat }}
                     </button>
                 @endforeach
@@ -354,7 +374,7 @@
             <div class="faq-container">
                 <!-- LEFT SIDE IMAGE -->
                 <div class="faq-left-col">
-                    <img loading="lazy" src="{{ $catImages[$activeCats[0]] ?? asset('images/Home/1.3 Cover photo 3.jpg') }}" id="faqMainImg" class="faq-left-img" alt="FAQ Category Image">
+                    <img loading="lazy" src="{{ $catImgMap[$activeCats[0]] ?? asset('images/Home/1.3 Cover photo 3.jpg') }}" id="faqMainImg" class="faq-left-img" alt="FAQ Category Image">
                 </div>
 
                 <!-- RIGHT SIDE QUESTION AND ANS -->
@@ -393,6 +413,32 @@
 @endsection
 
 @section('scripts')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        @php
+            $schemaFaqs = $hasDbData
+                ? $faqCategories->flatten()->where('is_active', true)->values()
+                : collect(array_merge(...array_values($hardcodedFaqs)));
+            $schemaItems = $hasDbData
+                ? $schemaFaqs->map(fn($f) => ['q' => $f->question, 'a' => strip_tags($f->answer)])
+                : collect(array_merge(...array_values($hardcodedFaqs)));
+        @endphp
+        @foreach($schemaItems as $i => $item)
+        {
+            "@type": "Question",
+            "name": "{{ addslashes($hasDbData ? $item['q'] : $item['q']) }}",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "{{ addslashes($hasDbData ? $item['a'] : $item['a']) }}"
+            }
+        }{{ !$loop->last ? ',' : '' }}
+        @endforeach
+    ]
+}
+</script>
 <script>
     function switchFaqCat(index, btn, imgSrc) {
         // Tabs
