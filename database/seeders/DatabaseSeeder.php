@@ -105,6 +105,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ServiceSeeder::class,
             TeamSeeder::class,
+            FaqSeeder::class,
         ]);
     }
 }
