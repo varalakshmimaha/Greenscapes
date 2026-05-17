@@ -294,7 +294,7 @@
             ];
 
             // Use DB data if available, otherwise hardcoded
-            $hasDbData = isset($faqCategories) && $faqCategories->count();
+            $hasDbData = isset($faqCategories) && $faqCategories->count() > 0;
 
             $hardcodedFaqs = [
                 'About Us' => [
