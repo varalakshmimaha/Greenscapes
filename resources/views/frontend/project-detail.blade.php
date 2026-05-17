@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', ($project->title ?? 'Project Details') . ' - SR Greenscapes')
+@section('title', ($project->title ?? 'Project Details') . ' | SR Greenscapes Pvt Ltd')
+@section('meta_description', $project->description ? Str::limit(strip_tags($project->description), 160) : 'View SR Greenscapes landscaping project: ' . ($project->title ?? 'Project') . ' — sustainable landscape design and execution in ' . ($project->location ?? 'Bengaluru') . '.')
+@section('canonical_url', route('project.detail', $project->slug))
+@section('meta_image', $project->featured_image ? \App\Helpers\ImageHelper::getImageUrl($project->featured_image) : asset('images/Home/1.18 Hardscape  Softscape Development.jpg'))
 
 @section('styles')
 <style>

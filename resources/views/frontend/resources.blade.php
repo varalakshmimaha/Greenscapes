@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Resources - SR Greenscapes')
+@section('title', 'Resources | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Access landscaping resources from SR Greenscapes — blogs, videos, photo gallery, and expert insights on garden design, plant care, and sustainable landscaping.')
+@section('canonical_url', route('resources'))
+@section('meta_image', asset('images/Home/1.20 Nursery  Plant Supply.jpg'))
 
 @section('styles')
 <style>

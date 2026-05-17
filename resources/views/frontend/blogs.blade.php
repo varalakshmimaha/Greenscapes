@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Blogs - SR Greenscapes')
+@section('title', 'Blogs | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Read SR Greenscapes landscaping blogs — expert tips on garden design, plant care, irrigation, sustainable horticulture, and green living in Bengaluru and India.')
+@section('canonical_url', route('blogs'))
+@section('meta_image', asset('images/Home/1.5 Cover photo 5.jpg'))
 
 @section('styles')
 <style>

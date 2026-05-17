@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', $service->name . ' - SR Greenscapes')
+@section('title', $service->name . ' | SR Greenscapes Pvt Ltd')
+@section('meta_description', $service->description ? Str::limit(strip_tags($service->description), 160) : 'SR Greenscapes offers professional ' . $service->name . ' services in Bengaluru — expert landscape solutions tailored to your space and goals.')
+@section('canonical_url', route('service.detail', $service->slug))
+@section('meta_image', $service->image ? \App\Helpers\ImageHelper::getImageUrl($service->image) : asset('images/Home/1.17 Specialized Garden Services.jpg'))
 
 @section('styles')
 <style>

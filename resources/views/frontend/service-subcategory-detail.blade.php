@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', $subCategory->name . ' - ' . $category->name . ' - SR Greenscapes')
+@section('title', $subCategory->name . ' | ' . $category->name . ' | SR Greenscapes')
+@section('meta_description', $subCategory->description ? Str::limit(strip_tags($subCategory->description), 160) : 'SR Greenscapes ' . $subCategory->name . ' services in Bengaluru — expert sustainable landscaping solutions for homes, offices, and institutions.')
+@section('canonical_url', route('service.subcategory.detail', [$service->slug, $category->slug, $subCategory->slug]))
+@section('meta_image', $subCategory->image ? \App\Helpers\ImageHelper::getImageUrl($subCategory->image) : asset('images/Home/1.17 Specialized Garden Services.jpg'))
 
 @section('styles')
 <style>

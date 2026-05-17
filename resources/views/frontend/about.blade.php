@@ -1,5 +1,10 @@
 ﻿@extends('frontend.layouts.app')
 
+@section('title', 'About Us | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Learn about SR Greenscapes Pvt Ltd — a science-driven sustainable landscaping company in Bengaluru led by PhD horticulture professionals delivering ecological landscape solutions across India.')
+@section('canonical_url', route('about'))
+@section('meta_image', asset('images/About Us/2.1  Science-Driven Approach.jpg'))
+
 @section('styles')
 <style>
     /* ===== HERO SECTION ===== */

@@ -1,5 +1,10 @@
 ﻿@extends('frontend.layouts.app')
 
+@section('title', 'Contact Us | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Get in touch with SR Greenscapes Pvt Ltd for landscaping consultations, nursery orders, and garden maintenance. Call +91 9845728507 or visit us in Hoskote, Bangalore.')
+@section('canonical_url', route('contact'))
+@section('meta_image', asset('images/Home/1.3 Cover photo 3.jpg'))
+
 @section('styles')
 <style>
     /* ===== HERO BANNER ===== */

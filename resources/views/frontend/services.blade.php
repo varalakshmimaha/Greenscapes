@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Our Services - SR Greenscapes')
+@section('title', 'Our Services | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Explore SR Greenscapes landscaping services — landscape design & execution, garden maintenance, irrigation, softscape, hardscape, nursery supply, and horticulture consultancy in Bengaluru.')
+@section('canonical_url', route('services'))
+@section('meta_image', asset('images/Home/1.17 Specialized Garden Services.jpg'))
 
 @section('styles')
 <style>

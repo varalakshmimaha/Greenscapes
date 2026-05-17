@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Testimonials - SR Greenscapes')
+@section('title', 'Testimonials | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Read what clients say about SR Greenscapes landscaping services — real reviews from homeowners, corporates, and institutions who trusted us for their garden projects.')
+@section('canonical_url', route('testimonials'))
+@section('meta_image', asset('images/Home/1.3 Cover photo 3.jpg'))
 
 @section('styles')
 <style>

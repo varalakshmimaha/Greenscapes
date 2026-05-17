@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Gallery - SR Greenscapes')
+@section('title', 'Gallery | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Browse SR Greenscapes landscaping photo gallery — garden transformations, hardscape projects, plant collections, and green space designs across Bengaluru.')
+@section('canonical_url', route('gallery'))
+@section('meta_image', asset('images/Home/1.19 Landscape Maintenance.png'))
 
 @section('styles')
 <style>

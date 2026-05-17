@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Videos - SR Greenscapes')
+@section('title', 'Videos | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Watch SR Greenscapes landscaping videos — project walkthroughs, plant care guides, garden transformations, and expert horticulture tips from our team.')
+@section('canonical_url', route('videos'))
+@section('meta_image', asset('images/Home/1.5 Cover photo 5.jpg'))
 
 @section('styles')
 <style>

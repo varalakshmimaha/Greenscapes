@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Our Process - SR Greenscapes')
+@section('title', 'Our Process | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Discover how SR Greenscapes works — from initial consultation and site assessment to 3D design, execution, handover, and post-completion support for every landscaping project.')
+@section('canonical_url', route('process'))
+@section('meta_image', asset('images/Construction/4.1 Consultation  Site Assessment.jpg'))
 
 @section('styles')
 <style>

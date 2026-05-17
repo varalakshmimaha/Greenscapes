@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Projects - SR Greenscapes')
+@section('title', 'Our Projects | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'View SR Greenscapes completed landscaping projects — residential gardens, corporate campuses, institutional landscapes, and public green spaces across Bengaluru and India.')
+@section('canonical_url', route('projects'))
+@section('meta_image', asset('images/Home/1.18 Hardscape  Softscape Development.jpg'))
 
 @section('styles')
 <style>

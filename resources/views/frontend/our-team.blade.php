@@ -1,6 +1,9 @@
 ﻿@extends('frontend.layouts.app')
 
-@section('title', 'Our Team - SR Greenscapes')
+@section('title', 'Our Team | SR Greenscapes Pvt Ltd')
+@section('meta_description', 'Meet the SR Greenscapes team — PhD horticulture professionals, landscape designers, project managers, and horticulture experts led by Dr. Supriya Narayan and Mr. Srinidhi AT.')
+@section('canonical_url', route('our-team'))
+@section('meta_image', asset('images/Home/1.3 Cover photo 3.jpg'))
 
 @section('styles')
 <style>
