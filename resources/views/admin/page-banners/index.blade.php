@@ -79,10 +79,17 @@
                                accept="image/jpeg,image/png,image/jpg,image/webp">
                         <small class="text-muted">JPG, PNG or WebP · Max 5 MB · Recommended: 600×600px (Square)</small>
                         @if($banner && $banner->landing_image)
-                            <div class="mt-2">
+                            <div class="mt-2 mb-2">
                                 <img src="{{ asset('storage/' . $banner->landing_image) }}"
                                      alt="Landing image preview"
                                      style="max-width:100%; max-height:150px; border-radius:4px; border:1px solid #dee2e6;">
+                            </div>
+                            <div class="form-check mb-3">
+                                <input type="checkbox" name="remove_landing_image" id="remove_landing_{{ $pageKey }}"
+                                       class="form-check-input" value="1">
+                                <label class="form-check-label small text-danger" for="remove_landing_{{ $pageKey }}">
+                                    Remove this image
+                                </label>
                             </div>
                         @endif
                     </div>

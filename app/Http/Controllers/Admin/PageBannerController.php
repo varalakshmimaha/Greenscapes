@@ -38,6 +38,10 @@ class PageBannerController extends Controller
             $banner->landing_image = $request->file('landing_image')->store('page-banners', 'public');
         }
 
+        if ($request->input('remove_landing_image')) {
+            $banner->landing_image = null;
+        }
+
         $banner->title    = $request->input('title');
         $banner->subtitle = $request->input('subtitle');
         $banner->save();
