@@ -212,43 +212,44 @@
 @section('scripts')
 <script>
 function openVideo(url, event) {
-    if (event) event.preventDefault();
-    if (event) event.stopPropagation();
-
-    var embedUrl = url;
-    var videoId = null;
-
-    // Extract video ID from different YouTube URL formats
-    var patterns = [
-        /(?:youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11}))/,
-        /(?:youtube\.com\/embed\/([a-zA-Z0-9_-]{11}))/,
-        /(?:youtu\.be\/([a-zA-Z0-9_-]{11}))/,
-        /(?:youtube\.com\/(?:embed|v)\/([a-zA-Z0-9_-]{11}))/,
-        /^([a-zA-Z0-9_-]{11})$/
-    ];
-
-    for (var i = 0; i < patterns.length; i++) {
-        var match = url.match(patterns[i]);
-        if (match) {
-            videoId = match[1];
-            break;
-        }
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
     }
 
+    var videoId = null;
+
+    // Extract YouTube video ID
+    var match = url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    if (match) {
+        videoId = match[1];
+    }
+
+    var embedUrl;
     if (videoId) {
-        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0&modestbranding=1';
-    } else if (!url.includes('youtube.com/embed')) {
+        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0';
+    } else {
         embedUrl = url;
     }
 
     document.getElementById('videoFrame').src = embedUrl;
-    new bootstrap.Modal(document.getElementById('videoModal')).show();
+
+    var modal = document.getElementById('videoModal');
+    if (modal) {
+        var bsModal = new bootstrap.Modal(modal);
+        bsModal.show();
+    }
 
     return false;
 }
 
-document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
-    document.getElementById('videoFrame').src = '';
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('videoModal');
+    if (modal) {
+        modal.addEventListener('hidden.bs.modal', function () {
+            document.getElementById('videoFrame').src = '';
+        });
+    }
 });
 </script>
 @endsection
