@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageBanner extends Model
 {
-    protected $fillable = ['page', 'image', 'title', 'subtitle'];
+    protected $fillable = ['page', 'image', 'landing_image', 'title', 'subtitle'];
 
     public const PAGES = [
         'about'     => 'About Us',

@@ -68,6 +68,26 @@
                         <small class="text-muted">JPG, PNG or WebP · Max 5 MB · Recommended: 1920×400px</small>
                     </div>
 
+                    @if($pageKey === 'contact')
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small">Landing Image (Office/Featured)
+                            @if($banner && $banner->landing_image)
+                                <span class="text-muted fw-normal">(upload new to replace)</span>
+                            @endif
+                        </label>
+                        <input type="file" name="landing_image" class="form-control form-control-sm"
+                               accept="image/jpeg,image/png,image/jpg,image/webp">
+                        <small class="text-muted">JPG, PNG or WebP · Max 5 MB · Recommended: 600×600px (Square)</small>
+                        @if($banner && $banner->landing_image)
+                            <div class="mt-2">
+                                <img src="{{ asset('storage/' . $banner->landing_image) }}"
+                                     alt="Landing image preview"
+                                     style="max-width:100%; max-height:150px; border-radius:4px; border:1px solid #dee2e6;">
+                            </div>
+                        @endif
+                    </div>
+                    @endif
+
                     <div class="mb-2">
                         <label class="form-label fw-semibold small">Page Title <span class="text-muted fw-normal">(optional)</span></label>
                         <input type="text" name="title" class="form-control form-control-sm"

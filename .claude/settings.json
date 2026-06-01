@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr .png)",
+      "Bash(git -c http.sslVerify=false push origin main)"
+    ]
+  }
+}

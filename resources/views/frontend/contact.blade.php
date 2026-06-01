@@ -655,7 +655,11 @@
             <!-- Left: Office Info -->
             <div class="col-lg-6">
                 <div class="contact-landing-img">
-                    <img loading="lazy" src="{{ asset('images/Home/1.6 Cover photo 6.jpg') }}" alt="SR Greenscapes Office Interior">
+                    @if($pageBanner && $pageBanner->landing_image)
+                        <img loading="lazy" src="{{ asset('storage/' . $pageBanner->landing_image) }}" alt="SR Greenscapes Office Interior">
+                    @else
+                        <img loading="lazy" src="{{ asset('images/Home/1.6 Cover photo 6.jpg') }}" alt="SR Greenscapes Office Interior">
+                    @endif
                 </div>
             </div>
 
