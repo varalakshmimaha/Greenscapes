@@ -155,7 +155,7 @@
             @forelse($videos as $video)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <div class="video-card">
-                        <div class="video-card-thumb" onclick="openVideo('{{ $video->video_url }}')">
+                        <div class="video-card-thumb" onclick="return openVideo('{{ $video->video_url }}', event)" style="cursor: pointer;">
                             @if($video->thumbnail)
                                 <img loading="lazy" src="@imageUrl($video->thumbnail)" alt="{{ $video->title }}">
                             @else
@@ -211,7 +211,10 @@
 
 @section('scripts')
 <script>
-function openVideo(url) {
+function openVideo(url, event) {
+    if (event) event.preventDefault();
+    if (event) event.stopPropagation();
+
     var embedUrl = url;
     var videoId = null;
 
@@ -220,6 +223,7 @@ function openVideo(url) {
         /(?:youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11}))/,
         /(?:youtube\.com\/embed\/([a-zA-Z0-9_-]{11}))/,
         /(?:youtu\.be\/([a-zA-Z0-9_-]{11}))/,
+        /(?:youtube\.com\/(?:embed|v)\/([a-zA-Z0-9_-]{11}))/,
         /^([a-zA-Z0-9_-]{11})$/
     ];
 
@@ -232,11 +236,15 @@ function openVideo(url) {
     }
 
     if (videoId) {
-        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0';
+        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0&modestbranding=1';
+    } else if (!url.includes('youtube.com/embed')) {
+        embedUrl = url;
     }
 
     document.getElementById('videoFrame').src = embedUrl;
     new bootstrap.Modal(document.getElementById('videoModal')).show();
+
+    return false;
 }
 
 document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
