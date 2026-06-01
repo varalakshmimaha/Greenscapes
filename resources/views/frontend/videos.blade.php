@@ -200,7 +200,7 @@
             </div>
             <div class="modal-body p-0">
                 <div class="ratio ratio-16x9">
-                    <iframe id="videoFrame" src="" allowfullscreen allow="autoplay"></iframe>
+                    <iframe id="videoFrame" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" style="width: 100%; height: 100%;"></iframe>
                 </div>
             </div>
         </div>
@@ -213,13 +213,32 @@
 <script>
 function openVideo(url) {
     var embedUrl = url;
-    var ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-    if (ytMatch) {
-        embedUrl = 'https://www.youtube.com/embed/' + ytMatch[1] + '?autoplay=1';
+    var videoId = null;
+
+    // Extract video ID from different YouTube URL formats
+    var patterns = [
+        /(?:youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11}))/,
+        /(?:youtube\.com\/embed\/([a-zA-Z0-9_-]{11}))/,
+        /(?:youtu\.be\/([a-zA-Z0-9_-]{11}))/,
+        /^([a-zA-Z0-9_-]{11})$/
+    ];
+
+    for (var i = 0; i < patterns.length; i++) {
+        var match = url.match(patterns[i]);
+        if (match) {
+            videoId = match[1];
+            break;
+        }
     }
+
+    if (videoId) {
+        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0';
+    }
+
     document.getElementById('videoFrame').src = embedUrl;
     new bootstrap.Modal(document.getElementById('videoModal')).show();
 }
+
 document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
     document.getElementById('videoFrame').src = '';
 });
