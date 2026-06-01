@@ -155,7 +155,7 @@
             @forelse($videos as $video)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <div class="video-card">
-                        <button type="button" class="video-card-thumb" onclick="openVideo('{{ $video->video_url }}', event); return false;" style="cursor: pointer; border: none; padding: 0; background: none;">
+                        <div class="video-card-thumb" data-video-url="{{ $video->video_url }}" style="cursor: pointer;">
                             @if($video->thumbnail)
                                 <img loading="lazy" src="@imageUrl($video->thumbnail)" alt="{{ $video->title }}">
                             @else
@@ -172,7 +172,7 @@
                                 @endif
                             @endif
                             <div class="play-icon"><i class="fas fa-play ms-1"></i></div>
-                        </button>
+                        </div>
                         <div class="video-card-body">
                             <h5>{{ $video->title }}</h5>
                             @if($video->description)
@@ -211,42 +211,43 @@
 
 @section('scripts')
 <script>
-function openVideo(url, event) {
-    if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-
-    var videoId = null;
-
-    // Extract YouTube video ID
-    var match = url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-    if (match) {
-        videoId = match[1];
-    }
-
-    var embedUrl;
-    if (videoId) {
-        embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0';
-    } else {
-        embedUrl = url;
-    }
-
-    document.getElementById('videoFrame').src = embedUrl;
-
-    var modal = document.getElementById('videoModal');
-    if (modal) {
-        var bsModal = new bootstrap.Modal(modal);
-        bsModal.show();
-    }
-
-    return false;
-}
-
 document.addEventListener('DOMContentLoaded', function() {
+    // Handle video clicks
+    document.querySelectorAll('.video-card-thumb[data-video-url]').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var url = this.getAttribute('data-video-url');
+            var videoId = null;
+
+            // Extract YouTube video ID
+            var match = url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            if (match) {
+                videoId = match[1];
+            }
+
+            var embedUrl;
+            if (videoId) {
+                embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0';
+            } else {
+                embedUrl = url;
+            }
+
+            document.getElementById('videoFrame').src = embedUrl;
+
+            var modal = document.getElementById('videoModal');
+            if (modal) {
+                var bsModal = new bootstrap.Modal(modal);
+                bsModal.show();
+            }
+        });
+    });
+
+    // Clear video on modal close
     var modal = document.getElementById('videoModal');
     if (modal) {
-        modal.addEventListener('hidden.bs.modal', function () {
+        modal.addEventListener('hidden.bs.modal', function() {
             document.getElementById('videoFrame').src = '';
         });
     }
