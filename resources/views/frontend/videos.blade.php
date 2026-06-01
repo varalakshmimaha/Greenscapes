@@ -155,7 +155,7 @@
             @forelse($videos as $video)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <div class="video-card">
-                        <div class="video-card-thumb" onclick="return openVideo('{{ $video->video_url }}', event)" style="cursor: pointer;">
+                        <button type="button" class="video-card-thumb" onclick="openVideo('{{ $video->video_url }}', event); return false;" style="cursor: pointer; border: none; padding: 0; background: none;">
                             @if($video->thumbnail)
                                 <img loading="lazy" src="@imageUrl($video->thumbnail)" alt="{{ $video->title }}">
                             @else
@@ -172,7 +172,7 @@
                                 @endif
                             @endif
                             <div class="play-icon"><i class="fas fa-play ms-1"></i></div>
-                        </div>
+                        </button>
                         <div class="video-card-body">
                             <h5>{{ $video->title }}</h5>
                             @if($video->description)
