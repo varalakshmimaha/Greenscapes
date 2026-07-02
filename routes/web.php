@@ -47,7 +47,9 @@ Route::get('/blogs/{slug}', [HomeController::class, 'blogDetail'])->name('blog.d
 Route::get('/videos', [HomeController::class, 'videos'])->name('videos');
 Route::get('/process', [HomeController::class, 'process'])->name('process');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::post('/contact', [HomeController::class, 'submitContact'])->name('contact.submit');
+Route::post('/contact', [HomeController::class, 'submitContact'])
+    ->middleware('throttle:8,1') // max 8 submissions per minute per IP
+    ->name('contact.submit');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
 Route::get('/sitemap', [HomeController::class, 'sitemap'])->name('sitemap');

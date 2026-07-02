@@ -855,6 +855,7 @@
                 <div class="proj-cta-card">
                     <h4 class="proj-cta-card-title">Book Consultation</h4>
                     <form action="{{ route('contact.submit') }}" method="POST">
+                        @include('frontend.partials.honeypot')
                         @csrf
                         <input type="hidden" name="source" value="projects-cta">
                         <div class="proj-cta-row">

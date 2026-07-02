@@ -339,15 +339,11 @@
                 @foreach($videos as $video)
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         @php
-                            $videoUrl = $video->url ?? $video->youtube_url ?? $video->video_url ?? '';
-                            $embedUrl = '';
-                            if (preg_match('/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/', $videoUrl, $m)) {
-                                $embedUrl = 'https://www.youtube.com/embed/' . $m[1];
-                                $thumbUrl = 'https://img.youtube.com/vi/' . $m[1] . '/hqdefault.jpg';
-                            }
+                            $videoUrl = $video->video_url;
+                            $thumbUrl = $video->youtube_thumbnail;
                         @endphp
                         <div class="res-video-card">
-                            @if($embedUrl)
+                            @if($thumbUrl)
                                 <a href="{{ $videoUrl }}" target="_blank" class="res-video-thumb d-block" style="text-decoration:none;">
                                     <img loading="lazy" src="{{ $thumbUrl }}" alt="{{ $video->title }}">
                                     <div class="res-video-play"><i class="fas fa-play"></i></div>
@@ -439,6 +435,7 @@
                 <div class="about-cta-card">
                     <h4 class="about-cta-card-title">Book Consultation</h4>
                     <form action="{{ route('contact.submit') }}" method="POST">
+                        @include('frontend.partials.honeypot')
                         @csrf
                         <input type="hidden" name="source" value="contact-cta">
                         <div class="about-cta-row">

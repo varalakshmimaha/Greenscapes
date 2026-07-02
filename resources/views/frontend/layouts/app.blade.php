@@ -1526,6 +1526,7 @@
                     <div class="gcta-card">
                         <h4 class="gcta-card-title">Book a Consultation</h4>
                         <form action="{{ route('contact.submit') }}" method="POST">
+                            @include('frontend.partials.honeypot')
                             @csrf
                             <input type="hidden" name="source" value="default-cta">
                             <div class="gcta-row">

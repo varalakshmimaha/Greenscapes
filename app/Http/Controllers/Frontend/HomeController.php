@@ -25,6 +25,7 @@ use App\Mail\ContactInquiry;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
@@ -255,6 +256,11 @@ class HomeController extends Controller
 
     public function submitContact(Request $request)
     {
+        // Silently drop bot submissions so they receive no signal that they were caught.
+        if ($this->looksLikeSpam($request)) {
+            return back()->with('success', 'Thank you! Your message has been sent successfully.');
+        }
+
         $request->validate([
             'name'    => 'required|string|max:255',
             'email'   => 'nullable|email|max:255',
@@ -278,5 +284,30 @@ class HomeController extends Controller
         }
 
         return back()->with('success', 'Thank you! Your message has been sent successfully.');
+    }
+
+    /**
+     * Detect obvious bot submissions from the public contact forms.
+     * Uses a hidden honeypot field and an encrypted render-time "time trap".
+     * Fails open on anything ambiguous so real visitors are never blocked.
+     */
+    private function looksLikeSpam(Request $request): bool
+    {
+        // 1) Honeypot: the hidden "website" field is invisible to humans.
+        if (filled($request->input('website'))) {
+            return true;
+        }
+
+        // 2) Time trap: humans take a few seconds to fill a form; bots submit instantly.
+        try {
+            $renderedAt = (int) Crypt::decryptString((string) $request->input('_hpt', ''));
+            if ($renderedAt > 0 && (now()->timestamp - $renderedAt) < 2) {
+                return true;
+            }
+        } catch (\Throwable $e) {
+            // Missing or tampered token — don't penalise, let validation handle the rest.
+        }
+
+        return false;
     }
 }

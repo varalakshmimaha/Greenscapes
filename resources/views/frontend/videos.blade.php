@@ -155,21 +155,13 @@
             @forelse($videos as $video)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ $loop->index * 80 }}">
                     <div class="video-card">
-                        <div class="video-card-thumb" data-video-url="{{ $video->video_url }}" style="cursor: pointer;">
+                        <div class="video-card-thumb" data-embed-url="{{ $video->embed_url }}" style="cursor: pointer;">
                             @if($video->thumbnail)
                                 <img loading="lazy" src="@imageUrl($video->thumbnail)" alt="{{ $video->title }}">
+                            @elseif($video->youtube_thumbnail)
+                                <img loading="lazy" src="{{ $video->youtube_thumbnail }}" alt="{{ $video->title }}">
                             @else
-                                @php
-                                    $ytId = '';
-                                    if (preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/', $video->video_url, $m)) {
-                                        $ytId = $m[1];
-                                    }
-                                @endphp
-                                @if($ytId)
-                                    <img loading="lazy" src="https://img.youtube.com/vi/{{ $ytId }}/maxresdefault.jpg" alt="{{ $video->title }}">
-                                @else
-                                    <img loading="lazy" src="{{ asset('images/Home/1.3 Cover photo 3.jpg') }}" alt="{{ $video->title }}">
-                                @endif
+                                <img loading="lazy" src="{{ asset('images/Home/1.3 Cover photo 3.jpg') }}" alt="{{ $video->title }}">
                             @endif
                             <div class="play-icon"><i class="fas fa-play ms-1"></i></div>
                         </div>
@@ -212,27 +204,15 @@
 @section('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Handle video clicks
-    document.querySelectorAll('.video-card-thumb[data-video-url]').forEach(function(element) {
+    // The embed URL is built server-side (see App\Models\Video::getEmbedUrlAttribute),
+    // so it always uses YouTube's frame-friendly /embed/ host — no client-side parsing.
+    document.querySelectorAll('.video-card-thumb[data-embed-url]').forEach(function(element) {
         element.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
 
-            var url = this.getAttribute('data-video-url');
-            var videoId = null;
-
-            // Extract YouTube video ID
-            var match = url.match(/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-            if (match) {
-                videoId = match[1];
-            }
-
-            var embedUrl;
-            if (videoId) {
-                embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&rel=0';
-            } else {
-                embedUrl = url;
-            }
+            var embedUrl = this.getAttribute('data-embed-url');
+            if (!embedUrl) return;
 
             document.getElementById('videoFrame').src = embedUrl;
 

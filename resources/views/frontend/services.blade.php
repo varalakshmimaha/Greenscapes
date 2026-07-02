@@ -507,6 +507,7 @@
                 <div class="svc-cta-card">
                     <h4 class="svc-cta-card-title">Book Consultation</h4>
                     <form action="{{ route('contact.submit') }}" method="POST">
+                        @include('frontend.partials.honeypot')
                         @csrf
                         <input type="hidden" name="source" value="services-cta">
                         <div class="svc-cta-row">

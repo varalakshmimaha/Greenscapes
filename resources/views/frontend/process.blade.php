@@ -859,6 +859,7 @@
                 <div class="proc-cta-card">
                     <h4 class="proc-cta-card-title">Book Consultation</h4>
                     <form action="{{ route('contact.submit') }}" method="POST">
+                        @include('frontend.partials.honeypot')
                         @csrf
                         <input type="hidden" name="source" value="process-cta">
                         <div class="proc-cta-row">

@@ -930,6 +930,7 @@
                 <div class="about-cta-card">
                     <h4 class="about-cta-card-title">Book Consultation</h4>
                     <form action="{{ route('contact.submit') }}" method="POST">
+                        @include('frontend.partials.honeypot')
                         @csrf
                         <input type="hidden" name="source" value="about-cta">
                         <div class="about-cta-row">
