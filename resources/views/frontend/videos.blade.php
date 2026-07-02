@@ -192,7 +192,7 @@
             </div>
             <div class="modal-body p-0">
                 <div class="ratio ratio-16x9">
-                    <iframe id="videoFrame" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" style="width: 100%; height: 100%;"></iframe>
+                    <iframe id="videoFrame" src="" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen allow="autoplay; encrypted-media" style="width: 100%; height: 100%;"></iframe>
                 </div>
             </div>
         </div>
