@@ -12,6 +12,7 @@ use App\Models\Setting;
 use App\Models\TeamCategory;
 use App\Models\Video;
 use App\Helpers\ImageHelper;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
+
         // Register image helper Blade directive
         Blade::directive('imageUrl', function ($path) {
             return "<?php echo \App\Helpers\ImageHelper::getImageUrl({$path}); ?>";

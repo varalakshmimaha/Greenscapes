@@ -365,6 +365,40 @@
             border-color: var(--primary);
         }
 
+        /* ===== PAGINATION ===== */
+        .pagination {
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pagination .page-link {
+            color: var(--green-dark);
+            border: 1px solid #dfe5df;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .pagination .page-link:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+        .pagination .page-item.active .page-link {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 3px 8px rgba(139,195,74,0.3);
+        }
+        .pagination .page-item.disabled .page-link {
+            color: #aab5aa;
+            background: #f4f6f4;
+            border-color: #e5eae5;
+        }
+        .pagination .page-link:focus {
+            box-shadow: 0 0 0 3px rgba(139,195,74,0.25);
+        }
+
         /* ===== GENERAL ===== */
         .section-title {
             font-size: 1.8rem;
